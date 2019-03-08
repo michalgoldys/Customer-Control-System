@@ -2,7 +2,6 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class Empyloee {
 	
-		private String empyloeeAge;
 		private String empyloeeName;
 		private String empyloeeSurename;
 		private String empyloeeBirthDate;
@@ -11,10 +10,9 @@ public class Empyloee {
 		public EmpyloeeAdress epyloeeAdress;
 		public EmploymentDetalis empyloeeDetalis;
 		
-		public Empyloee(String empyloeeAge, String empyloeeName, String empyloeeSurename, String empyloeeBirthDate,
+		public Empyloee(String empyloeeName, String empyloeeSurename, String empyloeeBirthDate,
 				String empyloeeTelephoneNumber, EmpyloeeAdress epyloeeAdress, EmploymentDetalis empyloeeDetalis) {
 			super();
-			this.empyloeeAge = empyloeeAge;
 			this.empyloeeName = empyloeeName;
 			this.empyloeeSurename = empyloeeSurename;
 			this.empyloeeBirthDate = empyloeeBirthDate;
@@ -27,12 +25,6 @@ public class Empyloee {
 		}
 		public void setEmpyloeeTelephoneNumber(String empyloeeTelephoneNumber) {
 			this.empyloeeTelephoneNumber = empyloeeTelephoneNumber;
-		}
-		public String getEmpyloeeAge() {
-			return empyloeeAge;
-		}
-		public void setEmpyloeeAge(String empyloeeAge) {
-			this.empyloeeAge = empyloeeAge;
 		}
 		public String getEmpyloeeName() {
 			return empyloeeName;
