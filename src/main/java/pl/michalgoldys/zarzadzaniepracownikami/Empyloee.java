@@ -11,6 +11,17 @@ public class Empyloee {
 		public EmpyloeeAdress epyloeeAdress;
 		public EmploymentDetalis empyloeeDetalis;
 		
+		public Empyloee(String empyloeeAge, String empyloeeName, String empyloeeSurename, String empyloeeBirthDate,
+				String empyloeeTelephoneNumber, EmpyloeeAdress epyloeeAdress, EmploymentDetalis empyloeeDetalis) {
+			super();
+			this.empyloeeAge = empyloeeAge;
+			this.empyloeeName = empyloeeName;
+			this.empyloeeSurename = empyloeeSurename;
+			this.empyloeeBirthDate = empyloeeBirthDate;
+			this.empyloeeTelephoneNumber = empyloeeTelephoneNumber;
+			this.epyloeeAdress = epyloeeAdress;
+			this.empyloeeDetalis = empyloeeDetalis;
+		}
 		public String getEmpyloeeTelephoneNumber() {
 			return empyloeeTelephoneNumber;
 		}
