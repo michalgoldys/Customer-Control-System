@@ -2,10 +2,19 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class EmploymentDetalis {
 
+		private int employementDetalisId;
 		private float emploeeSalary;
 		private String emploeeEpmloyment;
 		private String emploeeWorkplace;
 		
+		public EmploymentDetalis(int employementDetalisId, float emploeeSalary, String emploeeEpmloyment,
+				String emploeeWorkplace) {
+			super();
+			this.employementDetalisId = employementDetalisId;
+			this.emploeeSalary = emploeeSalary;
+			this.emploeeEpmloyment = emploeeEpmloyment;
+			this.emploeeWorkplace = emploeeWorkplace;
+		}
 		public float getEmploeeSalary() {
 			return emploeeSalary;
 		}

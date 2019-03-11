@@ -2,12 +2,23 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class CompanyData {
 
+		private String companyDataId;
 		private String companyName;
 		private String companyNip;
 		private String companyEmploymentDetalis;
 		private String companyStartUpDate;
 		private String companyForm;
 		
+		public CompanyData(String companyDataId, String companyName, String companyNip, String companyEmploymentDetalis,
+				String companyStartUpDate, String companyForm) {
+			super();
+			this.companyDataId = companyDataId;
+			this.companyName = companyName;
+			this.companyNip = companyNip;
+			this.companyEmploymentDetalis = companyEmploymentDetalis;
+			this.companyStartUpDate = companyStartUpDate;
+			this.companyForm = companyForm;
+		}
 		public String getCompanyName() {
 			return companyName;
 		}

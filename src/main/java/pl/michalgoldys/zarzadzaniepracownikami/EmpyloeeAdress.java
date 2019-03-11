@@ -2,10 +2,19 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class EmpyloeeAdress {
 
+		private int empyloeeAdressid;
 		private String empyloeeStreet;
 		private String eppyloeeCity;
 		private String empyloeeZipCode;
 		
+		public EmpyloeeAdress(int empyloeeAdressid, String empyloeeStreet, String eppyloeeCity,
+				String empyloeeZipCode) {
+			super();
+			this.empyloeeAdressid = empyloeeAdressid;
+			this.empyloeeStreet = empyloeeStreet;
+			this.eppyloeeCity = eppyloeeCity;
+			this.empyloeeZipCode = empyloeeZipCode;
+		}
 		public String getEmpyloeeStreet() {
 			return empyloeeStreet;
 		}

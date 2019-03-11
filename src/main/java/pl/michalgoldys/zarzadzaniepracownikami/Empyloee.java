@@ -1,7 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class Empyloee {
-	
+
+		private int empyloeeId;
 		private String empyloeeName;
 		private String empyloeeSurename;
 		private String empyloeeBirthDate;

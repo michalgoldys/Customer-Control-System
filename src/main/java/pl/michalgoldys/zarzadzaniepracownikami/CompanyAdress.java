@@ -2,11 +2,21 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class CompanyAdress {
 
+		private Integer copmanyID;
 		private String companyStreet;
 		private String companyCity;
 		private String companyCountry;
 		private String companyZipCode;
 		
+		public CompanyAdress(Integer copmanyID, String companyStreet, String companyCity, String companyCountry,
+				String companyZipCode) {
+			super();
+			this.copmanyID = copmanyID;
+			this.companyStreet = companyStreet;
+			this.companyCity = companyCity;
+			this.companyCountry = companyCountry;
+			this.companyZipCode = companyZipCode;
+		}
 		public String getCompanyStreet() {
 			return companyStreet;
 		}

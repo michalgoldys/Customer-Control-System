@@ -2,6 +2,7 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 public class CustomerContractDetalis {
 
+	private int customerContractId;
 	private int customerSubscriptions;
 	private int customerPlSubstripctions;
 	private int customerPlUeSubstripctions;
@@ -9,6 +10,20 @@ public class CustomerContractDetalis {
 	private int customerPlFee;
 	private int customerPlUeFee;
 	private int customerRuFee;
+	
+	public CustomerContractDetalis(int customerContractId, int customerSubscriptions, int customerPlSubstripctions,
+			int customerPlUeSubstripctions, int customerRuSubscriptions, int customerPlFee, int customerPlUeFee,
+			int customerRuFee) {
+		super();
+		this.customerContractId = customerContractId;
+		this.customerSubscriptions = customerSubscriptions;
+		this.customerPlSubstripctions = customerPlSubstripctions;
+		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
+		this.customerRuSubscriptions = customerRuSubscriptions;
+		this.customerPlFee = customerPlFee;
+		this.customerPlUeFee = customerPlUeFee;
+		this.customerRuFee = customerRuFee;
+	}
 	public int getCustomerSubscriptions() {
 		return customerSubscriptions;
 	}
