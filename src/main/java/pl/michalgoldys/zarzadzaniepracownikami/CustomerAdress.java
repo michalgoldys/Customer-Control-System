@@ -1,16 +1,28 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CustomerAdress {
 
-	private Integer customerAdressid;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long customerAdressid;
+	
 	private String customerStreet;
 	private String customerCity;
 	private String customerZipCode;
 	
-	public CustomerAdress(Integer customerAdressid, String customerStreet, String customerCity,
+	protected CustomerAdress() {
+		
+	}
+	
+	public CustomerAdress(String customerStreet, String customerCity,
 			String customerZipCode) {
 		super();
-		this.customerAdressid = customerAdressid;
 		this.customerStreet = customerStreet;
 		this.customerCity = customerCity;
 		this.customerZipCode = customerZipCode;

@@ -1,8 +1,17 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Empyloee {
 
-		private int empyloeeId;
+		@Id
+		@GeneratedValue(strategy=GenerationType.AUTO)
+		private Long empyloeeId;
+		
 		private String empyloeeName;
 		private String empyloeeSurename;
 		private String empyloeeBirthDate;
@@ -10,6 +19,10 @@ public class Empyloee {
 		
 		public EmpyloeeAdress epyloeeAdress;
 		public EmploymentDetalis empyloeeDetalis;
+		
+		protected Empyloee() {
+			
+		}
 		
 		public Empyloee(String empyloeeName, String empyloeeSurename, String empyloeeBirthDate,
 				String empyloeeTelephoneNumber, EmpyloeeAdress epyloeeAdress, EmploymentDetalis empyloeeDetalis) {

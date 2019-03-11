@@ -1,8 +1,17 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class CustomerContractDetalis {
 
-	private int customerContractId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long customerContractId;
+	
 	private int customerSubscriptions;
 	private int customerPlSubstripctions;
 	private int customerPlUeSubstripctions;
@@ -11,11 +20,14 @@ public class CustomerContractDetalis {
 	private int customerPlUeFee;
 	private int customerRuFee;
 	
-	public CustomerContractDetalis(int customerContractId, int customerSubscriptions, int customerPlSubstripctions,
+	protected CustomerContractDetalis() {
+		
+	}
+	
+	public CustomerContractDetalis(int customerSubscriptions, int customerPlSubstripctions,
 			int customerPlUeSubstripctions, int customerRuSubscriptions, int customerPlFee, int customerPlUeFee,
 			int customerRuFee) {
 		super();
-		this.customerContractId = customerContractId;
 		this.customerSubscriptions = customerSubscriptions;
 		this.customerPlSubstripctions = customerPlSubstripctions;
 		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
@@ -66,6 +78,4 @@ public class CustomerContractDetalis {
 	public void setCustomerRuFee(int customerRuFee) {
 		this.customerRuFee = customerRuFee;
 	}
-	
-	
 }

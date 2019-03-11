@@ -1,16 +1,28 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-public class EmploymentDetalis {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-		private int employementDetalisId;
+@Entity
+public class EmploymentDetalis {
+	
+		@Id
+		@GeneratedValue(strategy=GenerationType.AUTO)
+		private Long employementDetalisId;
+		
 		private float emploeeSalary;
 		private String emploeeEpmloyment;
 		private String emploeeWorkplace;
 		
-		public EmploymentDetalis(int employementDetalisId, float emploeeSalary, String emploeeEpmloyment,
+		protected EmploymentDetalis() {
+			
+		}
+		
+		public EmploymentDetalis(float emploeeSalary, String emploeeEpmloyment,
 				String emploeeWorkplace) {
 			super();
-			this.employementDetalisId = employementDetalisId;
 			this.emploeeSalary = emploeeSalary;
 			this.emploeeEpmloyment = emploeeEpmloyment;
 			this.emploeeWorkplace = emploeeWorkplace;

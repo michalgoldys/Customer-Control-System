@@ -1,19 +1,31 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
 	
-	private int customerId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long customerId;
+	
 	private String customerName;
 	private int customerNip;
 	
-	public String getCustomerName() {
-		return customerName;
+	protected Customer () {
+		
 	}
-	public Customer(int customerId, String customerName, int customerNip) {
+	public Customer(String customerName, int customerNip) {
 		super();
-		this.customerId = customerId;
 		this.customerName = customerName;
 		this.customerNip = customerNip;
+	}
+	
+	public String getCustomerName() {
+		return customerName;
 	}
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
