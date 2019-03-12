@@ -1,26 +1,32 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="EMPYLOYMENT_DETALIS")
 public class EmploymentDetalis {
 	
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private Long employementDetalisId;
 		
+		@Column(name="empyloee_salary", nullable=false)
 		private float emploeeSalary;
-		private String emploeeEpmloyment;
+		
+		@Column(name="empyloee_employment", nullable=false)
+		private boolean emploeeEpmloyment;
+		
+		@Column(name="empyloee_workplace", nullable=false)
 		private String emploeeWorkplace;
 		
 		protected EmploymentDetalis() {
 			
 		}
 		
-		public EmploymentDetalis(float emploeeSalary, String emploeeEpmloyment,
+		public EmploymentDetalis(float emploeeSalary, boolean emploeeEpmloyment,
 				String emploeeWorkplace) {
 			super();
 			this.emploeeSalary = emploeeSalary;
@@ -33,10 +39,10 @@ public class EmploymentDetalis {
 		public void setEmploeeSalary(float emploeeSalary) {
 			this.emploeeSalary = emploeeSalary;
 		}
-		public String getEmploeeEpmloyment() {
+		public boolean getEmploeeEpmloyment() {
 			return emploeeEpmloyment;
 		}
-		public void setEmploeeEpmloyment(String emploeeEpmloyment) {
+		public void setEmploeeEpmloyment(boolean emploeeEpmloyment) {
 			this.emploeeEpmloyment = emploeeEpmloyment;
 		}
 		public String getEmploeeWorkplace() {

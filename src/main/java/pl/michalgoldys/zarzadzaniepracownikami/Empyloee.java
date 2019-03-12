@@ -1,21 +1,30 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="EMPYLOEE")
 public class Empyloee {
 
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private Long empyloeeId;
 		
+		@Column(name="empyloee_name", nullable=false)
 		private String empyloeeName;
-		private String empyloeeSurename;
+		
+		@Column(name="empyloee_surname", nullable=false)
+		private String empyloeeSurname;
+		
+		@Column(name="empyloee_birth_date", nullable=false)
 		private String empyloeeBirthDate;
+		
+		@Column(name="empyloee_telephone_number", nullable=false)
 		private String empyloeeTelephoneNumber;
+		
 		
 		public EmpyloeeAdress epyloeeAdress;
 		public EmploymentDetalis empyloeeDetalis;
@@ -28,7 +37,7 @@ public class Empyloee {
 				String empyloeeTelephoneNumber, EmpyloeeAdress epyloeeAdress, EmploymentDetalis empyloeeDetalis) {
 			super();
 			this.empyloeeName = empyloeeName;
-			this.empyloeeSurename = empyloeeSurename;
+			this.empyloeeSurname = empyloeeSurename;
 			this.empyloeeBirthDate = empyloeeBirthDate;
 			this.empyloeeTelephoneNumber = empyloeeTelephoneNumber;
 			this.epyloeeAdress = epyloeeAdress;
@@ -47,10 +56,10 @@ public class Empyloee {
 			this.empyloeeName = empyloeeName;
 		}
 		public String getEmpyloeeSurename() {
-			return empyloeeSurename;
+			return empyloeeSurname;
 		}
 		public void setEmpyloeeSurename(String empyloeeSurename) {
-			this.empyloeeSurename = empyloeeSurename;
+			this.empyloeeSurname = empyloeeSurename;
 		}
 		public String getEmpyloeeBirthDate() {
 			return empyloeeBirthDate;

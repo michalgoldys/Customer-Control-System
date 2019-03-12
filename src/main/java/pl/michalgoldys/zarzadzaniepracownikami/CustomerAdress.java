@@ -1,19 +1,25 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="CUSTOMER_ADRESS")
 public class CustomerAdress {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long customerAdressid;
+	private Long customerAdressId;
 	
+	@Column(name="customer_street", nullable=true)
 	private String customerStreet;
+	
+	@Column(name="customer_city", nullable=false)
 	private String customerCity;
+	
+	@Column(name="customer_zip_code", nullable=false)
 	private String customerZipCode;
 	
 	protected CustomerAdress() {

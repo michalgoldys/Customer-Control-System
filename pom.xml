@@ -50,6 +50,10 @@
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-web</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>javax.xml.bind</groupId>
+  		<artifactId>jaxb-api</artifactId>
+  	</dependency>
   </dependencies>
   <build>
         <plugins>
@@ -59,4 +63,5 @@
             </plugin>
         </plugins>
     </build>
+  <packaging>war</packaging>
 </project>

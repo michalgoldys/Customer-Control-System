@@ -1,21 +1,29 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="CUSTOMER_CONTACT")
 public class CustomerContact {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerContactId;
 	
-	private String contactName;
-	private String contactSurname;
-	private int customerPhoneNumber;
-	private String customerMailAdress;
+	@Column(name="customer_contact_name", nullable=false)
+	private String customerContactName;
+	
+	@Column(name="customer_contact_surname", nullable=false)
+	private String customerContactSurname;
+	
+	@Column(name="customer_contact_phone_number", nullable=false)
+	private int customerContactPhoneNumber;
+	
+	@Column(name="customer_contact_mail_adress", nullable=true)
+	private String customerContactMailAdress;
 	
 	protected CustomerContact() {
 		
@@ -24,34 +32,34 @@ public class CustomerContact {
 	public CustomerContact(String contactName, String contactSurname,
 			int customerPhoneNumber, String customerMailAdress) {
 		super();
-		this.contactName = contactName;
-		this.contactSurname = contactSurname;
-		this.customerPhoneNumber = customerPhoneNumber;
-		this.customerMailAdress = customerMailAdress;
+		this.customerContactName = contactName;
+		this.customerContactSurname = contactSurname;
+		this.customerContactPhoneNumber = customerPhoneNumber;
+		this.customerContactMailAdress = customerMailAdress;
 	}
 	public String getContactName() {
-		return contactName;
+		return customerContactName;
 	}
 	public void setContactName(String contactName) {
-		this.contactName = contactName;
+		this.customerContactName = contactName;
 	}
 	public String getContactSurname() {
-		return contactSurname;
+		return customerContactSurname;
 	}
 	public void setContactSurname(String contactSurname) {
-		this.contactSurname = contactSurname;
+		this.customerContactSurname = contactSurname;
 	}
 	public int getCustomerPhoneNumber() {
-		return customerPhoneNumber;
+		return customerContactPhoneNumber;
 	}
 	public void setCustomerPhoneNumber(int customerPhoneNumber) {
-		this.customerPhoneNumber = customerPhoneNumber;
+		this.customerContactPhoneNumber = customerPhoneNumber;
 	}
 	public String getCustomerMailAdress() {
-		return customerMailAdress;
+		return customerContactMailAdress;
 	}
 	public void setCustomerMailAdress(String customerMailAdress) {
-		this.customerMailAdress = customerMailAdress;
+		this.customerContactMailAdress = customerMailAdress;
 	}
 		
 }

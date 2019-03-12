@@ -1,23 +1,37 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name="CUSTOMER_CONTRACT_DETALIS")
 public class CustomerContractDetalis {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerContractId;
 	
+	@Column(name="customer_subscriptions", nullable=true)
 	private int customerSubscriptions;
+	
+	@Column(name="customer_pl_substripctions", nullable=true)
 	private int customerPlSubstripctions;
+	
+	@Column(name="customer_pl_ue_substripctions", nullable=true)
 	private int customerPlUeSubstripctions;
+	
+	@Column(name="customer_ru_subscriptions", nullable=true)
 	private int customerRuSubscriptions;
+	
+	@Column(name="customer_pl_fee", nullable=true)
 	private int customerPlFee;
+	
+	@Column(name="customer_pl_ue_fee", nullable=true)
 	private int customerPlUeFee;
+	
+	@Column(name="customer_ru_fee", nullable=true)
 	private int customerRuFee;
 	
 	protected CustomerContractDetalis() {
