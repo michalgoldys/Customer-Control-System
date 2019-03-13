@@ -33,23 +33,38 @@ public class EmploymentDetalis {
 			this.emploeeEpmloyment = emploeeEpmloyment;
 			this.emploeeWorkplace = emploeeWorkplace;
 		}
-		public float getEmploeeSalary() {
+
+		public Integer getEmploeeSalary() {
 			return emploeeSalary;
 		}
+
 		public void setEmploeeSalary(Integer emploeeSalary) {
 			this.emploeeSalary = emploeeSalary;
 		}
-		public boolean getEmploeeEpmloyment() {
+
+		public boolean isEmploeeEpmloyment() {
 			return emploeeEpmloyment;
 		}
+
 		public void setEmploeeEpmloyment(boolean emploeeEpmloyment) {
 			this.emploeeEpmloyment = emploeeEpmloyment;
 		}
+
 		public String getEmploeeWorkplace() {
 			return emploeeWorkplace;
 		}
+
 		public void setEmploeeWorkplace(String emploeeWorkplace) {
 			this.emploeeWorkplace = emploeeWorkplace;
 		}
+
+		public Long getEmployementDetalisId() {
+			return employementDetalisId;
+		}
+
+		public void setEmployementDetalisId(Long employementDetalisId) {
+			this.employementDetalisId = employementDetalisId;
+		}
+
 		
 }
