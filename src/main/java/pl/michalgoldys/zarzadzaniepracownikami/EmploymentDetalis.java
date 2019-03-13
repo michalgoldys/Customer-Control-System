@@ -14,7 +14,7 @@ public class EmploymentDetalis {
 		private Long employementDetalisId;
 		
 		@Column(name="empyloee_salary", nullable=false)
-		private float emploeeSalary;
+		private Integer emploeeSalary;
 		
 		@Column(name="empyloee_employment", nullable=false)
 		private boolean emploeeEpmloyment;
@@ -26,7 +26,7 @@ public class EmploymentDetalis {
 			
 		}
 		
-		public EmploymentDetalis(float emploeeSalary, boolean emploeeEpmloyment,
+		public EmploymentDetalis(Integer emploeeSalary, boolean emploeeEpmloyment,
 				String emploeeWorkplace) {
 			super();
 			this.emploeeSalary = emploeeSalary;
@@ -36,7 +36,7 @@ public class EmploymentDetalis {
 		public float getEmploeeSalary() {
 			return emploeeSalary;
 		}
-		public void setEmploeeSalary(float emploeeSalary) {
+		public void setEmploeeSalary(Integer emploeeSalary) {
 			this.emploeeSalary = emploeeSalary;
 		}
 		public boolean getEmploeeEpmloyment() {
