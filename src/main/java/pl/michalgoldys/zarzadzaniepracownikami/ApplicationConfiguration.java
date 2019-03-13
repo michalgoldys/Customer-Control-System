@@ -31,6 +31,7 @@ public class ApplicationConfiguration {
 		lcemfb.getDataSource();
 		lcemfb.setPackagesToScan("pl.michalgoldys");
 		lcemfb.getJpaVendorAdapter();
+		
 	}
 	
 	@Autowired
@@ -40,13 +41,4 @@ public class ApplicationConfiguration {
 		hjva.setShowSql(true);
 		hjva.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");		
 	}
-	
-	@Autowired
-	@Bean
-	public void settingJpaProperties() {
-		JpaProperties jp = new JpaProperties();
-		
-		
-	}
-	
 }
