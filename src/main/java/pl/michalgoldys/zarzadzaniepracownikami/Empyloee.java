@@ -25,23 +25,17 @@ public class Empyloee {
 		@Column(name="empyloee_telephone_number", nullable=false)
 		private String empyloeeTelephoneNumber;
 		
-		
-		public EmpyloeeAdress epyloeeAdress;
-		public EmploymentDetalis empyloeeDetalis;
-		
 		protected Empyloee() {
 			
 		}
 		
 		public Empyloee(String empyloeeName, String empyloeeSurename, String empyloeeBirthDate,
-				String empyloeeTelephoneNumber, EmpyloeeAdress epyloeeAdress, EmploymentDetalis empyloeeDetalis) {
+				String empyloeeTelephoneNumber) {
 			super();
 			this.empyloeeName = empyloeeName;
 			this.empyloeeSurname = empyloeeSurename;
 			this.empyloeeBirthDate = empyloeeBirthDate;
 			this.empyloeeTelephoneNumber = empyloeeTelephoneNumber;
-			this.epyloeeAdress = epyloeeAdress;
-			this.empyloeeDetalis = empyloeeDetalis;
 		}
 		public String getEmpyloeeTelephoneNumber() {
 			return empyloeeTelephoneNumber;
