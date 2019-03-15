@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ApplicationControler {
 
-	@GetMapping(value ="/StronaGlowna")
-		public String strongaGlowa () {
+	@GetMapping(value ="/index")
+		public String index () {
 		
-		return "StronaGlowna";
+		return "index";
 	}
 		
 	

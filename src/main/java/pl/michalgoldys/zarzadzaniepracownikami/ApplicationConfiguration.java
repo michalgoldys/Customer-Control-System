@@ -33,8 +33,8 @@ public class ApplicationConfiguration  {
 		.create()
 		.username("admin")
 		.password("fajka12!@")
-		.url("jdbc:mysql://localhost:3306/zarzadzaniepracownikamidb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC?useSSL=false")
-		.driverClassName("com.mysql.cj.jdbc.Driver")
+		.url("jdbc:mysql://localhost:3306/zarzadzaniepracownikamidb?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
+		.driverClassName("com.mysql.jdbc.Driver")
 		.build();
 	}
 	
