@@ -9,17 +9,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@EnableTransactionManagement
-@EnableJpaRepositories
 @ComponentScan
 public class ApplicationConfiguration  {	
 	
@@ -37,8 +33,8 @@ public class ApplicationConfiguration  {
 		.create()
 		.username("admin")
 		.password("fajka12!@")
-		.url("jdbc:mysql://localhost:3306/zarzadzaniepracownikamidb?createDatabaseIfNotExist=true")
-		.driverClassName("com.mysql.jdbc.Driver")
+		.url("jdbc:mysql://localhost:3306/zarzadzaniepracownikamidb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC?useSSL=false")
+		.driverClassName("com.mysql.cj.jdbc.Driver")
 		.build();
 	}
 	
@@ -63,7 +59,8 @@ public class ApplicationConfiguration  {
 	public HibernateJpaVendorAdapter settingHibernateJpaVendorAdapter() {
 		HibernateJpaVendorAdapter hjva = new HibernateJpaVendorAdapter();
 		hjva.setShowSql(true);
-		hjva.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+		hjva.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
+		hjva.setGenerateDdl(true);
 	return hjva;
 	}
 	
@@ -83,4 +80,5 @@ public class ApplicationConfiguration  {
 	public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
 		return new PersistenceAnnotationBeanPostProcessor();
 	}
+	
 }
