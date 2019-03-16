@@ -19,14 +19,18 @@ public class Company {
 		@Column(name="company_nip", nullable=false)
 		private String companyNip;
 
+		@Column(name="company_is_active")
+		private boolean companyIsActive;
+		
 		protected Company() {
 			
 		}
 		
-		public Company(String companyName, String companyNip) {
+		public Company(String companyName, String companyNip, boolean companyIsActive) {
 			super();
 			this.companyName = companyName;
 			this.companyNip = companyNip;
+			this.companyIsActive = companyIsActive;
 		}
 		public String getCompanyName() {
 			return companyName;
@@ -39,5 +43,13 @@ public class Company {
 		}
 		public void setCompanyNip(String companyNip) {
 			this.companyNip = companyNip;
+		}
+
+		public boolean isCompanyIsActive() {
+			return companyIsActive;
+		}
+
+		public void setCompanyIsActive(boolean companyIsActive) {
+			this.companyIsActive = companyIsActive;
 		}
 }
