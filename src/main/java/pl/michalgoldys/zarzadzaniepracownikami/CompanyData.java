@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity(name="COMPANY_DATA")
@@ -22,6 +26,11 @@ public class CompanyData {
 		private String companyForm;
 		@Column(name="is_active_company", nullable=false)
 		private boolean isActiveCompany;
+		
+		@Autowired
+		@ManyToOne
+		@JoinColumn(name = "companyId")
+		Company company;
 		
 		protected CompanyData() {
 			

@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="COMPANY")
 public class Company {
@@ -21,6 +24,22 @@ public class Company {
 
 		@Column(name="company_is_active")
 		private boolean companyIsActive;
+		
+		@Autowired
+		@OneToMany
+		CompanyAdress companyAdress;
+		
+		@Autowired
+		@OneToMany
+		CompanyContactDetalis companyContactDetalis;
+		
+		@Autowired
+		@OneToMany
+		CompanyData companyData;
+		
+		@Autowired
+		@OneToMany
+		CompanyEmpyloymentDetalis companyEmpyloymentDetalis;
 		
 		protected Company() {
 			
