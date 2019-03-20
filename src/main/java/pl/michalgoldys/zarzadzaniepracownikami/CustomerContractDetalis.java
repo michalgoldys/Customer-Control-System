@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="CUSTOMER_CONTRACT_DETALIS")
 public class CustomerContractDetalis {
@@ -33,6 +36,10 @@ public class CustomerContractDetalis {
 	
 	@Column(name="customer_ru_fee", nullable=true)
 	private int customerRuFee;
+	
+	@Autowired
+	@ManyToOne
+	Customer customer;
 	
 	protected CustomerContractDetalis() {
 		

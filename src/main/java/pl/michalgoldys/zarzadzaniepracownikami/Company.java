@@ -1,7 +1,10 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,20 +29,20 @@ public class Company {
 		private boolean companyIsActive;
 		
 		@Autowired
-		@OneToMany
-		CompanyAdress companyAdress;
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+		private List<CompanyAdress> companyAdress;
 		
 		@Autowired
-		@OneToMany
-		CompanyContactDetalis companyContactDetalis;
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+		private List<CompanyContactDetalis> companyContactDetalis;
 		
 		@Autowired
-		@OneToMany
-		CompanyData companyData;
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+		private List<CompanyData> companyData;
 		
 		@Autowired
-		@OneToMany
-		CompanyEmpyloymentDetalis companyEmpyloymentDetalis;
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+		private List<CompanyEmpyloymentDetalis> companyEmpyloymentDetalis;
 		
 		protected Company() {
 			
