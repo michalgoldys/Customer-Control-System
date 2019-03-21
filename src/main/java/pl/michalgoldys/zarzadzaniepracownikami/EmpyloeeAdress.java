@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="EMPYLOEE_ADRESS")
 public class EmpyloeeAdress {
@@ -21,6 +25,11 @@ public class EmpyloeeAdress {
 		
 		@Column(name="empyloee_zip_code", nullable=false)
 		private String empyloeeZipCode;
+		
+		@Autowired
+		@ManyToOne
+		@JoinColumn(name ="empyloeeId")
+		Empyloee empyloee;
 		
 		protected EmpyloeeAdress() {
 			

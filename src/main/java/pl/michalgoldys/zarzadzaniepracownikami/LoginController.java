@@ -3,6 +3,6 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ApplicationControler {
-	
+public class LoginController {
+
 }

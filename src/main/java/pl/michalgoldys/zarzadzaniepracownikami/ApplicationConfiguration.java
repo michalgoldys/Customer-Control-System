@@ -37,7 +37,37 @@ public class ApplicationConfiguration  {
 		.driverClassName("com.mysql.jdbc.Driver")
 		.build();
 	}
+	/*
+	@Bean
+	@Description("Thymeleaf Template Resolver")
+	public ServletContextTemplateResolver templateResolver() {
+	    ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
+	    templateResolver.setPrefix("/WEB-INF/views/");
+	    templateResolver.setSuffix(".html");
+	    templateResolver.setTemplateMode("HTML5");
+	    templateResolver.setCacheable(false);
+	 
+	    return templateResolver;
+	}
 	
+	@Bean
+	@Description("Thymeleaf Template Engine")
+	public SpringTemplateEngine templateEngine() {
+	    SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+	    templateEngine.setTemplateResolver(templateResolver());
+	    templateEngine.setTemplateEngineMessageSource(messageSource());
+	    return templateEngine;
+	}
+	
+	@Bean
+	@Description("Thymeleaf View Resolver")
+	public ThymeleafViewResolver viewResolver() {
+    ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+    viewResolver.setTemplateEngine(templateEngine());
+    viewResolver.setOrder(1);
+    return viewResolver;
+}
+	*/
 	@Bean
 	public InternalResourceViewResolver settingInternalResourceViewResolver() {
 		InternalResourceViewResolver irvr = new InternalResourceViewResolver();

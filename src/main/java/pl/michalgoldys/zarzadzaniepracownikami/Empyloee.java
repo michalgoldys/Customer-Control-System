@@ -1,10 +1,16 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="EMPYLOEE")
 public class Empyloee {
@@ -24,6 +30,18 @@ public class Empyloee {
 		
 		@Column(name="empyloee_telephone_number", nullable=false)
 		private String empyloeeTelephoneNumber;
+		
+		@Autowired
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "EMPYLOEE")
+		private List<EmploymentDetalis> employmentDetalis;
+		
+		@Autowired
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "EMPYLOEE")
+		private List<EmpyloeeAdress> empyloeeAdress;
+		
+		@Autowired
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "EMPYLOEE")
+		private List<EmpyloeeEmploymentDetalis> empyloeeEmploymentDetalis;
 		
 		protected Empyloee() {
 			

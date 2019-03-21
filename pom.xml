@@ -54,6 +54,14 @@
   		<groupId>javax.xml.bind</groupId>
   		<artifactId>jaxb-api</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>org.thymeleaf</groupId>
+  		<artifactId>thymeleaf</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.thymeleaf</groupId>
+  		<artifactId>thymeleaf-spring5</artifactId>
+  	</dependency>
   </dependencies>
   <build>
         <plugins>
