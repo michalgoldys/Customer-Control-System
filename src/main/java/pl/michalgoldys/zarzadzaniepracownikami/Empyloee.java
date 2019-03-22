@@ -30,17 +30,13 @@ public class Empyloee {
 		
 		@Column(name="empyloee_telephone_number", nullable=false)
 		private String empyloeeTelephoneNumber;
-		
+
 		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "EMPYLOEE")
-		private List<EmploymentDetalis> employmentDetalis;
-		
-		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "EMPYLOEE")
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "empyloee")
 		private List<EmpyloeeAdress> empyloeeAdress;
 		
 		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "EMPYLOEE")
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "empyloee")
 		private List<EmpyloeeEmploymentDetalis> empyloeeEmploymentDetalis;
 		
 		protected Empyloee() {

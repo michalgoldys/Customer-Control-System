@@ -26,15 +26,15 @@ public class Customer {
 	private int customerNip;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="CUSTOMER")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
 	private List<CustomerAdress> customerAdress;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="CUSTOMER")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
 	private List<CustomerContact> customerContact;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="CUSTOMER")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
 	private List<CustomerContractDetalis> customerContractDetalis;
 	
 	protected Customer () {

@@ -29,19 +29,19 @@ public class Company {
 		private boolean companyIsActive;
 		
 		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "COMPANY")
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
 		private List<CompanyAdress> companyAdress;
 		
 		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "COMPANY")
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
 		private List<CompanyContactDetalis> companyContactDetalis;
 		
 		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "COMPANY")
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
 		private List<CompanyData> companyData;
 		
 		@Autowired
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "COMPANY")
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
 		private List<CompanyEmpyloymentDetalis> companyEmpyloymentDetalis;
 		
 		protected Company() {
