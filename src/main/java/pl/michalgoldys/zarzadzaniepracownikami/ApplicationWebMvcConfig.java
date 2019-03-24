@@ -12,7 +12,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class ApplicationWebMvcConfig implements WebMvcConfigurer{
 	
 	  public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-	        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-	        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+	        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
+	        registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
+	     //   registry.addResourceHandler("/customer/**").addResourceLocations("/resources/teamplates/customer/");
 	    }
 }

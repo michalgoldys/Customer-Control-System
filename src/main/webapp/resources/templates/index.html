@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-
+<link data-th-href="@{/css/blueTable.css}" rel="stylesheet" />
   <head>
     <title>Zarzadzanie Pracownikami - Strona Robocza</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <body>
     <div align="center">
-    <p>Current time is <span data-th-text="${serverTime}" /></span></p>
-    <p>Modul Zarzadzania Pracownikami<p/>
-    <p>Modul Zarzadzania Firmami</p>
-    <p>Modul Zarzadzania Kontrahentami</p>
-    <p>Administracja Ustawieniami</p>
-    <p>Przeglad Bazy Danych - Statystyki</p>
-    <p>Wersja Systemu</p>
-    <img data-th-src="@{/images/logo_autogps.png}" />
+    
+<table class="blueTable">
 
+<thead>
+<tr>
+<th>Zarzadzanie Pracownikami - Strona Robocza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a th:href="@{/customer/customerMenu}">Modul Zarzadzania Pracownikami </a></td>
+</tr>
+<tr>
+<td>Modul Zarzadzania Firmami</td>
+</tr>
+<tr>
+<td>Modul Zarzadzania Kontrahentami</td>
+</tr>
+<tr>
+<td>Administracja Ustawieniami</td>
+</tr>
+<tr>
+<td>Przeglad Bazy Danych - Statystyki</td>
+</tr>
+<tr>
+<td>Wersja Systemu</td>
+</tr>
+<tr>
+<td>Obecny czas: <span data-th-text="${serverTime}" /></span></td>
+</tr>
+</tbody>
+</table>
+    <img data-th-src="@{/images/logo_autogps.png}" width=560 height=180  />
     </div>
 	</body>

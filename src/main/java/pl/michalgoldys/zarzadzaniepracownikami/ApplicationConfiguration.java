@@ -48,7 +48,7 @@ public class ApplicationConfiguration  {
 	@Description("Thymeleaf Template Resolver")
 	public ServletContextTemplateResolver templateResolver(final ServletContext servletContext) {
 	    ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
-	    templateResolver.setPrefix("/WEB-INF/views/");
+	    templateResolver.setPrefix("/resources/templates/");
 	    templateResolver.setSuffix(".html");
 	    templateResolver.setTemplateMode(TemplateMode.HTML);;
 	    templateResolver.setCacheable(false);
