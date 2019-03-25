@@ -42,6 +42,7 @@ public class CustomerAdress {
 		this.customerCity = customerCity;
 		this.customerZipCode = customerZipCode;
 	}
+	
 	public String getCustomerStreet() {
 		return customerStreet;
 	}

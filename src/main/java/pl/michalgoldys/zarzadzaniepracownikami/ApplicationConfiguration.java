@@ -50,7 +50,7 @@ public class ApplicationConfiguration  {
 	    ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
 	    templateResolver.setPrefix("/resources/templates/");
 	    templateResolver.setSuffix(".html");
-	    templateResolver.setTemplateMode(TemplateMode.HTML);;
+	    templateResolver.setTemplateMode(TemplateMode.HTML);
 	    templateResolver.setCacheable(false);
 	 
 	    return templateResolver;

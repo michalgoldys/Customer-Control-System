@@ -23,7 +23,13 @@ public class Customer {
 	private String customerName;
 	
 	@Column(name="customer_nip", nullable=false)
-	private int customerNip;
+	private Integer customerNip;
+	
+	@Column(name="customer_is_active")
+	private Boolean customerIsActive;
+	
+	@Column(name="customer_contract_id")
+	private String customerContractId;
 	
 	@Autowired
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
@@ -40,22 +46,35 @@ public class Customer {
 	protected Customer () {
 		
 	}
-	public Customer(String customerName, int customerNip) {
+	public Customer(String customerName, Integer customerNip, Boolean customerIsActive) {
 		super();
 		this.customerName = customerName;
 		this.customerNip = customerNip;
+		this.customerIsActive = customerIsActive;
 	}
 	
+	public String getCustomerContractId() {
+		return customerContractId;
+	}
+	public void setCustomerContractId(String customerContractId) {
+		this.customerContractId = customerContractId;
+	}
+	public Boolean isCustomerIsActive() {
+		return customerIsActive;
+	}
+	public void setCustomerIsActive(Boolean customerIsActive) {
+		this.customerIsActive = customerIsActive;
+	}
 	public String getCustomerName() {
 		return customerName;
 	}
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	public int getCustomerNip() {
+	public Integer getCustomerNip() {
 		return customerNip;
 	}
-	public void setCustomerNip(int customerNip) {
+	public void setCustomerNip(Integer customerNip) {
 		this.customerNip = customerNip;
 	}
 		

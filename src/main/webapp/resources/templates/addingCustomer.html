@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<link data-th-href="@{/css/comicGreenaddingCustomer.css}" rel="stylesheet" />
+  <head>
+    <title>Dodawanie Kontrahenta</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <body>
+    <form action="#" data-th-action="@{/customer/addingCustomer}" data-th-object="${addingCustomer}" method="post">
+    <div align="center">
+    <table class="comicGreenaddingCustomer">
+<tbody>
+<tr>
+<td>Numer Umowy</td>
+<td><input type="text" name="customerContractId" data-th-field="*{customerContractId}" /></td>
+</tr>
+<tr>
+<td>Nazwa Kontrahenta</td>
+<td><input type="text" name="customerName" data-th-field="*{customerName}" /></td>
+</tr>
+<tr>
+<td>Numer NIP</td>
+<td><input type="text" name="customerNip" data-th-field="*{customerNip}" /></td>
+</tr>
+<tr>
+<td>Miasto</td>
+<td><input type="text" name="customerCity" data-th-field="*{customerCity}" /></td>
+</tr>
+<tr>
+<td>Ulica</td>
+<td><input type="text" name="customerStreet" data-th-field="*{customerStreet}" /></td>
+</tr>
+<tr>
+<td>Kod Pocztowy</td>
+<td><input type="text" name="customerZipCode" data-th-field="*{customerZipCode}" /></td>
+</tr>
+<tr>
+<td>Osoba kontaktowa - Imie</td>
+<td><input type="text" name="customerContactName" data-th-field="*{customerContactName}" /></td>
+</tr>
+<tr>
+<td>Osoba kontaktowa - Nazwisko</td>
+<td><input type="text" name="customerContactSurname" data-th-field="*{customerContactSurname}" /></td>
+</tr>
+<tr>
+<td>Osoba kontaktowa - Telefon</td>
+<td><input type="text" name="customerContactPhoneNumber" data-th-field="*{customerContactPhoneNumber}" /></td>
+</tr>
+<tr>
+<td>Adres Email Firmy</td>
+<td><input type="text" name="customerContactMailAdress" data-th-field="*{customerContactMailAdress}" /></td>
+</tr>
+<tr>
+<td>Faktura Elektroniczna</td>
+<td>cell2_11</td>
+</tr>
+<tr>
+<td></td>
+<td><button name="addingCustomer" type="submit">Dodaj Kontrahenta</button></td>
+</tr>
+</tbody>
+</table>
+    </div>
+    </form>
+	</body>

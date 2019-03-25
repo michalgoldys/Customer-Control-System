@@ -1,7 +1,9 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -18,24 +20,18 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomers() {
+		public String addingCustomers(Model model) {
+			model.addAttribute("addingCustomer", new Customer());
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomersPost() {
-			return "redirect:/customerMenu";
+		public String addingCustomersPost(@ModelAttribute Customer addingCustomer) {
+			return "redirect:/customer/customerMenu";
 		}
 		
 		@GetMapping(value="/customer/showingCustomerList")
 		public String showingCustomerList() {
 			return "showingCustomerList";
-		}
-		
-		@GetMapping(value="/customer/showingCustomer")
-		public String showingCustomerId() {
-			return "showingCustomerId";
-		}
-		
-		
+		}		
 }
