@@ -20,8 +20,11 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomers(Model model) {
+		public String addingCustomers(Model model, @ModelAttribute Customer addingCustomer) {
 			model.addAttribute("addingCustomer", new Customer());
+			model.addAttribute("addingCustomer", new CustomerAdress());
+			model.addAttribute("addingCustomer", new CustomerContractDetalis());
+			
 			return "addingCustomer";
 		}
 		
