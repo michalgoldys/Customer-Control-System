@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CustomerController {
-
+	
 		@GetMapping(value= "/customer/customerMenu")
 		public String customerMenu() {
 			return "customerMenu";
@@ -20,17 +20,17 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomers(Model model, @ModelAttribute Customer addingCustomer) {
+		public String addingCustomersForm(Model model) {
 			model.addAttribute("addingCustomer", new Customer());
-			model.addAttribute("addingCustomer", new CustomerAdress());
-			model.addAttribute("addingCustomer", new CustomerContractDetalis());
+			model.addAttribute("addingCustomerAdress", new CustomerAdress());
+			model.addAttribute("addingCustomerContact", new CustomerContact());
 			
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomersPost(@ModelAttribute Customer addingCustomer) {
-			return "redirect:/customer/customerMenu";
+		public String addingCustomers(@ModelAttribute Customer addingCustomer) {
+			return "customerMenu";
 		}
 		
 		@GetMapping(value="/customer/showingCustomerList")

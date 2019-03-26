@@ -22,6 +22,7 @@
 <td>Numer NIP</td>
 <td><input type="text" name="customerNip" data-th-field="*{customerNip}" /></td>
 </tr>
+<form action="#" data-th-action="@{/customer/addingCustomer}" data-th-object="${addingCustomerAdress}" method="post">
 <tr>
 <td>Miasto</td>
 <td><input type="text" name="customerCity" data-th-field="*{customerCity}" /></td>
@@ -34,6 +35,8 @@
 <td>Kod Pocztowy</td>
 <td><input type="text" name="customerZipCode" data-th-field="*{customerZipCode}" /></td>
 </tr>
+</form>
+<form action="#" data-th-action="@{/customer/addingCustomer}" data-th-object="${addingCustomerContact}" method="post">
 <tr>
 <td>Osoba kontaktowa - Imie</td>
 <td><input type="text" name="customerContactName" data-th-field="*{customerContactName}" /></td>
@@ -54,6 +57,7 @@
 <td>Faktura Elektroniczna</td>
 <td>cell2_11</td>
 </tr>
+</form>
 <tr>
 <td></td>
 <td><button name="addingCustomer" type="submit">Dodaj Kontrahenta</button></td>
