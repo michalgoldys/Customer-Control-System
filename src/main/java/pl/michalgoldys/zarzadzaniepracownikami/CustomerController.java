@@ -21,15 +21,17 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/addingCustomer")
 		public String addingCustomersForm(Model model) {
-			model.addAttribute("addingCustomer", new Customer());
-			model.addAttribute("addingCustomerAdress", new CustomerAdress());
-			model.addAttribute("addingCustomerContact", new CustomerContact());
+			
+			model.addAttribute("customer", new Customer());
+			model.addAttribute("customerAdress", new CustomerAdress());
+			model.addAttribute("customerContact", new CustomerContact());
 			
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(@ModelAttribute Customer addingCustomer) {
+		public String addingCustomers(@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, 
+				@ModelAttribute CustomerContact customerContact) {
 			return "customerMenu";
 		}
 		

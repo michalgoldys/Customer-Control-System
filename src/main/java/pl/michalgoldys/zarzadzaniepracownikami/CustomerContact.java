@@ -47,29 +47,35 @@ public class CustomerContact {
 		this.customerContactMailAdress = customerMailAdress;
 	}
 
-	public String getContactName() {
+	public String getCustomerContactName() {
 		return customerContactName;
 	}
-	public void setContactName(String contactName) {
-		this.customerContactName = contactName;
+
+	public void setCustomerContactName(String customerContactName) {
+		this.customerContactName = customerContactName;
 	}
-	public String getContactSurname() {
+
+	public String getCustomerContactSurname() {
 		return customerContactSurname;
 	}
-	public void setContactSurname(String contactSurname) {
-		this.customerContactSurname = contactSurname;
+
+	public void setCustomerContactSurname(String customerContactSurname) {
+		this.customerContactSurname = customerContactSurname;
 	}
-	public Integer getCustomerPhoneNumber() {
+
+	public Integer getCustomerContactPhoneNumber() {
 		return customerContactPhoneNumber;
 	}
-	public void setCustomerPhoneNumber(Integer customerPhoneNumber) {
-		this.customerContactPhoneNumber = customerPhoneNumber;
+
+	public void setCustomerContactPhoneNumber(Integer customerContactPhoneNumber) {
+		this.customerContactPhoneNumber = customerContactPhoneNumber;
 	}
-	public String getCustomerMailAdress() {
+
+	public String getCustomerContactMailAdress() {
 		return customerContactMailAdress;
 	}
-	public void setCustomerMailAdress(String customerMailAdress) {
-		this.customerContactMailAdress = customerMailAdress;
+
+	public void setCustomerContactMailAdress(String customerContactMailAdress) {
+		this.customerContactMailAdress = customerContactMailAdress;
 	}
-		
 }
