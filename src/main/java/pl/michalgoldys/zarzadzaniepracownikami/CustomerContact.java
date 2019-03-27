@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="CUSTOMER_CONTACT")
 public class CustomerContact {
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerContactId;
@@ -30,7 +31,7 @@ public class CustomerContact {
 	private String customerContactMailAdress;
 	
 	@Autowired
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name ="customerId")
 	Customer customer;
 	

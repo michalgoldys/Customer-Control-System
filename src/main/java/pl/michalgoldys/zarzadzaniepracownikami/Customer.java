@@ -2,6 +2,7 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,15 +33,15 @@ public class Customer {
 	private String customerContractId;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
 	private List<CustomerAdress> customerAdress;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
 	private List<CustomerContact> customerContact;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
 	private List<CustomerContractDetalis> customerContractDetalis;
 	
 	protected Customer () {
