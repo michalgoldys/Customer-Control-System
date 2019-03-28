@@ -33,11 +33,7 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomersForm(Model model) {
-			
-			model.addAttribute("customer", new Customer());
-			model.addAttribute("customerAdress", new CustomerAdress());
-			model.addAttribute("customerContact", new CustomerContact());
+		public String addingCustomersForm(@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact) {
 			
 			return "addingCustomer";
 		}
@@ -52,8 +48,6 @@ public class CustomerController {
 				}
 			
 			customerRepository.save(customer);
-			customerAdressRepository.save(customerAdress);
-			customerContactRepository.save(customerContact);
 			
 			return "customerMenu";
 		}
