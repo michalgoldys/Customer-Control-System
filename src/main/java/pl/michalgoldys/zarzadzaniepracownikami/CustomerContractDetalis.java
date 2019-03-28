@@ -64,6 +64,14 @@ public class CustomerContractDetalis {
 		this.customerEinvoiceAgreement = customerEinvoiceAgreement;
 	}
 	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 	public boolean isCustomerEinvoiceAgreement() {
 		return customerEinvoiceAgreement;
 	}

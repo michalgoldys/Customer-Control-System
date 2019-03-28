@@ -1,6 +1,5 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,12 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="CUSTOMER_CONTACT")
 public class CustomerContact {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerContactId;
@@ -31,8 +29,8 @@ public class CustomerContact {
 	private String customerContactMailAdress;
 	
 	@Autowired
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name ="customerId")
+	@ManyToOne
+	@JoinColumn(name = "customerId")
 	Customer customer;
 	
 	protected CustomerContact() {
@@ -46,6 +44,14 @@ public class CustomerContact {
 		this.customerContactSurname = contactSurname;
 		this.customerContactPhoneNumber = customerPhoneNumber;
 		this.customerContactMailAdress = customerMailAdress;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public String getCustomerContactName() {

@@ -33,20 +33,39 @@ public class Customer {
 	private String customerContractId;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
 	private List<CustomerAdress> customerAdress;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
 	private List<CustomerContact> customerContact;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
 	private List<CustomerContractDetalis> customerContractDetalis;
+
+	public Customer addCustomerAdress(CustomerAdress customerAdress) {
+		customerAdress.setCustomer(this);
+		this.customerAdress.add(customerAdress);
+		return this;
+	}
+
+	public Customer addCustomerContact(CustomerContact customerContact) {
+		customerContact.setCustomer(this);
+		this.customerContact.add(customerContact);
+		return this;
+	}
+	
+	public Customer addCustomerContractDetalis(CustomerContractDetalis customerContractDetalis) {
+		customerContractDetalis.setCustomer(this);
+		this.customerContractDetalis.add(customerContractDetalis);
+		return this;
+	}
 	
 	protected Customer () {
 		
 	}
+	
 	public Customer(String customerName, Integer customerNip, Boolean customerIsActive, String customerContractId) {
 		super();
 		this.customerName = customerName;
