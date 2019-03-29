@@ -51,7 +51,11 @@ public class CustomerController {
 			if (bindingResult.hasErrors()) {
 					return "addingCustomer";
 				}
-			
+			/*
+			Customer customer = new Customer();
+			CustomerAdress customerAdress = new CustomerAdress();
+			CustomerContact customerContact = new CustomerContact();
+			*/
 			customerAdress.setCustomer(customer);
 			customer.setCustomerAdress(customerAdress);
 			customerContact.setCustomer(customer);
