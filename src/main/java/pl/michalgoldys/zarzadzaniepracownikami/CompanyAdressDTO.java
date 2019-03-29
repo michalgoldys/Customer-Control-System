@@ -5,7 +5,8 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class CompanyAdressDTO {
-
+	
+	@NotEmpty(message="Pole nie moze byc puste")
 	@Size(min=0, max=32, message="Maksymalna dlugosc 32 znaki!")
 	@Pattern(regexp="([a-zA-Z0-9]){0,32}")
 	private String companyStreet;

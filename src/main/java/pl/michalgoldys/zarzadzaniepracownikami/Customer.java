@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,7 +25,7 @@ public class Customer {
 	private String customerName;
 	
 	@Column(name="customer_nip", nullable=false)
-	private Integer customerNip;
+	private String customerNip;
 	
 	@Column(name="customer_is_active")
 	private Boolean customerIsActive;
@@ -33,40 +34,22 @@ public class Customer {
 	private String customerContractId;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
-	private List<CustomerAdress> customerAdress;
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
+	private CustomerAdress customerAdress;
 	
 	@Autowired
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
 	private List<CustomerContact> customerContact;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
-	private List<CustomerContractDetalis> customerContractDetalis;
-
-	public Customer addCustomerAdress(CustomerAdress customerAdress) {
-		customerAdress.setCustomer(this);
-		this.customerAdress.add(customerAdress);
-		return this;
-	}
-
-	public Customer addCustomerContact(CustomerContact customerContact) {
-		customerContact.setCustomer(this);
-		this.customerContact.add(customerContact);
-		return this;
-	}
-	
-	public Customer addCustomerContractDetalis(CustomerContractDetalis customerContractDetalis) {
-		customerContractDetalis.setCustomer(this);
-		this.customerContractDetalis.add(customerContractDetalis);
-		return this;
-	}
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
+	private CustomerContractDetalis customerContractDetalis;
 	
 	protected Customer () {
 		
 	}
 	
-	public Customer(String customerName, Integer customerNip, Boolean customerIsActive, String customerContractId) {
+	public Customer(String customerName, String customerNip, Boolean customerIsActive, String customerContractId) {
 		super();
 		this.customerName = customerName;
 		this.customerNip = customerNip;
@@ -74,6 +57,30 @@ public class Customer {
 		this.customerContractId = customerContractId;
 	}
 	
+	public CustomerContractDetalis getCustomerContractDetalis() {
+		return customerContractDetalis;
+	}
+
+	public void setCustomerContractDetalis(CustomerContractDetalis customerContractDetalis) {
+		this.customerContractDetalis = customerContractDetalis;
+	}
+
+	public CustomerAdress getCustomerAdress() {
+		return customerAdress;
+	}
+
+	public void setCustomerAdress(CustomerAdress customerAdress) {
+		this.customerAdress = customerAdress;
+	}
+
+	public List<CustomerContact> getCustomerContact() {
+		return customerContact;
+	}
+
+	public void setCustomerContact(List<CustomerContact> customerContact) {
+		this.customerContact = customerContact;
+	}
+
 	public String getCustomerContractId() {
 		return customerContractId;
 	}
@@ -92,10 +99,10 @@ public class Customer {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	public Integer getCustomerNip() {
+	public String getCustomerNip() {
 		return customerNip;
 	}
-	public void setCustomerNip(Integer customerNip) {
+	public void setCustomerNip(String customerNip) {
 		this.customerNip = customerNip;
 	}
 		

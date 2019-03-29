@@ -6,7 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="CUSTOMER_ADRESS")
@@ -26,7 +27,7 @@ public class CustomerAdress {
 	private String customerZipCode;
 	
 	@Autowired
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "customerId")
 	Customer customer;
 	

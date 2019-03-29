@@ -23,7 +23,7 @@ public class CustomerContact {
 	private String customerContactSurname;
 	
 	@Column(name="customer_contact_phone_number", nullable=false)
-	private Integer customerContactPhoneNumber;
+	private String customerContactPhoneNumber;
 	
 	@Column(name="customer_contact_mail_adress", nullable=true)
 	private String customerContactMailAdress;
@@ -38,7 +38,7 @@ public class CustomerContact {
 	}
 	
 	public CustomerContact(String contactName, String contactSurname,
-			Integer customerPhoneNumber, String customerMailAdress) {
+			String customerPhoneNumber, String customerMailAdress) {
 		super();
 		this.customerContactName = contactName;
 		this.customerContactSurname = contactSurname;
@@ -70,11 +70,11 @@ public class CustomerContact {
 		this.customerContactSurname = customerContactSurname;
 	}
 
-	public Integer getCustomerContactPhoneNumber() {
+	public String getCustomerContactPhoneNumber() {
 		return customerContactPhoneNumber;
 	}
 
-	public void setCustomerContactPhoneNumber(Integer customerContactPhoneNumber) {
+	public void setCustomerContactPhoneNumber(String customerContactPhoneNumber) {
 		this.customerContactPhoneNumber = customerContactPhoneNumber;
 	}
 

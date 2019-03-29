@@ -1,5 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,37 +30,41 @@ public class CustomerController {
 			return "customerMenu";
 		}
 		
-		@GetMapping(value="/customer/showingCustomer")
-		public String showingCustomers() {
+		@GetMapping(value="/customer/showingCustomers")
+		public String showingCustomers(Model model) {
+			
 			return "showingCustomers";
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomersForm(Model model) {
+		public String addingCustomersForm(@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact) {
 			
-			model.addAttribute("customer", new Customer());
-			model.addAttribute("customerAdress", new CustomerAdress());
-			model.addAttribute("customerContact", new CustomerContact());
 			
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, BindingResult result, 
+		public String addingCustomers(@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, BindingResult bindingResult,
 				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact) {
 				
 			
-			if (result.hasErrors()) {
+			if (bindingResult.hasErrors()) {
 					return "addingCustomer";
 				}
 			
-			customer.addCustomerAdress(customerAdress);
-			customer.addCustomerContact(customerContact);
+			customerAdress.setCustomer(customer);
+			customer.setCustomerAdress(customerAdress);
+			customerContact.setCustomer(customer);
+			
+			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
+			customerContactList.add(customerContact);
+			
+			customer.setCustomerContact(customerContactList);
 			
 			customerRepository.save(customer);
-			customerAdressRepository.save(customerAdress);
-			customerContactRepository.save(customerContact);
+
 			return "customerMenu";
+
 		}
 		
 		@GetMapping(value="/customer/showingCustomerList")
