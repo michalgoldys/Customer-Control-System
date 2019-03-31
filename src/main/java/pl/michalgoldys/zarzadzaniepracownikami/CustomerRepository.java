@@ -9,4 +9,5 @@ public interface CustomerRepository extends Repository<Customer, Long>{
 		List<Customer> findBycustomerName(String customerName);
 		List<Customer> findBycustomerId(Long customerId);
 		List<Customer> save(Customer customer);
+		List<Customer> findAll();
 }

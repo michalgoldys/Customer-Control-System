@@ -33,6 +33,8 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomers")
 		public String showingCustomers(Model model) {
 			
+			model.addAttribute("customer", customerRepository.findAll());
+			
 			return "showingCustomers";
 		}
 		
