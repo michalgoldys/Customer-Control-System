@@ -33,6 +33,9 @@ public class Customer {
 	@Column(name="customer_contract_id")
 	private String customerContractId;
 	
+	@Column(name="customer_contract_pdf_id")
+	private String customerContractPdfId;
+	
 	@Autowired
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
 	private CustomerAdress customerAdress;
@@ -104,6 +107,18 @@ public class Customer {
 	}
 	public void setCustomerNip(String customerNip) {
 		this.customerNip = customerNip;
+	}
+
+	public String getCustomerContractPdfId() {
+		return customerContractPdfId;
+	}
+
+	public void setCustomerContractPdfId(String customerContractPdfId) {
+		this.customerContractPdfId = customerContractPdfId;
+	}
+
+	public Boolean getCustomerIsActive() {
+		return customerIsActive;
 	}
 		
 }

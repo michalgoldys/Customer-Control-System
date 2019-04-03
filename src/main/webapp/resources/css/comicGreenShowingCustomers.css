@@ -1,41 +1,32 @@
 table.comicGreenShowingCustomers {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  border: 2px solid #4F7849;
-  background-color: #EEEEEE;
+  border: 3px solid #000000;
   width: 100%;
   text-align: center;
   border-collapse: collapse;
 }
 table.comicGreenShowingCustomers td, table.comicGreenShowingCustomers th {
-  border: 1px solid #4F7849;
-  padding: 3px 2px;
+  border: 1px solid #000000;
+  padding: 5px 4px;
 }
 table.comicGreenShowingCustomers tbody td {
-  font-size: 19px;
-  font-weight: bold;
-  color: #4F7849;
+  font-size: 13px;
 }
 table.comicGreenShowingCustomers tr:nth-child(even) {
-  background: #CEE0CC;
+  background: #EFEFEF;
 }
 table.comicGreenShowingCustomers thead {
-  background: #4F7849;
-  background: -moz-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-  background: -webkit-linear-gradient(top, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-  background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
-  border-bottom: 1px solid #444444;
+  background: #BCBCBC;
+  background: -moz-linear-gradient(top, #cdcdcd 0%, #c2c2c2 66%, #BCBCBC 100%);
+  background: -webkit-linear-gradient(top, #cdcdcd 0%, #c2c2c2 66%, #BCBCBC 100%);
+  background: linear-gradient(to bottom, #cdcdcd 0%, #c2c2c2 66%, #BCBCBC 100%);
+  border-bottom: 3px solid #000000;
 }
 table.comicGreenShowingCustomers thead th {
   font-size: 15px;
   font-weight: bold;
-  color: #FFFFFF;
-  text-align: left;
-  border-left: 2px solid #D0E4F5;
+  color: #000000;
+  text-align: center;
 }
-table.comicGreenShowingCustomers thead th:first-child {
-  border-left: none;
-}
-
 table.comicGreenShowingCustomers tfoot td {
-  font-size: 21px;
+  font-size: 14px;
 }

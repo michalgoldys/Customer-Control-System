@@ -38,7 +38,7 @@ public class CustomerContractDetalis {
 	@Column(name="customer_ru_fee", nullable=true)
 	private Integer customerRuFee;
 	
-	@Column(name="customer_einvoice_agreement")
+	@Column(name="customer_einvoice_agreement", nullable=true)
 	private Boolean customerEinvoiceAgreement;
 	
 	@Autowired

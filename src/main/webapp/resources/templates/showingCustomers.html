@@ -11,33 +11,37 @@
 <thead>
 <tr>
 <th>LP</th>
-<th>PDF Numer</th>
+<th>Numer Umowy</th>
+<th>Numer PDF</th>
 <th>Nazwa</th>
 <th>NIP</th>
-<th>Miast</th>
+<th>Miasto</th>
 <th>Ulica</th>
 <th>Kod Pocztowy</th>
-<th>OK Imie</th>
-<th>OK Nazwisko</th>
-<th>OK Telefon</th>
-<th>email</th>
-<th>E-Faktura</th>
+<th>O-K: Imie</th>
+<th>O-K: Nazwisko</th>
+<th>O-K: Telefon</th>
+<th>O-K: E-mail</th>
 </tr>
 </thead>
 <tbody>
-<tr th:each="var : ${customer}">
-<td th:text="${var.customerName}"></td>
-<td>cell2_1</td>
-<td>cell3_1</td>
-<td>cell4_1</td>
-<td>cell5_1</td>
-<td>cell6_1</td>
-<td>cell7_1</td>
-<td>cell8_1</td>
-<td>cell9_1</td>
-<td>cell10_1</td>
-<td>cell11_1</td>
-<td>cell12_1</td>
+<tr data-th-each="ct : ${customer}">
+<td data-th-text="${ctStat.count}"></td>
+<td data-th-text="${ct.customerContractId}"> </td>
+<td data-th-text="${ct.customerContractPdfId}"> </td>
+<td data-th-text="${ct.customerName}"></td>
+<td data-th-text="${ct.customerNip}"></td>
+<td data-th-text="${ct.CustomerAdress.customerCity}"></td>
+<td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
+<td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
+<td data-th-each="ctc : ${ct.CustomerContact}" 
+        data-th-text="${ctc.customerContactName}"></td>
+<td data-th-each="ctc : ${ct.CustomerContact}" 
+        data-th-text="${ctc.customerContactSurname}"></td>
+<td data-th-each="ctc : ${ct.CustomerContact}" 
+        data-th-text="${ctc.customerContactPhoneNumber}"></td>
+<td data-th-each="ctc : ${ct.CustomerContact}" 
+        data-th-text="${ctc.customerContactMailAdress}"></td>
 </tr>
 </tbody>
 </table>

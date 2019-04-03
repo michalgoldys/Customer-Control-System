@@ -58,10 +58,13 @@ public class CustomerController {
 			customer.setCustomerAdress(customerAdress);
 			customerContact.setCustomer(customer);
 			
+			
 			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
 			customerContactList.add(customerContact);
 			
 			customer.setCustomerContact(customerContactList);
+			
+			
 			
 			customerRepository.save(customer);
 
