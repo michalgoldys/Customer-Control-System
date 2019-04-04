@@ -39,15 +39,17 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomersForm(@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact) {
+		public String addingCustomersForm(
+				//@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO,
+				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
 			
 			
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, BindingResult bindingResult,
-				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact) {
+		public String addingCustomers(@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, BindingResult bindingResult,
+				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
 				
 			
 			if (bindingResult.hasErrors()) {
@@ -65,11 +67,12 @@ public class CustomerController {
 			customer.setCustomerContact(customerContactList);
 			
 			
+			customerContractDetalis.setCustomer(customer);
+			customer.setCustomerContractDetalis(customerContractDetalis);
 			
 			customerRepository.save(customer);
 
 			return "customerMenu";
-
 		}
 		
 		@GetMapping(value="/customer/showingCustomerList")

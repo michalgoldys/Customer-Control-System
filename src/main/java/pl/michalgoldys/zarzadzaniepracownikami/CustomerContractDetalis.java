@@ -38,7 +38,7 @@ public class CustomerContractDetalis {
 	@Column(name="customer_ru_fee", nullable=true)
 	private Integer customerRuFee;
 	
-	@Column(name="customer_einvoice_agreement", nullable=true)
+	@Column(name="customer_einvoice_agreement")
 	private Boolean customerEinvoiceAgreement;
 	
 	@Autowired
@@ -72,54 +72,67 @@ public class CustomerContractDetalis {
 		this.customer = customer;
 	}
 
-	public boolean isCustomerEinvoiceAgreement() {
+	public Integer getCustomerSubscriptions() {
+		return customerSubscriptions;
+	}
+
+	public void setCustomerSubscriptions(Integer customerSubscriptions) {
+		this.customerSubscriptions = customerSubscriptions;
+	}
+
+	public Integer getCustomerPlSubstripctions() {
+		return customerPlSubstripctions;
+	}
+
+	public void setCustomerPlSubstripctions(Integer customerPlSubstripctions) {
+		this.customerPlSubstripctions = customerPlSubstripctions;
+	}
+
+	public Integer getCustomerPlUeSubstripctions() {
+		return customerPlUeSubstripctions;
+	}
+
+	public void setCustomerPlUeSubstripctions(Integer customerPlUeSubstripctions) {
+		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
+	}
+
+	public Integer getCustomerRuSubscriptions() {
+		return customerRuSubscriptions;
+	}
+
+	public void setCustomerRuSubscriptions(Integer customerRuSubscriptions) {
+		this.customerRuSubscriptions = customerRuSubscriptions;
+	}
+
+	public Integer getCustomerPlFee() {
+		return customerPlFee;
+	}
+
+	public void setCustomerPlFee(Integer customerPlFee) {
+		this.customerPlFee = customerPlFee;
+	}
+
+	public Integer getCustomerPlUeFee() {
+		return customerPlUeFee;
+	}
+
+	public void setCustomerPlUeFee(Integer customerPlUeFee) {
+		this.customerPlUeFee = customerPlUeFee;
+	}
+
+	public Integer getCustomerRuFee() {
+		return customerRuFee;
+	}
+
+	public void setCustomerRuFee(Integer customerRuFee) {
+		this.customerRuFee = customerRuFee;
+	}
+
+	public Boolean getCustomerEinvoiceAgreement() {
 		return customerEinvoiceAgreement;
 	}
 
 	public void setCustomerEinvoiceAgreement(Boolean customerEinvoiceAgreement) {
 		this.customerEinvoiceAgreement = customerEinvoiceAgreement;
-	}
-
-	public int getCustomerSubscriptions() {
-		return customerSubscriptions;
-	}
-	public void setCustomerSubscriptions(Integer customerSubscriptions) {
-		this.customerSubscriptions = customerSubscriptions;
-	}
-	public int getCustomerPlSubstripctions() {
-		return customerPlSubstripctions;
-	}
-	public void setCustomerPlSubstripctions(Integer customerPlSubstripctions) {
-		this.customerPlSubstripctions = customerPlSubstripctions;
-	}
-	public int getCustomerPlUeSubstripctions() {
-		return customerPlUeSubstripctions;
-	}
-	public void setCustomerPlUeSubstripctions(Integer customerPlUeSubstripctions) {
-		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
-	}
-	public int getCustomerRuSubscriptions() {
-		return customerRuSubscriptions;
-	}
-	public void setCustomerRuSubscriptions(Integer customerRuSubscriptions) {
-		this.customerRuSubscriptions = customerRuSubscriptions;
-	}
-	public int getCustomerPlFee() {
-		return customerPlFee;
-	}
-	public void setCustomerPlFee(Integer customerPlFee) {
-		this.customerPlFee = customerPlFee;
-	}
-	public int getCustomerPlUeFee() {
-		return customerPlUeFee;
-	}
-	public void setCustomerPlUeFee(Integer customerPlUeFee) {
-		this.customerPlUeFee = customerPlUeFee;
-	}
-	public int getCustomerRuFee() {
-		return customerRuFee;
-	}
-	public void setCustomerRuFee(Integer customerRuFee) {
-		this.customerRuFee = customerRuFee;
 	}
 }

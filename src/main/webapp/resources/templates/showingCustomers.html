@@ -18,10 +18,11 @@
 <th>Miasto</th>
 <th>Ulica</th>
 <th>Kod Pocztowy</th>
-<th>O-K: Imie</th>
-<th>O-K: Nazwisko</th>
-<th>O-K: Telefon</th>
-<th>O-K: E-mail</th>
+<th>Os.Kont.: Imie</th>
+<th>Os.Kont.: Nazwisko</th>
+<th>Os.Kont.: Telefon</th>
+<th>Os.Kont.: E-mail</th>
+<th>Faktura Elektroniczna</th>
 </tr>
 </thead>
 <tbody>
@@ -42,6 +43,7 @@
         data-th-text="${ctc.customerContactPhoneNumber}"></td>
 <td data-th-each="ctc : ${ct.CustomerContact}" 
         data-th-text="${ctc.customerContactMailAdress}"></td>
+<td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>  
 </tr>
 </tbody>
 </table>
