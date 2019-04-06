@@ -8,16 +8,17 @@ public class CustomerContactDTO {
 	
 	@NotEmpty(message="Pole nie moze byc puste")
 	@Size(min=0, max=32, message="Maksymalna dlugosc 32 znaki!")
-	@Pattern(regexp="([a-zA-Z0-9]){0,32}")
+	@Pattern(regexp="([a-zA-Z0-9]){1,32}")
 	private String customerContactName;
 	
 	@NotEmpty(message="Pole nie moze byc puste")
 	@Size(min=0, max=32, message="Maksymalna dlugosc 32 znaki!")
-	@Pattern(regexp="([a-zA-Z0-9]){0,32}")
+	@Pattern(regexp="([a-zA-Z0-9]){1,32}")
 	private String customerContactSurname;
 	
-	@Pattern(regexp="([\\w\\.\\-_]+)?\\w+@[\\w-_]+(\\.\\w+){1,}", message="Bledny Adres e-mail")
+	@Pattern(regexp="([\\w\\.\\-_]+)?\\w+@[\\w-_]+(\\.\\w+){1,}")
 	private String customerContactMailAdress;
+	
 	
 	private String customerContactPhoneNumber;
 
@@ -44,6 +45,12 @@ public class CustomerContactDTO {
 	public void setCustomerContactMailAdress(String customerContactMailAdress) {
 		this.customerContactMailAdress = customerContactMailAdress;
 	}
-	
-	
+
+	public String getCustomerContactPhoneNumber() {
+		return customerContactPhoneNumber;
+	}
+
+	public void setCustomerContactPhoneNumber(String customerContactPhoneNumber) {
+		this.customerContactPhoneNumber = customerContactPhoneNumber;
+	}
 }

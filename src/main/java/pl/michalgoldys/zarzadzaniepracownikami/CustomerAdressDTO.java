@@ -6,16 +6,16 @@ import javax.validation.constraints.Size;
 
 public class CustomerAdressDTO {
 	
-	@Size(min=0, max=32, message="Maksymalna dlugosc 32 znaki!")
-	@Pattern(regexp="([a-zA-Z0-9]){0,32}")
+	@Size(min=0, max=32)
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
 	private String customerStreet;
 	
-	@NotEmpty(message="Pole nie moze byc puste")
-	@Size(min=1, max=32, message="Maksymalna dlugosc 32 znaki!")
-	@Pattern(regexp="([a-zA-Z0-9]){0,32}")
+	@NotEmpty
+	@Size(min=1, max=32)
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
 	private String customerCity;
 	
-	@NotEmpty(message="Pole nie moze byc puste")
+	@NotEmpty
 	@Pattern(regexp="[0-9]{2}-[0-9]{3}")
 	private String customerZipCode;
 

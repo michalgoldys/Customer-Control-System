@@ -1,11 +1,17 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class CustomerDTO {
 	
+	@Size(max=32)
 	private String customerName;
 	
+	@Pattern(regexp="([0-9]){1,10}")
 	private String customerNip;
 	
+	@Size(max=12)
 	private String customerContractId;
 
 	public String getCustomerName() {
