@@ -53,7 +53,7 @@ public class CustomerController {
 				
 			
 			if (bindingResult.hasErrors()) {
-					return "addingCustomer";
+					return "/customer/addingCustomer";
 				}
 
 			customerAdress.setCustomer(customer);
