@@ -39,9 +39,7 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomersForm(
-				//@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO,
-				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
+		public String addingCustomersForm(@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
 			
 			
 			return "addingCustomer";
@@ -51,7 +49,7 @@ public class CustomerController {
 		public String addingCustomers(@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, BindingResult bindingResult,
 				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
 				
-			
+	
 			if (bindingResult.hasErrors()) {
 					return "/customer/addingCustomer";
 				}
