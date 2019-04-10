@@ -39,21 +39,21 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomersForm(@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
-			
-			
+		public String addingCustomersForm(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, BindingResult bindingResult,
-				@ModelAttribute Customer customer, @ModelAttribute CustomerAdress customerAdress, @ModelAttribute CustomerContact customerContact, @ModelAttribute CustomerContractDetalis customerContractDetalis) {
+		public String addingCustomers(
+				@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, BindingResult bindingResult,
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
 				
 	
 			if (bindingResult.hasErrors()) {
 					return "/customer/addingCustomer";
 				}
-
+			else
+			{
 			customerAdress.setCustomer(customer);
 			customer.setCustomerAdress(customerAdress);
 			customerContact.setCustomer(customer);
@@ -70,11 +70,19 @@ public class CustomerController {
 			
 			customerRepository.save(customer);
 
-			return "customerMenu";
+			return "redirect:/customerMenu";
+			}
 		}
 		
-		@GetMapping(value="/customer/showingCustomerList")
-		public String showingCustomerList() {
-			return "showingCustomerList";
-		}		
+		@GetMapping(value="/customer/customerDetalis")
+		public String showingCustomerDetalis() {
+			
+			return "customerDetalis";
+		}
+		
+		@PostMapping(value="customer/customerDetalis")
+		public String settingCustomerDetalis() {
+			
+			return "customerMenu";
+		}
 }

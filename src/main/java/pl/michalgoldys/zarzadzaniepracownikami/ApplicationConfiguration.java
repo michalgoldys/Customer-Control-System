@@ -37,7 +37,7 @@ public class ApplicationConfiguration  {
 	public DataSource dataSource() {
 		return DataSourceBuilder
 		.create()
-		.username("admin")
+		.username("root")
 		.password("fajka12!@")
 		.url("jdbc:mysql://localhost:3306/zarzadzaniepracownikamidb?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
 		.driverClassName("com.mysql.jdbc.Driver")
@@ -74,6 +74,7 @@ public class ApplicationConfiguration  {
     viewResolver.setOrder(1);
     return viewResolver;
 }
+	
 	@Bean
 	@Description("Spring Message Resolver")
 	public ResourceBundleMessageSource messageSource() {

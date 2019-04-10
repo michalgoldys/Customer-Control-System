@@ -13,8 +13,20 @@ public class CustomerDTO {
 	private String customerNip;
 	
 	@NotEmpty
-	@Pattern(regexp="([a-zA-Z0-9/s]){1,8}")
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
 	private String customerContractId;
+	
+	@NotEmpty
+	@Pattern(regexp="([a-zA-Z0-9\\/]){0,32}")
+	private String customerContractPdfId;
+	
+	public String getCustomerContractPdfId() {
+		return customerContractPdfId;
+	}
+
+	public void setCustomerContractPdfId(String customerContractPdfId) {
+		this.customerContractPdfId = customerContractPdfId;
+	}
 
 	public String getCustomerName() {
 		return customerName;
