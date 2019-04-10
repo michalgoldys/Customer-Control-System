@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -44,9 +43,11 @@ public class CustomerController {
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(
-				@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO, @Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, BindingResult bindingResult,
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
+		public String addingCustomers(Model model,
+				@Valid CustomerDTO customerDTO, BindingResult bindingResult, @Valid CustomerAdressDTO customerAdressDTO,
+				@Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, 
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+				) {
 				
 	
 			if (bindingResult.hasErrors()) {
@@ -70,18 +71,20 @@ public class CustomerController {
 			
 			customerRepository.save(customer);
 
-			return "redirect:/customerMenu";
+			return "redirect:/customer/customerMenu";
 			}
 		}
 		
 		@GetMapping(value="/customer/customerDetalis")
-		public String showingCustomerDetalis() {
+		public String showingCustomerDetalis(Model model) {
+			
+			//model.addAttribute("customer", );
 			
 			return "customerDetalis";
 		}
 		
 		@PostMapping(value="customer/customerDetalis")
-		public String settingCustomerDetalis() {
+		public String settingCustomerDetalis(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
 			
 			return "customerMenu";
 		}
