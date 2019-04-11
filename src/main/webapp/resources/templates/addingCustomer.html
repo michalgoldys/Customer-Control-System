@@ -6,14 +6,14 @@
     <title>Dodawanie Kontrahenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <body>
-    <form action="#" data-th-action="@{/customer/addingCustomer}" method="post">
+    <form action="#" data-th-action="@{/customer/addingCustomer}" th:object="${customerBase}" method="post">
     <div align="center">
     <table class="comicGreenaddingCustomer">
 <tbody>
 <tr>
 <td>Numer Umowy</td>
 <td><input type="text" data-th-field="*{customer.customerContractId}"/></td>
-<td  th:if="${#fields.hasErrors('customer.customerContractId')}" th:errors="*{customer.customerContractId}">Contract Id Error </td>
+<td><p th:if="${#fields.hasErrors('customer.customerContractId')}" th:errors="*{customer.customerContractId}">Contract Id Error</p></td>
 </tr>
 <tr>
 <td>Numer PDF</td>

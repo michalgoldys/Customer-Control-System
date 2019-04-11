@@ -43,12 +43,17 @@ public class CustomerController {
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(
-				@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO,
-				@Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, 
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, BindingResult bindingResult
+		public String addingCustomers(Model model,
+				@Valid Customer customer,@Valid CustomerAdress customerAdress, @Valid CustomerContact customerContact, @Valid CustomerContractDetalis customerContractDetalis, BindingResult bindingResult
 				) {
-				
+			
+			List<Object> customerObject = new ArrayList<Object>();
+			customerObject.add(customer);
+			customerObject.add(customerAdress);
+			customerObject.add(customerContact);
+			customerObject.add(customerContractDetalis);
+			
+			model.addAttribute("customerBase", customerObject);
 	
 			if (bindingResult.hasErrors()) {
 					return "addingCustomer";

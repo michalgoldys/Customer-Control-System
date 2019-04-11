@@ -11,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="CUSTOMER")
@@ -20,18 +24,24 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerId;
 	
+	@Size(max=32)
 	@Column(name="customer_name", nullable=false)
 	private String customerName;
 	
+	@Pattern(regexp="([0-9]){1,10}")
 	@Column(name="customer_nip", nullable=false)
 	private String customerNip;
 	
 	@Column(name="customer_is_active")
 	private Boolean customerIsActive;
 	
+	@NotEmpty
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
 	@Column(name="customer_contract_id")
 	private String customerContractId;
 	
+	@NotEmpty
+	@Pattern(regexp="([a-zA-Z0-9\\/]){0,32}")
 	@Column(name="customer_contract_pdf_id")
 	private String customerContractPdfId;
 	
