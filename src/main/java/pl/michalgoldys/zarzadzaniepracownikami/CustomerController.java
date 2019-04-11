@@ -43,15 +43,15 @@ public class CustomerController {
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(Model model,
-				@Valid CustomerDTO customerDTO, BindingResult bindingResult, @Valid CustomerAdressDTO customerAdressDTO,
+		public String addingCustomers(
+				@Valid CustomerDTO customerDTO, @Valid CustomerAdressDTO customerAdressDTO,
 				@Valid CustomerContactDTO customerContactDTO, @Valid CustomerContractDetalisDTO customerContractDetalisDTO, 
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, BindingResult bindingResult
 				) {
 				
 	
 			if (bindingResult.hasErrors()) {
-					return "/customer/addingCustomer";
+					return "addingCustomer";
 				}
 			else
 			{
