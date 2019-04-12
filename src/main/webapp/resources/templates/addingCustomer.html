@@ -6,19 +6,22 @@
     <title>Dodawanie Kontrahenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <body>
-    <form action="#" data-th-action="@{/customer/addingCustomer}" th:object="${customerBase}" method="post">
+    <form action="#" data-th-action="@{/customer/addingCustomer}" method="post">
+    <ul>
+  	<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+	</ul>
     <div align="center">
     <table class="comicGreenaddingCustomer">
 <tbody>
 <tr>
 <td>Numer Umowy</td>
 <td><input type="text" data-th-field="*{customer.customerContractId}"/></td>
-<td><p th:if="${#fields.hasErrors('customer.customerContractId')}" th:errors="*{customer.customerContractId}">Contract Id Error</p></td>
+<td><p th:if="${#fields.hasErrors('customer.customerContractId')}" >Contract Id Error</p></td>
 </tr>
 <tr>
 <td>Numer PDF</td>
 <td><input type="text" data-th-field="*{customer.customerContractPdfId}"/></td>
-<td th:if="${#fields.hasErrors('customer.customerContractPdfId')}" th:errors="*{customer.customerContractPdfId}">Contract Id Error</td>
+<td th:if="${#fields.hasErrors('customer.customerContractPdfId')}" >Contract Id Error</td>
 </tr>
 <tr>
 <td>Nazwa Kontrahenta</td>

@@ -6,9 +6,11 @@ import javax.validation.constraints.Size;
 
 public class CustomerDTO {
 	
+	@NotEmpty
 	@Size(max=32)
 	private String customerName;
 	
+	@NotEmpty
 	@Pattern(regexp="([0-9]){1,10}")
 	private String customerNip;
 	
@@ -51,6 +53,5 @@ public class CustomerDTO {
 	public void setCustomerContractId(String customerContractId) {
 		this.customerContractId = customerContractId;
 	}
-	
 	
 }

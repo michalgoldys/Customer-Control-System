@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -38,28 +39,27 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
-		public String addingCustomersForm(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
+		public String addingCustomersForm(
+				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto, CustomerContactDTO customerContactDto, CustomerContractDetalisDTO customerContractDetalisDto,
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
+			
 			return "addingCustomer";
 		}
 		
 		@PostMapping(value="/customer/addingCustomer")
-		public String addingCustomers(Model model,
-				@Valid Customer customer,@Valid CustomerAdress customerAdress, @Valid CustomerContact customerContact, @Valid CustomerContractDetalis customerContractDetalis, BindingResult bindingResult
+		public String addingCustomers(
+				@Valid CustomerDTO customerDto, BindingResult customerBinding,
+				@Valid CustomerAdressDTO customerAdressDto, BindingResult customerBinding1,
+				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2, 
+				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult customerBinding3,
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+				
 				) {
-			
-			List<Object> customerObject = new ArrayList<Object>();
-			customerObject.add(customer);
-			customerObject.add(customerAdress);
-			customerObject.add(customerContact);
-			customerObject.add(customerContractDetalis);
-			
-			model.addAttribute("customerBase", customerObject);
-	
-			if (bindingResult.hasErrors()) {
+				
+			if (customerBinding.hasErrors()) {
 					return "addingCustomer";
 				}
-			else
-			{
+			
 			customerAdress.setCustomer(customer);
 			customer.setCustomerAdress(customerAdress);
 			customerContact.setCustomer(customer);
@@ -77,7 +77,7 @@ public class CustomerController {
 			customerRepository.save(customer);
 
 			return "redirect:/customer/customerMenu";
-			}
+			
 		}
 		
 		@GetMapping(value="/customer/customerDetalis")
