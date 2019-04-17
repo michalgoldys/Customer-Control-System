@@ -40,8 +40,10 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/addingCustomer")
 		public String addingCustomersForm(
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
-			
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis,
+				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto,
+				CustomerContactDTO customerContactDto, CustomerContractDetalisDTO customerContractDetalisDto) {
+			 
 			return "addingCustomer";
 		}
 		

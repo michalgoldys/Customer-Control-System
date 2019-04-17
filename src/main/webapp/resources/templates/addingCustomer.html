@@ -15,23 +15,23 @@
 <tbody>
 <tr>
 <td>Numer Umowy</td>
-<td><input type="text" data-th-field="*{customer.customerContractId}"/></td>
-<td><p th:if="${#fields.hasErrors('customer.customerContractId')}" >Contract Id Error</p></td>
+<td><input type="text" data-th-field="*{customerDto.customerContractId}"/></td>
+<td><p th:if="${#fields.hasErrors('customerDto.customerContractId')}" >Contract Id Error</p></td>
 </tr>
 <tr>
 <td>Numer PDF</td>
-<td><input type="text" data-th-field="*{customer.customerContractPdfId}"/></td>
-<td th:if="${#fields.hasErrors('customer.customerContractPdfId')}" >Contract Id Error</td>
+<td><input type="text" data-th-field="*{customerDto.customerContractPdfId}"/></td>
+<td th:if="${#fields.hasErrors('customerDto.customerContractPdfId')}" >Contract Id Error</td>
 </tr>
 <tr>
 <td>Nazwa Kontrahenta</td>
-<td><input type="text" data-th-field="*{customer.customerName}"/></td>
-<td><p th:if="${#fields.hasErrors('customer.customerName')}" th:errors="*{customer.customerName}">Customer Name Error</p></td>
+<td><input type="text" data-th-field="*{customerDto.customerName}"/></td>
+<td><p th:if="${#fields.hasErrors('customerDto.customerName')}" th:errors="*{customerDto.customerName}">Customer Name Error</p></td>
 </tr>
 <tr>
 <td>Numer NIP</td>
-<td><input type="text" data-th-field="*{customer.customerNip}"/></td>
-<td><p th:if="${#fields.hasErrors('customer.customerNip')}" th:errors="*{customer.customerNip}">Customer NIP Error</p></td>
+<td><input type="text" data-th-field="*{customerDto.customerNip}"/></td>
+<td><p th:if="${#fields.hasErrors('customerDto.customerNip')}" th:errors="*{customerDto.customerNip}">Customer NIP Error</p></td>
 </tr>
 <tr>
 <td>Miasto</td>
