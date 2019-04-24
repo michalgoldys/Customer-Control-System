@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -41,8 +40,8 @@ public class CustomerController {
 		@GetMapping(value="/customer/addingCustomer")
 		public String addingCustomersForm(
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis,
-				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto,
-				CustomerContactDTO customerContactDto, CustomerContractDetalisDTO customerContractDetalisDto) {
+				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto, CustomerContactDTO customerContactDto, 
+				CustomerContractDetalisDTO customerContractDetalisDto) {
 			 
 			return "addingCustomer";
 		}
@@ -79,17 +78,20 @@ public class CustomerController {
 			
 		}
 		
-		@GetMapping(value="/customer/customerDetalis")
+		@GetMapping(value="/customer/showingCustomers/customerDetalis?id={customerContractId}")
 		public String showingCustomerDetalis(Model model) {
+			
+			
 			
 			//model.addAttribute("customer", );
 			
 			return "customerDetalis";
 		}
-		
-		@PostMapping(value="customer/customerDetalis")
+		/*
+		@PostMapping(value="customer/showingCustomers/customerDetalis")
 		public String settingCustomerDetalis(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
 			
 			return "customerMenu";
 		}
+		*/
 }

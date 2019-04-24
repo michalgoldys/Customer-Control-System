@@ -6,17 +6,16 @@ import javax.validation.constraints.Pattern;
 
 public class CustomerAdressDTO {
 	
-	@Max(32)
-	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}", message="")
 	private String customerStreet;
 	
-	@NotEmpty
+	@NotEmpty(message="Pole nie moze byc puste")
 	@Max(32)
-	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}", message="Wprowadz poprawna nazwe")
 	private String customerCity;
 
-	@NotEmpty
-	@Pattern(regexp="[0-9]{2}-[0-9]{3}")
+	@NotEmpty(message="Pole nie moze byc puste")
+	@Pattern(regexp="[0-9]{2}-[0-9]{3}", message="Nieprawidlowy kod pocztowy")
 	private String customerZipCode;
 
 	public String getCustomerStreet() {

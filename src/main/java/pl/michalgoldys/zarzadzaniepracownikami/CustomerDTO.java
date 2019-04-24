@@ -6,20 +6,20 @@ import javax.validation.constraints.Size;
 
 public class CustomerDTO {
 	
-	@NotEmpty
-	@Size(max=32)
+	@NotEmpty(message="Pole nie moze byc puste")
+	@Size(max=32, message="")
 	private String customerName;
 	
-	@NotEmpty
-	@Pattern(regexp="([0-9]){1,10}")
+	@NotEmpty(message="Pole nie moze byc puste")
+	@Pattern(regexp="([0-9]){1,10}", message="Wprowadz poprawny numer NIP")
 	private String customerNip;
 	
-	@NotEmpty
-	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}")
+	@NotEmpty(message="Pole nie moze byc puste")
+	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){1,32}", message="Wprowadz poprawny format numeru umowy")
 	private String customerContractId;
 	
-	@NotEmpty
-	@Pattern(regexp="([a-zA-Z0-9\\/]){0,32}")
+	@NotEmpty(message="Pole nie moze byc puste")
+	@Pattern(regexp="([a-zA-Z0-9\\/]){1,32}", message="Wprowadz poprawny format numeru PDF")
 	private String customerContractPdfId;
 	
 	public String getCustomerContractPdfId() {
@@ -53,5 +53,5 @@ public class CustomerDTO {
 	public void setCustomerContractId(String customerContractId) {
 		this.customerContractId = customerContractId;
 	}
-	
+	 
 }

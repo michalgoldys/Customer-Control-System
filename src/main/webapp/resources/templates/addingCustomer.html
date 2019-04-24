@@ -1,72 +1,69 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-
+<link data-th-href="@{/css/comicGreenaddingCustomer.css}" rel="stylesheet" />
   <head>
     <title>Dodawanie Kontrahenta</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <body>
     <form action="#" data-th-action="@{/customer/addingCustomer}" method="post">
-    <ul>
-  	<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
-	</ul>
     <div align="center">
     <table class="comicGreenaddingCustomer">
 <tbody>
 <tr>
 <td>Numer Umowy</td>
-<td><input type="text" data-th-field="*{customerDto.customerContractId}"/></td>
-<td><p th:if="${#fields.hasErrors('customerDto.customerContractId')}" >Contract Id Error</p></td>
+<td><input type="text" data-th-field="*{customer.customerContractId}"/></td>
+<td><p th:if="${#fields.hasErrors('customerDTO.customerContractId')}" th:errors="*{customerDTO.customerContractId}">Contract Id Error</p></td>
 </tr>
 <tr>
 <td>Numer PDF</td>
-<td><input type="text" data-th-field="*{customerDto.customerContractPdfId}"/></td>
-<td th:if="${#fields.hasErrors('customerDto.customerContractPdfId')}" >Contract Id Error</td>
+<td><input type="text" data-th-field="*{customer.customerContractPdfId}"/></td>
+<td th:if="${#fields.hasErrors('customerDTO.customerContractPdfId')}" th:errors="*{customerDTO.customerContractPdfId}">Contract Id Error</td>
 </tr>
 <tr>
 <td>Nazwa Kontrahenta</td>
-<td><input type="text" data-th-field="*{customerDto.customerName}"/></td>
-<td><p th:if="${#fields.hasErrors('customerDto.customerName')}" th:errors="*{customerDto.customerName}">Customer Name Error</p></td>
+<td><input type="text" data-th-field="*{customer.customerName}"/></td>
+<td><p th:if="${#fields.hasErrors('customerDTO.customerName')}" th:errors="*{customerDTO.customerName}">Customer Name Error</p></td>
 </tr>
 <tr>
 <td>Numer NIP</td>
-<td><input type="text" data-th-field="*{customerDto.customerNip}"/></td>
-<td><p th:if="${#fields.hasErrors('customerDto.customerNip')}" th:errors="*{customerDto.customerNip}">Customer NIP Error</p></td>
+<td><input type="text" data-th-field="*{customer.customerNip}"/></td>
+<td><p th:if="${#fields.hasErrors('customerDTO.customerNip')}" th:errors="*{customerDTO.customerNip}">Customer NIP Error</p></td>
 </tr>
 <tr>
 <td>Miasto</td>
 <td><input type="text" data-th-field="*{customerAdress.customerCity}"/></td>
-<td><p th:if="${#fields.hasErrors('customerAdress.customerCity')}" th:errors="*{customerAdress.customerCity}">Customer City Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerAdressDTO.customerCity')}" th:errors="*{customerAdressDTO.customerCity}">Customer City Error</p></td>
 </tr>
 <tr>
 <td>Ulica</td>
 <td><input type="text" data-th-field="*{customerAdress.customerStreet}"/></td>
-<td><p th:if="${#fields.hasErrors('customerAdress.customerStreet')}" th:errors="*{customerAdress.customerStreet}">Customer City Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerAdressDTO.customerStreet')}" th:errors="*{customerAdressDTO.customerStreet}">Customer City Error</p></td>
 </tr>
 <tr>
 <td>Kod Pocztowy</td>
 <td><input type="text" data-th-field="*{customerAdress.customerZipCode}"/></td>
-<td><p th:if="${#fields.hasErrors('customerAdress.customerZipCode')}" th:errors="*{customerAdress.customerZipCode}">Customer Zip Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerAdressDTO.customerZipCode')}" th:errors="*{customerAdressDTO.customerZipCode}">Customer Zip Error</p></td>
 </tr>
 <tr>
 <td>Osoba kontaktowa - Imie</td>
 <td><input type="text" data-th-field="*{customerContact.customerContactName}"/></td>
-<td><p th:if="${#fields.hasErrors('customerContact.customerContactName')}" th:errors="*{customerContact.customerContactName}">Customer Name Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerContactDTO.customerContactName')}" th:errors="*{customerContactDTO.customerContactName}">Customer Name Error</p></td>
 </tr>
 <tr>
 <td>Osoba kontaktowa - Nazwisko</td>
 <td><input type="text" data-th-field="*{customerContact.customerContactSurname}"/></td>
-<td><p th:if="${#fields.hasErrors('customerContact.customerContactSurname')}" th:errors="*{customerContact.customerContactSurname}">Customer Surname Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerContactDTO.customerContactSurname')}" th:errors="*{customerContactDTO.customerContactSurname}">Customer Surname Error</p></td>
 </tr>
 <tr>
 <td>Osoba kontaktowa - Telefon</td>
 <td><input type="text" data-th-field="*{customerContact.customerContactPhoneNumber}"/></td>
-<td><p th:if="${#fields.hasErrors('customerContact.customerContactPhoneNumber')}" th:errors="*{customerContact.customerContactPhoneNumber}">Customer Number Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerContactDTO.customerContactPhoneNumber')}" th:errors="*{customerContactDTO.customerContactPhoneNumber}">Customer Number Error</p></td>
 </tr>
 <tr>
 <td>Adres Email Firmy</td>
 <td><input type="text" data-th-field="*{customerContact.customerContactMailAdress}"/></td>
-<td><p th:if="${#fields.hasErrors('customerContact.customerContactMailAdress')}" th:errors="*{customerContact.customerContactMailAdress}">Customer Email Error</p></td>
+<td><p th:if="${#fields.hasErrors('customerContactDTO.customerContactMailAdress')}" th:errors="*{customerContactDTO.customerContactMailAdress}">Customer Email Error</p></td>
 </tr>
 <tr>
 <td>Faktura elektroniczna</td>
