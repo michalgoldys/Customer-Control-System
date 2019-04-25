@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CustomerController {
@@ -78,20 +80,22 @@ public class CustomerController {
 			
 		}
 		
-		@GetMapping(value="/customer/showingCustomers/customerDetalis?id={customerContractId}")
-		public String showingCustomerDetalis(Model model) {
+		@GetMapping(value="/customer/showingCustomers/customerDetalis")
+		public String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
+				) {
 			
-			
-			
-			//model.addAttribute("customer", );
+			model.addAttribute("selectedCustomerId", customerSelectionId);
+			model.addAttribute("selectedCustomerById", customerRepository.findBycustomerContractPdfId(customerSelectionId));
 			
 			return "customerDetalis";
 		}
-		/*
-		@PostMapping(value="customer/showingCustomers/customerDetalis")
-		public String settingCustomerDetalis(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
+		
+		
+		@PutMapping(value="/customer/showingCustomers/customerDetalis")
+		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
 			
 			return "customerMenu";
 		}
-		*/
+		
+		
 }
