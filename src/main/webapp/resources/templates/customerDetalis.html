@@ -5,20 +5,25 @@
     <title>Wyswietlanie Kontrahentow</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <body>
+    <form role="form" action="#" data-th-action="@{/customer/showingCustomers/customerDetalis}" th:method="put">
     <div align="center">
     <table class="comicGreenShowingCustomers">
 <thead>
 <tr>
 <th>Numer ID Odczytanego</th>
 <th>Nazwa</th>
+<th>Nazwa Pole</th>
 </tr>
 </thead>
 <tbody>
 <tr data-th-each="ct : ${selectedCustomerById}">
 <td data-th-text="${selectedCustomerId}"></td>
 <td data-th-text="${ct.customerName}"></td>
+<td><input type="text" data-th-value="*{ct.customerName}" id="{customer.customerName}"/></td>
+<td><button name="updatingCustomer" type="submit">Zapisz</button></td>
 </tr>
 </tbody>
 </table>
       </div>
+      </form>
 	</body>

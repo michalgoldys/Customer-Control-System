@@ -6,15 +6,15 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class CustomerController {
 	
 		@Autowired
@@ -81,7 +81,8 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/showingCustomers/customerDetalis")
-		public String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
+		public String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model,
+				Customer customer
 				) {
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
@@ -89,13 +90,15 @@ public class CustomerController {
 			
 			return "customerDetalis";
 		}
-		
+
 		
 		@PutMapping(value="/customer/showingCustomers/customerDetalis")
-		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
+		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model,
+				Customer customer
+				) {
 			
-			return "customerMenu";
+			customerRepository.findBycustomerContractPdfId(customerSelectionId);
+			
+			return "showingCustomers";
 		}
-		
-		
 }
