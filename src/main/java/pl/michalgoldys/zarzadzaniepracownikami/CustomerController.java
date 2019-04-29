@@ -6,15 +6,15 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class CustomerController {
 	
 		@Autowired
@@ -93,12 +93,11 @@ public class CustomerController {
 
 		
 		@PutMapping(value="/customer/showingCustomers/customerDetalis")
-		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model,
-				Customer customer
+		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Customer customer
 				) {
 			
 			customerRepository.findBycustomerContractPdfId(customerSelectionId);
 			
-			return "showingCustomers";
+			return "redirect:/customer/showingCustomers";
 		}
 }
