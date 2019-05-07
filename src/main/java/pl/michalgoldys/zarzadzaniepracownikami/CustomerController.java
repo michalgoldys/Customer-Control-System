@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -93,10 +94,10 @@ public class CustomerController {
 
 		
 		@PutMapping(value="/customer/showingCustomers/customerDetalis")
-		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Customer customer
+		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
 				) {
 			
-			customerRepository.findBycustomerContractPdfId(customerSelectionId);
+			model.addAttribute("selectedCustomerById", customerRepository.findBycustomerContractPdfId(customerSelectionId));
 			
 			return "redirect:/customer/showingCustomers";
 		}

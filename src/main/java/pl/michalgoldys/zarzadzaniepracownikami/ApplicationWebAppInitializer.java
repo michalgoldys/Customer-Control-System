@@ -17,19 +17,16 @@ public class ApplicationWebAppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext container) {
 		
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(ApplicationSpringRootConfiguration.class);
-		registerHiddenFieldFilter(container);
+		
 		container.addListener(new ContextLoaderListener(rootContext));
-		      
+		container.addFilter("hiddenHttpMethodFilter", new     HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
+		
 		AnnotationConfigWebApplicationContext dispatcherContext = new AnnotationConfigWebApplicationContext();
 		dispatcherContext.register(ApplicationWebMvcConfig.class);
 		
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
+		
 	}
-	
-	private void registerHiddenFieldFilter(ServletContext aContext) {
-        aContext.addFilter("hiddenHttpMethodFilter", new     HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*"); 
-    }
 }
