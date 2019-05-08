@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -22,10 +20,7 @@ public class CustomerController {
 		CustomerRepository customerRepository;
 		
 		@Autowired
-		CustomerAdressRepository customerAdressRepository;
-		
-		@Autowired
-		CustomerContactRepository customerContactRepository;
+		CustomerRepositoryImp customerRepositoryImp;
 	
 		@GetMapping(value= "/customer/customerMenu")
 		public String customerMenu() {
@@ -93,11 +88,14 @@ public class CustomerController {
 		}
 
 		
-		@PutMapping(value="/customer/showingCustomers/customerDetalis")
-		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
+		@PostMapping(value="/customer/showingCustomers/customerDetalis")
+		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Customer customer, Model model
 				) {
 			
-			model.addAttribute("selectedCustomerById", customerRepository.findBycustomerContractPdfId(customerSelectionId));
+			Customer customerUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
+			
+			customerUpdate.setCustomerName(customer.getCustomerName());
+			customerRepository.save(customerUpdate);
 			
 			return "redirect:/customer/showingCustomers";
 		}
