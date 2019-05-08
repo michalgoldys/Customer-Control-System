@@ -89,7 +89,9 @@ public class CustomerController {
 
 		
 		@PostMapping(value="/customer/showingCustomers/customerDetalis")
-		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, Customer customer, Model model
+		public String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, 
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, 
+				Model model
 				) {
 			
 			Customer customerUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
