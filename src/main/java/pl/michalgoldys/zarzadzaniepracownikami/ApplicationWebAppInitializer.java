@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
@@ -19,14 +20,18 @@ public class ApplicationWebAppInitializer implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		
 		container.addListener(new ContextLoaderListener(rootContext));
-		container.addFilter("hiddenHttpMethodFilter", new     HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
 		
 		AnnotationConfigWebApplicationContext dispatcherContext = new AnnotationConfigWebApplicationContext();
 		dispatcherContext.register(ApplicationWebMvcConfig.class);
-		
+
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
+		
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
 		
+		FilterRegistration.Dynamic filter = container.addFilter("hiddenHttpMethodFilter", new     HiddenHttpMethodFilter());
+		filter.addMappingForServletNames(null ,false, "dispatcher");
+		
 	}
+
 }
