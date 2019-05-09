@@ -1,15 +1,15 @@
 table.comicGreenShowingCustomers {
-  border: 3px solid #000000;
-  width: 100%;
+  border: 1px solid #000000;
+  width: 95%;
   text-align: center;
   border-collapse: collapse;
 }
 table.comicGreenShowingCustomers td, table.comicGreenShowingCustomers th {
-  border: 1px solid #000000;
-  padding: 5px 4px;
+  border:0 px solid #000000;
+  padding: 4px 4px;
 }
 table.comicGreenShowingCustomers tbody td {
-  font-size: 13px;
+  font-size: 14px;
 }
 table.comicGreenShowingCustomers tr:nth-child(even) {
   background: #EFEFEF;
@@ -19,7 +19,7 @@ table.comicGreenShowingCustomers thead {
   background: -moz-linear-gradient(top, #cdcdcd 0%, #c2c2c2 66%, #BCBCBC 100%);
   background: -webkit-linear-gradient(top, #cdcdcd 0%, #c2c2c2 66%, #BCBCBC 100%);
   background: linear-gradient(to bottom, #cdcdcd 0%, #c2c2c2 66%, #BCBCBC 100%);
-  border-bottom: 3px solid #000000;
+  border-bottom: 2px solid #000000;
 }
 table.comicGreenShowingCustomers thead th {
   font-size: 15px;
@@ -30,3 +30,4 @@ table.comicGreenShowingCustomers thead th {
 table.comicGreenShowingCustomers tfoot td {
   font-size: 14px;
 }
+
