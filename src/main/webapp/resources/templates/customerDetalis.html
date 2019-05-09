@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
+<link data-th-href="@{/css/comicGreenShowingCustomers.css}" rel="stylesheet" />
 <head>
     <title>Wyswietlanie Kontrahentow</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,20 +9,118 @@
     <form action="#" data-th-action="@{/customer/showingCustomers/customerDetalis(id=${selectedCustomerId})}" data-th-method="POST" role="form">
     <div align="center">
     <table class="comicGreenShowingCustomers">
-<thead>
+    
+<thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
+
 <tr>
-<th>PDF ID</th>
-<th>Nazwa</th>
-<th>Nazwa Pole</th>
+<th>Wlasciwosci Obiektu</th>
+<th></th>
 </tr>
-</thead>
-<tbody>
-<tr data-th-each="ct : ${selectedCustomerById}">
+
+<tr>
+<th>ID</th>
+<td data-th-text="${ct.customerId}"></td>
+</tr>
+
+<tr>
+<th>Numer Umowy</th>
+<td data-th-text="${ct.customerContractId}"></td>
+</tr>
+
+<tr>
+<th>Numer PDF</th>
 <td data-th-text="${selectedCustomerId}"></td>
-<td data-th-text="${ct.customerName}"></td>
-<td><input type="text" data-th-value="*{ct.customerName}" name="customerName" id="customerName"/></td>
-<td><button type="submit">Zapisz</button></td>
 </tr>
+
+</thead>
+<tbody data-th-each="ct : ${selectedCustomerById}">
+
+<tr>
+<th>Dane Firmy</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Nazwa Firmy</th>
+<td><input type="text" data-th-value="*{ct.customerName}" name="customerName" id="customerName"/></td>
+</tr>
+
+<tr>
+<th>NIP</th>
+<td><input type="text" data-th-value="*{ct.customerNip}" name="customerNip" id="customerNip"/></td>
+</tr>
+
+<tr>
+<th>Dane Adresowe</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Miasto</th>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerCity}" name="CustomerAdress.customerCity" id="CustomerAdress.customerCity"/></td>
+</tr>
+
+<tr>
+<th>Ulica</th>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerStreet}" name="CustomerAdress.customerStreet" id="CustomerAdress.customerStreet"/></td>
+</tr>
+
+<tr>
+<th>Kod Pocztowy</th>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerZipCode}" name="CustomerAdress.customerZipCode" id="CustomerAdress.customerZipCode"/></td>
+</tr>
+
+<tr>
+<th>Dane Kontaktowe</th>
+<th></th>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: Imie</th>
+<td><input type="text" data-th-value="*{ctc.customerContactName}" name="customerContactName" id="customerContactName"/></td>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: Nazwisko</th>
+<td><input type="text" data-th-value="*{ctc.customerContactSurname}" name="customerContactSurname" id="customerContactSurname"/></td>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: Telefon</th>
+<td><input type="text" data-th-value="*{ctc.customerContactPhoneNumber}" name="customerContactPhoneNumber" id="customerContactPhoneNumber"/></td>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: E-mail</th>
+<td><input type="text" data-th-value="*{ctc.customerContactMailAdress}" name="customerContactMailAdress" id="customerContactMailAdress"/></td>
+</tr>
+
+<tr>
+<th>Dane Kontraktu</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Abonamenty PL</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/></td>
+</tr>
+
+<tr>
+<th>Abonamenty UE</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlUeSubstripctions}" name="customerPlUeSubstripctions" id="customerPlUeSubstripctions"/></td>
+</tr>
+
+<tr>
+<th>Abonamenty RU</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerRuSubscriptions}" name="customerRuSubscriptions" id="customerRuSubscriptions"/></td>
+</tr>
+
+<tr>
+<th></th>
+<th><a href="/customer/showingCustomers/" data-th-href="@{/customer/showingCustomers/}"><button type ="button">Anuluj</button></a>
+<button type="submit" name="submit" id="submit">Zapisz</button></th>
+</tr>
+
 </tbody>
 </table>
       </div>
