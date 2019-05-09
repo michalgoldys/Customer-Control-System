@@ -120,5 +120,8 @@ public class Customer {
 	public Boolean getCustomerIsActive() {
 		return customerIsActive;
 	}
-		
+
+	public Long getCustomerId() {
+		return customerId;
+	}
 }
