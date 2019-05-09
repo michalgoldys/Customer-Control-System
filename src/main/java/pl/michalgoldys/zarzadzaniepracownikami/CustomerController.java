@@ -95,8 +95,11 @@ public class CustomerController {
 				) {
 			
 			Customer customerUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
-			
+		
 			customerUpdate.setCustomerName(customer.getCustomerName());
+			customerUpdate.setCustomerNip(customer.getCustomerNip());
+		
+			
 			customerRepository.save(customerUpdate);
 			
 			return "redirect:/customer/showingCustomers";
