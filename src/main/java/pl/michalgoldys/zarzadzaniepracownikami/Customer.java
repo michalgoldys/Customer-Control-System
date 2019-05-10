@@ -2,7 +2,6 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity(name="CUSTOMER")
@@ -37,17 +38,28 @@ public class Customer {
 	private String customerContractPdfId;
 	
 	@Autowired
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer")
+	@Cascade(CascadeType.ALL)
 	private CustomerAdress customerAdress;
 	
 	@Autowired
-	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer")
+	@Cascade(CascadeType.ALL)
 	private List<CustomerContact> customerContact;
 	
 	@Autowired
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="customer")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer")
+	@Cascade(CascadeType.ALL)
 	private CustomerContractDetalis customerContractDetalis;
 	
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerNip=" + customerNip
+				+ ", customerIsActive=" + customerIsActive + ", customerContractId=" + customerContractId
+				+ ", customerContractPdfId=" + customerContractPdfId + ", customerAdress=" + customerAdress
+				+ ", customerContact=" + customerContact + ", customerContractDetalis=" + customerContractDetalis + "]";
+	}
+
 	protected Customer () {
 		
 	}
