@@ -21,6 +21,12 @@ public class CustomerController {
 		
 		@Autowired
 		CustomerRepositoryImp customerRepositoryImp;
+		
+		@Autowired
+		CustomerAdressRepository customerAdressRepository;
+		
+		@Autowired
+		CustomerContactRepository customerContactRepository;
 	
 		@GetMapping(value= "/customer/customerMenu")
 		public String customerMenu() {
@@ -93,12 +99,19 @@ public class CustomerController {
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, 
 				Model model
 				) {
+						
+			Customer getCustomerId = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
+			Long customerId = getCustomerId.getCustomerId();
 			
-			Customer customerUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
-		
+			Customer customerUpdate = customerRepositoryImp.findBycustomerId(customerId);
+			
+			// CustomerAdress customerAdressUpate = customerAdressRepository.findBycustomerAdressId(customerId);
+			// List <Customer> customerUpdate = customerRepository.findBycustomerId(customerId);
+			
+			customerUpdate.setCustomerAdress(customerAdress);
 			customerUpdate.setCustomerName(customer.getCustomerName());
 			customerUpdate.setCustomerNip(customer.getCustomerNip());
-		
+			
 			
 			customerRepository.save(customerUpdate);
 			
