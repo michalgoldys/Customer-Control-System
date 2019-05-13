@@ -100,18 +100,22 @@ public class CustomerController {
 				Model model
 				) {
 						
-			Customer getCustomerId = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
-			Long customerId = getCustomerId.getCustomerId();
+			Customer customerPdfIdUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
+			Long customerId = customerPdfIdUpdate.getCustomerId();
 			
 			Customer customerUpdate = customerRepositoryImp.findBycustomerId(customerId);
 			
 			// CustomerAdress customerAdressUpate = customerAdressRepository.findBycustomerAdressId(customerId);
 			// List <Customer> customerUpdate = customerRepository.findBycustomerId(customerId);
 			
-			customerUpdate.setCustomerAdress(customerAdress);
-			customerUpdate.setCustomerName(customer.getCustomerName());
-			customerUpdate.setCustomerNip(customer.getCustomerNip());
+			customerUpdate.setCustomerAdress(customerAdress);			
+
+			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
+			customerContactList.add(customerContact);
 			
+			customerUpdate.setCustomerContact(customerContactList);
+			
+			customerUpdate.setCustomerContractDetalis(customerContractDetalis);
 			
 			customerRepository.save(customerUpdate);
 			
