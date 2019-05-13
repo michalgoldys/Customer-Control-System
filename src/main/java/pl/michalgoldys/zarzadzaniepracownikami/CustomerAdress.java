@@ -68,5 +68,13 @@ public class CustomerAdress {
 	public void setCustomerZipCode(String customerZipCode) {
 		this.customerZipCode = customerZipCode;
 	}
+
+	public Long getCustomerAdressId() {
+		return customerAdressId;
+	}
+
+	public void setCustomerAdressId(Long customerAdressId) {
+		this.customerAdressId = customerAdressId;
+	}
 	
 }
