@@ -8,5 +8,5 @@ public interface CustomerContactRepository extends Repository<CustomerContact, L
 	
 	List<CustomerContact> findBycustomerContactId(Long customerContactId);
 	List<CustomerContact> save(CustomerContact customerContact);
-	
+	CustomerContact findBycustomerId(Long customerId);	
 }

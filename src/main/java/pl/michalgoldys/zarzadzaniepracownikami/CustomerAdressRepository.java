@@ -8,5 +8,6 @@ public interface CustomerAdressRepository extends Repository<CustomerAdress, Lon
 	
 	List<CustomerAdress> findBycustomerAdressId(Long customerAdressId);
 	List<CustomerAdress> save(CustomerAdress customerAdress);
+	CustomerAdress findBycustomerId(Long customerId);
 	
 }

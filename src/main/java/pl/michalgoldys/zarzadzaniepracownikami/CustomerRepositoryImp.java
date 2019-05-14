@@ -6,5 +6,6 @@ public interface CustomerRepositoryImp extends JpaRepository<Customer, Long> {
 	
 	Customer findBycustomerContractPdfId(String customerContractPdfId); 
 	Customer findBycustomerId(Long customerId);
+	Customer getOne(Long customerId);
 
 }

@@ -28,6 +28,9 @@ public class CustomerController {
 		@Autowired
 		CustomerContactRepository customerContactRepository;
 	
+		@Autowired 
+		CustomerDatabaseService customerDatabaseService;
+		
 		@GetMapping(value= "/customer/customerMenu")
 		public String customerMenu() {
 			return "customerMenu";
@@ -99,25 +102,56 @@ public class CustomerController {
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, 
 				Model model
 				) {
-						
-			Customer customerPdfIdUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
-			Long customerId = customerPdfIdUpdate.getCustomerId();
+			/*
+			Customer customerToUpdate = new Customer();
+			customerToUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
 			
-			Customer customerUpdate = customerRepositoryImp.findBycustomerId(customerId);
+			customerToUpdate.setCustomerAdress(customerAdress);
+			customerToUpdate.setCustomerContractDetalis(customerContractDetalis);
+			customerToUpdate.setCustomerNip(customer.getCustomerNip());
+			customerToUpdate.setCustomerName(customer.getCustomerName());
+			
+			//Customer customerPdfIdUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
+			//Long customerId = customerPdfIdUpdate.getCustomerId();
+			
+			//Customer customerUpdate = customerRepositoryImp.getOne(customerId);
 			
 			// CustomerAdress customerAdressUpate = customerAdressRepository.findBycustomerAdressId(customerId);
 			// List <Customer> customerUpdate = customerRepository.findBycustomerId(customerId);
 			
-			customerUpdate.setCustomerAdress(customerAdress);			
 
+
+			/*
 			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
 			customerContactList.add(customerContact);
 			
-			customerUpdate.setCustomerContact(customerContactList);
+			customerPdfIdUpdate.setCustomerContact(customerContactList);
 			
-			customerUpdate.setCustomerContractDetalis(customerContractDetalis);
+			customerPdfIdUpdate.setCustomerContractDetalis(customerContractDetalis);
+			*/
 			
-			customerRepository.save(customerUpdate);
+			customerDatabaseService.updateCostumer(customer, customerAdress, customerContact, customerContractDetalis, customerSelectionId);
+			
+			/*
+			Customer customerToUpdate = customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId);
+			
+			customer.setCustomerId(customerToUpdate.getCustomerId());
+			customerAdress.setCustomer(customer);
+			customer.setCustomerAdress(customerAdress);
+			customerContact.setCustomer(customer);
+			
+			
+			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
+			customerContactList.add(customerContact);
+			
+			customer.setCustomerContact(customerContactList);
+			
+			
+			customerContractDetalis.setCustomer(customer);
+			customer.setCustomerContractDetalis(customerContractDetalis);
+
+			customerRepository.save(customer);
+			*/
 			
 			return "redirect:/customer/showingCustomers";
 		}
