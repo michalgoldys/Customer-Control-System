@@ -135,4 +135,13 @@ public class CustomerContractDetalis {
 	public void setCustomerEinvoiceAgreement(Boolean customerEinvoiceAgreement) {
 		this.customerEinvoiceAgreement = customerEinvoiceAgreement;
 	}
+
+	public Long getCustomerContractId() {
+		return customerContractId;
+	}
+
+	public void setCustomerContractId(Long customerContractId) {
+		this.customerContractId = customerContractId;
+	}
+	
 }
