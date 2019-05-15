@@ -17,6 +17,8 @@
 <th></th>
 </tr>
 
+
+
 <tr>
 <th>ID</th>
 <td data-th-text="${ct.customerId}"></td>
@@ -57,7 +59,8 @@
 
 <tr>
 <th>Miasto</th>
-<td><input type="text" data-th-value="*{ct.CustomerAdress.customerCity}" name="customerCity" id="customerCity"/></td>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerCity}" name="customerCity" id="customerCity"/>
+<input type="hidden" data-th-value="*{ct.customerAdress.customerAdressId}" name="customerAdressId" id="customerAdressId"/></td>
 </tr>
 
 <tr>
@@ -77,7 +80,8 @@
 
 <tr data-th-each="ctc : ${ct.CustomerContact}">
 <th>Os.Kont.: Imie</th>
-<td><input type="text" data-th-value="*{ctc.customerContactName}" name="customerContactName" id="customerContactName"/></td>
+<td><input type="text" data-th-value="*{ctc.customerContactName}" name="customerContactName" id="customerContactName"/>
+<input type="hidden" data-th-value="*{ctc.customerContactId}" name="customerContactId" id="customerContactId"/></td>
 </tr>
 
 <tr data-th-each="ctc : ${ct.CustomerContact}">
@@ -102,7 +106,8 @@
 
 <tr>
 <th>Abonamenty PL</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/></td>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/>
+<input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractId}" name="customerContractId" id="customerContractId"/></td>
 </tr>
 
 <tr>
