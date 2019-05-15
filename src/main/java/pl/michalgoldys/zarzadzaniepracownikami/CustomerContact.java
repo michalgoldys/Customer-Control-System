@@ -85,4 +85,13 @@ public class CustomerContact {
 	public void setCustomerContactMailAdress(String customerContactMailAdress) {
 		this.customerContactMailAdress = customerContactMailAdress;
 	}
+
+	public Long getCustomerContactId() {
+		return customerContactId;
+	}
+
+	public void setCustomerContactId(Long customerContactId) {
+		this.customerContactId = customerContactId;
+	}
+	
 }
