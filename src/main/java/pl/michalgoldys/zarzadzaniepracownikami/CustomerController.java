@@ -87,7 +87,7 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/showingCustomers/customerDetalis")
 		public String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model,
-				Customer customer
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
 				) {
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
