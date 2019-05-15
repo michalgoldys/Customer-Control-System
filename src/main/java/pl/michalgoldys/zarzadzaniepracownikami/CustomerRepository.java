@@ -2,13 +2,12 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 import java.util.List;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends Repository<Customer, Long>{
+public interface CustomerRepository extends JpaRepository<Customer, Long>{
 		
 		List<Customer> findBycustomerName(String customerName);
 		List<Customer> findBycustomerId(Long customerId);
-		List<Customer> save(Customer customer);
 		List<Customer> findAll();
 		List<Customer> findBycustomerContractPdfId(String customerContractPdfId);
 }
