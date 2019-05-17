@@ -101,13 +101,20 @@
 
 <tr>
 <th>Dane Kontraktu</th>
-<th></th>
+<th><input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}" name="customerContractDetalisId" id="customerContractDetalisId"/></th>
+</tr>
+
+<tr>
+<th>Faktura elektroniczna</th>
+<td>
+<input type="checkbox" data-th-text="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
+</td>
 </tr>
 
 <tr>
 <th>Abonamenty PL</th>
 <td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/>
-<input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractId}" name="customerContractId" id="customerContractId"/></td>
+</td>
 </tr>
 
 <tr>
