@@ -73,7 +73,7 @@ public class ApplicationConfiguration  {
     viewResolver.setTemplateEngine(templateEngine(servletContext));
     viewResolver.setOrder(1);
     return viewResolver;
-}
+	}
 	
 	@Bean
 	@Description("Spring Message Resolver")
