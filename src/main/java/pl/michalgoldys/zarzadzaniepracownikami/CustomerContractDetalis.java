@@ -15,7 +15,7 @@ public class CustomerContractDetalis {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long customerContractId;
+	private Long customerContractDetalisId;
 	
 	@Column(name="customer_subscriptions", nullable=true)
 	private Integer customerSubscriptions;
@@ -136,12 +136,11 @@ public class CustomerContractDetalis {
 		this.customerEinvoiceAgreement = customerEinvoiceAgreement;
 	}
 
-	public Long getCustomerContractId() {
-		return customerContractId;
+	public Long getCustomerContractDetalisId() {
+		return customerContractDetalisId;
 	}
 
-	public void setCustomerContractId(Long customerContractId) {
-		this.customerContractId = customerContractId;
+	public void setCustomerContractDetalisId(Long customerContractDetalisId) {
+		this.customerContractDetalisId = customerContractDetalisId;
 	}
-	
 }
