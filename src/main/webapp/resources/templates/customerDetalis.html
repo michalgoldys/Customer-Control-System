@@ -107,7 +107,8 @@
 <tr>
 <th>Faktura elektroniczna</th>
 <td>
-<input type="checkbox" data-th-text="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
+<input type="checkbox" data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
+<input type="hidden" name="_customerEinvoiceAgreement" data-th-value="${customerEinvoiceAgreement}"/>
 </td>
 </tr>
 
