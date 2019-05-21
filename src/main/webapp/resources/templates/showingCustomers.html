@@ -23,6 +23,7 @@
 <th>Os.Kont.: Telefon</th>
 <th>Os.Kont.: E-mail</th>
 <th>Faktura Elektroniczna</th>
+<th>Aktywny</th>
 </tr>
 </thead>
 <tbody>
@@ -44,6 +45,7 @@
 <td data-th-each="ctc : ${ct.CustomerContact}" 
         data-th-text="${ctc.customerContactMailAdress}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>  
+<td data-th-text="${ct.customerIsActive}"></td>
 </tr>
 <a href="/customer/customerMenu/" data-th-href="@{/customer/customerMenu/}"><button type ="button">Powrot</button></a>
 </tbody>
