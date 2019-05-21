@@ -27,6 +27,7 @@ public class CustomerDatabaseService {
 			
 			updatingCustomer.setCustomerName(customer.getCustomerName());
 			updatingCustomer.setCustomerNip(customer.getCustomerNip());
+			updatingCustomer.setCustomerIsActive(customer.getCustomerIsActive());
 			
 			updatingCustomer.setCustomerAdress(customerAdress);
 			customerAdress.setCustomer(updatingCustomer);
