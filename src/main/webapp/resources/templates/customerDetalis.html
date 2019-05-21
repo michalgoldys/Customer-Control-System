@@ -13,7 +13,7 @@
 <thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
 
 <tr>
-<th>Wlasciwosci Obiektu</th>
+<th>*Wlasciwosci Obiektu*</th>
 <th></th>
 </tr>
 
@@ -21,17 +21,17 @@
 
 <tr>
 <th>ID</th>
-<td data-th-text="${ct.customerId}"></td>
+<td data-th-text="*{ct.customerId}"></td>
 </tr>
 
 <tr>
 <th>Numer Umowy</th>
-<td data-th-text="${ct.customerContractId}"></td>
+<td data-th-text="*{ct.customerContractId}"></td>
 </tr>
 
 <tr>
 <th>Numer PDF</th>
-<td data-th-text="${selectedCustomerId}"></td>
+<td data-th-text="*{selectedCustomerId}"></td>
 </tr>
 
 </thead>
@@ -53,7 +53,7 @@
 </tr>
 
 <tr>
-<th>Dane Adresowe</th>
+<th>*Dane Adresowe*</th>
 <th></th>
 </tr>
 
@@ -74,7 +74,7 @@
 </tr>
 
 <tr>
-<th>Dane Kontaktowe</th>
+<th>*Dane Kontaktowe*</th>
 <th></th>
 </tr>
 
@@ -100,7 +100,30 @@
 </tr>
 
 <tr>
-<th>Dane Kontraktu</th>
+<th>*Dane Aktywnosci Klienta*</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Klient Aktywny</th>
+<td data-th-text="*{ct.customerIsActive}"></td>
+</tr>
+
+<tr>
+<th>Data Aktywacji</th>
+<td data-th-text="*{ct.customerActivationDate} ? #{customerActivationDate} : 'Nie Aktywowany'"></td>
+</tr>
+
+<tr>
+<th>Aktywacja klienta</th>
+<td>
+<input type="checkbox" data-th-checked="*{ct.customerIsActive}" name="customerIsActive" id="customerIsActive"/>
+<input type="hidden" name="_customerIsActive" data-th-value="${customerIsActive}"/>
+</td>
+</tr>
+
+<tr>
+<th>*Dane Kontraktu*</th>
 <th><input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}" name="customerContractDetalisId" id="customerContractDetalisId"/></th>
 </tr>
 
