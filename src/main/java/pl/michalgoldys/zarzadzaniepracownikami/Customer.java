@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,6 +37,13 @@ public class Customer {
 	@Column(name="customer_contract_pdf_id")
 	private String customerContractPdfId;
 	
+	@Column(name="customer_activation_date")
+	private Date customerActivationDate;
+	
+	@Column(name="customer_deactivation_date")
+	private Date customerDeactivationDate;
+
+	
 	@Autowired
 	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
 	private CustomerAdress customerAdress;
@@ -47,14 +55,6 @@ public class Customer {
 	@Autowired
 	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
 	private CustomerContractDetalis customerContractDetalis;
-	
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerNip=" + customerNip
-				+ ", customerIsActive=" + customerIsActive + ", customerContractId=" + customerContractId
-				+ ", customerContractPdfId=" + customerContractPdfId + ", customerAdress=" + customerAdress
-				+ ", customerContact=" + customerContact + ", customerContractDetalis=" + customerContractDetalis + "]";
-	}
 
 	protected Customer () {
 		
@@ -98,12 +98,7 @@ public class Customer {
 	public void setCustomerContractId(String customerContractId) {
 		this.customerContractId = customerContractId;
 	}
-	public Boolean isCustomerIsActive() {
-		return customerIsActive;
-	}
-	public void setCustomerIsActive(Boolean customerIsActive) {
-		this.customerIsActive = customerIsActive;
-	}
+
 	public String getCustomerName() {
 		return customerName;
 	}
@@ -125,15 +120,35 @@ public class Customer {
 		this.customerContractPdfId = customerContractPdfId;
 	}
 
-	public Boolean getCustomerIsActive() {
-		return customerIsActive;
-	}
-
 	public Long getCustomerId() {
 		return customerId;
 	}
 
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
+	}
+
+	public Date getCustomerActivationDate() {
+		return customerActivationDate;
+	}
+
+	public void setCustomerActivationDate(Date customerActivationDate) {
+		this.customerActivationDate = customerActivationDate;
+	}
+
+	public Date getCustomerDeactivationDate() {
+		return customerDeactivationDate;
+	}
+
+	public void setCustomerDeactivationDate(Date customerDeactivationDate) {
+		this.customerDeactivationDate = customerDeactivationDate;
+	}
+
+	public Boolean getCustomerIsActive() {
+		return customerIsActive;
+	}
+
+	public void setCustomerIsActive(Boolean customerIsActive) {
+		this.customerIsActive = customerIsActive;
 	}
 }
