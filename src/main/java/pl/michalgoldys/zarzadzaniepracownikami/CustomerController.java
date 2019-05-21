@@ -17,12 +17,14 @@ public class CustomerController {
 		private CustomerDatabaseService customerDatabaseService;
 		
 		@GetMapping(value= "/customer/customerMenu")
-		private String customerMenu() {
+		private String customerMenu(
+				) {
 			return "customerMenu";
 		}
 		
 		@GetMapping(value="/customer/showingCustomers")
-		private String showingCustomers(Model model) {
+		private String showingCustomers(Model model
+				) {
 			
 			model.addAttribute("customer", customerDatabaseService.findAllCustomers());
 			
@@ -33,7 +35,8 @@ public class CustomerController {
 		private String addingCustomersForm(
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis,
 				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto, CustomerContactDTO customerContactDto, 
-				CustomerContractDetalisDTO customerContractDetalisDto) {
+				CustomerContractDetalisDTO customerContractDetalisDto
+				) {
 			 
 			return "addingCustomer";
 		}
@@ -44,12 +47,14 @@ public class CustomerController {
 				@Valid CustomerAdressDTO customerAdressDto, BindingResult customerBinding1,
 				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2, 
 				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult customerBinding3,
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis) {
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+				) {
 				
 			if (customerBinding.hasErrors()) {
 					return "addingCustomer";
 				}
-
+			
+			customer.setCustomerIsActive(false);
 			customerDatabaseService.creatingCustomer(customer, customerAdress, customerContact, customerContractDetalis);
 
 			return "redirect:/customer/customerMenu";
@@ -57,8 +62,7 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/showingCustomers/customerDetalis")
-		private String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model,
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+		private String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
 				) {
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
