@@ -17,6 +17,9 @@ public class CustomerDatabaseService {
 		@Autowired
 		CustomerRepositoryImp customerRepositoryImp;
 		
+		@Autowired
+		CustomerService customerService;
+		
 		@Transactional
 		public void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, 
 				CustomerContractDetalis customerContractDetalis, String customerSelectionId)
@@ -25,9 +28,20 @@ public class CustomerDatabaseService {
 			
 			updatingCustomer = customerFindByCustomerContractPdfId(customerSelectionId);
 			
+			if (customer.getCustomerActivationDate() != null && !customer.getCustomerActivationDate().isEmpty())
+			{
+				customer.setCustomerIsActive(true);
+			}
+			else if (customer.getCustomerIsActive() == true && customer.getCustomerActivationDate() == null)
+			{
+				customer.setCustomerActivationDate(customerService.getCurrentDate());
+			}
+			
+			
 			updatingCustomer.setCustomerName(customer.getCustomerName());
 			updatingCustomer.setCustomerNip(customer.getCustomerNip());
 			updatingCustomer.setCustomerIsActive(customer.getCustomerIsActive());
+			updatingCustomer.setCustomerActivationDate(customer.getCustomerActivationDate());
 			
 			updatingCustomer.setCustomerAdress(customerAdress);
 			customerAdress.setCustomer(updatingCustomer);
