@@ -1,6 +1,5 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,10 +37,10 @@ public class Customer {
 	private String customerContractPdfId;
 	
 	@Column(name="customer_activation_date")
-	private Date customerActivationDate;
+	private String customerActivationDate;
 	
 	@Column(name="customer_deactivation_date")
-	private Date customerDeactivationDate;
+	private String customerDeactivationDate;
 
 	
 	@Autowired
@@ -128,19 +127,19 @@ public class Customer {
 		this.customerId = customerId;
 	}
 
-	public Date getCustomerActivationDate() {
+	public String getCustomerActivationDate() {
 		return customerActivationDate;
 	}
 
-	public void setCustomerActivationDate(Date customerActivationDate) {
+	public void setCustomerActivationDate(String customerActivationDate) {
 		this.customerActivationDate = customerActivationDate;
 	}
 
-	public Date getCustomerDeactivationDate() {
+	public String getCustomerDeactivationDate() {
 		return customerDeactivationDate;
 	}
 
-	public void setCustomerDeactivationDate(Date customerDeactivationDate) {
+	public void setCustomerDeactivationDate(String customerDeactivationDate) {
 		this.customerDeactivationDate = customerDeactivationDate;
 	}
 
