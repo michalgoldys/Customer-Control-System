@@ -1,5 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,9 @@ public class CustomerController {
 
 		@Autowired 
 		private CustomerDatabaseService customerDatabaseService;
+		
+		@Autowired
+		private CustomerService customerService;
 		
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
@@ -76,7 +82,7 @@ public class CustomerController {
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, 
 				Model model
 				) {
-			
+						
 			customerDatabaseService.updatingCustomer(customer, customerAdress, customerContact, customerContractDetalis, customerSelectionId);
 			
 			return "redirect:/customer/showingCustomers";
