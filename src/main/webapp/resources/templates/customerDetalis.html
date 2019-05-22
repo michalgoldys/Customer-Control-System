@@ -111,13 +111,14 @@
 
 <tr>
 <th>Data Aktywacji</th>
-<td data-th-text="*{ct.customerActivationDate} ? #{customerActivationDate} : 'Nie Aktywowany'"></td>
+<td data-th-text="*{ct.customerActivationDate}">
+</td>
 </tr>
 
 <tr>
 <th>Aktywacja klienta</th>
 <td>
-<input type="checkbox" data-th-checked="*{ct.customerIsActive}" name="customerIsActive" id="customerIsActive"/>
+<input type="checkbox" data-th-checked="*{ct.customerIsActive}" data-th-disabled="ture" name="customerIsActive" id="customerIsActive"/>
 <input type="hidden" name="_customerIsActive" data-th-value="${customerIsActive}"/>
 </td>
 </tr>
