@@ -1,7 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -18,9 +17,6 @@ public class CustomerController {
 
 		@Autowired 
 		private CustomerDatabaseService customerDatabaseService;
-		
-		@Autowired
-		private CustomerService customerService;
 		
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
@@ -70,9 +66,24 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomers/customerDetalis")
 		private String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
 				) {
+			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
-			model.addAttribute("selectedCustomerById", customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId));
+			model.addAttribute("selectedCustomerById", customerList);
+			
+			boolean isDisabled = false;
+			
+			for(Customer customer : customerList) {
+			
+				if(customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0 
+						&& customer.getCustomerDeactivationDate() != null && customer.getCustomerDeactivationDate().length() > 0){
+					
+					isDisabled = true;
+				}
+			}
+			
+			model.addAttribute("isDisabled", isDisabled);
+			
 			
 			return "customerDetalis";
 		}
