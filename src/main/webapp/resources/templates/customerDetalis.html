@@ -110,17 +110,21 @@
 </tr>
 
 <tr>
-<th>Data Aktywacji</th>
-<td data-th-text="*{ct.customerActivationDate}">
+<th>Aktywacja klienta</th>
+<td>
+<input type="checkbox" data-th-checked="*{ct.customerIsActive}" data-th-disabled="*{isDisabled}" name="customerIsActive" id="customerIsActive"/>
+<input type="hidden" name="_customerIsActive" data-th-value="${customerIsActive}"/>
 </td>
 </tr>
 
 <tr>
-<th>Aktywacja klienta</th>
-<td>
-<input type="checkbox" data-th-checked="*{ct.customerIsActive}" data-th-disabled="ture" name="customerIsActive" id="customerIsActive"/>
-<input type="hidden" name="_customerIsActive" data-th-value="${customerIsActive}"/>
-</td>
+<th>Data Aktywacji</th>
+<td><input type="text" data-th-value="*{ct.customerActivationDate}" name="customerActivationDate" id="customerActivationDate" th:readonly='readonly'/></td>
+</tr>
+
+<tr>
+<th>Data Deaktywacji</th>
+<td><input type="text" data-th-value="*{ct.customerDeactivationDate}" name="customerDeactivationDate" id="customerDeactivationDate" th:readonly='readonly'/></td>
 </tr>
 
 <tr>
