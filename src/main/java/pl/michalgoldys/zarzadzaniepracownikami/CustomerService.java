@@ -11,7 +11,7 @@ public class CustomerService {
 		public String getCurrentDate() {
 			Date currentDate = new Date();
 		      SimpleDateFormat ft = 
-		      new SimpleDateFormat ("dd.MM.yyyy");
+		      new SimpleDateFormat ("dd.MM.yyyy hh:mm:ss");
 		      
 			return (ft.format(currentDate));
 		}
