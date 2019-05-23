@@ -27,22 +27,27 @@ public class CustomerDatabaseService {
 			Customer updatingCustomer = new Customer();
 			
 			updatingCustomer = customerFindByCustomerContractPdfId(customerSelectionId);
+
+			Boolean isActive = customer.getCustomerIsActive();
+			String activationDate = customer.getCustomerActivationDate();
+			String deactivationDate = customer.getCustomerDeactivationDate();
 			
-			if (customer.getCustomerActivationDate() != null && !customer.getCustomerActivationDate().isEmpty())
-			{
-				customer.setCustomerIsActive(true);
-			}
-			else if (customer.getCustomerIsActive() == true && customer.getCustomerActivationDate() == null)
+			if (isActive && activationDate.length() == 0)
 			{
 				customer.setCustomerActivationDate(customerService.getCurrentDate());
 			}
 			
+			if (!isActive && activationDate != null && activationDate.length() > 0 && deactivationDate.length() == 0)
+			{
+				customer.setCustomerDeactivationDate(customerService.getCurrentDate());
+			}
 			
 			updatingCustomer.setCustomerName(customer.getCustomerName());
 			updatingCustomer.setCustomerNip(customer.getCustomerNip());
 			updatingCustomer.setCustomerIsActive(customer.getCustomerIsActive());
 			updatingCustomer.setCustomerActivationDate(customer.getCustomerActivationDate());
-			
+			updatingCustomer.setCustomerDeactivationDate(customer.getCustomerDeactivationDate());
+
 			updatingCustomer.setCustomerAdress(customerAdress);
 			customerAdress.setCustomer(updatingCustomer);
 			
