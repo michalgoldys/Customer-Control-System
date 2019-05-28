@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<link data-th-href="@{/css/comicGreenShowingCustomers.css}" rel="stylesheet" />
+<head>
+    <title>Wyswietlanie Kontrahentow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <body>
+    <form action="#" data-th-action="@{/customer/showingCustomers/customerDetalis(id=${selectedCustomerId})}" data-th-method="POST" role="form">
+    <div align="center">
+    <table class="comicGreenShowingCustomers">
+    
+<thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
+
+<tr>
+<th>*Wlasciwosci Obiektu*</th>
+<th></th>
+</tr>
+
+
+
+<tr>
+<th>ID</th>
+<td data-th-text="*{ct.customerId}"></td>
+</tr>
+
+<tr>
+<th>Numer Umowy</th>
+<td data-th-text="*{ct.customerContractId}"></td>
+</tr>
+
+<tr>
+<th>Numer PDF</th>
+<td data-th-text="*{selectedCustomerId}"></td>
+</tr>
+
+</thead>
+<tbody data-th-each="ct : ${selectedCustomerById}">
+
+<tr>
+<th>Dane Firmy</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Nazwa Firmy</th>
+<td><input type="text" data-th-value="*{ct.customerName}" name="customerName" id="customerName"/></td>
+</tr>
+
+<tr>
+<th>NIP</th>
+<td><input type="text" data-th-value="*{ct.customerNip}" name="customerNip" id="customerNip"/></td>
+</tr>
+
+<tr>
+<th>*Dane Adresowe*</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Miasto</th>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerCity}" name="customerCity" id="customerCity"/>
+<input type="hidden" data-th-value="*{ct.customerAdress.customerAdressId}" name="customerAdressId" id="customerAdressId"/></td>
+</tr>
+
+<tr>
+<th>Ulica</th>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerStreet}" name="customerStreet" id="customerStreet"/></td>
+</tr>
+
+<tr>
+<th>Kod Pocztowy</th>
+<td><input type="text" data-th-value="*{ct.CustomerAdress.customerZipCode}" name="customerZipCode" id="customerZipCode"/></td>
+</tr>
+
+<tr>
+<th>*Dane Kontaktowe*</th>
+<th></th>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: Imie</th>
+<td><input type="text" data-th-value="*{ctc.customerContactName}" name="customerContactName" id="customerContactName"/>
+<input type="hidden" data-th-value="*{ctc.customerContactId}" name="customerContactId" id="customerContactId"/></td>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: Nazwisko</th>
+<td><input type="text" data-th-value="*{ctc.customerContactSurname}" name="customerContactSurname" id="customerContactSurname"/></td>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: Telefon</th>
+<td><input type="text" data-th-value="*{ctc.customerContactPhoneNumber}" name="customerContactPhoneNumber" id="customerContactPhoneNumber"/></td>
+</tr>
+
+<tr data-th-each="ctc : ${ct.CustomerContact}">
+<th>Os.Kont.: E-mail</th>
+<td><input type="text" data-th-value="*{ctc.customerContactMailAdress}" name="customerContactMailAdress" id="customerContactMailAdress"/></td>
+</tr>
+
+<tr>
+<th>*Dane Aktywnosci Klienta*</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Klient Aktywny</th>
+<td data-th-text="*{ct.customerIsActive}"></td>
+</tr>
+
+<tr>
+<th>Aktywacja klienta</th>
+<td>
+<input type="checkbox" data-th-checked="*{ct.customerIsActive}" data-th-disabled="*{isDisabled}" name="customerIsActive" id="customerIsActive"/>
+<input type="hidden" name="_customerIsActive" data-th-value="${customerIsActive}"/>
+</td>
+</tr>
+
+<tr>
+<th>Data Aktywacji</th>
+<td><input type="text" data-th-value="*{ct.customerActivationDate}" name="customerActivationDate" id="customerActivationDate" th:readonly='readonly'/></td>
+</tr>
+
+<tr>
+<th>Data Deaktywacji</th>
+<td><input type="text" data-th-value="*{ct.customerDeactivationDate}" name="customerDeactivationDate" id="customerDeactivationDate" th:readonly='readonly'/></td>
+</tr>
+
+<tr>
+<th>*Dane Kontraktu*</th>
+<th><input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}" name="customerContractDetalisId" id="customerContractDetalisId"/></th>
+</tr>
+
+<tr>
+<th>Faktura elektroniczna</th>
+<td>
+<input type="checkbox" data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
+<input type="hidden" name="_customerEinvoiceAgreement" data-th-value="${customerEinvoiceAgreement}"/>
+</td>
+</tr>
+
+<tr>
+<th>Abonamenty PL</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/>
+</td>
+</tr>
+
+<tr>
+<th>Abonamenty UE</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlUeSubstripctions}" name="customerPlUeSubstripctions" id="customerPlUeSubstripctions"/></td>
+</tr>
+
+<tr>
+<th>Abonamenty RU</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerRuSubscriptions}" name="customerRuSubscriptions" id="customerRuSubscriptions"/></td>
+</tr>
+
+<tr>
+<th></th>
+<th><a href="/customer/showingCustomers/" data-th-href="@{/customer/showingCustomers/}"><button type ="button">Anuluj</button></a>
+<button type="submit" name="submit" id="submit">Zapisz</button></th>
+</tr>
+
+</tbody>
+</table>
+      </div>
+      </form>
+	</body>
