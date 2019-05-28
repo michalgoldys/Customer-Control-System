@@ -98,4 +98,13 @@ public class CustomerController {
 			
 			return "redirect:/customer/showingCustomers";
 		}
+		
+		@GetMapping(value="/customer/showingCustomersBillings")
+		private String showingCustomersBillings(Model model
+				) {
+			
+			model.addAttribute("customer", customerDatabaseService.findAllCustomers());
+			
+			return "showingCustomersBillings";
+		}
 }
