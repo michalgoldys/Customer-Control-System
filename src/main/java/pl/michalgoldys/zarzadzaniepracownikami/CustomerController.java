@@ -107,4 +107,13 @@ public class CustomerController {
 			
 			return "showingCustomersBillings";
 		}
+		
+		@GetMapping(value="/customer/showingCustomers/customerBillingDetalis")
+		private String showingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId, Model model)
+		{
+			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
+			model.addAttribute("selectedCustomerById", customerList);
+			return "customerBillingDetalis";
+		}
+		
 }
