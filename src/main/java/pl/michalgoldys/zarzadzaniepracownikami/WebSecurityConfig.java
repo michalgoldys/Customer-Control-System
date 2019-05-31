@@ -24,7 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                .formLogin()
 	                .loginPage("/login.html")
 	                .loginProcessingUrl("/doLogin")
-	                .defaultSuccessUrl("/customer/customerMenu", true);
+	                .defaultSuccessUrl("/customer/customerMenu", true)
+	        		.failureUrl("/login.html?error=true");
 
 	 }
 	 
