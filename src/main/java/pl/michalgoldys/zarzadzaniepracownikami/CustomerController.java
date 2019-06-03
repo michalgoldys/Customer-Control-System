@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -102,8 +103,23 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomersBillings")
 		private String showingCustomersBillings(Model model
 				) {
+			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
 			
-			model.addAttribute("customer", customerDatabaseService.findAllCustomers());
+			model.addAttribute("customer", customerList);
+			
+			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
+			
+			for(Customer customer : customerList)
+			{
+				int subSum = 
+						(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() + 
+						customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() + 
+						customer.getCustomerContractDetalis().getCustomerRuSubscriptions());
+				
+				customerSubstripctionsSum.add(subSum);
+			}
+			
+			model.addAttribute("subSumAtr", customerSubstripctionsSum);
 			
 			return "showingCustomersBillings";
 		}
@@ -113,6 +129,7 @@ public class CustomerController {
 		{
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
 			model.addAttribute("selectedCustomerById", customerList);
+			
 			return "customerBillingDetalis";
 		}
 		
