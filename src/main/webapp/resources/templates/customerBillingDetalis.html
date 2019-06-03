@@ -72,8 +72,23 @@
 </tr>
 
 <tr>
+<th>Stawka PL</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlFee}" name="customerPlFee" id="customerPlFee"/></td>
+</tr>
+
+<tr>
+<th>Stawka PL+UE</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlUeFee}" name="customerPlUeFee" id="customerPlUeFee"/></td>
+</tr>
+
+<tr>
+<th>Stawka RU</th>
+<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerRuFee}" name="customerRuFee" id="customerRuFee"/></td>
+</tr>
+
+<tr>
 <th></th>
-<th><a href="/customer/showingCustomers/" data-th-href="@{/customer/showingCustomers/}"><button type ="button">Anuluj</button></a>
+<th><a href="/customer/showingCustomers/Billings" data-th-href="@{/customer/showingCustomersBillings/}"><button type ="button">Anuluj</button></a>
 <button type="submit" name="submit" id="submit">Zapisz</button></th>
 </tr>
 
