@@ -45,9 +45,11 @@
 <td data-th-text="${ct.CustomerContractDetalis.customerPlFee}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerPlUeFee}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerRuFee}"></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-th-each="subSumAtr : ${subSumAtr}" 
+	data-th-text="${subSumAtr}"></td>
+<td>Abonamentow</td>
+<td>Przychod</td>
+
 
 </tr>
 <a href="/customer/customerMenu/" data-th-href="@{/customer/customerMenu/}"><button type ="button">Powrot</button></a>
