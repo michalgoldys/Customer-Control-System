@@ -36,7 +36,7 @@
 <tbody data-th-each="ct : ${selectedCustomerById}">
 
 <tr>
-<th>Dane Firmy</th>
+<th>*Dane Firmy*</th>
 <th></th>
 </tr>
 
@@ -52,7 +52,15 @@
 
 <tr>
 <th>*Dane Billingowe*</th>
-<th></th>
+<th><input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}" name="customerContractDetalisId" id ="customerContractDetalisId" /></th>
+</tr>
+
+<tr>
+<th>Faktura elektroniczna</th>
+<td>
+<input type="checkbox" data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
+<input type="hidden" name="_customerEinvoiceAgreement" data-th-value="${customerEinvoiceAgreement}"/>
+</td>
 </tr>
 
 <tr>
