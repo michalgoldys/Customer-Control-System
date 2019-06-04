@@ -20,6 +20,9 @@ public class CustomerDatabaseService {
 		@Autowired
 		CustomerService customerService;
 		
+		@Autowired
+		CustomerContractDetalisRepository customerContractDetalisRepository;
+		
 		@Transactional
 		public void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, 
 				CustomerContractDetalis customerContractDetalis, String customerSelectionId)
@@ -80,6 +83,29 @@ public class CustomerDatabaseService {
 			customer.setCustomerContractDetalis(customerContractDetalis);
 			
 			customerRepository.save(customer);
+		}
+		
+		@Transactional
+		public void updatingCustomerBilling(CustomerContractDetalis customerContractDetalis)
+		{
+			Long selection = customerContractDetalis.getCustomerContractDetalisId();
+		
+			System.out.println("Selection Value: " + selection);
+				
+			CustomerContractDetalis customerBillingDetalis = customerContractDetalisRepository.findBycustomerContractDetalisId(selection);
+			
+			customerBillingDetalis.setCustomerPlFee(customerContractDetalis.getCustomerPlFee());
+			customerBillingDetalis.setCustomerPlSubstripctions(customerContractDetalis.getCustomerPlSubstripctions());
+			
+			customerBillingDetalis.setCustomerPlUeFee(customerContractDetalis.getCustomerPlUeFee());
+			customerBillingDetalis.setCustomerPlUeSubstripctions(customerContractDetalis.getCustomerPlUeSubstripctions());
+			
+			customerBillingDetalis.setCustomerRuFee(customerContractDetalis.getCustomerRuFee());
+			customerBillingDetalis.setCustomerRuSubscriptions(customerContractDetalis.getCustomerRuSubscriptions());
+			
+			customerBillingDetalis.setCustomerEinvoiceAgreement(customerContractDetalis.getCustomerEinvoiceAgreement());
+			
+			customerContractDetalisRepository.save(customerBillingDetalis);
 		}
 		
 		@Transactional
