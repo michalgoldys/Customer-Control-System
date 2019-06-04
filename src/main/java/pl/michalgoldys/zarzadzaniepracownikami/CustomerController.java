@@ -90,7 +90,7 @@ public class CustomerController {
 		}
 		
 		@PostMapping(value="/customer/showingCustomers/customerDetalis")
-		private String settingCustomerDetalis(@RequestParam("id") String customerSelectionId, 
+		private String updatingCustomerDetalis(@RequestParam("id") String customerSelectionId, 
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, 
 				Model model
 				) {
@@ -104,9 +104,6 @@ public class CustomerController {
 		private String showingCustomersBillings(Model model
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
-			
-			model.addAttribute("customer", customerList);
-			
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
 			
 			for(Customer customer : customerList)
@@ -120,6 +117,7 @@ public class CustomerController {
 			}
 			
 			model.addAttribute("subSumAtr", customerSubstripctionsSum);
+			model.addAttribute("customer", customerList);
 			
 			return "showingCustomersBillings";
 		}
@@ -130,7 +128,18 @@ public class CustomerController {
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
 			model.addAttribute("selectedCustomerById", customerList);
 			
+			model.addAttribute("selectedCustomerId", customerSelectionId);
+			
 			return "customerBillingDetalis";
 		}
 		
+		@PostMapping(value="/customer/showingCustomers/customerBillingDetalis")
+		private String updatingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId,
+				CustomerContractDetalis customerContractDetalis
+				) {
+			
+			customerDatabaseService.updatingCustomerBilling(customerContractDetalis);
+			
+			return "redirect:/customer/showingCustomersBillings";
+		}
 }
