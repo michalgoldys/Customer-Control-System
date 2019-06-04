@@ -27,12 +27,12 @@
 <th>Przychod</th>
 <th>Bilans</th>
 
-
 </tr>
 </thead>
 <tbody>
-<tr data-th-each="ct : ${customer}">
-<td data-th-text="${ctStat.count}"></td>
+
+<tr data-th-each="ct, iterStat : ${customer}">
+<td data-th-text="${iterStat.count}"></td>
 <td data-th-text="${ct.customerContractId}"></td>
 <td><a data-th-href="@{/customer/showingCustomers/customerBillingDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
 <td data-th-text="${ct.customerName}"></td>
@@ -45,13 +45,11 @@
 <td data-th-text="${ct.CustomerContractDetalis.customerPlFee}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerPlUeFee}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerRuFee}"></td>
-<td data-th-each="subSumAtr : ${subSumAtr}" 
-	data-th-text="${subSumAtr}"></td>
+<td data-th-text="${subSumAtr[__${iterStat.index}__]}"></td>
 <td>Abonamentow</td>
 <td>Przychod</td>
-
-
 </tr>
+
 <a href="/customer/customerMenu/" data-th-href="@{/customer/customerMenu/}"><button type ="button">Powrot</button></a>
 </tbody>
 </table>
