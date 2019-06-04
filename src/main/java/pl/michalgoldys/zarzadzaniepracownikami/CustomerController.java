@@ -126,8 +126,8 @@ public class CustomerController {
 		private String showingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId, Model model)
 		{
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
-			model.addAttribute("selectedCustomerById", customerList);
 			
+			model.addAttribute("selectedCustomerById", customerList);	
 			model.addAttribute("selectedCustomerId", customerSelectionId);
 			
 			return "customerBillingDetalis";
