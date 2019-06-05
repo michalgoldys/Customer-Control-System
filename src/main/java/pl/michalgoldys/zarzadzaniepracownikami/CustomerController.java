@@ -1,6 +1,5 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CustomerController {
 
 		@Autowired 
-		private CustomerDatabaseService customerDatabaseService;
+		CustomerDatabaseService customerDatabaseService;
+		
+		@Autowired
+		CustomerService customerSerivce;
 		
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
@@ -70,21 +72,8 @@ public class CustomerController {
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
-			model.addAttribute("selectedCustomerById", customerList);
-			
-			boolean isDisabled = false;
-			
-			for(Customer customer : customerList) {
-			
-				if(customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0 
-						&& customer.getCustomerDeactivationDate() != null && customer.getCustomerDeactivationDate().length() > 0){
-					
-					isDisabled = true;
-				}
-			}
-			
-			model.addAttribute("isDisabled", isDisabled);
-			
+			model.addAttribute("selectedCustomerById", customerList);			
+			model.addAttribute("isDisabled", customerSerivce.isActivationCheckboxDisabled(customerList));
 			
 			return "customerDetalis";
 		}
@@ -103,29 +92,8 @@ public class CustomerController {
 		private String showingCustomersBillings(Model model
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
-			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
 			
-			for(Customer customer : customerList)
-			{
-				int subSum = 0;
-				
-					if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null)
-					{
-						subSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions();
-					}
-					if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
-					{
-						subSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
-					}
-					if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
-					{
-						subSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions();
-					}
-				
-				customerSubstripctionsSum.add(subSum);
-			}
-			
-			model.addAttribute("subSumAtr", customerSubstripctionsSum);
+			model.addAttribute("subSumAtr", customerSerivce.sumingSubscirptionPlUeRu(customerList));
 			model.addAttribute("customer", customerList);
 			
 			return "showingCustomersBillings";
