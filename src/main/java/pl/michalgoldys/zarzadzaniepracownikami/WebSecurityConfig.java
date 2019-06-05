@@ -18,9 +18,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        http
 	        	.csrf().disable()
 	            .authorizeRequests()
-	            	.antMatchers("/customer/**").hasRole("USER")
+	            	.antMatchers("/customer").hasRole("USER")
+	            	.antMatchers("/customer/customerMenu").hasRole("USER")
+	            	.antMatchers("/customer/showingCustomers").hasRole("USER")
+	            	.antMatchers("/customer/showingCustomersBilling").hasRole("USER")
+	            	
+	            	.antMatchers("/customer/showingCustomersBillings/customerBillingDetalis").hasRole("ADMIN")
+	            	.antMatchers("/customer/showingCustomers/customerDetalis").hasRole("ADMIN")
+	            	.antMatchers("/customer/addingCustomer").hasRole("ADMIN")
+	            	
 	                .antMatchers("/login*").permitAll()
+	                
 	                .and()
+	                
 	                .formLogin()
 	                .loginPage("/login.html")
 	                .loginProcessingUrl("/doLogin")
@@ -35,8 +45,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        auth
 	          .inMemoryAuthentication()
 	          .withUser("user")
-	            .password(passwordEncoder().encode("1234"))
-	            .roles("USER");
+	            .password(passwordEncoder().encode("user1234"))
+	            .roles("USER")
+	          .and()
+	          .withUser("admin")
+	          	.password(passwordEncoder().encode("admin1234"))
+	          	.roles("ADMIN");
 	    }
 	 
 	 @Bean
