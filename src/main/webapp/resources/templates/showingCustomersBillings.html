@@ -34,7 +34,7 @@
 <tr data-th-each="ct, iterStat : ${customer}">
 <td data-th-text="${iterStat.count}"></td>
 <td data-th-text="${ct.customerContractId}"></td>
-<td><a data-th-href="@{/customer/showingCustomers/customerBillingDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
+<td><a data-th-href="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
 <td data-th-text="${ct.customerName}"></td>
 <td data-th-text="${ct.customerNip}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>  
