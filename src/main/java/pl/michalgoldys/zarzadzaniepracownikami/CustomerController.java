@@ -91,11 +91,10 @@ public class CustomerController {
 		
 		@PostMapping(value="/customer/showingCustomers/customerDetalis")
 		private String updatingCustomerDetalis(@RequestParam("id") String customerSelectionId, 
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis, 
-				Model model
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, Model model
 				) {
 						
-			customerDatabaseService.updatingCustomer(customer, customerAdress, customerContact, customerContractDetalis, customerSelectionId);
+			customerDatabaseService.updatingCustomer(customer, customerAdress, customerContact, customerSelectionId);
 			
 			return "redirect:/customer/showingCustomers";
 		}
@@ -108,10 +107,20 @@ public class CustomerController {
 			
 			for(Customer customer : customerList)
 			{
-				int subSum = 
-						(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() + 
-						customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() + 
-						customer.getCustomerContractDetalis().getCustomerRuSubscriptions());
+				int subSum = 0;
+				
+					if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null)
+					{
+						subSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions();
+					}
+					if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
+					{
+						subSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
+					}
+					if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
+					{
+						subSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions();
+					}
 				
 				customerSubstripctionsSum.add(subSum);
 			}
@@ -122,7 +131,7 @@ public class CustomerController {
 			return "showingCustomersBillings";
 		}
 		
-		@GetMapping(value="/customer/showingCustomers/customerBillingDetalis")
+		@GetMapping(value="/customer/showingCustomersBillings/customerBillingDetalis")
 		private String showingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId, Model model)
 		{
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
@@ -133,7 +142,7 @@ public class CustomerController {
 			return "customerBillingDetalis";
 		}
 		
-		@PostMapping(value="/customer/showingCustomers/customerBillingDetalis")
+		@PostMapping(value="/customer/showingCustomersBillings/customerBillingDetalis")
 		private String updatingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId,
 				CustomerContractDetalis customerContractDetalis
 				) {
