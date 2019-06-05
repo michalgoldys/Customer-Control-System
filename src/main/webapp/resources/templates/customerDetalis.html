@@ -128,35 +128,6 @@
 </tr>
 
 <tr>
-<th>*Dane Kontraktu*</th>
-<th><input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}" name="customerContractDetalisId" id="customerContractDetalisId"/></th>
-</tr>
-
-<tr>
-<th>Faktura elektroniczna</th>
-<td>
-<input type="checkbox" data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
-<input type="hidden" name="_customerEinvoiceAgreement" data-th-value="${customerEinvoiceAgreement}"/>
-</td>
-</tr>
-
-<tr>
-<th>Abonamenty PL</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/>
-</td>
-</tr>
-
-<tr>
-<th>Abonamenty UE</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlUeSubstripctions}" name="customerPlUeSubstripctions" id="customerPlUeSubstripctions"/></td>
-</tr>
-
-<tr>
-<th>Abonamenty RU</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerRuSubscriptions}" name="customerRuSubscriptions" id="customerRuSubscriptions"/></td>
-</tr>
-
-<tr>
 <th></th>
 <th><a href="/customer/showingCustomers/" data-th-href="@{/customer/showingCustomers/}"><button type ="button">Anuluj</button></a>
 <button type="submit" name="submit" id="submit">Zapisz</button></th>
