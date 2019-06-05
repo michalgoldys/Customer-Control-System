@@ -24,8 +24,7 @@ public class CustomerDatabaseService {
 		CustomerContractDetalisRepository customerContractDetalisRepository;
 		
 		@Transactional
-		public void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, 
-				CustomerContractDetalis customerContractDetalis, String customerSelectionId)
+		public void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, String customerSelectionId)
 		{
 			Customer updatingCustomer = new Customer();
 			
@@ -60,9 +59,6 @@ public class CustomerDatabaseService {
 			updatingCustomer.setCustomerContact(customerContactList);
 			customerContact.setCustomer(updatingCustomer);
 			
-			updatingCustomer.setCustomerContractDetalis(customerContractDetalis);
-			customerContractDetalis.setCustomer(updatingCustomer);
-			
 			customerRepository.save(updatingCustomer);
 		}
 		
@@ -89,8 +85,6 @@ public class CustomerDatabaseService {
 		public void updatingCustomerBilling(CustomerContractDetalis customerContractDetalis)
 		{
 			Long selection = customerContractDetalis.getCustomerContractDetalisId();
-		
-			System.out.println("Selection Value: " + selection);
 				
 			CustomerContractDetalis customerBillingDetalis = customerContractDetalisRepository.findBycustomerContractDetalisId(selection);
 			
