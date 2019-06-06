@@ -38,9 +38,7 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/addingCustomer")
 		private String addingCustomersForm(
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis,
-				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto, CustomerContactDTO customerContactDto, 
-				CustomerContractDetalisDTO customerContractDetalisDto
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
 				) {
 			 
 			return "addingCustomer";
@@ -80,9 +78,17 @@ public class CustomerController {
 		
 		@PostMapping(value="/customer/showingCustomers/customerDetalis")
 		private String updatingCustomerDetalis(@RequestParam("id") String customerSelectionId, 
+				@Valid CustomerDTO customerDto, BindingResult customerBinding,
+				@Valid CustomerAdressDTO customerAdressDto, BindingResult customerBinding1,
+				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
 				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, Model model
 				) {
-						
+			
+			if (customerBinding.hasErrors()) 
+			{
+				return "customerDetalis";
+			}
+			
 			customerDatabaseService.updatingCustomer(customer, customerAdress, customerContact, customerSelectionId);
 			
 			return "redirect:/customer/showingCustomers";
@@ -95,7 +101,7 @@ public class CustomerController {
 			
 			model.addAttribute("subSumAtr", customerSerivce.sumingSubscirptionPlUeRu(customerList));
 			model.addAttribute("incomeSumValue", customerSerivce.sumOfIncomeBySubscriptions(customerList));
-			model.addAttribute("sumOfCosts", customerSerivce.sumOfCosts(customerList));
+			model.addAttribute("sumOfCosts", customerSerivce.sumOfCosts(customerList));			
 			model.addAttribute("customer", customerList);
 			
 			return "showingCustomersBillings";
