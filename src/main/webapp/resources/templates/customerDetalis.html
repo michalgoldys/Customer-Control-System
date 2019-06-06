@@ -17,8 +17,6 @@
 <th></th>
 </tr>
 
-
-
 <tr>
 <th>ID</th>
 <td data-th-text="*{ct.customerId}"></td>
@@ -26,12 +24,14 @@
 
 <tr>
 <th>Numer Umowy</th>
-<td data-th-text="*{ct.customerContractId}"></td>
+<td data-th-text="*{ct.customerContractId}">
+</td>
 </tr>
 
 <tr>
 <th>Numer PDF</th>
-<td data-th-text="*{selectedCustomerId}"></td>
+<td data-th-text="*{selectedCustomerId}">
+</td>
 </tr>
 
 </thead>
@@ -44,7 +44,9 @@
 
 <tr>
 <th>Nazwa Firmy</th>
-<td><input type="text" data-th-value="*{ct.customerName}" name="customerName" id="customerName"/></td>
+<td><input type="text" data-th-value="*{ct.customerName}" name="customerName" id="customerName"/>
+<input type="hidden" data-th-value="*{ct.customerContractId}" name="customerContractId" id="customerContractId"/>
+<input type="hidden" data-th-value="*{ct.customerContractPdfId}" name="customerContractPdfId" id="customerContractPdfId"/></td>
 </tr>
 
 <tr>
