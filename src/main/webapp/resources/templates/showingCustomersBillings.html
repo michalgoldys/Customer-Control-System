@@ -25,7 +25,7 @@
 <th>Stawka RU</th>
 <th>Suma Abonamentow</th>
 <th>Przychod</th>
-<th>Bilans</th>
+<th>Koszty</th>
 
 </tr>
 </thead>
@@ -46,8 +46,8 @@
 <td data-th-text="${ct.CustomerContractDetalis.customerPlUeFee}"></td>
 <td data-th-text="${ct.CustomerContractDetalis.customerRuFee}"></td>
 <td data-th-text="${subSumAtr[__${iterStat.index}__]}"></td>
-<td>Abonamentow</td>
-<td>Przychod</td>
+<td data-th-text="${incomeSumValue[__${iterStat.index}__]}"></td>
+<td data-th-text="${sumOfCosts[__${iterStat.index}__]}"></td>
 </tr>
 
 <a href="/customer/customerMenu/" data-th-href="@{/customer/customerMenu/}"><button type ="button">Powrot</button></a>
