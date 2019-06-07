@@ -1,25 +1,32 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 public class CustomerContractDetalisDTO {
 	
-	@Pattern(regexp="([0-9]){0,16}")
+	@Max(1000)
+	@Min(0)
 	private Integer customerPlSubstripctions;
 	
-	@Pattern(regexp="([0-9]){0,16}")
+	@Max(1000)
+	@Min(0)
 	private Integer customerPlUeSubstripctions;
 	
-	@Pattern(regexp="([0-9]){0,16}")
+	@Max(1000)
+	@Min(0)
 	private Integer customerRuSubscriptions;
-	
-	@Pattern(regexp="([0-9]){0,16}")
+
+	@Max(1000)
+	@Min(0)
 	private Integer customerPlFee;
 	
-	@Pattern(regexp="([0-9]){0,16}")
+	@Max(1000)
+	@Min(0)
 	private Integer customerPlUeFee;
 	
-	@Pattern(regexp="([0-9]){0,16}")
+	@Max(1000)
+	@Min(0)
 	private Integer customerRuFee;
 
 	public Integer getCustomerPlSubstripctions() {
