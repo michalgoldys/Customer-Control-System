@@ -38,7 +38,9 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/addingCustomer")
 		private String addingCustomersForm(
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis,
+				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto, CustomerContactDTO customerContactDto, 
+				CustomerContractDetalisDTO customerContractDetalisDto
 				) {
 			 
 			return "addingCustomer";
@@ -120,8 +122,13 @@ public class CustomerController {
 		
 		@PostMapping(value="/customer/showingCustomersBillings/customerBillingDetalis")
 		private String updatingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId,
+				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult bindingResult,
 				CustomerContractDetalis customerContractDetalis
 				) {
+			if(bindingResult.hasErrors())
+			{
+				return "customerBillingDetalis";
+			}
 			
 			customerDatabaseService.updatingCustomerBilling(customerContractDetalis);
 			
