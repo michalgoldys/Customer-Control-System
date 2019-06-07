@@ -99,20 +99,21 @@ public class CustomerService {
 			{
 				double costSum = 0;
 				
-				if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0 && 
-						customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null)
+				if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null &&
+						customer.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0)
+						
 				{
 					costSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * serverCost;
 					costSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * telematicCardCost;
 				}
-				if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0 && 
-						customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
+				if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null &&
+						customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0)
 				{
 					costSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * serverCost;
 					costSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * telematicCardCost;
 				}
-				if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0 && 
-						customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
+				if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null &&
+						customer.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0)
 				{
 					costSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * serverCost;
 					costSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * telematicCardCost;
