@@ -1,19 +1,23 @@
+<!DOCTYPE html>
+
+
 <html xmlns:th="http://www.thymeleaf.org">
+<link data-th-href="@{/css/blueTable.css}" rel="stylesheet" />
 <head></head>
-<body>
-   <h1>Login</h1>
+<body align="center">
+   <h1>Logowanie</h1>
    <form name='f' action='doLogin' method='POST'>
-      <table>
+      <table class="blueTable" align="center">
          <tr>
-            <td>User:</td>
+            <td>Uzytkownik:</td>
             <td><input type='text' name='username' value=''></td>
          </tr>
          <tr>
-            <td>Password:</td>
+            <td>Haslo:</td>
             <td><input type='password' name='password' /></td>
          </tr>
          <tr>
-            <td><input name="submit" type="submit" value="submit" />
+            <td><input name="submit" type="submit" value="Zaloguj" />
 			<input type="hidden" data-th-name="${_csrf.parameterName}" data-th-value="${_csrf.token}"/></td>
          </tr>
       </table>
