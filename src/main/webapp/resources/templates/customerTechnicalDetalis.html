@@ -55,6 +55,16 @@
 <th></th>
 </tr>
 
+<tr data-th-each="ctc : ${ct?.customerTechincalPanel}">
+<th>Data Wpisu</th>
+<th data-th-text="*{ctc?.customerTechnicalIssueOccourDate}"></th>
+</tr>
+
+<tr data-th-each="ctc : ${ct?.customerTechincalPanel}">
+<th>Opis</th>
+<th data-th-text="*{ctc?.customerTechnicalIssueDescribtion}"></th>
+</tr>
+
 <tr>
 <th></th>
 <th><a data-th-href="@{/customer/customerTechnicalPanel/}"><button type ="button">Anuluj</button></a>
