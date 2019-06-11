@@ -134,4 +134,25 @@ public class CustomerController {
 			
 			return "redirect:/customer/showingCustomersBillings";
 		}
+	
+		@GetMapping(value="/customer/customerTechnicalPanel")
+		private String showingCustomerTechnicalPanel(Model model
+				) {
+			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
+				
+			model.addAttribute("customer", customerList);
+			
+			return "customerTechnicalPanel";
+		}
+		
+		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis")
+		private String showingCustomerTechnicalDetalis(@RequestParam("id") String customerSelectionId, Model model
+				) {
+			
+			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
+				
+			model.addAttribute("selectedCustomerById", customerList);
+			
+			return "customerTechnicalDetalis";
+		}
 }
