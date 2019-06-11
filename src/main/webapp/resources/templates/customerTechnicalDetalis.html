@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<link data-th-href="@{/css/comicGreenShowingCustomers.css}" rel="stylesheet" />
+<head>
+    <title>Wyswietlanie Kontrahentow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <body>
+    <form action="#" data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${selectedCustomerId})}" data-th-method="POST" role="form">
+    <div align="center">
+    <table class="comicGreenShowingCustomers">
+    
+<thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
+
+<tr>
+<th>*Wlasciwosci Obiektu*</th>
+<th></th>
+</tr>
+
+<tr>
+<th>ID</th>
+<td data-th-text="*{ct.customerId}"></td>
+</tr>
+
+<tr>
+<th>Numer Umowy</th>
+<td data-th-text="*{ct.customerContractId}"></td>
+</tr>
+
+<tr>
+<th>Numer PDF</th>
+<td data-th-text="*{selectedCustomerId}"></td>
+</tr>
+
+</thead>
+<tbody data-th-each="ct : ${selectedCustomerById}">
+
+<tr>
+<th>*Dane Firmy*</th>
+<th></th>
+</tr>
+
+<tr>
+<th>Nazwa Firmy</th>
+<td data-th-text=*{ct.customerName}></td>
+</tr>
+
+<tr>
+<th>NIP</th>
+<td data-th-text="*{ct.customerNip}"></td>
+</tr>
+
+<tr>
+<th>*Zgloszenia*</th>
+<th></th>
+</tr>
+
+<tr>
+<th></th>
+<th><a data-th-href="@{/customer/customerTechnicalPanel/}"><button type ="button">Anuluj</button></a>
+<button type="submit" name="submit" id="submit">Zapisz</button></th>
+</tr>
+
+</tbody>
+</table>
+      </div>
+      </form>
+	</body>
