@@ -55,6 +55,10 @@ public class Customer {
 	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
 	private CustomerContractDetalis customerContractDetalis;
 
+	@Autowired
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
+	private List<CustomerTechnicalPanel> customerTechnicalPanel;
+	
 	protected Customer () {
 		
 	}
