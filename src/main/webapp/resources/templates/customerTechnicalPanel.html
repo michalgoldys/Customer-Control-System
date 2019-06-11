@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<link data-th-href="@{/css/comicGreenShowingCustomers.css}" rel="stylesheet" />
+  <head>
+    <title>Wyswietlanie Kontrahentow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <body>
+    <div align="center">
+    <table class="comicGreenShowingCustomers">
+<thead>
+<tr>
+<th>LP</th>
+<th>Numer Umowy</th>
+<th>Numer PDF</th>
+<th>Nazwa</th>
+<th>NIP</th>
+<th>Miasto</th>
+<th>Ulica</th>
+<th>Kod Pocztowy</th>
+<th>Data Ostatniego Zgloszenia</th>
+<th>Ilosc Zgloszen</th>
+<th>Aktywny</th>
+</tr>
+</thead>
+<tbody>
+<tr data-th-each="ct : ${customer}">
+<td data-th-text="${ctStat.count}"></td>
+<td data-th-text="${ct.customerContractId}"></td>
+<td><a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
+<td data-th-text="${ct.customerName}"></td>
+<td data-th-text="${ct.customerNip}"></td>
+<td data-th-text="${ct.CustomerAdress.customerCity}"></td>
+<td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
+<td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
+<td></td>
+<td></td>
+<td data-th-text="${ct.customerIsActive}"></td>
+</tr>
+<a href="/customer/customerMenu/" data-th-href="@{/customer/customerMenu/}"><button type ="button">Powrot</button></a>
+</tbody>
+</table>
+      </div>
+	</body>
