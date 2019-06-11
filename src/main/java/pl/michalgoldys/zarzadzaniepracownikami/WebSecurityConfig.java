@@ -16,7 +16,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 @Override
 	 protected void configure(final HttpSecurity http) throws Exception {
 	        http
-	        	.csrf().disable()
 	            .authorizeRequests()
 	            	.antMatchers("/customer").hasRole("USER")
 	            	.antMatchers("/customer/customerMenu").hasRole("USER")
@@ -39,7 +38,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                .loginPage("/login.html")
 	                .loginProcessingUrl("/doLogin")
 	                .defaultSuccessUrl("/customer/customerMenu", true)
-	        		.failureUrl("/login.html?error=true");
+	        		.failureUrl("/login.html?error=true")
+	        
+	        		.and()
+	        		
+	        		.httpBasic();
 
 	 }
 	 
