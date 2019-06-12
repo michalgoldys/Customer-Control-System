@@ -146,12 +146,24 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis")
-		private String showingCustomerTechnicalDetalis(@RequestParam("id") String customerSelectionId, Model model
+		private String showingCustomerTechnicalDetalis(@RequestParam("id") String customerSelectionId, Model model, 
+				CustomerTechnicalPanel customerTechnicalPanel
 				) {
 			
-			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
-				
-			model.addAttribute("selectedCustomerById", customerList);
+			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			
+			System.out.println(selectedCustomer.getCustomerTechnicalPanel().isEmpty());
+			
+			if(selectedCustomer.getCustomerTechnicalPanel().isEmpty())
+			{
+				customerDatabaseService.creatingCustomerTechnicalPanelEntity(customerSelectionId, selectedCustomer);
+			}
+			
+			System.out.println(selectedCustomer.getCustomerTechnicalPanel().isEmpty());
+			
+			List<Customer> selectedCustomerUpdate = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
+			
+			model.addAttribute("selectedCustomerById", selectedCustomerUpdate);
 			
 			return "customerTechnicalDetalis";
 		}
