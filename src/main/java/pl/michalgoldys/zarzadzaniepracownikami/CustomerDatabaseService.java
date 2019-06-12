@@ -103,6 +103,21 @@ public class CustomerDatabaseService {
 		}
 		
 		@Transactional
+		public void creatingCustomerTechnicalPanelEntity(String customerSelectionId, Customer selectedCustomer)
+		{
+			CustomerTechnicalPanel customerTechnicalPanel = new CustomerTechnicalPanel();
+			
+			customerTechnicalPanel.setCustomer(selectedCustomer);
+			
+			List<CustomerTechnicalPanel> customerTechnicalPanelList = new ArrayList<CustomerTechnicalPanel>();
+			customerTechnicalPanelList.add(customerTechnicalPanel);
+			
+			selectedCustomer.setCustomerTechnicalPanel(customerTechnicalPanelList);
+			
+			customerRepository.save(selectedCustomer);
+		}
+		
+		@Transactional
 		public List<Customer> findAllCustomers()
 		{
 			return(customerRepository.findAll());
