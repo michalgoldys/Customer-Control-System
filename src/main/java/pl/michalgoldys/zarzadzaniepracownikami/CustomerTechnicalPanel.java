@@ -55,4 +55,12 @@ public class CustomerTechnicalPanel {
 		public void setCustomerTechnicalIssueDescribtion(String customerTechnicalIssueDescribtion) {
 			this.customerTechnicalIssueDescribtion = customerTechnicalIssueDescribtion;
 		}
+
+		public Customer getCustomer() {
+			return customer;
+		}
+
+		public void setCustomer(Customer customer) {
+			this.customer = customer;
+		}
 }
