@@ -55,14 +55,18 @@
 <th></th>
 </tr>
 
-<tr data-th-each="ctc : ${ct?.customerTechincalPanel}">
+<tr>
 <th>Data Wpisu</th>
-<th data-th-text="*{ctc?.customerTechnicalIssueOccourDate}"></th>
+<th:block data-th-each="ctc : ${CustomerTechincalPanel}">
+<th data-th-text="*{ctc.customerTechnicalIssueOccourDate}">Brak Danych</th>
+</th:block>
 </tr>
 
-<tr data-th-each="ctc : ${ct?.customerTechincalPanel}">
+<tr>
 <th>Opis</th>
-<th data-th-text="*{ctc?.customerTechnicalIssueDescribtion}"></th>
+<th:block data-th-each="ctc : ${CustomerTechincalPanel}">
+<th data-th-text="*{ctc.customerTechnicalIssueDescribtion}"></th>
+</th:block>
 </tr>
 
 <tr>
