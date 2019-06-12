@@ -154,4 +154,12 @@ public class Customer {
 	public void setCustomerIsActive(Boolean customerIsActive) {
 		this.customerIsActive = customerIsActive;
 	}
+
+	public List<CustomerTechnicalPanel> getCustomerTechnicalPanel() {
+		return customerTechnicalPanel;
+	}
+
+	public void setCustomerTechnicalPanel(List<CustomerTechnicalPanel> customerTechnicalPanel) {
+		this.customerTechnicalPanel = customerTechnicalPanel;
+	}
 }
