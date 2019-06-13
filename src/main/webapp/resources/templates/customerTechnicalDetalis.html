@@ -52,27 +52,37 @@
 
 <tr>
 <th>*Zgloszenia*</th>
-<th></th>
+<th>
+<span data-th-if="${isEmpty == true}">BRAK WPISOW</span>
+</th>
 </tr>
 
-<tr>
+<tr data-th-if="${isEmpty == false}">
 <th>Data Wpisu</th>
-<th:block data-th-each="ctc : ${CustomerTechincalPanel}">
-<th data-th-text="*{ctc.customerTechnicalIssueOccourDate}">Brak Danych</th>
-</th:block>
+<th>
+<div data-th-each="ctc : ${CustomerTechincalPanel}">
+<span data-th-text="*{ctc.customerTechnicalIssueOccourDate}"></span> 
+</div>
+</th>
 </tr>
 
-<tr>
+<tr data-th-if="${isEmpty == false}">
 <th>Opis</th>
-<th:block data-th-each="ctc : ${CustomerTechincalPanel}">
-<th data-th-text="*{ctc.customerTechnicalIssueDescribtion}"></th>
-</th:block>
+<th>
+<div data-th-each="ctc : ${CustomerTechincalPanel}">
+<span data-th-text="*{ctc.customerTechnicalIssueDescribtion}"></span>
+</div>
+</th>
 </tr>
 
 <tr>
 <th></th>
-<th><a data-th-href="@{/customer/customerTechnicalPanel/}"><button type ="button">Anuluj</button></a>
-<button type="submit" name="submit" id="submit">Zapisz</button></th>
+<th><a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/(id=${customerSelectionId})/addingTechnicalEvent}">Dodaj Wpis</a></th>
+</tr>
+
+<tr>
+<th></th>
+<th><a data-th-href="@{/customer/customerTechnicalPanel/}"><button type ="button">Powrot</button></a></th>
 </tr>
 
 </tbody>
