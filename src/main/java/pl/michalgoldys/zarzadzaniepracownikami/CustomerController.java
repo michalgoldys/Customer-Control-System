@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -146,25 +147,23 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis")
-		private String showingCustomerTechnicalDetalis(@RequestParam("id") String customerSelectionId, Model model, 
-				CustomerTechnicalPanel customerTechnicalPanel
+		private String showingCustomerTechnicalDetalis(@RequestParam("id") String customerSelectionId, Model model
 				) {
 			
 			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
 			
-			System.out.println(selectedCustomer.getCustomerTechnicalPanel().isEmpty());
+			boolean isEmpty = selectedCustomer.getCustomerTechnicalPanel().isEmpty();
 			
-			if(selectedCustomer.getCustomerTechnicalPanel().isEmpty())
-			{
-				customerDatabaseService.creatingCustomerTechnicalPanelEntity(customerSelectionId, selectedCustomer);
-			}
-			
-			System.out.println(selectedCustomer.getCustomerTechnicalPanel().isEmpty());
-			
-			List<Customer> selectedCustomerUpdate = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
-			
-			model.addAttribute("selectedCustomerById", selectedCustomerUpdate);
+			model.addAttribute("isEmpty", isEmpty);
+			model.addAttribute("selectedCustomerById", selectedCustomer);
+			model.addAttribute("customerSelectionId", customerSelectionId);
 			
 			return "customerTechnicalDetalis";
+		}
+		
+		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent")
+		private String addingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId)
+		{
+			return "addingTechnicalEvent";
 		}
 }
