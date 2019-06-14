@@ -162,8 +162,12 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent")
-		private String addingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId)
+		private String addingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
+				CustomerTechnicalPanel customerTechnicalPanel, Model model)
 		{
+			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			model.addAttribute("selectedCustomerById", selectedCustomer);
+			
 			return "addingTechnicalEvent";
 		}
 }
