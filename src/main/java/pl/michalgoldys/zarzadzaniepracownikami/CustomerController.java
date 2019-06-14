@@ -166,6 +166,8 @@ public class CustomerController {
 				CustomerTechnicalPanel customerTechnicalPanel, Model model)
 		{
 			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			
+			model.addAttribute("customerSelectionId", customerSelectionId);
 			model.addAttribute("selectedCustomerById", selectedCustomer);
 			
 			return "addingTechnicalEvent";
