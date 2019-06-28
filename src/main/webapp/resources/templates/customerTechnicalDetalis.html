@@ -60,7 +60,7 @@
 <tr data-th-if="${isEmpty == false}">
 <th>Data Wpisu</th>
 <th>
-<div data-th-each="ctc : ${CustomerTechincalPanel}">
+<div data-th-each="ctc : ${ct.CustomerTechincalPanel}">
 <span data-th-text="*{ctc.customerTechnicalIssueOccourDate}"></span> 
 </div>
 </th>
@@ -69,7 +69,7 @@
 <tr data-th-if="${isEmpty == false}">
 <th>Opis</th>
 <th>
-<div data-th-each="ctc : ${CustomerTechincalPanel}">
+<div data-th-each="ctc : ${ct.CustomerTechincalPanel}">
 <span data-th-text="*{ctc.customerTechnicalIssueDescribtion}"></span>
 </div>
 </th>
