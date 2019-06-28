@@ -162,7 +162,7 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent")
-		private String addingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
+		private String showingFormTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
 				CustomerTechnicalPanel customerTechnicalPanel, Model model)
 		{
 			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
@@ -171,5 +171,19 @@ public class CustomerController {
 			model.addAttribute("selectedCustomerById", selectedCustomer);
 			
 			return "addingTechnicalEvent";
+		}
+		
+		@PostMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent")
+		private String creatingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
+				CustomerTechnicalPanel customerTechnicalPanel)
+		{
+			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			
+			if(selectedCustomer.getCustomerTechnicalPanel().isEmpty())
+			{
+				customerDatabaseService.creatingCustomerTechnicalPanelEntity(selectedCustomer, customerTechnicalPanel);
+			}
+			
+			return"/customer/customerTechnicalPanel/customerTechnicalDetalis?id=customerSelectionId";
 		}
 }
