@@ -178,12 +178,9 @@ public class CustomerController {
 				CustomerTechnicalPanel customerTechnicalPanel)
 		{
 			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+
+			customerDatabaseService.creatingCustomerTechnicalPanelEntity(selectedCustomer, customerTechnicalPanel);
 			
-			if(selectedCustomer.getCustomerTechnicalPanel().isEmpty())
-			{
-				customerDatabaseService.creatingCustomerTechnicalPanelEntity(selectedCustomer, customerTechnicalPanel);
-			}
-			
-			return"/customer/customerTechnicalPanel/customerTechnicalDetalis?id=customerSelectionId";
+			return"/customer/customerTechnicalPanel";
 		}
 }
