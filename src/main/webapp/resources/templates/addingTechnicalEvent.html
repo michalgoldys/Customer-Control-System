@@ -36,12 +36,12 @@
     <tr>
     
 <th>Data Zgloszenia Problemu</th>
-<td><input type="text" data-th-value="*{customerTechnicalPanel.customerTechnicalIssueOccourDate}" name="customerTechnicalIssueOccourDate" id="customerTechnicalIssueOccourDate"/></td>
+<td><input type="date" maxlength="12" data-th-value="*{customerTechnicalPanel.customerTechnicalIssueOccourDate}" name="customerTechnicalIssueOccourDate" id="customerTechnicalIssueOccourDate"/></td>
 </tr>
 
 <tr>
 <th>Opis Problemu</th>
-<td><input type="text" data-th-value="*{customerTechnicalPanel.customerTechnicalIssueDescribtion}" name="customerTechnicalIssueDescribtion" id="customerTechnicalIssueDescribtion"/></td>
+<td><textarea rows="8" cols="50" data-th-field="*{customerTechnicalPanel.customerTechnicalIssueDescribtion}"></textarea></td>
 </tr>
 
 <tr>
