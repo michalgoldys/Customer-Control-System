@@ -57,23 +57,20 @@
 </th>
 </tr>
 
-<tr data-th-if="${isEmpty == false}">
+<th:block data-th-if="${isEmpty == false}">
+<th:block data-th-each="ctc : ${ct.CustomerTechnicalPanel}">
+<tr>
 <th>Data Wpisu</th>
-<th>
-<div data-th-each="ctc : ${ct.CustomerTechincalPanel}">
-<span data-th-text="*{ctc.customerTechnicalIssueOccourDate}"></span> 
-</div>
-</th>
+<th data-th-text="*{ctc.customerTechnicalIssueOccourDate}"></th>
 </tr>
 
-<tr data-th-if="${isEmpty == false}">
+<tr>
 <th>Opis</th>
-<th>
-<div data-th-each="ctc : ${ct.CustomerTechincalPanel}">
-<span data-th-text="*{ctc.customerTechnicalIssueDescribtion}"></span>
-</div>
+<th data-th-text="*{ctc.customerTechnicalIssueDescribtion}">
 </th>
 </tr>
+</th:block>
+</th:block>
 
 <tr>
 <th></th>
