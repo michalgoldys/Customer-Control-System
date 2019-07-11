@@ -24,8 +24,8 @@
 </tr>
 </thead>
 <tbody>
-<tr data-th-each="ct : ${customer}">
-<td data-th-text="${ctStat.count}"></td>
+<tr data-th-each="ct, iterStat : ${customer}">
+<td data-th-text="${iterStat.count}"></td>
 <td data-th-text="${ct.customerContractId}"></td>
 <td><a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
 <td data-th-text="${ct.customerName}"></td>
@@ -34,7 +34,7 @@
 <td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
 <td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
 <td></td>
-<td></td>
+<td data-th-text="${customerIssueCount[__${iterStat.index}__]}"></td>
 <td data-th-text="${ct.customerIsActive}"></td>
 </tr>
 <a href="/customer/customerMenu/" data-th-href="@{/customer/customerMenu/}"><button type ="button">Powrot</button></a>
