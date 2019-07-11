@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -140,7 +141,17 @@ public class CustomerController {
 		private String showingCustomerTechnicalPanel(Model model
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
-				
+			List<Integer> customerIssueCount = new ArrayList<Integer>();
+			//List<String> customerLastIssueDate = new ArrayList<String>();
+			
+			for(Customer customer : customerList)
+			{
+				customerIssueCount.add(customer.getCustomerTechnicalPanel().size());
+
+			}
+			
+			//model.addAttribute("customerLastIssueDate", customerLastIssueDate);
+			model.addAttribute("customerIssueCount", customerIssueCount);
 			model.addAttribute("customer", customerList);
 			
 			return "customerTechnicalPanel";
@@ -181,6 +192,6 @@ public class CustomerController {
 
 			customerDatabaseService.creatingCustomerTechnicalPanelEntity(selectedCustomer, customerTechnicalPanel);
 			
-			return"/customer/customerTechnicalPanel";
+			return"customerTechnicalPanel";
 		}
 }
