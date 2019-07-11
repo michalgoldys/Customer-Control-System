@@ -142,11 +142,20 @@ public class CustomerController {
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
 			List<Integer> customerIssueCount = new ArrayList<Integer>();
-			//List<String> customerLastIssueDate = new ArrayList<String>();
+			List<String> customerLastIssueDate = new ArrayList<String>();
 			
 			for(Customer customer : customerList)
 			{
 				customerIssueCount.add(customer.getCustomerTechnicalPanel().size());
+
+			}
+			
+			for(Customer customer : customerList)
+			{
+				for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
+				{
+					
+				}
 
 			}
 			
