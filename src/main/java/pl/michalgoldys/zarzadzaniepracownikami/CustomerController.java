@@ -145,6 +145,7 @@ public class CustomerController {
 			List<Integer> customerIssueCount = new ArrayList<Integer>();
 			List<CustomerTechnicalPanel> customerLastIssueDate = new ArrayList<CustomerTechnicalPanel>();
 			
+			List<CustomerTechnicalPanel> customerLastIssueDateToSort = new ArrayList<CustomerTechnicalPanel>();
 			List<CustomerTechnicalPanel> customerLastIssueDateSorted = new ArrayList<CustomerTechnicalPanel>(); 
 			
 			for(Customer customer : customerList)
@@ -154,6 +155,11 @@ public class CustomerController {
 			
 			for(Customer customer : customerList)
 			{				
+				
+				customerLastIssueDateToSort.addAll(customer.getCustomerTechnicalPanel());
+				
+				System.out.println(customerLastIssueDateToSort);
+				
 				for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
 				{
 					customerLastIssueDateSorted.add(customerIssueDate);
