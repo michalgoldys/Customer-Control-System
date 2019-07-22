@@ -155,10 +155,7 @@ public class CustomerController {
 			
 			for(Customer customer : customerList)
 			{				
-				
 				customerLastIssueDateToSort.addAll(customer.getCustomerTechnicalPanel());
-				
-				System.out.println(customerLastIssueDateToSort);
 				
 				for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
 				{
