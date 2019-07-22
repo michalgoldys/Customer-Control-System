@@ -1,6 +1,7 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -142,21 +143,37 @@ public class CustomerController {
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
 			List<Integer> customerIssueCount = new ArrayList<Integer>();
-			List<String> customerLastIssueDate = new ArrayList<String>();
+			List<CustomerTechnicalPanel> customerLastIssueDate = new ArrayList<CustomerTechnicalPanel>();
+			
+			List<CustomerTechnicalPanel> customerLastIssueDateSorted = new ArrayList<CustomerTechnicalPanel>(); 
 			
 			for(Customer customer : customerList)
 			{
 				customerIssueCount.add(customer.getCustomerTechnicalPanel().size());
-
 			}
 			
 			for(Customer customer : customerList)
-			{
+			{				
 				for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
 				{
-					
+					customerLastIssueDateSorted.add(customerIssueDate);
 				}
-
+			}
+			
+			Collections.sort(customerLastIssueDateSorted, new CustomerTechnicalPanelSortByCustomerTechnicalIssueOccourDate());
+			
+			System.out.println("Rozmiar posortowanej tablcy: " + customerLastIssueDateSorted.size());
+			
+			for(CustomerTechnicalPanel customerTechnicalPanelList : customerLastIssueDateSorted)
+			{
+				System.out.println("PosortowanaData: " + customerTechnicalPanelList.getCustomerTechnicalIssueOccourDate());
+				
+				//customerLastIssueDate.add(customerLastIssueDateSorted.get(0));
+			}
+			
+			for(CustomerTechnicalPanel customerTechnicalPanelList : customerLastIssueDate)
+			{
+				System.out.println("Data Ostatniego Zgloszenia: " + customerTechnicalPanelList.getCustomerTechnicalIssueOccourDate());
 			}
 			
 			//model.addAttribute("customerLastIssueDate", customerLastIssueDate);
