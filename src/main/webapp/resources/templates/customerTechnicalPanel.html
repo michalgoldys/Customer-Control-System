@@ -33,7 +33,7 @@
 <td data-th-text="${ct.CustomerAdress.customerCity}"></td>
 <td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
 <td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
-<td></td>
+<td data-th-text="${customerLastIssueDate[__${iterStat.index}__]}"></td>
 <td data-th-text="${customerIssueCount[__${iterStat.index}__]}"></td>
 <td data-th-text="${ct.customerIsActive}"></td>
 </tr>
