@@ -1,5 +1,7 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -142,11 +144,11 @@ public class CustomerController {
 		private String showingCustomerTechnicalPanel(Model model
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
-			List<Integer> customerIssueCount = new ArrayList<Integer>();
-			List<CustomerTechnicalPanel> customerLastIssueDate = new ArrayList<CustomerTechnicalPanel>();
-			
-			List<CustomerTechnicalPanel> customerLastIssueDateToSort = new ArrayList<CustomerTechnicalPanel>();
-			List<CustomerTechnicalPanel> customerLastIssueDateSorted = new ArrayList<CustomerTechnicalPanel>(); 
+			List<Integer> customerIssueCount = new ArrayList<Integer>();			
+			List<String> customerLastIssueDateToSort = new ArrayList<String>();
+			List<String> customerLastIssueDateSorted = new ArrayList<String>(); 
+						
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			
 			for(Customer customer : customerList)
 			{
@@ -155,30 +157,34 @@ public class CustomerController {
 			
 			for(Customer customer : customerList)
 			{				
-				customerLastIssueDateToSort.addAll(customer.getCustomerTechnicalPanel());
-				
-				for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
+				if(customer.getCustomerTechnicalPanel().size() > 0)
 				{
-					customerLastIssueDateSorted.add(customerIssueDate);
+					
+					for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
+					{
+					customerLastIssueDateToSort.add(customerIssueDate.getCustomerTechnicalIssueOccourDate());
+					}
+				
+				Collections.sort(customerLastIssueDateToSort, (o1, o2) -> LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter)));
+				 
+				customerLastIssueDateSorted.add(customerLastIssueDateToSort.get(customerLastIssueDateToSort.size()-1));
+				
+				customerLastIssueDateToSort.clear();
+				}
+				
+				else
+				{
+					customerLastIssueDateSorted.add("NULL");
 				}
 			}
 			
-			Collections.sort(customerLastIssueDateSorted, new CustomerTechnicalPanelSortByCustomerTechnicalIssueOccourDate());
-			
 			System.out.println("Rozmiar posortowanej tablcy: " + customerLastIssueDateSorted.size());
 			
-			for(CustomerTechnicalPanel customerTechnicalPanelList : customerLastIssueDateSorted)
+			for(String customerTechnicalPanelList : customerLastIssueDateSorted)
 			{
-				System.out.println("PosortowanaData: " + customerTechnicalPanelList.getCustomerTechnicalIssueOccourDate());
-				
-				//customerLastIssueDate.add(customerLastIssueDateSorted.get(0));
+				System.out.println("PosortowanaData: " + customerTechnicalPanelList);				
 			}
-			
-			for(CustomerTechnicalPanel customerTechnicalPanelList : customerLastIssueDate)
-			{
-				System.out.println("Data Ostatniego Zgloszenia: " + customerTechnicalPanelList.getCustomerTechnicalIssueOccourDate());
-			}
-			
+
 			//model.addAttribute("customerLastIssueDate", customerLastIssueDate);
 			model.addAttribute("customerIssueCount", customerIssueCount);
 			model.addAttribute("customer", customerList);
