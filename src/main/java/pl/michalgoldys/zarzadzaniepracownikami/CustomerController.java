@@ -147,8 +147,8 @@ public class CustomerController {
 			List<Integer> customerIssueCount = new ArrayList<Integer>();			
 			List<String> customerLastIssueDateToSort = new ArrayList<String>();
 			List<String> customerLastIssueDateSorted = new ArrayList<String>(); 
-						
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			
+			Collections.sort(customerList, new CustomerSortByContractPdfId());
 			
 			for(Customer customer : customerList)
 			{
@@ -165,7 +165,7 @@ public class CustomerController {
 					customerLastIssueDateToSort.add(customerIssueDate.getCustomerTechnicalIssueOccourDate());
 					}
 				
-				Collections.sort(customerLastIssueDateToSort, (o1, o2) -> LocalDate.parse(o1, formatter).compareTo(LocalDate.parse(o2, formatter)));
+				Collections.sort(customerLastIssueDateToSort, new CompareDateAsStringConvertingToLocalDate());
 				 
 				customerLastIssueDateSorted.add(customerLastIssueDateToSort.get(customerLastIssueDateToSort.size()-1));
 				
