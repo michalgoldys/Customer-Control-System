@@ -6,6 +6,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -126,6 +130,12 @@ public class CustomerDatabaseService {
 		public List<Customer> findAllCustomers()
 		{
 			return(customerRepository.findAll());
+		}
+		
+		@Transactional
+		public Page<Customer> findAllCustomers(PageRequest pageRequest)
+		{
+			return(customerRepository.findAll(pageRequest));
 		}
 		
 		@Transactional
