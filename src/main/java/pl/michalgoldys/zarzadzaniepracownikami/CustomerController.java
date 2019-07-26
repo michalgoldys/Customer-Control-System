@@ -7,6 +7,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +26,9 @@ public class CustomerController {
 		@Autowired
 		CustomerService customerSerivce;
 		
+		@Autowired
+		CustomerRepository customerRepository;
+		
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
 				) {
@@ -31,10 +36,10 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/showingCustomers")
-		private String showingCustomers(Model model
+		private String showingCustomers(Model model, @RequestParam Integer page, @RequestParam String sort 
 				) {
 			
-			model.addAttribute("customer", customerDatabaseService.findAllCustomers());
+			model.addAttribute("customer", customerDatabaseService.findAllCustomers(PageRequest.of(page, 50, Sort.by(sort))));
 			
 			return "showingCustomers";
 		}
