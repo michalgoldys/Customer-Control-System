@@ -11,19 +11,19 @@
 <thead>
 <tr>
 <th>LP</th>
-<th><a data-th-href="@{./showingCustomers?sort=customerContractId}">Numer Umowy</a></th>
-<th><a data-th-href="@{./showingCustomers?sort=customerContractPdfId}">Numer PDF</a></th>
-<th><a data-th-href="@{./showingCustomers?sort=customerName}">Nazwa</a></th>
-<th>NIP</th>
-<th>Miasto</th>
-<th>Ulica</th>
-<th>Kod Pocztowy</th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=customerContractId&query=}">Numer Umowy</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=customerContractPdfId&query=}">Numer PDF</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=customerName&query=}">Nazwa</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=customerNip&query=}">NIP</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerAdress.customerCity&query=}">Miasto</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerAdress.customerStreet&query=}">Ulica</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerAdress.customerZipCode&query=}">Kod Pocztowy</a></th>
 <th>Os.Kont.: Imie</th>
 <th>Os.Kont.: Nazwisko</th>
 <th>Os.Kont.: Telefon</th>
 <th>Os.Kont.: E-mail</th>
-<th>Faktura Elektroniczna</th>
-<th>Aktywny</th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerContractDetalis.customerEinvoiceAgreement&query=}">Faktura Elektroniczna</a></th>
+<th><a data-th-href="@{./showingCustomers/?page=&sort=customerIsActive&query=}">Aktywny</a></th>
 </tr>
 </thead>
 <tbody>
