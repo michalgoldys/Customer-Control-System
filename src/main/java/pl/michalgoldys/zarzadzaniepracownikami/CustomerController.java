@@ -36,12 +36,22 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/showingCustomers")
-		private String showingCustomers(Model model, @RequestParam Integer page, @RequestParam String sort 
+		private String showingCustomers(Model model
 				) {
 			
-			model.addAttribute("customer", customerDatabaseService.findAllCustomers(PageRequest.of(page, 50, Sort.by(sort))));
+			model.addAttribute("customer", customerDatabaseService.findAllCustomers());
 			
 			return "showingCustomers";
+			
+		}
+		
+		@GetMapping(value="/customer/showingCustomers/")
+		private String showingCustomersInteractive(Model model, @RequestParam Integer page, @RequestParam String sort, @RequestParam String query)
+		{
+			model.addAttribute("customer", customerDatabaseService.findAllCustomers(PageRequest.of(page, 50, Sort.by(sort))));
+
+			return "showingCustomers";
+			
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
