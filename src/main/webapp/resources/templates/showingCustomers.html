@@ -8,22 +8,34 @@
     <body>
     <div align="center">
     <table class="comicGreenShowingCustomers">
+    
 <thead>
 <tr>
+
+<th:block data-th-if="${page > 0}">
+<th><a data-th-href="@{./?(page=${page-1}, sort=${sort}, query=${query})}">Poprzednia Strona</a></th>
+</th:block>
+
+<th:block data-th-if="${page > totalPages}">
+<th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
+</th:block>
+
+</tr>
+<tr>
 <th>LP</th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=customerContractId&query=}">Numer Umowy</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=customerContractPdfId&query=}">Numer PDF</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=customerName&query=}">Nazwa</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=customerNip&query=}">NIP</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerAdress.customerCity&query=}">Miasto</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerAdress.customerStreet&query=}">Ulica</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerAdress.customerZipCode&query=}">Kod Pocztowy</a></th>
+<th><a data-th-href="@{./?page=&sort=customerContractId&query=}">Numer Umowy</a></th>
+<th><a data-th-href="@{./?page=&sort=customerContractPdfId&query=}">Numer PDF</a></th>
+<th><a data-th-href="@{./?page=&sort=customerName&query=}">Nazwa</a></th>
+<th><a data-th-href="@{./?page=&sort=customerNip&query=}">NIP</a></th>
+<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerCity&query=}">Miasto</a></th>
+<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerStreet&query=}">Ulica</a></th>
+<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerZipCode&query=}">Kod Pocztowy</a></th>
 <th>Os.Kont.: Imie</th>
 <th>Os.Kont.: Nazwisko</th>
 <th>Os.Kont.: Telefon</th>
 <th>Os.Kont.: E-mail</th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=CustomerContractDetalis.customerEinvoiceAgreement&query=}">Faktura Elektroniczna</a></th>
-<th><a data-th-href="@{./showingCustomers/?page=&sort=customerIsActive&query=}">Aktywny</a></th>
+<th>Faktura Elektroniczna</th>
+<th>Aktywny</th>
 </tr>
 </thead>
 <tbody>
