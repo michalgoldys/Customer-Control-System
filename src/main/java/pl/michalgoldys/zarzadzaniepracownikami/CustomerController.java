@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -45,11 +46,30 @@ public class CustomerController {
 			
 		}
 		
-		@GetMapping(value="/customer/showingCustomers/")
-		private String showingCustomersInteractive(Model model, @RequestParam Integer page, @RequestParam String sort, @RequestParam String query)
+		@GetMapping(value="/customer/")
+		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, @RequestParam String sort, @RequestParam String query)
 		{
-			model.addAttribute("customer", customerDatabaseService.findAllCustomers(PageRequest.of(page, 50, Sort.by(sort))));
-
+			Page<Customer> customerToShow = customerDatabaseService.findAllCustomers(PageRequest.of(page, 2, Sort.by(sort)));
+			
+			System.out.println("Przed " + page);
+			
+			if(page == null)
+			{
+				page = 0;
+			}
+			
+			System.out.println("Po " + page);
+			
+			model.addAttribute("totalPages", customerToShow.getTotalPages());
+			model.addAttribute("page", page);
+			model.addAttribute("sort", sort);
+			model.addAttribute("query", query);
+			
+			System.out.println(customerToShow.getTotalPages());
+			System.out.println(customerToShow.getTotalElements());
+			
+			model.addAttribute("customer", customerToShow);
+			
 			return "showingCustomers";
 			
 		}
