@@ -53,14 +53,39 @@ public class CustomerController {
 			
 			System.out.println("Przed " + page);
 			
+			boolean isNext;
+			boolean isPrevious;
+			
 			if(page == null)
 			{
 				page = 0;
 			}
 			
-			System.out.println("Po " + page);
+			if(page > 0)
+			{
+				isPrevious = true;
+			}
+			else
+			{
+				isPrevious = false;
+			}
 			
-			model.addAttribute("totalPages", customerToShow.getTotalPages());
+			if(page < customerToShow.getTotalPages() )
+			{
+				isNext = true;
+			}
+			else
+			{
+				isNext = false;
+			}
+			
+			System.out.println("Poprzedni " + isPrevious);
+			System.out.println("Nastepny " + isNext);
+			
+			
+			model.addAttribute("isPrevious", isPrevious);
+			model.addAttribute("isNext", isNext);
+			
 			model.addAttribute("page", page);
 			model.addAttribute("sort", sort);
 			model.addAttribute("query", query);
