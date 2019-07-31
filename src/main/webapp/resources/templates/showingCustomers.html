@@ -12,11 +12,11 @@
 <thead>
 <tr>
 
-<th:block data-th-if="${page > 0}">
+<th:block data-th-if="${isPrevious == true}">
 <th><a data-th-href="@{./?(page=${page-1}, sort=${sort}, query=${query})}">Poprzednia Strona</a></th>
 </th:block>
 
-<th:block data-th-if="${page > totalPages}">
+<th:block data-th-if="${isNext == true}">
 <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
 </th:block>
 
