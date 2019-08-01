@@ -48,7 +48,7 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/")
 		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, 
-				@RequestParam String sort, @RequestParam String query)
+				@RequestParam(required=false) String sort, @RequestParam(required=false) String query)
 		{
 			Page<Customer> customerToShow = customerDatabaseService.findAllCustomers(PageRequest.of(page, 2, Sort.by(sort)));
 			
@@ -78,7 +78,7 @@ public class CustomerController {
 				isNext = false;
 			}
 			
-			System.out.println(query);
+			System.out.println("Kolejka : " + query);
 			
 			model.addAttribute("isPrevious", isPrevious);
 			model.addAttribute("isNext", isNext);
@@ -88,6 +88,14 @@ public class CustomerController {
 			model.addAttribute("query", query);
 			
 			model.addAttribute("customer", customerToShow);
+			
+			if(query == null)
+			{
+				
+			}
+			else if(query != null)
+			{
+			}
 			
 			return "showingCustomers";
 		}
