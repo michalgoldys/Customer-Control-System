@@ -47,11 +47,10 @@ public class CustomerController {
 		}
 		
 		@GetMapping(value="/customer/")
-		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, @RequestParam String sort, @RequestParam String query)
+		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, 
+				@RequestParam String sort, @RequestParam String query)
 		{
 			Page<Customer> customerToShow = customerDatabaseService.findAllCustomers(PageRequest.of(page, 2, Sort.by(sort)));
-			
-			System.out.println("Przed " + page);
 			
 			boolean isNext;
 			boolean isPrevious;
@@ -70,7 +69,7 @@ public class CustomerController {
 				isPrevious = false;
 			}
 			
-			if(page < customerToShow.getTotalPages() )
+			if(page < customerToShow.getTotalPages()-1)
 			{
 				isNext = true;
 			}
@@ -79,9 +78,7 @@ public class CustomerController {
 				isNext = false;
 			}
 			
-			System.out.println("Poprzedni " + isPrevious);
-			System.out.println("Nastepny " + isNext);
-			
+			System.out.println(query);
 			
 			model.addAttribute("isPrevious", isPrevious);
 			model.addAttribute("isNext", isNext);
@@ -90,13 +87,9 @@ public class CustomerController {
 			model.addAttribute("sort", sort);
 			model.addAttribute("query", query);
 			
-			System.out.println(customerToShow.getTotalPages());
-			System.out.println(customerToShow.getTotalElements());
-			
 			model.addAttribute("customer", customerToShow);
 			
 			return "showingCustomers";
-			
 		}
 		
 		@GetMapping(value="/customer/addingCustomer")
