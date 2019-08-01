@@ -13,5 +13,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 		Page<Customer> findAll(Pageable pageable);
 		List<Customer> findAll();
 		List<Customer> findBycustomerContractPdfId(String customerContractPdfId);
-		Page<Customer> findBy(Pageable pageable, String query);
 }
