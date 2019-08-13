@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class CustomerDatabaseService {
 		
 		@Autowired
-		CustomerRepository customerRepository;
+		CustomerJpaRepository customerJpaRepository;
 		
 		@Autowired
 		CustomerRepositoryImp customerRepositoryImp;
@@ -63,7 +63,7 @@ public class CustomerDatabaseService {
 			updatingCustomer.setCustomerContact(customerContactList);
 			customerContact.setCustomer(updatingCustomer);
 			
-			customerRepository.save(updatingCustomer);
+			customerJpaRepository.save(updatingCustomer);
 		}
 		
 		@Transactional
@@ -82,7 +82,7 @@ public class CustomerDatabaseService {
 			customerContractDetalis.setCustomer(customer);
 			customer.setCustomerContractDetalis(customerContractDetalis);
 			
-			customerRepository.save(customer);
+			customerJpaRepository.save(customer);
 		}
 		
 		@Transactional
@@ -123,25 +123,25 @@ public class CustomerDatabaseService {
 			selectedCustomer.setCustomerTechnicalPanel(customerTechnicalPanelList);
 			
 			
-			customerRepository.save(selectedCustomer);
+			customerJpaRepository.save(selectedCustomer);
 		}
 		
 		@Transactional
 		public List<Customer> findAllCustomers()
 		{
-			return(customerRepository.findAll());
+			return(customerJpaRepository.findAll());
 		}
 		
 		@Transactional
 		public Page<Customer> findAllCustomers(PageRequest pageRequest)
 		{
-			return(customerRepository.findAll(pageRequest));
+			return(customerJpaRepository.findAll(pageRequest));
 		}
 		
 		@Transactional
 		public List<Customer> listFindByCustomerContractPdfId(String customerSelectionId)
 		{
-			return(customerRepository.findBycustomerContractPdfId(customerSelectionId));
+			return(customerJpaRepository.findBycustomerContractPdfId(customerSelectionId));
 		}
 		
 		@Transactional
