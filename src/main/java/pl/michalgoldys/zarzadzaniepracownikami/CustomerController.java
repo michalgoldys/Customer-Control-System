@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,10 +26,13 @@ public class CustomerController {
 		CustomerDatabaseService customerDatabaseService;
 		
 		@Autowired
+		CustomerRepository customerRepository;
+		
+		@Autowired
 		CustomerService customerSerivce;
 		
 		@Autowired
-		CustomerRepository customerRepository;
+		CustomerJpaRepository customerJpaRepository;
 		
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
@@ -50,8 +54,6 @@ public class CustomerController {
 		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, 
 				@RequestParam(required=false) String sort, @RequestParam(required=false) String query)
 		{
-			Page<Customer> customerToShow = customerDatabaseService.findAllCustomers(PageRequest.of(page, 2, Sort.by(sort)));
-			
 			boolean isNext;
 			boolean isPrevious;
 			
@@ -68,33 +70,32 @@ public class CustomerController {
 			{
 				isPrevious = false;
 			}
-			
-			if(page < customerToShow.getTotalPages()-1)
-			{
-				isNext = true;
-			}
-			else
-			{
-				isNext = false;
-			}
-			
-			System.out.println("Kolejka : " + query);
-			
-			model.addAttribute("isPrevious", isPrevious);
-			model.addAttribute("isNext", isNext);
-			
+						
 			model.addAttribute("page", page);
 			model.addAttribute("sort", sort);
 			model.addAttribute("query", query);
 			
-			model.addAttribute("customer", customerToShow);
-			
-			if(query == null)
+			if(query.isEmpty())
 			{
+				Page<Customer> customerToShow = customerDatabaseService.findAllCustomers(PageRequest.of(page, 2, Sort.by(sort)));
 				
+				if(page < customerToShow.getTotalPages()-1)
+				{
+					isNext = true;
+				}
+				else
+				{
+					isNext = false;
+				}
+				
+				model.addAttribute("isPrevious", isPrevious);
+				model.addAttribute("isNext", isNext);
+				model.addAttribute("customer", customerToShow);
 			}
-			else if(query != null)
+			else
 			{
+				List<Customer> customerToShowQuery = customerRepository.findAll(Specification.where(CustomerSpecification.textInAllColumns(query)));
+				model.addAttribute("customer", customerToShowQuery);
 			}
 			
 			return "showingCustomers";
