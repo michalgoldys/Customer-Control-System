@@ -20,22 +20,22 @@
 <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
 </th:block>
 
-<form action="#" data-th-action="@{./?(query=${query}, (page=${page})}">
-<th><input type="text" maxlength="30" data-th-value="*{query}" name="query" id="query"></th>
-<th><button type="submit">Szukaj</button></th>
+<form action="#" data-th-action="@{./?(page=${page}, sort=${sort}, query=${query})}">
+<th><input type="text" minlength="1" maxlength="30" data-th-value="${query}" name="query" id="query"></th>
+<th><input type="Submit" value="Search"></input></th>
 </form>
 
 
 </tr>
 <tr>
 <th>LP</th>
-<th><a data-th-href="@{./?page=&sort=customerContractId&query=}">Numer Umowy</a></th>
-<th><a data-th-href="@{./?page=&sort=customerContractPdfId&query=}">Numer PDF</a></th>
-<th><a data-th-href="@{./?page=&sort=customerName&query=}">Nazwa</a></th>
-<th><a data-th-href="@{./?page=&sort=customerNip&query=}">NIP</a></th>
-<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerCity&query=}">Miasto</a></th>
-<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerStreet&query=}">Ulica</a></th>
-<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerZipCode&query=}">Kod Pocztowy</a></th>
+<th><a data-th-href="@{./?page=&sort=customerContractId(query=${query})}">Numer Umowy</a></th>
+<th><a data-th-href="@{./?page=&sort=customerContractPdfId(query=${query})}">Numer PDF</a></th>
+<th><a data-th-href="@{./?page=&sort=customerName(query=${query})}">Nazwa</a></th>
+<th><a data-th-href="@{./?page=&sort=customerNip(query=${query})}">NIP</a></th>
+<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerCity(query=${query})}">Miasto</a></th>
+<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerStreet(query=${query})}">Ulica</a></th>
+<th><a data-th-href="@{./?page=&sort=CustomerAdress.customerZipCode(query=${query})}">Kod Pocztowy</a></th>
 <th>Os.Kont.: Imie</th>
 <th>Os.Kont.: Nazwisko</th>
 <th>Os.Kont.: Telefon</th>
