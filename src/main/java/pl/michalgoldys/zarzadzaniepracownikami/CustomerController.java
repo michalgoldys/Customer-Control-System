@@ -50,7 +50,7 @@ public class CustomerController {
 			
 		}
 		
-		@GetMapping(value="/customer/")
+		@GetMapping(value="/customer/showingCustomersInteractive")
 		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, 
 				@RequestParam(required=false) String sort, @RequestParam(required=false) String query)
 		{
