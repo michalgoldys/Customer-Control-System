@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerService implements CustomerServiceImplementation {
 
+		boolean isDisabled;
+		int sum;
+		double costSum;
 
 		@Override
 	public String getCurrentDate() {
@@ -22,21 +25,21 @@ public class CustomerService implements CustomerServiceImplementation {
 			
 			for(Customer customer : customerList)
 			{
-				int subSum = 0;
+				sum = 0;
 				
 					if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null)
 					{
-						subSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions();
+						sum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions();
 					}
 					if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
 					{
-						subSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
+						sum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
 					}
 					if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
 					{
-						subSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions();
+						sum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions();
 					}
-				customerSubstripctionsSum.add(subSum);
+				customerSubstripctionsSum.add(sum);
 			}
 			
 			return customerSubstripctionsSum;
@@ -45,7 +48,7 @@ public class CustomerService implements CustomerServiceImplementation {
 		@Override
 		public Boolean settingActivationCheckbox(List<Customer> customerList)
 		{
-			boolean isDisabled = false;
+			isDisabled = false;
 			
 			for(Customer customer : customerList) {
 				
@@ -65,24 +68,24 @@ public class CustomerService implements CustomerServiceImplementation {
 			
 			for(Customer customer : customerList)
 			{
-				int incomeSum = 0;
+				sum = 0;
 				
 				if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null && customer.getCustomerContractDetalis().getCustomerPlFee() != null
 						&& customer.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0 && customer.getCustomerContractDetalis().getCustomerPlFee() > 0)
 				{
-					incomeSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * customer.getCustomerContractDetalis().getCustomerPlFee();
+					sum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * customer.getCustomerContractDetalis().getCustomerPlFee();
 				}
 				if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null && customer.getCustomerContractDetalis().getCustomerPlUeFee() != null
 						&& customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0 && customer.getCustomerContractDetalis().getCustomerPlUeFee() > 0)
 				{
-					incomeSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * customer.getCustomerContractDetalis().getCustomerPlUeFee();
+					sum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * customer.getCustomerContractDetalis().getCustomerPlUeFee();
 				}
 				if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null && customer.getCustomerContractDetalis().getCustomerRuFee() != null
 						&& customer.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0 && customer.getCustomerContractDetalis().getCustomerRuFee() > 0)
 				{
-					incomeSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * customer.getCustomerContractDetalis().getCustomerRuFee();
+					sum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * customer.getCustomerContractDetalis().getCustomerRuFee();
 				}
-				sumOfIncomeBySubscriptions.add(incomeSum);
+				sumOfIncomeBySubscriptions.add(sum);
 			}
 			
 			return sumOfIncomeBySubscriptions;
@@ -93,12 +96,9 @@ public class CustomerService implements CustomerServiceImplementation {
 		{
 			List<Double> sumOfCosts = new ArrayList<Double>();
 			
-			int serverCost = 10;
-			double telematicCardCost = 2.50;
-			
 			for(Customer customer : customerList) 
 			{
-				double costSum = 0;
+				costSum = 0;
 				
 				if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null &&
 						customer.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0)
