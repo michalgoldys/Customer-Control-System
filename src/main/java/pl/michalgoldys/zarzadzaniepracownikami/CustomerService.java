@@ -1,23 +1,21 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService {
+public class CustomerService implements CustomerServiceImplementation {
 
-		public String getCurrentDate() {
-			Date currentDate = new Date();
-		      SimpleDateFormat ft = 
-		      new SimpleDateFormat ("dd.MM.yyyy hh:mm:ss");
-		      
-			return (ft.format(currentDate));
-		}
-		
+
+		@Override
+	public String getCurrentDate() {
+		// TODO Auto-generated method stub
+		return CustomerServiceImplementation.super.getCurrentDate();
+	}
+
+		@Override
 		public List<Integer> sumingSubscirptionPlUeRu(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
@@ -44,6 +42,7 @@ public class CustomerService {
 			return customerSubstripctionsSum;
 		}
 		
+		@Override
 		public Boolean settingActivationCheckbox(List<Customer> customerList)
 		{
 			boolean isDisabled = false;
@@ -59,6 +58,7 @@ public class CustomerService {
 			return isDisabled;
 		}
 		
+		@Override
 		public List<Integer> sumOfIncomeBySubscriptions(List<Customer> customerList)
 		{
 			List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
@@ -88,6 +88,7 @@ public class CustomerService {
 			return sumOfIncomeBySubscriptions;
 		}
 		
+		@Override
 		public List<Double> sumOfCosts(List<Customer> customerList)
 		{
 			List<Double> sumOfCosts = new ArrayList<Double>();
