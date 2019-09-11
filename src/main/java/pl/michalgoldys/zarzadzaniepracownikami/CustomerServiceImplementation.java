@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface CustomerServiceImplementation {
 	
+	int serverCost = 10;
+	double telematicCardCost = 2.50;
+	
 	default String getCurrentDate() {
 		Date currentDate = new Date();
 	      SimpleDateFormat ft = 
