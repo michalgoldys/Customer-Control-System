@@ -8,12 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerDatabaseService {
+public class CustomerDatabaseService implements CustomerDatabaseServiceImplementation {
 		
 		@Autowired
 		CustomerJpaRepository customerJpaRepository;
@@ -27,7 +25,7 @@ public class CustomerDatabaseService {
 		@Autowired
 		CustomerContractDetalisRepository customerContractDetalisRepository;
 		
-		@Transactional
+		@Override
 		public void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, String customerSelectionId)
 		{
 			Customer updatingCustomer = new Customer();
@@ -66,7 +64,7 @@ public class CustomerDatabaseService {
 			customerJpaRepository.save(updatingCustomer);
 		}
 		
-		@Transactional
+		@Override
 		public void creatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, 
 				CustomerContractDetalis customerContractDetalis)
 		{
@@ -85,7 +83,7 @@ public class CustomerDatabaseService {
 			customerJpaRepository.save(customer);
 		}
 		
-		@Transactional
+		@Override
 		public void updatingCustomerBilling(CustomerContractDetalis customerContractDetalis)
 		{
 			Long selection = customerContractDetalis.getCustomerContractDetalisId();
@@ -106,7 +104,7 @@ public class CustomerDatabaseService {
 			customerContractDetalisRepository.save(customerBillingDetalis);
 		}
 		
-		@Transactional
+		@Override
 		public void creatingCustomerTechnicalPanelEntity(Customer selectedCustomer, CustomerTechnicalPanel customerTechnicalPanel)
 		{
 			
