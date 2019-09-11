@@ -14,7 +14,6 @@ public class CustomerService implements CustomerServiceImplementation {
 
 		@Override
 	public String getCurrentDate() {
-		// TODO Auto-generated method stub
 		return CustomerServiceImplementation.super.getCurrentDate();
 	}
 
