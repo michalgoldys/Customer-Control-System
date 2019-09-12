@@ -38,12 +38,12 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceImplement
 			
 			if (isActive && activationDate.length() == 0)
 			{
-				customer.setCustomerActivationDate(customerService.getCurrentDate());
+				customer.setCustomerActivationDate(customerService.getCurrentDateAsString());
 			}
 			
 			if (!isActive && activationDate != null && activationDate.length() > 0 && deactivationDate.length() == 0)
 			{
-				customer.setCustomerDeactivationDate(customerService.getCurrentDate());
+				customer.setCustomerDeactivationDate(customerService.getCurrentDateAsString());
 			}
 			
 			updatingCustomer.setCustomerName(customer.getCustomerName());
