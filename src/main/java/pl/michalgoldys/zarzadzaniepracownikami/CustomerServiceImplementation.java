@@ -1,7 +1,5 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public interface CustomerServiceImplementation {
@@ -9,16 +7,8 @@ public interface CustomerServiceImplementation {
 	int serverCost = 10;
 	double telematicCardCost = 2.50;
 	
-	default String getCurrentDate() {
-		Date currentDate = new Date();
-	      SimpleDateFormat ft = 
-	      new SimpleDateFormat ("dd.MM.yyyy hh:mm:ss");
-	      
-		return (ft.format(currentDate));
-	}
-	
-	List<Integer> sumingSubscirptionPlUeRu(List<Customer> customerList);
-	Boolean settingActivationCheckbox(List<Customer> customerList);
-	List<Integer> sumOfIncomeBySubscriptions(List<Customer> customerList);
-	List<Double> sumOfCosts(List<Customer> customerList);
+	List<Integer> subscritionSum(List<Customer> customerList);
+	Boolean isActivationCheckboxActive(List<Customer> customerList);
+	List<Integer> incomeSubscriptionSum(List<Customer> customerList);
+	List<Double> costsSum(List<Customer> customerList);
 }
