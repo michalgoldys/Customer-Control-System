@@ -3,15 +3,13 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerDatabaseService implements CustomerDatabaseServiceImplementation {
+public class CustomerDatabaseService implements CustomerDatabaseServiceImplementation, DatabaseOperationInterface{
 		
 		@Autowired
 		CustomerJpaRepository customerJpaRepository;
@@ -124,25 +122,25 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceImplement
 			customerJpaRepository.save(selectedCustomer);
 		}
 		
-		@Transactional
+		@Override
 		public List<Customer> findAllCustomers()
 		{
 			return(customerJpaRepository.findAll());
 		}
 		
-		@Transactional
+		@Override
 		public Page<Customer> findAllCustomers(PageRequest pageRequest)
 		{
 			return(customerJpaRepository.findAll(pageRequest));
 		}
 		
-		@Transactional
+		@Override
 		public List<Customer> listFindByCustomerContractPdfId(String customerSelectionId)
 		{
 			return(customerJpaRepository.findBycustomerContractPdfId(customerSelectionId));
 		}
 		
-		@Transactional
+		@Override
 		public Customer customerFindByCustomerContractPdfId(String customerSelectionId)
 		{
 			return(customerRepositoryImp.findBycustomerContractPdfId(customerSelectionId));
