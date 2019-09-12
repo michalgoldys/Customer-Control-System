@@ -16,6 +16,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 @Override
 	 protected void configure(final HttpSecurity http) throws Exception {
 	        http
+	            .authorizeRequests().anyRequest().denyAll()
+	            
+	            .and()
+	            
 	            .authorizeRequests()
 	            	.antMatchers("/customer").hasRole("USER")
 	            	.antMatchers("/customer/customerMenu").hasRole("USER")
@@ -42,8 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        
 	        		.and()
 	        		
-	        		.httpBasic();
-
+	        		.httpBasic()
+	        		
+	        		.and();
 	 }
 	 
 	 @Override
