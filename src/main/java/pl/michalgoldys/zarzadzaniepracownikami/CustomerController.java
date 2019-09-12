@@ -138,7 +138,7 @@ public class CustomerController {
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
 			model.addAttribute("selectedCustomerById", customerList);			
-			model.addAttribute("isDisabled", customerSerivce.settingActivationCheckbox(customerList));
+			model.addAttribute("isDisabled", customerSerivce.isActivationCheckboxActive(customerList));
 			
 			return "customerDetalis";
 		}
@@ -166,9 +166,9 @@ public class CustomerController {
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
 			
-			model.addAttribute("subSumAtr", customerSerivce.sumingSubscirptionPlUeRu(customerList));
-			model.addAttribute("incomeSumValue", customerSerivce.sumOfIncomeBySubscriptions(customerList));
-			model.addAttribute("sumOfCosts", customerSerivce.sumOfCosts(customerList));			
+			model.addAttribute("subSumAtr", customerSerivce.subscritionSum(customerList));
+			model.addAttribute("incomeSumValue", customerSerivce.incomeSubscriptionSum(customerList));
+			model.addAttribute("sumOfCosts", customerSerivce.costsSum(customerList));			
 			model.addAttribute("customer", customerList);
 			
 			return "showingCustomersBillings";
