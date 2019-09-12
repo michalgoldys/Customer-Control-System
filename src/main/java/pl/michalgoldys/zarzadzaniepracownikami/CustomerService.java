@@ -6,19 +6,19 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService implements CustomerServiceImplementation {
+public class CustomerService implements CustomerServiceImplementation, TimeInterface {
 
 		boolean isDisabled;
 		int sum;
 		double costSum;
 
 		@Override
-	public String getCurrentDate() {
-		return CustomerServiceImplementation.super.getCurrentDate();
+	public String getCurrentDateAsString() {
+		return TimeInterface.super.getCurrentDateAsString();
 	}
 
 		@Override
-		public List<Integer> sumingSubscirptionPlUeRu(List<Customer> customerList)
+		public List<Integer> subscritionSum(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
 			
@@ -45,7 +45,7 @@ public class CustomerService implements CustomerServiceImplementation {
 		}
 		
 		@Override
-		public Boolean settingActivationCheckbox(List<Customer> customerList)
+		public Boolean isActivationCheckboxActive(List<Customer> customerList)
 		{
 			isDisabled = false;
 			
@@ -61,7 +61,7 @@ public class CustomerService implements CustomerServiceImplementation {
 		}
 		
 		@Override
-		public List<Integer> sumOfIncomeBySubscriptions(List<Customer> customerList)
+		public List<Integer> incomeSubscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
 			
@@ -91,7 +91,7 @@ public class CustomerService implements CustomerServiceImplementation {
 		}
 		
 		@Override
-		public List<Double> sumOfCosts(List<Customer> customerList)
+		public List<Double> costsSum(List<Customer> customerList)
 		{
 			List<Double> sumOfCosts = new ArrayList<Double>();
 			
