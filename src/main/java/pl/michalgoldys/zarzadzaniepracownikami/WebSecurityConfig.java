@@ -19,19 +19,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 
 	            .authorizeRequests()
 	            
-	            	.antMatchers("/customer").hasRole("USER")
-	            	.antMatchers("/customer/customerMenu").hasRole("USER")
-	            	.antMatchers("/customer/showingCustomers").hasRole("USER")
-	            	.antMatchers("/customer/showingCustomersBilling").hasRole("USER")
-	            	
-	            	.antMatchers("/customer").hasRole("ADMIN")
-	            	.antMatchers("/customer/customerMenu").hasRole("ADMIN")
-	            	.antMatchers("/customer/showingCustomers").hasRole("ADMIN")
-	            	.antMatchers("/customer/showingCustomersBilling").hasRole("ADMIN")
+	            	.antMatchers("/customer").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/customerMenu").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/showingCustomers").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/showingCustomersBillings").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/customerTechnicalPanel").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetalis").hasAnyRole("USER","ADMIN")
+
 	            	.antMatchers("/customer/showingCustomersBillings/customerBillingDetalis").hasRole("ADMIN")
 	            	.antMatchers("/customer/showingCustomers/customerDetalis").hasRole("ADMIN")
 	            	.antMatchers("/customer/addingCustomer").hasRole("ADMIN")
-
+	            	.antMatchers("/customer/customerTechnicalPanel").hasRole("ADMIN")
+	            	
 	                .antMatchers("/login*").permitAll()
 	                .antMatchers("/css/*").permitAll()
 	                
