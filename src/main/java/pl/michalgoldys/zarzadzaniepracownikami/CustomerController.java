@@ -3,7 +3,6 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -210,16 +209,23 @@ public class CustomerController {
 			
 			Collections.sort(customerList, new CustomerSortByContractPdfId());
 			
+			customerList.forEach( c -> customerIssueCount.add(c.getCustomerTechnicalPanel().size()));
+			/*
 			for(Customer customer : customerList)
 			{
 				customerIssueCount.add(customer.getCustomerTechnicalPanel().size());
 			}
+			*/
+			
+			customerList.forEach( c -> {
+				if(c.getCustomerTechnicalPanel().size() > 0) {
+					c.getCustomerTechnicalPanel().forEach( d -> customerLastIssueDateToSort.add(d.getCustomerTechnicalIssueOccourDate()));
+				};});
 			
 			for(Customer customer : customerList)
 			{				
 				if(customer.getCustomerTechnicalPanel().size() > 0)
 				{
-					
 					for(CustomerTechnicalPanel customerIssueDate : customer.getCustomerTechnicalPanel())
 					{
 					customerLastIssueDateToSort.add(customerIssueDate.getCustomerTechnicalIssueOccourDate());
@@ -239,12 +245,14 @@ public class CustomerController {
 			}
 			
 			System.out.println("Rozmiar posortowanej tablcy: " + customerLastIssueDateSorted.size());
-			
+			/*
 			for(String customerTechnicalPanelList : customerLastIssueDateSorted)
 			{
 				System.out.println("PosortowanaData: " + customerTechnicalPanelList);				
 			}
-
+			*/
+			customerLastIssueDateSorted.forEach(customerTechnicalPanelList -> System.out.println("PosortowanaData: " + customerTechnicalPanelList));
+			
 			model.addAttribute("customerLastIssueDate", customerLastIssueDateSorted);
 			model.addAttribute("customerIssueCount", customerIssueCount);
 			model.addAttribute("customer", customerList);
