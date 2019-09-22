@@ -1,7 +1,10 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.validation.Valid;
 
@@ -220,8 +223,24 @@ public class CustomerController {
 			customerList.forEach( c -> {
 				if(c.getCustomerTechnicalPanel().size() > 0) {
 					c.getCustomerTechnicalPanel().forEach( d -> customerLastIssueDateToSort.add(d.getCustomerTechnicalIssueOccourDate()));
-				};});
-			
+					
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					
+					Comparator<String> compareIssueDate = (String s1, String s2) -> 
+					LocalDate.parse(s1, formatter).compareTo(LocalDate.parse(s2, formatter));
+					
+					customerLastIssueDateToSort.sort(compareIssueDate);
+					customerLastIssueDateSorted.add(customerLastIssueDateToSort.get(customerLastIssueDateToSort.size()-1));
+					
+					customerLastIssueDateToSort.clear();
+				}
+				else
+				{
+					customerLastIssueDateSorted.add("NULL");
+				}
+				}
+			);
+			/*
 			for(Customer customer : customerList)
 			{				
 				if(customer.getCustomerTechnicalPanel().size() > 0)
@@ -243,7 +262,7 @@ public class CustomerController {
 					customerLastIssueDateSorted.add("NULL");
 				}
 			}
-			
+			*/
 			System.out.println("Rozmiar posortowanej tablcy: " + customerLastIssueDateSorted.size());
 			/*
 			for(String customerTechnicalPanelList : customerLastIssueDateSorted)
