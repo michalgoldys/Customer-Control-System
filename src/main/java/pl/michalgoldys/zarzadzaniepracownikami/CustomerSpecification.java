@@ -24,14 +24,18 @@ public class CustomerSpecification{
 
 				@Override
 	            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> cq, CriteriaBuilder builder) {
-	                return builder.or(root.getModel().getDeclaredSingularAttributes().stream().filter(a-> {
+	                return builder.or(root.getModel().getDeclaredSingularAttributes()
+	                		.stream()
+	                		.filter(a-> {
 	                    if (a.getJavaType().getSimpleName().equalsIgnoreCase("string")) {
 	                        return true;
 	                    }
 	                    else {
 	                        return false;
-	                }}).map(a -> builder.like(root.get(a.getName()), finalText)
-	                    ).toArray(Predicate[]::new)
+	                }})
+	                		.map(a -> builder.like(root.get(a.getName()), finalText)
+	                    )
+	                		.toArray(Predicate[]::new)
 	                );
 	            }
 	        };
