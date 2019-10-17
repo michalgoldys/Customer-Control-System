@@ -25,10 +25,12 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @ComponentScan
 public class ApplicationConfiguration  {	
 	
+	@Deprecated
 	@Autowired
 	@Qualifier("dataSource")
 	private DataSource dataSource;
 	
+	@Deprecated
 	@Autowired
 	@Qualifier("entityManagerFactory")
 	private EntityManagerFactory entityManagerFactory;
@@ -91,6 +93,7 @@ public class ApplicationConfiguration  {
 		return irvr;
 	}
 	*/
+	@Deprecated
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();;
@@ -109,6 +112,7 @@ public class ApplicationConfiguration  {
 	return hjva;
 	}
 	
+	@Deprecated
 	@Bean(name="transactionManager")
 	public JpaTransactionManager settingJpaTransactionManager() {
 		JpaTransactionManager  transactionManager= new JpaTransactionManager();
@@ -116,14 +120,15 @@ public class ApplicationConfiguration  {
 		return transactionManager;
 	}
 	
+	@Deprecated
 	@Bean
 	public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
 	
+	@Deprecated
 	@Bean
 	public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
 		return new PersistenceAnnotationBeanPostProcessor();
 	}
-	
 }
