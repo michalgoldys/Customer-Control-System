@@ -21,7 +21,22 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 		public List<Integer> subscritionSum(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
+			/*
+			int sum = 0;
 			
+			sum += customerList.stream()
+					.mapToInt(c -> c.getCustomerContractDetalis().getCustomerPlSubstripctions())
+					.sum();
+			
+			sum += customerList.stream()
+					.mapToInt(c -> c.getCustomerContractDetalis().getCustomerPlUeSubstripctions())
+					.sum();
+			
+			sum += customerList.stream()
+					.mapToInt(c -> c.getCustomerContractDetalis().getCustomerRuSubscriptions())
+					.sum();
+			
+			*/
 			for(Customer customer : customerList)
 			{
 				sum = 0;
@@ -41,6 +56,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 				customerSubstripctionsSum.add(sum);
 			}
 			
+			customerSubstripctionsSum.add(sum);
 			return customerSubstripctionsSum;
 		}
 		
@@ -49,6 +65,14 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 		{
 			isDisabled = false;
 			
+			customerList.forEach(c -> {
+				if(c.getCustomerActivationDate() != null && c.getCustomerActivationDate().length() > 0 
+						&& c.getCustomerDeactivationDate() != null && c.getCustomerDeactivationDate().length() > 0){
+					
+					isDisabled = true;
+				}
+			});
+			/*
 			for(Customer customer : customerList) {
 				
 				if(customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0 
@@ -57,6 +81,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 					isDisabled = true;
 				}
 			}
+			*/
 			return isDisabled;
 		}
 		
@@ -64,6 +89,22 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 		public List<Integer> incomeSubscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
+			
+			 sum = customerList.stream()
+			.filter(c -> c.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0 && c.getCustomerContractDetalis().getCustomerPlFee() > 0 &&
+					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0 && c.getCustomerContractDetalis().getCustomerPlUeFee() > 0 &&
+					c.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0 && c.getCustomerContractDetalis().getCustomerRuFee() > 0 &&
+					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null && c.getCustomerContractDetalis().getCustomerPlFee() != null &&
+					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null && c.getCustomerContractDetalis().getCustomerPlUeFee() != null &&
+					c.getCustomerContractDetalis().getCustomerRuSubscriptions() != null && c.getCustomerContractDetalis().getCustomerRuFee() != null)
+			.mapToInt(c -> {
+				return c.getCustomerContractDetalis().getCustomerPlFee() * c.getCustomerContractDetalis().getCustomerPlSubstripctions() *
+						c.getCustomerContractDetalis().getCustomerPlUeFee() * c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() *
+						c.getCustomerContractDetalis().getCustomerRuFee() * c.getCustomerContractDetalis().getCustomerRuSubscriptions();
+			})
+			.sum();
+			
+			 System.out.print(sum);
 			
 			for(Customer customer : customerList)
 			{
