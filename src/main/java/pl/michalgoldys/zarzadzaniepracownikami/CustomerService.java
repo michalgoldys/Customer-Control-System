@@ -21,6 +21,23 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 		public List<Integer> subscritionSum(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
+			
+			customerList.forEach(c -> {
+				sum = 0;
+				if(c.getCustomerContractDetalis().getCustomerPlSubstripctions() != null) {
+					sum += c.getCustomerContractDetalis().getCustomerPlSubstripctions();
+				}
+				if(c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
+				{
+					sum += c.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
+				}
+				if(c.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
+				{
+					sum += c.getCustomerContractDetalis().getCustomerRuSubscriptions();
+				}
+				customerSubstripctionsSum.add(sum);
+			});
+			
 			/*
 			int sum = 0;
 			
@@ -37,6 +54,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 					.sum();
 			
 			*/
+			/*
 			for(Customer customer : customerList)
 			{
 				sum = 0;
@@ -57,6 +75,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 			}
 			
 			customerSubstripctionsSum.add(sum);
+			*/
 			return customerSubstripctionsSum;
 		}
 		
