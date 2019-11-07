@@ -108,7 +108,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 		public List<Integer> incomeSubscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
-			
+			/*
 			 sum = customerList.stream()
 			.filter(c -> c.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0 && c.getCustomerContractDetalis().getCustomerPlFee() > 0 &&
 					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0 && c.getCustomerContractDetalis().getCustomerPlUeFee() > 0 &&
@@ -124,7 +124,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 			.sum();
 			
 			 System.out.print(sum);
-			
+			*/
 			for(Customer customer : customerList)
 			{
 				sum = 0;
