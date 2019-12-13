@@ -1,21 +1,13 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
-import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -23,17 +15,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @ComponentScan
-public class ApplicationConfiguration  {	
-	
-	@Deprecated
-	@Autowired
-	@Qualifier("dataSource")
-	private DataSource dataSource;
-	
-	@Deprecated
-	@Autowired
-	@Qualifier("entityManagerFactory")
-	private EntityManagerFactory entityManagerFactory;
+public class ApplicationConfiguration  {
 	
 	@Bean
 	public DataSource dataSource() {
@@ -93,42 +75,4 @@ public class ApplicationConfiguration  {
 		return irvr;
 	}
 	*/
-	@Deprecated
-	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();;
-		lcemfb.setDataSource(dataSource());
-		lcemfb.setPackagesToScan("pl.michalgoldys");
-		lcemfb.setJpaVendorAdapter(settingHibernateJpaVendorAdapter());
-		return lcemfb;
-	}
-	
-	@Bean
-	public HibernateJpaVendorAdapter settingHibernateJpaVendorAdapter() {
-		HibernateJpaVendorAdapter hjva = new HibernateJpaVendorAdapter();
-		hjva.setShowSql(true);
-		hjva.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
-		hjva.setGenerateDdl(true);
-	return hjva;
-	}
-	
-	@Deprecated
-	@Bean(name="transactionManager")
-	public JpaTransactionManager settingJpaTransactionManager() {
-		JpaTransactionManager  transactionManager= new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactory);
-		return transactionManager;
-	}
-	
-	@Deprecated
-	@Bean
-	public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
-		return new PersistenceExceptionTranslationPostProcessor();
-	}
-	
-	@Deprecated
-	@Bean
-	public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
-		return new PersistenceAnnotationBeanPostProcessor();
-	}
 }
