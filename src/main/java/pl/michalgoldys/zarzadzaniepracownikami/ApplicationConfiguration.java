@@ -25,6 +25,14 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @ComponentScan
 public class ApplicationConfiguration  {
 
+	@Autowired
+	@Qualifier("dataSource")
+	private DataSource dataSource;
+
+	@Autowired
+	@Qualifier("entityManagerFactory")
+	private EntityManagerFactory entityManagerFactory;
+
 	@Bean
 	public DataSource dataSource() {
 		return DataSourceBuilder
@@ -83,6 +91,16 @@ public class ApplicationConfiguration  {
 		return irvr;
 	}
 	*/
+
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();;
+		lcemfb.setDataSource(dataSource());
+		lcemfb.setPackagesToScan("pl.michalgoldys");
+		lcemfb.setJpaVendorAdapter(settingHibernateJpaVendorAdapter());
+		return lcemfb;
+	}
+
 	@Bean
 	public HibernateJpaVendorAdapter settingHibernateJpaVendorAdapter() {
 		HibernateJpaVendorAdapter hjva = new HibernateJpaVendorAdapter();
@@ -90,5 +108,22 @@ public class ApplicationConfiguration  {
 		hjva.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
 		hjva.setGenerateDdl(true);
 		return hjva;
+	}
+
+	@Bean(name="transactionManager")
+	public JpaTransactionManager settingJpaTransactionManager() {
+		JpaTransactionManager  transactionManager= new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactory);
+		return transactionManager;
+	}
+
+	@Bean
+	public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
+		return new PersistenceExceptionTranslationPostProcessor();
+	}
+
+	@Bean
+	public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
+		return new PersistenceAnnotationBeanPostProcessor();
 	}
 }
