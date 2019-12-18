@@ -12,7 +12,9 @@
 <tbody>
 <tr>
 <td>Numer Umowy</td>
-<td><input type="text" data-th-field="*{customer.customerContractId}"/></td>
+<td><input type="text" data-th-field="*{customer.customerContractId}"/>
+    <input type="hidden" data-th-value="*{customer.customerId}" name="customerId" id="customerId"/>
+    </td>
 <td><p th:if="${#fields.hasErrors('customerDTO.customerContractId')}" th:errors="*{customerDTO.customerContractId}">Contract Id Error</p></td>
 </tr>
 <tr>
