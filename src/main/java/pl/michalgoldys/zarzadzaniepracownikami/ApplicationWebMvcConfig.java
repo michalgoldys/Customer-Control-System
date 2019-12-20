@@ -9,8 +9,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@EnableWebMvc
-@ComponentScan
 @EnableSpringDataWebSupport
 public class ApplicationWebMvcConfig implements WebMvcConfigurer{
 	
@@ -18,9 +16,9 @@ public class ApplicationWebMvcConfig implements WebMvcConfigurer{
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 	        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
 	        registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
-
+			registry.addResourceHandler("/webjars/**").addResourceLocations("/resources/webjars/");
 	    }
-	
+
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 			registry.addViewController("/login.html");
