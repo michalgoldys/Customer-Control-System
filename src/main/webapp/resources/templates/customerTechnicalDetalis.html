@@ -5,10 +5,17 @@
 <head>
     <title>Wyswietlanie Kontrahentow</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <body>
+<div class="card m-3 p-3 text-center">
+    <nav class="navbar navbar-brand navbar-light bg-light">
+        <h2>AutoGPS</h2>
+    </nav>
+</div>
     <form action="#" data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${selectedCustomerId})}" data-th-method="POST" role="form">
-    <div align="center">
-    <table class="comicGreenShowingCustomers">
+
+        <div class="card text-center m-2 p-2 w-50 mx-auto">
+            <table class="table table-striped">
     
 <thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
 
@@ -72,18 +79,12 @@
 </th:block>
 </th:block>
 
-<tr>
-<th></th>
-<th><a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"><button type ="button">Dodaj Nowy Wpis</button></a></th>
-</tr>
-
-<tr>
-<th></th>
-<th><a data-th-href="@{/customer/customerTechnicalPanel}"><button type ="button">Powrot</button></a></th>
-</tr>
-
 </tbody>
-</table>
+            </table>
+            <a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"><button type ="button"  class="btn btn-success" >Dodaj Nowy Wpis</button></a>
+
+            <a data-th-href="@{/customer/customerTechnicalPanel}"><button type ="button" class="btn btn-light">Powrot</button></a>
+
       </div>
       </form>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
