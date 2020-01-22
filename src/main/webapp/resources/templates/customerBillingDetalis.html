@@ -1,120 +1,158 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <title>Wyswietlanie Kontrahentow</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 
 <body>
-<div class="card m-3 p-3 text-center">
-    <nav class="navbar navbar-brand navbar-light bg-light">
-        <h2>AutoGPS</h2>
+
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
     </nav>
 </div>
-    <form action="#" data-th-action="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${selectedCustomerId})}" data-th-method="POST" role="form">
 
-        <div class="card text-center m-2 p-2 w-50 mx-auto">
-            <table class="table table-striped">
-    
-<thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
+<form action="#" data-th-action="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${selectedCustomerId})}"
+      data-th-method="POST" role="form">
 
-<tr>
-<th>*Wlasciwosci Obiektu*</th>
-<th></th>
-</tr>
+    <div class="card text-center m-2 p-2 w-50 mx-auto">
+        <table class="table table-striped">
 
-<tr>
-<th>ID</th>
-<td data-th-text="*{ct.customerId}"></td>
-</tr>
+            <thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
 
-<tr>
-<th>Numer Umowy</th>
-<td data-th-text="*{ct.customerContractId}"></td>
-</tr>
+            <tr>
+                <th>*Wlasciwosci Obiektu*</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>Numer PDF</th>
-<td data-th-text="*{selectedCustomerId}"></td>
-</tr>
+            <tr>
+                <th>ID</th>
+                <td data-th-text="*{ct.customerId}"></td>
+            </tr>
 
-</thead>
-<tbody data-th-each="ct : ${selectedCustomerById}">
+            <tr>
+                <th>Numer Umowy</th>
+                <td data-th-text="*{ct.customerContractId}"></td>
+            </tr>
 
-<tr>
-<th>*Dane Firmy*</th>
-<th></th>
-</tr>
+            <tr>
+                <th>Numer PDF</th>
+                <td data-th-text="*{selectedCustomerId}"></td>
+            </tr>
 
-<tr>
-<th>Nazwa Firmy</th>
-<td data-th-text=*{ct.customerName}></td>
-</tr>
+            </thead>
+            <tbody data-th-each="ct : ${selectedCustomerById}">
 
-<tr>
-<th>NIP</th>
-<td data-th-text="*{ct.customerNip}"></td>
-</tr>
+            <tr>
+                <th>*Dane Firmy*</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>*Dane Billingowe*</th>
-<th><input type="hidden" data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}" name="customerContractDetalisId" id ="customerContractDetalisId" /></th>
-</tr>
+            <tr>
+                <th>Nazwa Firmy</th>
+                <td data-th-text=*{ct.customerName}></td>
+            </tr>
 
-<tr>
-<th>Faktura elektroniczna</th>
-<td>
-<input type="checkbox" data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}" name="customerEinvoiceAgreement" id="customerEinvoiceAgreement"/>
-<input type="hidden" name="_customerEinvoiceAgreement" data-th-value="${customerEinvoiceAgreement}"/>
-</td>
-</tr>
+            <tr>
+                <th>NIP</th>
+                <td data-th-text="*{ct.customerNip}"></td>
+            </tr>
 
-<tr>
-<th>Abonamenty PL</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}" name="customerPlSubstripctions" id="customerPlSubstripctions"/>
-</td>
-</tr>
+            <tr>
+                <th>*Dane Billingowe*</th>
+                <th><input data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}"
+                           id="customerContractDetalisId"
+                           name="customerContractDetalisId" type="hidden"/></th>
+            </tr>
 
-<tr>
-<th>Abonamenty UE</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlUeSubstripctions}" name="customerPlUeSubstripctions" id="customerPlUeSubstripctions"/></td>
-</tr>
+            <tr>
+                <th>Faktura elektroniczna</th>
+                <td>
+                    <input data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}"
+                           id="customerEinvoiceAgreement"
+                           name="customerEinvoiceAgreement" type="checkbox"/>
+                    <input data-th-value="${customerEinvoiceAgreement}" name="_customerEinvoiceAgreement"
+                           type="hidden"/>
+                </td>
+            </tr>
 
-<tr>
-<th>Abonamenty RU</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerRuSubscriptions}" name="customerRuSubscriptions" id="customerRuSubscriptions"/></td>
-</tr>
+            <tr>
+                <th>Abonamenty PL</th>
+                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}"
+                           id="customerPlSubstripctions"
+                           name="customerPlSubstripctions" type="text"/>
+                </td>
+            </tr>
 
-<tr>
-<th>Stawka PL</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlFee}" name="customerPlFee" id="customerPlFee"/></td>
-</tr>
+            <tr>
+                <th>Abonamenty UE</th>
+                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlUeSubstripctions}"
+                           id="customerPlUeSubstripctions"
+                           name="customerPlUeSubstripctions" type="text"/></td>
+            </tr>
 
-<tr>
-<th>Stawka PL+UE</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerPlUeFee}" name="customerPlUeFee" id="customerPlUeFee"/></td>
-</tr>
+            <tr>
+                <th>Abonamenty RU</th>
+                <td><input data-th-value="*{ct.CustomerContractDetalis.customerRuSubscriptions}"
+                           id="customerRuSubscriptions"
+                           name="customerRuSubscriptions" type="text"/></td>
+            </tr>
 
-<tr>
-<th>Stawka RU</th>
-<td><input type="text" data-th-value="*{ct.CustomerContractDetalis.customerRuFee}" name="customerRuFee" id="customerRuFee"/></td>
-</tr>
+            <tr>
+                <th>Stawka PL</th>
+                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlFee}" id="customerPlFee"
+                           name="customerPlFee"
+                           type="text"/></td>
+            </tr>
 
-<tr>
-<th></th>
-<th><a data-th-href="@{/customer/showingCustomersBillings}"><button type ="button" class="btn btn-light">Anuluj</button></a>
-<button type="submit" name="submit" id="submit" class="btn btn-success">Zapisz</button></th>
-</tr>
+            <tr>
+                <th>Stawka PL+UE</th>
+                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlUeFee}" id="customerPlUeFee"
+                           name="customerPlUeFee" type="text"/></td>
+            </tr>
 
-</tbody>
-</table>
-      </div>
-      </form>
+            <tr>
+                <th>Stawka RU</th>
+                <td><input data-th-value="*{ct.CustomerContractDetalis.customerRuFee}" id="customerRuFee"
+                           name="customerRuFee"
+                           type="text"/></td>
+            </tr>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            <tr>
+                <th></th>
+                <th><a class="btn btn-light w-25 mx-auto m-2" data-th-href="@{/customer/showingCustomersBillings}"
+                       role="button">Anuluj
+                </a>
+                    <button class="btn btn-success w-25 mx-auto m-2" id="submit" name="submit" type="submit">Zapisz
+                    </button>
+                </th>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<div class="card m-3 p-3 mx-auto">
+    <div class="badge badge-light mx-auto">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

@@ -3,150 +3,196 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Wyswietlanie Kontrahentow</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 <body>
-<div class="card m-3 p-3 text-center">
-    <nav class="navbar navbar-brand navbar-light bg-light">
-        <h2>AutoGPS</h2>
+
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
     </nav>
 </div>
-    <form action="#" data-th-action="@{/customer/showingCustomers/customerDetalis(id=${selectedCustomerId})}" data-th-method="POST" role="form">
 
-        <div class="card text-center m-2 p-2 w-50 mx-auto">
-            <table class="table table-striped">
+<form action="#" data-th-action="@{/customer/showingCustomers/customerDetalis(id=${selectedCustomerId})}"
+      data-th-method="POST" role="form">
 
-<thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
+    <div class="card text-center m-2 p-2 w-50 mx-auto">
+        <table class="table table-striped">
 
-<tr>
-<th>*Wlasciwosci Obiektu*</th>
-<th></th>
-</tr>
+            <thead data-th-each="ct : ${selectedCustomerById}">
 
-<tr>
-<th>ID</th>
-<td data-th-text="*{ct.customerId}"></td>
-</tr>
+            <tr>
+                <th>*Wlasciwosci Obiektu*</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>Numer Umowy</th>
-<td data-th-text="*{ct.customerContractId}">
-</td>
-</tr>
+            <tr>
+                <th>ID</th>
+                <td data-th-text="*{ct.customerId}"></td>
+            </tr>
 
-<tr>
-<th>Numer PDF</th>
-<td data-th-text="*{selectedCustomerId}">
-</td>
-</tr>
+            <tr>
+                <th>Numer Umowy</th>
+                <td data-th-text="*{ct.customerContractId}">
+                </td>
+            </tr>
 
-</thead>
-<tbody data-th-each="ct : ${selectedCustomerById}">
+            <tr>
+                <th>Numer PDF</th>
+                <td data-th-text="*{selectedCustomerId}">
+                </td>
+            </tr>
 
-<tr>
-<th>Dane Firmy</th>
-<th></th>
-</tr>
+            </thead>
+            <tbody data-th-each="ct : ${selectedCustomerById}">
 
-<tr>
-<th>Nazwa Firmy</th>
-<td><input type="text" data-th-value="*{ct.customerName}" name="customerName" id="customerName"/>
-<input type="hidden" data-th-value="*{ct.customerContractId}" name="customerContractId" id="customerContractId"/>
-<input type="hidden" data-th-value="*{ct.customerContractPdfId}" name="customerContractPdfId" id="customerContractPdfId"/></td>
-</tr>
+            <tr>
+                <th>Dane Firmy</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>NIP</th>
-<td><input type="text" data-th-value="*{ct.customerNip}" name="customerNip" id="customerNip"/></td>
-</tr>
+            <tr>
+                <th>Nazwa Firmy</th>
+                <td><input data-th-value="*{ct.customerName}" id="customerName" name="customerName" type="text"/>
+                    <input data-th-value="*{ct.customerContractId}" id="customerContractId" name="customerContractId"
+                           type="hidden"/>
+                    <input data-th-value="*{ct.customerContractPdfId}" id="customerContractPdfId"
+                           name="customerContractPdfId"
+                           type="hidden"/></td>
+            </tr>
 
-<tr>
-<th>*Dane Adresowe*</th>
-<th></th>
-</tr>
+            <tr>
+                <th>NIP</th>
+                <td><input data-th-value="*{ct.customerNip}" id="customerNip" name="customerNip" type="text"/></td>
+            </tr>
 
-<tr>
-<th>Miasto</th>
-<td><input type="text" data-th-value="*{ct.CustomerAdress.customerCity}" name="customerCity" id="customerCity"/>
-<input type="hidden" data-th-value="*{ct.customerAdress.customerAdressId}" name="customerAdressId" id="customerAdressId"/></td>
-</tr>
+            <tr>
+                <th>*Dane Adresowe*</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>Ulica</th>
-<td><input type="text" data-th-value="*{ct.CustomerAdress.customerStreet}" name="customerStreet" id="customerStreet"/></td>
-</tr>
+            <tr>
+                <th>Miasto</th>
+                <td><input data-th-value="*{ct.CustomerAdress.customerCity}" id="customerCity" name="customerCity"
+                           type="text"/>
+                    <input data-th-value="*{ct.customerAdress.customerAdressId}" id="customerAdressId"
+                           name="customerAdressId"
+                           type="hidden"/></td>
+            </tr>
 
-<tr>
-<th>Kod Pocztowy</th>
-<td><input type="text" data-th-value="*{ct.CustomerAdress.customerZipCode}" name="customerZipCode" id="customerZipCode"/></td>
-</tr>
+            <tr>
+                <th>Ulica</th>
+                <td><input data-th-value="*{ct.CustomerAdress.customerStreet}" id="customerStreet" name="customerStreet"
+                           type="text"/></td>
+            </tr>
 
-<tr>
-<th>*Dane Kontaktowe*</th>
-<th></th>
-</tr>
+            <tr>
+                <th>Kod Pocztowy</th>
+                <td><input data-th-value="*{ct.CustomerAdress.customerZipCode}" id="customerZipCode"
+                           name="customerZipCode"
+                           type="text"/></td>
+            </tr>
 
-<tr data-th-each="ctc : ${ct.CustomerContact}">
-<th>Os.Kont.: Imie</th>
-<td><input type="text" data-th-value="*{ctc.customerContactName}" name="customerContactName" id="customerContactName"/>
-<input type="hidden" data-th-value="*{ctc.customerContactId}" name="customerContactId" id="customerContactId"/></td>
-</tr>
+            <tr>
+                <th>*Dane Kontaktowe*</th>
+                <th></th>
+            </tr>
 
-<tr data-th-each="ctc : ${ct.CustomerContact}">
-<th>Os.Kont.: Nazwisko</th>
-<td><input type="text" data-th-value="*{ctc.customerContactSurname}" name="customerContactSurname" id="customerContactSurname"/></td>
-</tr>
+            <tr data-th-each="ctc : ${ct.CustomerContact}">
+                <th>Os.Kont.: Imie</th>
+                <td><input data-th-value="*{ctc.customerContactName}" id="customerContactName"
+                           name="customerContactName"
+                           type="text"/>
+                    <input data-th-value="*{ctc.customerContactId}" id="customerContactId" name="customerContactId"
+                           type="hidden"/></td>
+            </tr>
 
-<tr data-th-each="ctc : ${ct.CustomerContact}">
-<th>Os.Kont.: Telefon</th>
-<td><input type="text" data-th-value="*{ctc.customerContactPhoneNumber}" name="customerContactPhoneNumber" id="customerContactPhoneNumber"/></td>
-</tr>
+            <tr data-th-each="ctc : ${ct.CustomerContact}">
+                <th>Os.Kont.: Nazwisko</th>
+                <td><input data-th-value="*{ctc.customerContactSurname}" id="customerContactSurname"
+                           name="customerContactSurname"
+                           type="text"/></td>
+            </tr>
 
-<tr data-th-each="ctc : ${ct.CustomerContact}">
-<th>Os.Kont.: E-mail</th>
-<td><input type="text" data-th-value="*{ctc.customerContactMailAdress}" name="customerContactMailAdress" id="customerContactMailAdress"/></td>
-</tr>
+            <tr data-th-each="ctc : ${ct.CustomerContact}">
+                <th>Os.Kont.: Telefon</th>
+                <td><input data-th-value="*{ctc.customerContactPhoneNumber}" id="customerContactPhoneNumber"
+                           name="customerContactPhoneNumber" type="text"/></td>
+            </tr>
 
-<tr>
-<th>*Dane Aktywnosci Klienta*</th>
-<th></th>
-</tr>
+            <tr data-th-each="ctc : ${ct.CustomerContact}">
+                <th>Os.Kont.: E-mail</th>
+                <td><input data-th-value="*{ctc.customerContactMailAdress}" id="customerContactMailAdress"
+                           name="customerContactMailAdress"
+                           type="text"/></td>
+            </tr>
 
-<tr>
-<th>Klient Aktywny</th>
-<td data-th-text="*{ct.customerIsActive}"></td>
-</tr>
+            <tr>
+                <th>*Dane Aktywnosci Klienta*</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>Aktywacja klienta</th>
-<td>
-<input type="checkbox" data-th-checked="*{ct.customerIsActive}" data-th-disabled="*{isDisabled}" name="customerIsActive" id="customerIsActive"/>
-<input type="hidden" name="_customerIsActive" data-th-value="${customerIsActive}"/>
-</td>
-</tr>
+            <tr>
+                <th>Klient Aktywny</th>
+                <td data-th-text="*{ct.customerIsActive}"></td>
+            </tr>
 
-<tr>
-<th>Data Aktywacji</th>
-<td><input type="text" data-th-value="*{ct.customerActivationDate}" name="customerActivationDate" id="customerActivationDate" th:readonly='readonly'/></td>
-</tr>
+            <tr>
+                <th>Aktywacja klienta</th>
+                <td>
+                    <input data-th-checked="*{ct.customerIsActive}" data-th-disabled="*{isDisabled}"
+                           id="customerIsActive"
+                           name="customerIsActive" type="checkbox"/>
+                    <input data-th-value="${customerIsActive}" name="_customerIsActive" type="hidden"/>
+                </td>
+            </tr>
 
-<tr>
-<th>Data Deaktywacji</th>
-<td><input type="text" data-th-value="*{ct.customerDeactivationDate}" name="customerDeactivationDate" id="customerDeactivationDate" th:readonly='readonly'/></td>
-</tr>
+            <tr>
+                <th>Data Aktywacji</th>
+                <td><input data-th-value="*{ct.customerActivationDate}" id="customerActivationDate"
+                           name="customerActivationDate"
+                           th:readonly='readonly' type="text"/></td>
+            </tr>
 
-<tr>
-<th></th>
-<th><a data-th-href="@{/customer/showingCustomers}"><button type ="button" class="btn btn-light">Anuluj</button></a>
-<button type="submit" name="submit" id="submit" class="btn btn-success">Zapisz</button></th>
-</tr>
+            <tr>
+                <th>Data Deaktywacji</th>
+                <td><input data-th-value="*{ct.customerDeactivationDate}" id="customerDeactivationDate"
+                           name="customerDeactivationDate"
+                           th:readonly='readonly' type="text"/></td>
+            </tr>
 
-</tbody>
-</table>
-      </div>
-      </form>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            <tr>
+                <th></th>
+                <th><a class="btn btn-light w-25 mx-auto m-2" data-th-href="@{/customer/showingCustomers}"
+                       role="button">Anuluj
+                </a>
+                    <button class="btn btn-success w-25 mx-auto m-2" id="submit" name="submit" type="submit">Zapisz
+                    </button>
+                </th>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<div class="card m-3 p-3 w-75 mx-auto">
+    <div class="badge badge-light mx-auto">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

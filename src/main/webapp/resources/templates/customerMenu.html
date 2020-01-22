@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Modul Zarzadzania Klientami</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <body>
-  <div class="card m-3 p-3 text-center">
-  <nav class="navbar navbar-brand navbar-light bg-light">
-    <h2>AutoGPS</h2>
-  </nav>
-  </div>
-<div class="list-group card text-center m-4 p-4 w-25 mx-auto" >
-  <a data-th-href="@{/customer/showingCustomers}" class="list-group-item list-group-item-action">1. Baza Kontrahentow</a>
-  <a data-th-href="@{/customer/showingCustomersBillings}" class="list-group-item list-group-item-action">2. Informacje Rozliczeniowe Kontrahentow</a>
-  <a data-th-href="@{/customer/customerTechnicalPanel}" class="list-group-item list-group-item-action">3. Panel Obslugi Technicznej</a>
-  <a data-th-href="@{/customer/addingCustomer}"class="list-group-item list-group-item-success">4 .Dodaj nowego kontrahenta</a>
+<html>
+<head>
+    <title>Menu Główne</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+<body>
+
+<div class="card m-2 p-2 mx-auto">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
+    </nav>
 </div>
 
-	</body>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<div class="list-group card text-center m-4 p-4 w-25 mx-auto">
+    <a class="list-group-item list-group-item-action" data-th-href="@{/customer/showingCustomers}">1. Baza
+        Kontrahentow</a>
+    <a class="list-group-item list-group-item-action" data-th-href="@{/customer/showingCustomersBillings}">2. Informacje
+        Rozliczeniowe Kontrahentow</a>
+    <a class="list-group-item list-group-item-action" data-th-href="@{/customer/customerTechnicalPanel}">3. Panel
+        Obslugi Technicznej</a>
+    <a class="list-group-item list-group-item-success" data-th-href="@{/customer/addingCustomer}">4 .Dodaj nowego
+        kontrahenta</a>
+</div>
 
+<div class="card m-3 p-3 mx-auto w-25">
+    <div class="badge badge-light mx-auto">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
 </html>

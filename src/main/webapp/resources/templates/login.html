@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 
 
-<html xmlns:th="http://www.thymeleaf.org">
-<link data-th-href="@{/css/blueTable.css}" rel="stylesheet" />
+<html>
+<link data-th-href="@{/css/blueTable.css}" rel="stylesheet"/>
 <head>
-	<title>Zarzadzanie Pracownikami - Strona Robocza</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Zarzadzanie Pracownikami - Strona Robocza</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 </head>
-<body class="mx-auto" style="width: 200px;">
+<body class="mx-auto w-25 p-3">
    <h2>Logowanie</h2>
-	<form name='f' action='doLogin' method='POST' >
-		<div class="form-row align-items-center">
-			<div class="col-auto">
-		<div class="form-group">
-			<label for="Login">Login</label>
-			<input type="text" class="form-control" id="Login" name='username' aria-describedby="emailHelp">
-		</div>
-		<div class="form-group">
-			<label for="exampleInputPassword1">Password</label>
-			<input type="password" class="form-control" id="exampleInputPassword1" name='password'>
-		</div>
-		<button type="submit" class="btn btn-primary" name="submit">Zaloguj</button>
-		<input type="hidden" data-th-name="${_csrf.parameterName}" data-th-value="${_csrf.token}"/>
-			</div>
-		</div>
-	</form>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<form action='doLogin' method='POST' name='#'>
+    <div class="form-row">
+        <div class="col">
+            <div class="form-group">
+                <label for="Login">Nazwa Uzytkownika</label>
+                <input class="form-control" id="Login" name='username' type="text">
+            </div>
+            <div class="form-group">
+                <label for="Password">Haslo</label>
+                <input class="form-control" id="Password" name='password' type="password">
+            </div>
+            <button class="btn btn-primary" name="submit" type="submit">Zaloguj</button>
+            <input data-th-name="${_csrf.parameterName}" data-th-value="${_csrf.token}" type="hidden"/>
+        </div>
+    </div>
+</form>
+
+<div class="card m-3 p-3 mx-auto w-auto">
+    <div class="badge badge-light">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,67 +1,94 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <title>Wyswietlanie Kontrahentow</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 <body>
-<div class="card m-3 p-3 text-center">
-    <nav class="navbar navbar-brand navbar-light bg-light">
-        <h2>AutoGPS</h2>
+
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
     </nav>
 </div>
-    <form action="#" data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}" data-th-method="POST">
-        <div class="card text-center m-2 p-2 w-50 mx-auto">
-            <table class="table table-striped">
-    <thead data-th-each="ct : ${selectedCustomerById}">
-    
-<tr>
-<th>*Wlasciwosci Obiektu*</th>
-<th></th>
-</tr>
 
-<tr>
-<th>ID</th>
-<td data-th-text="*{ct.customerId}"></td>
-</tr>
+<form action="#"
+      data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"
+      data-th-method="POST">
+    <div class="card text-center m-2 p-2 w-50 mx-auto">
+        <table class="table table-striped">
+            <thead data-th-each="ct : ${selectedCustomerById}">
 
-<tr>
-<th>Numer Umowy</th>
-<td data-th-text="*{ct.customerContractId}"></td>
-</tr>
+            <tr>
+                <th>*Wlasciwosci Obiektu*</th>
+                <th></th>
+            </tr>
 
-<tr>
-<th>Numer PDF</th>
-<td data-th-text="*{ct.customerContractPdfId}"></td>
-</tr>
-    
-    </thead>
-    <tbody>
-    <tr>
-    
-<th>Data Zgloszenia Problemu</th>
-<td><input type="text" maxlength="12" data-th-value="*{customerTechnicalPanel.customerTechnicalIssueOccourDate}" name="customerTechnicalIssueOccourDate" id="customerTechnicalIssueOccourDate"/></td>
-</tr>
+            <tr>
+                <th>ID</th>
+                <td data-th-text="*{ct.customerId}"></td>
+            </tr>
 
-<tr>
-<th>Opis Problemu</th>
-<td><textarea rows="8" cols="50" data-th-field="*{customerTechnicalPanel.customerTechnicalIssueDescribtion}"></textarea></td>
-</tr>
+            <tr>
+                <th>Numer Umowy</th>
+                <td data-th-text="*{ct.customerContractId}"></td>
+            </tr>
 
-<tr>
-<th></th>
-<th>
-<a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${customerSelectionId})}"><button type ="button">Anuluj</button></a>
-<button type ="submit" name="submit" id="submit">Zapisz</button></th>
-</tr>
+            <tr>
+                <th>Numer PDF</th>
+                <td data-th-text="*{ct.customerContractPdfId}"></td>
+            </tr>
 
-    </tbody>
-	</table>
-      </div>
-      </form>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            </thead>
+            <tbody>
+            <tr>
+
+                <th>Data Zgloszenia Problemu</th>
+                <td><input data-th-value="*{customerTechnicalPanel.customerTechnicalIssueOccourDate}"
+                           id="customerTechnicalIssueOccourDate"
+                           maxlength="12"
+                           name="customerTechnicalIssueOccourDate" type="text"/></td>
+            </tr>
+
+            <tr>
+                <th>Opis Problemu</th>
+                <td><textarea cols="50" data-th-field="*{customerTechnicalPanel.customerTechnicalIssueDescribtion}"
+                              rows="8"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th>
+                    <a class="btn btn-light m-2" data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${customerSelectionId})}"
+                       role="button">Anuluj</a>
+                    <button class="btn btn-success m-2" id="submit" name="submit" type="submit">Zapisz</button>
+                </th>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<div class="card m-3 p-3 mx-auto">
+    <div class="badge badge-light mx-auto">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

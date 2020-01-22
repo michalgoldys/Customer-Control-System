@@ -1,89 +1,146 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <title>Dodawanie Kontrahenta</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <body>
-  <div class="card m-3 p-3 text-center">
-      <nav class="navbar navbar-brand navbar-light bg-light">
-          <h2>AutoGPS</h2>
-      </nav>
-  </div>
-    <form action="#" data-th-action="@{/customer/addingCustomer}" method="post">
-        <div class="card m-3 p-3 b-5 mx-auto w-25">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<body>
+
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
+    </nav>
+</div>
+
+<form action="#" data-th-action="@{/customer/addingCustomer}" method="post">
+    <div class="card m-3 p-3 b-5 mx-auto w-25">
         <div class="form-group">
             <label for="customerContractId">Numer Umowy</label>
-            <input type="text" class="form-control" id="customerContractId" aria-describedby="customerContractIdHelp" data-th-field="*{customer.customerContractId}" placeholder="01/01/2000">
-            <small id="customerContractIdHelp" class="form-text text-muted">Numer Umowy widoczny na umowie</small>
+            <input aria-describedby="customerContractIdHelp" class="form-control"
+                   data-th-field="*{customer.customerContractId}" id="customerContractId"
+                   placeholder="01/01/2000" type="text">
+            <small class="form-text text-muted" id="customerContractIdHelp">Numer Umowy widoczny na umowie</small>
         </div>
         <div class="form-group">
             <label for="customerContractPdfId">Numer PDF</label>
-            <input type="text" class="form-control" id="customerContractPdfId" aria-describedby="customerContractPdfIdHelp" data-th-field="*{customer.customerContractPdfId}" placeholder="0123, PR 2000">
-            <small id="customerContractPdfIdHelp" class="form-text text-muted">Numer PDF nadany w ewidencji</small>
+            <input aria-describedby="customerContractPdfIdHelp" class="form-control"
+                   data-th-field="*{customer.customerContractPdfId}"
+                   id="customerContractPdfId" placeholder="0123, PR 2000"
+                   type="text">
+            <small class="form-text text-muted" id="customerContractPdfIdHelp">Numer PDF nadany w ewidencji</small>
         </div>
         <div class="form-group">
             <label for="customerName">Nazwa Kontrahenta</label>
-            <input type="text" class="form-control" id="customerName" aria-describedby="customerName" data-th-field="*{customer.customerName}">
-            <small id="customerNameHelp" class="form-text text-muted">Nazwa kontrahenta zgoda z CEDIG</small>
+            <input aria-describedby="customerName" class="form-control" data-th-field="*{customer.customerName}"
+                   id="customerName"
+                   type="text">
+            <small class="form-text text-muted" id="customerNameHelp">Nazwa kontrahenta zgoda z CEDIG</small>
         </div>
         <div class="form-group">
             <label for="customerNip">Numer NIP</label>
-            <input type="text" class="form-control" id="customerNip" aria-describedby="customerNip" data-th-field="*{customer.customerNip}" placeholder="1233211212">
-            <small id="customerNipHelp" class="form-text text-muted">Numer NIP zgodny z umowa</small>
+            <input aria-describedby="customerNip" class="form-control" data-th-field="*{customer.customerNip}"
+                   id="customerNip"
+                   placeholder="1233211212" type="text">
+            <small class="form-text text-muted" id="customerNipHelp">Numer NIP zgodny z umowa</small>
         </div>
         <div class="form-group">
             <label for="customerCity">Miasto</label>
-            <input type="text" class="form-control" id="customerCity" aria-describedby="customerCity" data-th-field="*{customerAdress.customerCity}">
-            <small id="customerCityHelp" class="form-text text-muted">Miasto zarejestrowania działalności</small>
+            <input aria-describedby="customerCity" class="form-control" data-th-field="*{customerAdress.customerCity}"
+                   id="customerCity"
+                   type="text">
+            <small class="form-text text-muted" id="customerCityHelp">Miasto zarejestrowania działalności</small>
         </div>
         <div class="form-group">
             <label for="customerStreet">Ulica</label>
-            <input type="text" class="form-control" id="customerStreet" aria-describedby="customerStreet" data-th-field="*{customerAdress.customerStreet}">
-            <small id="customerStreetHelp" class="form-text text-muted">Ulica zarejestrowania działalnosci jeżeli istnieje</small>
+            <input aria-describedby="customerStreet" class="form-control"
+                   data-th-field="*{customerAdress.customerStreet}" id="customerStreet"
+                   type="text">
+            <small class="form-text text-muted" id="customerStreetHelp">Ulica zarejestrowania działalnosci jeżeli
+                istnieje</small>
         </div>
         <div class="form-group">
             <label for="customerZipCode">Kod Pocztowy</label>
-            <input type="text" class="form-control" id="customerZipCode" aria-describedby="customerZipCode" data-th-field="*{customerAdress.customerZipCode}" placeholder="01-123">
-            <small id="customerZipCodeHelp" class="form-text text-muted">Kod pocztowy zarejestrowania działalnosci</small>
+            <input aria-describedby="customerZipCode" class="form-control"
+                   data-th-field="*{customerAdress.customerZipCode}" id="customerZipCode"
+                   placeholder="01-123" type="text">
+            <small class="form-text text-muted" id="customerZipCodeHelp">Kod pocztowy zarejestrowania
+                działalnosci</small>
         </div>
         <div class="form-group">
             <label for="customerContactName">Osoba kontaktowa - Imie</label>
-            <input type="text" class="form-control" id="customerContactName" aria-describedby="customerContactName" data-th-field="*{customerContact.customerContactName}">
-            <small id="customerContactNameHelp" class="form-text text-muted">Imie osoby podanej do kontaktu w imieniu firmy</small>
+            <input aria-describedby="customerContactName" class="form-control"
+                   data-th-field="*{customerContact.customerContactName}" id="customerContactName"
+                   type="text">
+            <small class="form-text text-muted" id="customerContactNameHelp">Imie osoby podanej do kontaktu w imieniu
+                firmy</small>
         </div>
         <div class="form-group">
             <label for="customerContactSurname">Osoba kontaktowa - Nazwisko</label>
-            <input type="text" class="form-control" id="customerContactSurname" aria-describedby="customerContactSurname" data-th-field="*{customerContact.customerContactSurname}">
-            <small id="customerContactSurnameHelp" class="form-text text-muted">Nazwisko osoby podanej do kontaktu w imieniu firmy</small>
+            <input aria-describedby="customerContactSurname" class="form-control"
+                   data-th-field="*{customerContact.customerContactSurname}"
+                   id="customerContactSurname" type="text">
+            <small class="form-text text-muted" id="customerContactSurnameHelp">Nazwisko osoby podanej do kontaktu w
+                imieniu firmy</small>
         </div>
         <div class="form-group">
             <label for="customerContactPhoneNumber">Osoba kontaktowa - Telefon</label>
-            <input type="text" class="form-control" id="customerContactPhoneNumber" aria-describedby="customerContactPhoneNumber" data-th-field="*{customerContact.customerContactPhoneNumber}"
-                   placeholder="123456789, 01 23 34 567">
-            <small id="customerContactPhoneNumberHelp" class="form-text text-muted">Numer telefonu do osoby do kontaktu w firmie</small>
+            <input aria-describedby="customerContactPhoneNumber" class="form-control"
+                   data-th-field="*{customerContact.customerContactPhoneNumber}"
+                   id="customerContactPhoneNumber"
+                   placeholder="123456789, 01 23 34 567"
+                   type="text">
+            <small class="form-text text-muted" id="customerContactPhoneNumberHelp">Numer telefonu do osoby do kontaktu
+                w firmie</small>
         </div>
         <div class="form-group">
             <label for="customerContactMailAdress">Adres email</label>
-            <input type="text" class="form-control" id="customerContactMailAdress" aria-describedby="customerContactMailAdress" data-th-field="*{customerContact.customerContactMailAdress}"
-                   placeholder="example@com.pl">
-            <small id="customerContactMailAdressHelp" class="form-text text-muted">Numer telefonu do osoby do kontaktu w firmie</small>
+            <input aria-describedby="customerContactMailAdress" class="form-control"
+                   data-th-field="*{customerContact.customerContactMailAdress}"
+                   id="customerContactMailAdress"
+                   placeholder="example@com.pl"
+                   type="text">
+            <small class="form-text text-muted" id="customerContactMailAdressHelp">Numer telefonu do osoby do kontaktu w
+                firmie</small>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="customerContractDetalis.customerEinvoiceAgreement" th:field="*{customerContractDetalis.customerEinvoiceAgreement}">
+            <input class="form-check-input" id="customerContractDetalis.customerEinvoiceAgreement"
+                   th:field="*{customerContractDetalis.customerEinvoiceAgreement}"
+                   type="checkbox">
             <label class="form-check-label" for="customerContractDetalis.customerEinvoiceAgreement">
                 Zgoda na fakture elektroniczna
             </label>
         </div>
 
-            <td><button name="addingCustomer" type="submit" class="btn btn-success">Zapisz</button></td>
-            <td><a data-th-href="@{/customer/customerMenu}"name="backButton" class="mx-auto form-group"><button type ="button" class="btn btn-primary">Powrot</button></a></td>
+        <td>
+            <button class="btn btn-success m-2" name="addingCustomer" type="submit">Zapisz</button>
+        </td>
+        <td>
+            <a class="btn btn-light m-2" data-th-href="@{/customer/customerMenu}" role="button">Powrot Na Strone
+                Glowna</a>
+        </td>
 
-        </div>
-    </form>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	</body>
+    </div>
+</form>
+
+<div class="card m-3 p-3 mx-auto">
+    <div class="badge badge-light mx-auto">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</body>
 </html>

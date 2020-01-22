@@ -1,77 +1,117 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <title>Wyswietlanie Kontrahentow</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <body>
-  <div class="card m-2 p-2">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <th:block data-th-if="${isPrevious == true}">
-        <th><a data-th-href="@{./?(page=${page-1}, sort=${sort}, query=${query})}">Poprzednia Strona</a></th>
-    </th:block>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+<body>
 
-    <th:block data-th-if="${isNext == true}">
-        <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
-    </th:block>
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
+    </nav>
+</div>
 
-    <form action="#" data-th-action="@{showingCustomersInteractive/?(page=${page}, sort=${sort}, query=${query})}">
-        <th><input type="text" data-th-value="${query}" name="query" id="query"></th>
-        <th><button class="btn btn-success" type="button" >Szukaj</button></th>
-    </form>
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <a data-th-href="@{/customer/customerMenu}"><button type ="button" class="btn btn-primary">Powrot</button></a>
-</nav>
-  </div>
-    <div class="card text-center m-2 p-2">
+        <th:block data-th-if="${isPrevious == true}">
+            <th><a data-th-href="@{./?(page=${page-1}, sort=${sort}, query=${query})}">Poprzednia Strona</a></th>
+        </th:block>
+
+        <th:block data-th-if="${isNext == true}">
+            <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
+        </th:block>
+
+        <form action="#" data-th-action="@{showingCustomersInteractive/?(page=${page}, sort=${sort}, query=${query})}">
+            <th><input data-th-value="${query}" id="query" name="query" type="text"></th>
+            <th>
+                <button class="btn btn-success m-3 " type="button">Szukaj</button>
+            </th>
+        </form>
+
+        <a class="btn btn-primary m-2" data-th-href="@{/customer/customerMenu}" role="button">Powrot</a>
+    </nav>
+</div>
+<div class="card text-center m-2 p-2">
     <table class="table table-striped">
 
-<thead>
-<tr>
-<th>LP</th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerContractId(query=${query})}">Numer Umowy</a></th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerContractPdfId(query=${query})}">Numer PDF</a></th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerName(query=${query})}">Nazwa</a></th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerNip(query=${query})}">NIP</a></th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerCity(query=${query})}">Miasto</a></th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerStreet(query=${query})}">Ulica</a></th>
-<th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerZipCode(query=${query})}">Kod Pocztowy</a></th>
-<th>Os.Kont.: Imie</th>
-<th>Os.Kont.: Nazwisko</th>
-<th>Os.Kont.: Telefon</th>
-<th>Os.Kont.: E-mail</th>
-<th>Faktura Elektroniczna</th>
-<th>Aktywny</th>
-</tr>
-</thead>
-<tbody>
-<tr data-th-each="ct : ${customer}">
-<td data-th-text="${ctStat.count}"></td>
-<td data-th-text="${ct.customerContractId}"></td>
-<td><a data-th-href="@{/customer/showingCustomers/customerDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
-<td data-th-text="${ct.customerName}"></td>
-<td data-th-text="${ct.customerNip}"></td>
-<td data-th-text="${ct.CustomerAdress.customerCity}"></td>
-<td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
-<td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
-<td data-th-each="ctc : ${ct.CustomerContact}" 
-        data-th-text="${ctc.customerContactName}"></td>
-<td data-th-each="ctc : ${ct.CustomerContact}" 
-        data-th-text="${ctc.customerContactSurname}"></td>
-<td data-th-each="ctc : ${ct.CustomerContact}" 
-        data-th-text="${ctc.customerContactPhoneNumber}"></td>
-<td data-th-each="ctc : ${ct.CustomerContact}" 
-        data-th-text="${ctc.customerContactMailAdress}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>  
-<td data-th-text="${ct.customerIsActive}"></td>
-</tr>
+        <thead>
+        <tr>
+            <th>LP</th>
+            <th>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerContractId(query=${query})}">Numer
+                    Umowy</a></th>
+            <th>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerContractPdfId(query=${query})}">Numer
+                    PDF</a></th>
+            <th><a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerName(query=${query})}">Nazwa</a>
+            </th>
+            <th>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerNip(query=${query})}">NIP</a>
+            </th>
+            <th>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerCity(query=${query})}">Miasto</a>
+            </th>
+            <th>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerStreet(query=${query})}">Ulica</a>
+            </th>
+            <th>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerZipCode(query=${query})}">Kod
+                    Pocztowy</a></th>
+            <th>Os.Kont.: Imie</th>
+            <th>Os.Kont.: Nazwisko</th>
+            <th>Os.Kont.: Telefon</th>
+            <th>Os.Kont.: E-mail</th>
+            <th>Faktura Elektroniczna</th>
+            <th>Aktywny</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="ct : ${customer}">
+            <td data-th-text="${ctStat.count}"></td>
+            <td data-th-text="${ct.customerContractId}"></td>
+            <td><a data-th-href="@{/customer/showingCustomers/customerDetalis(id=${ct.customerContractPdfId})}"
+                   data-th-text="${ct.customerContractPdfId}"></a></td>
+            <td data-th-text="${ct.customerName}"></td>
+            <td data-th-text="${ct.customerNip}"></td>
+            <td data-th-text="${ct.CustomerAdress.customerCity}"></td>
+            <td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
+            <td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
+            <td data-th-each="ctc : ${ct.CustomerContact}"
+                data-th-text="${ctc.customerContactName}"></td>
+            <td data-th-each="ctc : ${ct.CustomerContact}"
+                data-th-text="${ctc.customerContactSurname}"></td>
+            <td data-th-each="ctc : ${ct.CustomerContact}"
+                data-th-text="${ctc.customerContactPhoneNumber}"></td>
+            <td data-th-each="ctc : ${ct.CustomerContact}"
+                data-th-text="${ctc.customerContactMailAdress}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>
+            <td data-th-text="${ct.customerIsActive}"></td>
+        </tr>
 
-</tbody>
-</table>
-      </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	</body>
+        </tbody>
+    </table>
+</div>
+
+<div class="card m-2 p-2">
+    <div class="badge badge-light">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
 </html>

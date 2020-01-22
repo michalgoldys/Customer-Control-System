@@ -1,79 +1,105 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <title>Wyswietlanie Kontrahentow</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <body>
-  <div class="card m-2 p-2">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <th:block data-th-if="${isPrevious == true}">
-        <th><a data-th-href="@{./?(page=${page-1}, sort=${sort}, query=${query})}">Poprzednia Strona</a></th>
-      </th:block>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+<body>
 
-      <th:block data-th-if="${isNext == true}">
-        <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
-      </th:block>
-
-      <form action="#" data-th-action="@{showingCustomersInteractive/?(page=${page}, sort=${sort}, query=${query})}">
-        <th><input type="text" data-th-value="${query}" name="query" id="query"></th>
-        <th><button class="btn btn-success" type="button" >Szukaj</button></th>
-      </form>
-
-      <a data-th-href="@{/customer/customerMenu}"><button type ="button" class="btn btn-primary">Powrot</button></a>
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-light bg-light m-1 p-1">
+        <div class="card-body text-center">
+            <img data-th-src="@{/images/logo_autogps.png}" style="max-width: 25%; height: 100px;">
+        </div>
     </nav>
-  </div>
-  <div class="card text-center m-2 p-2">
+</div>
+
+<div class="card m-2 p-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <th:block data-th-if="${isPrevious == true}">
+            <th><a data-th-href="@{./?(page=${page-1}, sort=${sort}, query=${query})}">Poprzednia Strona</a></th>
+        </th:block>
+
+        <th:block data-th-if="${isNext == true}">
+            <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
+        </th:block>
+
+        <form action="#" data-th-action="@{showingCustomersInteractive/?(page=${page}, sort=${sort}, query=${query})}">
+            <th><input data-th-value="${query}" id="query" name="query" type="text"></th>
+            <th>
+                <button class="btn btn-success m-3" type="button">Szukaj</button>
+            </th>
+        </form>
+        <a class="btn btn-primary m-2" data-th-href="@{/customer/customerMenu}" role="button">Powrot</a>
+    </nav>
+</div>
+<div class="card text-center m-2 p-2">
     <table class="table table-striped">
-  <thead>
-<tr>
-<th>LP</th>
-<th>Numer Umowy</th>
-<th>Numer PDF</th>
-<th>Nazwa</th>
-<th>NIP</th>
-<th>Faktura Elektroniczna</th>
-<th>Aktywny</th>
-<th>Ilosc Ab. PL</th>
-<th>Ilosc Ab. PL+UE</th>
-<th>Ilosc Ab. RU</th>
-<th>Stawka PL</th>
-<th>Stawka PL+UE</th>
-<th>Stawka RU</th>
-<th>Suma Abonamentow</th>
-<th>Przychod</th>
-<th>Koszty</th>
-<th>Bilans</th>
+        <thead>
+        <tr>
+            <th>LP</th>
+            <th>Numer Umowy</th>
+            <th>Numer PDF</th>
+            <th>Nazwa</th>
+            <th>NIP</th>
+            <th>Faktura Elektroniczna</th>
+            <th>Aktywny</th>
+            <th>Ilosc Ab. PL</th>
+            <th>Ilosc Ab. PL+UE</th>
+            <th>Ilosc Ab. RU</th>
+            <th>Stawka PL</th>
+            <th>Stawka PL+UE</th>
+            <th>Stawka RU</th>
+            <th>Suma Abonamentow</th>
+            <th>Przychod</th>
+            <th>Koszty</th>
+            <th>Bilans</th>
 
-</tr>
-</thead>
-<tbody>
+        </tr>
+        </thead>
+        <tbody>
 
-<tr data-th-each="ct, iterStat : ${customer}">
-<td data-th-text="${iterStat.count}"></td>
-<td data-th-text="${ct.customerContractId}"></td>
-<td><a data-th-href="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${ct.customerContractPdfId})}" data-th-text="${ct.customerContractPdfId}"></a></td>
-<td data-th-text="${ct.customerName}"></td>
-<td data-th-text="${ct.customerNip}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>  
-<td data-th-text="${ct.customerIsActive}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerPlSubstripctions}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerPlUeSubstripctions}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerRuSubscriptions}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerPlFee}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerPlUeFee}"></td>
-<td data-th-text="${ct.CustomerContractDetalis.customerRuFee}"></td>
-<td data-th-text="${subSumAtr[__${iterStat.index}__]}"></td>
-<td data-th-text="${incomeSumValue[__${iterStat.index}__]}"></td>
-<td data-th-text="${sumOfCosts[__${iterStat.index}__]}"></td>
-<td data-th-text="${incomeSumValue[__${iterStat.index}__]} - ${sumOfCosts[__${iterStat.index}__]}"></td>
-</tr>
-</tbody>
-</table>
-      </div>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
- </html>
+        <tr data-th-each="ct, iterStat : ${customer}">
+            <td data-th-text="${iterStat.count}"></td>
+            <td data-th-text="${ct.customerContractId}"></td>
+            <td>
+                <a data-th-href="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${ct.customerContractPdfId})}"
+                   data-th-text="${ct.customerContractPdfId}"></a></td>
+            <td data-th-text="${ct.customerName}"></td>
+            <td data-th-text="${ct.customerNip}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>
+            <td data-th-text="${ct.customerIsActive}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerPlSubstripctions}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerPlUeSubstripctions}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerRuSubscriptions}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerPlFee}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerPlUeFee}"></td>
+            <td data-th-text="${ct.CustomerContractDetalis.customerRuFee}"></td>
+            <td data-th-text="${subSumAtr[__${iterStat.index}__]}"></td>
+            <td data-th-text="${incomeSumValue[__${iterStat.index}__]}"></td>
+            <td data-th-text="${sumOfCosts[__${iterStat.index}__]}"></td>
+            <td data-th-text="${incomeSumValue[__${iterStat.index}__]} - ${sumOfCosts[__${iterStat.index}__]}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card m-3 p-3 mx-auto">
+    <div class="badge badge-light mx-auto">
+        Copyright © Michał Gołdys, 2020y.
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
