@@ -11,16 +11,16 @@ public class CustomerContact {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerContactId;
 	
-	@Column(name="customer_contact_name", nullable=true)
+	@Column(name="customer_contact_name")
 	private String customerContactName;
 	
-	@Column(name="customer_contact_surname", nullable=true)
+	@Column(name="customer_contact_surname")
 	private String customerContactSurname;
 	
-	@Column(name="customer_contact_phone_number", nullable=true)
+	@Column(name="customer_contact_phone_number")
 	private String customerContactPhoneNumber;
 	
-	@Column(name="customer_contact_mail_adress", nullable=true)
+	@Column(name="customer_contact_mail_adress")
 	private String customerContactMailAddress;
 	
 	@Autowired

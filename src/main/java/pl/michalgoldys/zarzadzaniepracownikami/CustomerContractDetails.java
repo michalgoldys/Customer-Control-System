@@ -11,25 +11,25 @@ public class CustomerContractDetails {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerContractDetailsId;
 	
-	@Column(name="customer_subscriptions", nullable=true)
+	@Column(name="customer_subscriptions")
 	private Integer customerSubscriptions;
 	
-	@Column(name="customer_pl_substripctions", nullable=true)
+	@Column(name="customer_pl_substripctions")
 	private Integer customerPlSubscriptions;
 	
-	@Column(name="customer_pl_ue_substripctions", nullable=true)
+	@Column(name="customer_pl_ue_substripctions")
 	private Integer customerPlUeSubscriptions;
 	
-	@Column(name="customer_ru_subscriptions", nullable=true)
+	@Column(name="customer_ru_subscriptions")
 	private Integer customerRuSubscriptions;
 	
-	@Column(name="customer_pl_fee", nullable=true)
+	@Column(name="customer_pl_fee")
 	private Integer customerPlFee;
 	
-	@Column(name="customer_pl_ue_fee", nullable=true)
+	@Column(name="customer_pl_ue_fee")
 	private Integer customerPlUeFee;
 	
-	@Column(name="customer_ru_fee", nullable=true)
+	@Column(name="customer_ru_fee")
 	private Integer customerRuFee;
 	
 	@Column(name="customer_einvoice_agreement")
