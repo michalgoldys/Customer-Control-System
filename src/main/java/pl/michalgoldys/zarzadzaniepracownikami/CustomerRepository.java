@@ -9,9 +9,5 @@ import java.util.List;
 public interface CustomerRepository extends Repository<Customer, Long>, JpaSpecificationExecutor<Customer> {
 	
 	List<Customer> findAll(Specification<Customer> query);
-	
-	/*
-	@Query("SELECT U FROM CUSTOMER WHERE U.query = ?1")
-	List<Customer> findAll(String query);
-	*/
+
 }
