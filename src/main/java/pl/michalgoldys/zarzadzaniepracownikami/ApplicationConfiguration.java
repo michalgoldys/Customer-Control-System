@@ -82,15 +82,6 @@ public class ApplicationConfiguration  {
 		messageSource.setBasename("messages");
 		return messageSource;
 	}
-	/*
-	@Bean
-	public InternalResourceViewResolver settingInternalResourceViewResolver() {
-		InternalResourceViewResolver irvr = new InternalResourceViewResolver();
-		irvr.setPrefix("/WEB-INF/views/");
-		irvr.setSuffix(".jsp");
-		return irvr;
-	}
-	*/
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
