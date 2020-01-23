@@ -32,12 +32,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            	.antMatchers("/customer/addingCustomer").hasRole("ADMIN")
 	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetalis/**").hasRole("ADMIN")
 	            	
-	                .antMatchers("/login*").permitAll()
-	                .antMatchers("/index").permitAll()
+	                .antMatchers("/login*", "/index").permitAll()
 	                
-	                .antMatchers("/css/*").permitAll()
-	                .antMatchers("/images/*").permitAll()
-	                
+	                .antMatchers("/css/**", "/images/**", "/jquery/**" , "/bootstrap/**").permitAll()
+
 	                .anyRequest().denyAll()
 	                
 	                .and()
