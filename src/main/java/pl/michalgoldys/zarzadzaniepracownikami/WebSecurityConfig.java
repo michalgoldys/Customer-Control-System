@@ -24,13 +24,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            	.antMatchers("/customer/showingCustomers").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/showingCustomersBillings").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/customerTechnicalPanel").hasAnyRole("USER","ADMIN")
-	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetalis").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetails").hasAnyRole("USER","ADMIN")
 					.antMatchers("/customer/showingCustomersInteractive/**").hasAnyRole("USER","ADMIN")
 
-	            	.antMatchers("/customer/showingCustomersBillings/customerBillingDetalis").hasRole("ADMIN")
-	            	.antMatchers("/customer/showingCustomers/customerDetalis").hasRole("ADMIN")
+	            	.antMatchers("/customer/showingCustomersBillings/customerBillingDetails").hasRole("ADMIN")
+	            	.antMatchers("/customer/showingCustomers/customerDetails").hasRole("ADMIN")
 	            	.antMatchers("/customer/addingCustomer").hasRole("ADMIN")
-	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetalis/**").hasRole("ADMIN")
+	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetails/**").hasRole("ADMIN")
 	            	
 	                .antMatchers("/login*", "/index").permitAll()
 	                
