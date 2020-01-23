@@ -15,16 +15,16 @@ public class CustomerContractDetalis {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long customerContractDetalisId;
+	private Long customerContractDetailsId;
 	
 	@Column(name="customer_subscriptions", nullable=true)
 	private Integer customerSubscriptions;
 	
 	@Column(name="customer_pl_substripctions", nullable=true)
-	private Integer customerPlSubstripctions;
+	private Integer customerPlSubscriptions;
 	
 	@Column(name="customer_pl_ue_substripctions", nullable=true)
-	private Integer customerPlUeSubstripctions;
+	private Integer customerPlUeSubscriptions;
 	
 	@Column(name="customer_ru_subscriptions", nullable=true)
 	private Integer customerRuSubscriptions;
@@ -50,13 +50,13 @@ public class CustomerContractDetalis {
 		
 	}
 	
-	public CustomerContractDetalis(Integer customerSubscriptions, Integer customerPlSubstripctions,
-			Integer customerPlUeSubstripctions, Integer customerRuSubscriptions, Integer customerPlFee, Integer customerPlUeFee,
-			Integer customerRuFee, Boolean customerEinvoiceAgreement) {
+	public CustomerContractDetalis(Integer customerSubscriptions, Integer customerPlSubscriptions,
+								   Integer customerPlUeSubscriptions, Integer customerRuSubscriptions, Integer customerPlFee, Integer customerPlUeFee,
+								   Integer customerRuFee, Boolean customerEinvoiceAgreement) {
 		super();
 		this.customerSubscriptions = customerSubscriptions;
-		this.customerPlSubstripctions = customerPlSubstripctions;
-		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
+		this.customerPlSubscriptions = customerPlSubscriptions;
+		this.customerPlUeSubscriptions = customerPlUeSubscriptions;
 		this.customerRuSubscriptions = customerRuSubscriptions;
 		this.customerPlFee = customerPlFee;
 		this.customerPlUeFee = customerPlUeFee;
@@ -80,20 +80,20 @@ public class CustomerContractDetalis {
 		this.customerSubscriptions = customerSubscriptions;
 	}
 
-	public Integer getCustomerPlSubstripctions() {
-		return customerPlSubstripctions;
+	public Integer getCustomerPlSubscriptions() {
+		return customerPlSubscriptions;
 	}
 
-	public void setCustomerPlSubstripctions(Integer customerPlSubstripctions) {
-		this.customerPlSubstripctions = customerPlSubstripctions;
+	public void setCustomerPlSubscriptions(Integer customerPlSubstripctions) {
+		this.customerPlSubscriptions = customerPlSubstripctions;
 	}
 
-	public Integer getCustomerPlUeSubstripctions() {
-		return customerPlUeSubstripctions;
+	public Integer getCustomerPlUeSubscriptions() {
+		return customerPlUeSubscriptions;
 	}
 
-	public void setCustomerPlUeSubstripctions(Integer customerPlUeSubstripctions) {
-		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
+	public void setCustomerPlUeSubscriptions(Integer customerPlUeSubscriptions) {
+		this.customerPlUeSubscriptions = customerPlUeSubscriptions;
 	}
 
 	public Integer getCustomerRuSubscriptions() {
@@ -136,11 +136,11 @@ public class CustomerContractDetalis {
 		this.customerEinvoiceAgreement = customerEinvoiceAgreement;
 	}
 
-	public Long getCustomerContractDetalisId() {
-		return customerContractDetalisId;
+	public Long getCustomerContractDetailsId() {
+		return customerContractDetailsId;
 	}
 
-	public void setCustomerContractDetalisId(Long customerContractDetalisId) {
-		this.customerContractDetalisId = customerContractDetalisId;
+	public void setCustomerContractDetailsId(Long customerContractDetailsId) {
+		this.customerContractDetailsId = customerContractDetailsId;
 	}
 }

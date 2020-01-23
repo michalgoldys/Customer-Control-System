@@ -15,15 +15,15 @@ public class CustomerAdress {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long customerAdressId;
+	private Long customerAddressId;
 	
-	@Column(name="customer_street", nullable=true)
+	@Column(name="customer_street")
 	private String customerStreet;
 	
-	@Column(name="customer_city", nullable=false)
+	@Column(name="customer_city")
 	private String customerCity;
 	
-	@Column(name="customer_zip_code", nullable=false)
+	@Column(name="customer_zip_code")
 	private String customerZipCode;
 	
 	@Autowired
@@ -69,12 +69,12 @@ public class CustomerAdress {
 		this.customerZipCode = customerZipCode;
 	}
 
-	public Long getCustomerAdressId() {
-		return customerAdressId;
+	public Long getCustomerAddressId() {
+		return customerAddressId;
 	}
 
-	public void setCustomerAdressId(Long customerAdressId) {
-		this.customerAdressId = customerAdressId;
+	public void setCustomerAddressId(Long customerAddressId) {
+		this.customerAddressId = customerAddressId;
 	}
 	
 }

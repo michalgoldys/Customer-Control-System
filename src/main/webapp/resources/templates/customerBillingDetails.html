@@ -16,7 +16,7 @@
     </nav>
 </div>
 
-<form action="#" data-th-action="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${selectedCustomerId})}"
+<form action="#" data-th-action="@{/customer/showingCustomersBillings/customerBillingDetails(id=${selectedCustomerId})}"
       data-th-method="POST" role="form">
 
     <div class="card text-center m-2 p-2 w-50 mx-auto">
@@ -64,15 +64,15 @@
 
             <tr>
                 <th>*Dane Billingowe*</th>
-                <th><input data-th-value="*{ct.CustomerContractDetalis.customerContractDetalisId}"
-                           id="customerContractDetalisId"
-                           name="customerContractDetalisId" type="hidden"/></th>
+                <th><input data-th-value="*{ct.CustomerContractDetails.customerContractDetailsId}"
+                           id="customerContractDetailsId"
+                           name="customerContractDetailsId" type="hidden"/></th>
             </tr>
 
             <tr>
                 <th>Faktura elektroniczna</th>
                 <td>
-                    <input data-th-checked="*{ct.CustomerContractDetalis.customerEinvoiceAgreement}"
+                    <input data-th-checked="*{ct.CustomerContractDetails.customerEinvoiceAgreement}"
                            id="customerEinvoiceAgreement"
                            name="customerEinvoiceAgreement" type="checkbox"/>
                     <input data-th-value="${customerEinvoiceAgreement}" name="_customerEinvoiceAgreement"
@@ -82,42 +82,42 @@
 
             <tr>
                 <th>Abonamenty PL</th>
-                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlSubstripctions}"
-                           id="customerPlSubstripctions"
-                           name="customerPlSubstripctions" type="text"/>
+                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlSubscriptions}"
+                           id="customerPlSubscriptions"
+                           name="customerPlSubscriptions" type="text"/>
                 </td>
             </tr>
 
             <tr>
                 <th>Abonamenty UE</th>
-                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlUeSubstripctions}"
-                           id="customerPlUeSubstripctions"
-                           name="customerPlUeSubstripctions" type="text"/></td>
+                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlUeSubscriptions}"
+                           id="customerPlUeSubscriptions"
+                           name="customerPlUeSubscriptions" type="text"/></td>
             </tr>
 
             <tr>
                 <th>Abonamenty RU</th>
-                <td><input data-th-value="*{ct.CustomerContractDetalis.customerRuSubscriptions}"
+                <td><input data-th-value="*{ct.CustomerContractDetails.customerRuSubscriptions}"
                            id="customerRuSubscriptions"
                            name="customerRuSubscriptions" type="text"/></td>
             </tr>
 
             <tr>
                 <th>Stawka PL</th>
-                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlFee}" id="customerPlFee"
+                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlFee}" id="customerPlFee"
                            name="customerPlFee"
                            type="text"/></td>
             </tr>
 
             <tr>
                 <th>Stawka PL+UE</th>
-                <td><input data-th-value="*{ct.CustomerContractDetalis.customerPlUeFee}" id="customerPlUeFee"
+                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlUeFee}" id="customerPlUeFee"
                            name="customerPlUeFee" type="text"/></td>
             </tr>
 
             <tr>
                 <th>Stawka RU</th>
-                <td><input data-th-value="*{ct.CustomerContractDetalis.customerRuFee}" id="customerRuFee"
+                <td><input data-th-value="*{ct.CustomerContractDetails.customerRuFee}" id="customerRuFee"
                            name="customerRuFee"
                            type="text"/></td>
             </tr>

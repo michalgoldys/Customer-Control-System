@@ -16,7 +16,7 @@
     </nav>
 </div>
 
-<form action="#" data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${selectedCustomerId})}"
+<form action="#" data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetails(id=${selectedCustomerId})}"
       data-th-method="POST" role="form">
 
     <div class="card text-center m-2 p-2 w-50 mx-auto">
@@ -86,7 +86,7 @@
 
             </tbody>
         </table>
-        <a class="btn btn-success w-25 mx-auto m-2" data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"
+        <a class="btn btn-success w-25 mx-auto m-2" data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetails/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"
            role="button">
             Dodaj Nowy Wpis</a>
         <a class="btn btn-light w-25 mx-auto m-2" data-th-href="@{/customer/customerTechnicalPanel}" role="button">Anuluj
