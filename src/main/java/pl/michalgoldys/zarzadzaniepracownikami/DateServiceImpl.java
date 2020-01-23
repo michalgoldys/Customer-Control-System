@@ -1,4 +1,18 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-public class DateServiceImpl {
+import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+@Component
+public class DateServiceImpl implements DateInterface {
+
+    @Override
+    public String getCurrentDate() {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDate localDate = LocalDate.now();
+
+        return dateTimeFormatter.format(localDate);
+    }
 }
