@@ -2,7 +2,7 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 
 import javax.transaction.Transactional;
 
-public interface CustomerDatabaseServiceImplementation {
+public interface CustomerDatabaseServiceInterface {
 
 	@Transactional
 	void updatingCustomer(Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, String customerSelectionId);

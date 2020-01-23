@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerDatabaseService implements CustomerDatabaseServiceImplementation, DatabaseOperationInterface{
+public class CustomerDatabaseService implements CustomerDatabaseServiceInterface, DatabaseOperationInterface{
 		
 		@Autowired
 		CustomerJpaRepository customerJpaRepository;
