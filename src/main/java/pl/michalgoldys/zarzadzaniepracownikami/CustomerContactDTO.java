@@ -14,7 +14,7 @@ public class CustomerContactDTO {
 	private String customerContactSurname;
 	
 	@Pattern(regexp="([\\w\\.\\-_]+)?\\w+@[\\w-_]+(\\.\\w+){1,}", message="Pole nie moze byc puste")
-	private String customerContactMailAdress;
+	private String customerContactMailAddress;
 	
 	
 	private String customerContactPhoneNumber;
@@ -35,12 +35,12 @@ public class CustomerContactDTO {
 		this.customerContactSurname = customerContactSurname;
 	}
 
-	public String getCustomerContactMailAdress() {
-		return customerContactMailAdress;
+	public String getCustomerContactMailAddress() {
+		return customerContactMailAddress;
 	}
 
-	public void setCustomerContactMailAdress(String customerContactMailAdress) {
-		this.customerContactMailAdress = customerContactMailAdress;
+	public void setCustomerContactMailAddress(String customerContactMailAddress) {
+		this.customerContactMailAddress = customerContactMailAddress;
 	}
 
 	public String getCustomerContactPhoneNumber() {

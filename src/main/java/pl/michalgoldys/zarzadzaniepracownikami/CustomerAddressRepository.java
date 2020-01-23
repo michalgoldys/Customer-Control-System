@@ -1,12 +1,12 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.List;
-
 import org.springframework.data.repository.Repository;
 
-public interface CustomerAdressRepository extends Repository<CustomerAdress, Long> {
+import java.util.List;
+
+public interface CustomerAddressRepository extends Repository<CustomerAddress, Long> {
 	
-	List<CustomerAdress> findBycustomerAdressId(Long customerAdressId);
-	List<CustomerAdress> save(CustomerAdress customerAdress);
+	List<CustomerAddress> findBycustomerAddressId(Long customerAdressId);
+	List<CustomerAddress> save(CustomerAddress customerAddress);
 	
 }

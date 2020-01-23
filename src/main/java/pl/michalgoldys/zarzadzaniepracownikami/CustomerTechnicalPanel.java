@@ -1,14 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
 
 @Entity(name="CUSTOMER_TECHNICAL_PANEL")
 public class CustomerTechnicalPanel {

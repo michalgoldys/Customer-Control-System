@@ -1,17 +1,11 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
+
 @Entity(name="CUSTOMER_ADRESS")
-public class CustomerAdress {
+public class CustomerAddress {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -31,12 +25,12 @@ public class CustomerAdress {
 	@JoinColumn(name = "customerId")
 	Customer customer;
 	
-	protected CustomerAdress() {
+	protected CustomerAddress() {
 		
 	}
 
-	public CustomerAdress(String customerStreet, String customerCity,
-			String customerZipCode) {
+	public CustomerAddress(String customerStreet, String customerCity,
+						   String customerZipCode) {
 		super();
 		this.customerStreet = customerStreet;
 		this.customerCity = customerCity;

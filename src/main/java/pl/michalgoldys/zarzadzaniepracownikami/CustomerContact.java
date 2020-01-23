@@ -1,13 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
 
 @Entity(name="CUSTOMER_CONTACT")
 public class CustomerContact {
@@ -26,7 +21,7 @@ public class CustomerContact {
 	private String customerContactPhoneNumber;
 	
 	@Column(name="customer_contact_mail_adress", nullable=true)
-	private String customerContactMailAdress;
+	private String customerContactMailAddress;
 	
 	@Autowired
 	@ManyToOne
@@ -43,7 +38,7 @@ public class CustomerContact {
 		this.customerContactName = contactName;
 		this.customerContactSurname = contactSurname;
 		this.customerContactPhoneNumber = customerPhoneNumber;
-		this.customerContactMailAdress = customerMailAdress;
+		this.customerContactMailAddress = customerMailAdress;
 	}
 
 	public Customer getCustomer() {
@@ -78,12 +73,12 @@ public class CustomerContact {
 		this.customerContactPhoneNumber = customerContactPhoneNumber;
 	}
 
-	public String getCustomerContactMailAdress() {
-		return customerContactMailAdress;
+	public String getCustomerContactMailAddress() {
+		return customerContactMailAddress;
 	}
 
-	public void setCustomerContactMailAdress(String customerContactMailAdress) {
-		this.customerContactMailAdress = customerContactMailAdress;
+	public void setCustomerContactMailAddress(String customerContactMailAdress) {
+		this.customerContactMailAddress = customerContactMailAdress;
 	}
 
 	public Long getCustomerContactId() {

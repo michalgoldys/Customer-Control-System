@@ -1,12 +1,12 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CustomerDatabaseService implements CustomerDatabaseServiceImplementation, DatabaseOperationInterface{
@@ -21,10 +21,10 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceImplement
 		CustomerService customerService;
 		
 		@Autowired
-		CustomerContractDetalisRepository customerContractDetalisRepository;
+		CustomerContractDetailsRepository customerContractDetailsRepository;
 		
 		@Override
-		public void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, String customerSelectionId)
+		public void updatingCustomer(Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, String customerSelectionId)
 		{
 			Customer updatingCustomer = new Customer();
 			
@@ -50,8 +50,8 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceImplement
 			updatingCustomer.setCustomerActivationDate(customer.getCustomerActivationDate());
 			updatingCustomer.setCustomerDeactivationDate(customer.getCustomerDeactivationDate());
 
-			updatingCustomer.setCustomerAdress(customerAdress);
-			customerAdress.setCustomer(updatingCustomer);
+			updatingCustomer.setCustomerAddress(customerAddress);
+			customerAddress.setCustomer(updatingCustomer);
 			
 			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
 			customerContactList.add(customerContact);
@@ -63,11 +63,11 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceImplement
 		}
 		
 		@Override
-		public void creatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, 
-				CustomerContractDetalis customerContractDetalis)
+		public void creatingCustomer(Customer customer, CustomerAddress customerAddress, CustomerContact customerContact,
+									 CustomerContractDetails customerContractDetails)
 		{
-			customerAdress.setCustomer(customer);
-			customer.setCustomerAdress(customerAdress);
+			customerAddress.setCustomer(customer);
+			customer.setCustomerAddress(customerAddress);
 			customerContact.setCustomer(customer);
 			
 			List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
@@ -75,31 +75,31 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceImplement
 			
 			customer.setCustomerContact(customerContactList);		
 			
-			customerContractDetalis.setCustomer(customer);
-			customer.setCustomerContractDetalis(customerContractDetalis);
+			customerContractDetails.setCustomer(customer);
+			customer.setCustomerContractDetails(customerContractDetails);
 			
 			customerJpaRepository.save(customer);
 		}
 		
 		@Override
-		public void updatingCustomerBilling(CustomerContractDetalis customerContractDetalis)
+		public void updatingCustomerBilling(CustomerContractDetails customerContractDetails)
 		{
-			Long selection = customerContractDetalis.getCustomerContractDetalisId();
+			Long selection = customerContractDetails.getCustomerContractDetailsId();
 				
-			CustomerContractDetalis customerBillingDetalis = customerContractDetalisRepository.findBycustomerContractDetalisId(selection);
+			CustomerContractDetails customerBillingDetails = customerContractDetailsRepository.findBycustomerContractDetailsId(selection);
 			
-			customerBillingDetalis.setCustomerPlFee(customerContractDetalis.getCustomerPlFee());
-			customerBillingDetalis.setCustomerPlSubstripctions(customerContractDetalis.getCustomerPlSubstripctions());
+			customerBillingDetails.setCustomerPlFee(customerContractDetails.getCustomerPlFee());
+			customerBillingDetails.setCustomerPlSubscriptions(customerContractDetails.getCustomerPlSubscriptions());
 			
-			customerBillingDetalis.setCustomerPlUeFee(customerContractDetalis.getCustomerPlUeFee());
-			customerBillingDetalis.setCustomerPlUeSubstripctions(customerContractDetalis.getCustomerPlUeSubstripctions());
+			customerBillingDetails.setCustomerPlUeFee(customerContractDetails.getCustomerPlUeFee());
+			customerBillingDetails.setCustomerPlUeSubscriptions(customerContractDetails.getCustomerPlUeSubscriptions());
 			
-			customerBillingDetalis.setCustomerRuFee(customerContractDetalis.getCustomerRuFee());
-			customerBillingDetalis.setCustomerRuSubscriptions(customerContractDetalis.getCustomerRuSubscriptions());
+			customerBillingDetails.setCustomerRuFee(customerContractDetails.getCustomerRuFee());
+			customerBillingDetails.setCustomerRuSubscriptions(customerContractDetails.getCustomerRuSubscriptions());
 			
-			customerBillingDetalis.setCustomerEinvoiceAgreement(customerContractDetalis.getCustomerEinvoiceAgreement());
+			customerBillingDetails.setCustomerEinvoiceAgreement(customerContractDetails.getCustomerEinvoiceAgreement());
 			
-			customerContractDetalisRepository.save(customerBillingDetalis);
+			customerContractDetailsRepository.save(customerBillingDetails);
 		}
 		
 		@Override

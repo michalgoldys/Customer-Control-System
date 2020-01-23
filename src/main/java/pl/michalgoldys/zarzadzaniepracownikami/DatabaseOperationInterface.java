@@ -1,11 +1,10 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 public interface DatabaseOperationInterface {
 	

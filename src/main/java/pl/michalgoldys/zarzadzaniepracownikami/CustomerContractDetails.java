@@ -1,17 +1,11 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.*;
+
 @Entity(name="CUSTOMER_CONTRACT_DETALIS")
-public class CustomerContractDetalis {
+public class CustomerContractDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -46,11 +40,11 @@ public class CustomerContractDetalis {
 	@JoinColumn(name ="customerId")
 	Customer customer;
 	
-	protected CustomerContractDetalis() {
+	protected CustomerContractDetails() {
 		
 	}
 	
-	public CustomerContractDetalis(Integer customerSubscriptions, Integer customerPlSubscriptions,
+	public CustomerContractDetails(Integer customerSubscriptions, Integer customerPlSubscriptions,
 								   Integer customerPlUeSubscriptions, Integer customerRuSubscriptions, Integer customerPlFee, Integer customerPlUeFee,
 								   Integer customerRuFee, Boolean customerEinvoiceAgreement) {
 		super();

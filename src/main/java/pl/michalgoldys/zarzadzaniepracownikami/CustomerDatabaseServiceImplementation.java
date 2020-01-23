@@ -5,14 +5,14 @@ import javax.transaction.Transactional;
 public interface CustomerDatabaseServiceImplementation {
 
 	@Transactional
-	void updatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, String customerSelectionId);
+	void updatingCustomer(Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, String customerSelectionId);
 	
 	@Transactional
-	void creatingCustomer(Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, 
-			CustomerContractDetalis customerContractDetalis);
+	void creatingCustomer(Customer customer, CustomerAddress customerAddress, CustomerContact customerContact,
+						  CustomerContractDetails customerContractDetails);
 	
 	@Transactional
-	void updatingCustomerBilling(CustomerContractDetalis customerContractDetalis);
+	void updatingCustomerBilling(CustomerContractDetails customerContractDetails);
 	
 	@Transactional
 	void creatingCustomerTechnicalPanelEntity(Customer selectedCustomer, CustomerTechnicalPanel customerTechnicalPanel);

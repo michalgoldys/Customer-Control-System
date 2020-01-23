@@ -7,11 +7,11 @@ public class CustomerContractDetalisDTO {
 	
 	@Max(1000)
 	@Min(0)
-	private Integer customerPlSubstripctions;
+	private Integer customerPlSubscriptions;
 	
 	@Max(1000)
 	@Min(0)
-	private Integer customerPlUeSubstripctions;
+	private Integer customerPlUeSubscriptions;
 	
 	@Max(1000)
 	@Min(0)
@@ -29,20 +29,20 @@ public class CustomerContractDetalisDTO {
 	@Min(0)
 	private Integer customerRuFee;
 
-	public Integer getCustomerPlSubstripctions() {
-		return customerPlSubstripctions;
+	public Integer getCustomerPlSubscriptions() {
+		return customerPlSubscriptions;
 	}
 
-	public void setCustomerPlSubstripctions(Integer customerPlSubstripctions) {
-		this.customerPlSubstripctions = customerPlSubstripctions;
+	public void setCustomerPlSubscriptions(Integer customerPlSubstripctions) {
+		this.customerPlSubscriptions = customerPlSubstripctions;
 	}
 
-	public Integer getCustomerPlUeSubstripctions() {
-		return customerPlUeSubstripctions;
+	public Integer getCustomerPlUeSubscriptions() {
+		return customerPlUeSubscriptions;
 	}
 
-	public void setCustomerPlUeSubstripctions(Integer customerPlUeSubstripctions) {
-		this.customerPlUeSubstripctions = customerPlUeSubstripctions;
+	public void setCustomerPlUeSubscriptions(Integer customerPlUeSubscriptions) {
+		this.customerPlUeSubscriptions = customerPlUeSubscriptions;
 	}
 
 	public Integer getCustomerRuSubscriptions() {

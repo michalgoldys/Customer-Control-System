@@ -1,8 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.List;
-
 import org.springframework.data.repository.Repository;
+
+import java.util.List;
 
 public interface CustomerContactRepository extends Repository<CustomerContact, Long> {
 	

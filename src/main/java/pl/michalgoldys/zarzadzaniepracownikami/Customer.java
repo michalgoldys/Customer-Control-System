@@ -1,18 +1,9 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity(name="CUSTOMER")
 public class Customer {
@@ -21,10 +12,10 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long customerId;
 	
-	@Column(name="customer_name", nullable=false)
+	@Column(name="customer_name")
 	private String customerName;
 	
-	@Column(name="customer_nip", nullable=false)
+	@Column(name="customer_nip")
 	private String customerNip;
 	
 	@Column(name="customer_is_active")
@@ -45,7 +36,7 @@ public class Customer {
 	
 	@Autowired
 	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
-	private CustomerAdress customerAdress;
+	private CustomerAddress customerAddress;
 	
 	@Autowired
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
@@ -53,7 +44,7 @@ public class Customer {
 	
 	@Autowired
 	@OneToOne(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
-	private CustomerContractDetalis customerContractDetalis;
+	private CustomerContractDetails customerContractDetails;
 
 	@Autowired
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="customer", cascade = CascadeType.ALL)
@@ -71,20 +62,20 @@ public class Customer {
 		this.customerContractId = customerContractId;
 	}
 	
-	public CustomerContractDetalis getCustomerContractDetalis() {
-		return customerContractDetalis;
+	public CustomerContractDetails getCustomerContractDetails() {
+		return customerContractDetails;
 	}
 
-	public void setCustomerContractDetalis(CustomerContractDetalis customerContractDetalis) {
-		this.customerContractDetalis = customerContractDetalis;
+	public void setCustomerContractDetails(CustomerContractDetails customerContractDetails) {
+		this.customerContractDetails = customerContractDetails;
 	}
 
-	public CustomerAdress getCustomerAdress() {
-		return customerAdress;
+	public CustomerAddress getCustomerAddress() {
+		return customerAddress;
 	}
 
-	public void setCustomerAdress(CustomerAdress customerAdress) {
-		this.customerAdress = customerAdress;
+	public void setCustomerAddress(CustomerAddress customerAddress) {
+		this.customerAddress = customerAddress;
 	}
 
 	public List<CustomerContact> getCustomerContact() {

@@ -1,9 +1,9 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService implements CustomerServiceImplementation, TimeInterface {
@@ -24,58 +24,20 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 			
 			customerList.forEach(c -> {
 				sum = 0;
-				if(c.getCustomerContractDetalis().getCustomerPlSubstripctions() != null) {
-					sum += c.getCustomerContractDetalis().getCustomerPlSubstripctions();
+				if(c.getCustomerContractDetails().getCustomerPlSubscriptions() != null) {
+					sum += c.getCustomerContractDetails().getCustomerPlSubscriptions();
 				}
-				if(c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
+				if(c.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null)
 				{
-					sum += c.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
+					sum += c.getCustomerContractDetails().getCustomerPlUeSubscriptions();
 				}
-				if(c.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
+				if(c.getCustomerContractDetails().getCustomerRuSubscriptions() != null)
 				{
-					sum += c.getCustomerContractDetalis().getCustomerRuSubscriptions();
+					sum += c.getCustomerContractDetails().getCustomerRuSubscriptions();
 				}
 				customerSubstripctionsSum.add(sum);
 			});
-			
-			/*
-			int sum = 0;
-			
-			sum += customerList.stream()
-					.mapToInt(c -> c.getCustomerContractDetalis().getCustomerPlSubstripctions())
-					.sum();
-			
-			sum += customerList.stream()
-					.mapToInt(c -> c.getCustomerContractDetalis().getCustomerPlUeSubstripctions())
-					.sum();
-			
-			sum += customerList.stream()
-					.mapToInt(c -> c.getCustomerContractDetalis().getCustomerRuSubscriptions())
-					.sum();
-			
-			*/
-			/*
-			for(Customer customer : customerList)
-			{
-				sum = 0;
-				
-					if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null)
-					{
-						sum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions();
-					}
-					if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null)
-					{
-						sum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions();
-					}
-					if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null)
-					{
-						sum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions();
-					}
-				customerSubstripctionsSum.add(sum);
-			}
-			
-			customerSubstripctionsSum.add(sum);
-			*/
+
 			return customerSubstripctionsSum;
 		}
 		
@@ -91,16 +53,7 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 					isDisabled = true;
 				}
 			});
-			/*
-			for(Customer customer : customerList) {
-				
-				if(customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0 
-						&& customer.getCustomerDeactivationDate() != null && customer.getCustomerDeactivationDate().length() > 0){
-					
-					isDisabled = true;
-				}
-			}
-			*/
+
 			return isDisabled;
 		}
 		
@@ -108,41 +61,25 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 		public List<Integer> incomeSubscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
-			/*
-			 sum = customerList.stream()
-			.filter(c -> c.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0 && c.getCustomerContractDetalis().getCustomerPlFee() > 0 &&
-					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0 && c.getCustomerContractDetalis().getCustomerPlUeFee() > 0 &&
-					c.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0 && c.getCustomerContractDetalis().getCustomerRuFee() > 0 &&
-					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null && c.getCustomerContractDetalis().getCustomerPlFee() != null &&
-					c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null && c.getCustomerContractDetalis().getCustomerPlUeFee() != null &&
-					c.getCustomerContractDetalis().getCustomerRuSubscriptions() != null && c.getCustomerContractDetalis().getCustomerRuFee() != null)
-			.mapToInt(c -> {
-				return c.getCustomerContractDetalis().getCustomerPlFee() * c.getCustomerContractDetalis().getCustomerPlSubstripctions() *
-						c.getCustomerContractDetalis().getCustomerPlUeFee() * c.getCustomerContractDetalis().getCustomerPlUeSubstripctions() *
-						c.getCustomerContractDetalis().getCustomerRuFee() * c.getCustomerContractDetalis().getCustomerRuSubscriptions();
-			})
-			.sum();
-			
-			 System.out.print(sum);
-			*/
+
 			for(Customer customer : customerList)
 			{
 				sum = 0;
 				
-				if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null && customer.getCustomerContractDetalis().getCustomerPlFee() != null
-						&& customer.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0 && customer.getCustomerContractDetalis().getCustomerPlFee() > 0)
+				if(customer.getCustomerContractDetails().getCustomerPlSubscriptions() != null && customer.getCustomerContractDetails().getCustomerPlFee() != null
+						&& customer.getCustomerContractDetails().getCustomerPlSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerPlFee() > 0)
 				{
-					sum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * customer.getCustomerContractDetalis().getCustomerPlFee();
+					sum += customer.getCustomerContractDetails().getCustomerPlSubscriptions() * customer.getCustomerContractDetails().getCustomerPlFee();
 				}
-				if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null && customer.getCustomerContractDetalis().getCustomerPlUeFee() != null
-						&& customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0 && customer.getCustomerContractDetalis().getCustomerPlUeFee() > 0)
+				if(customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null && customer.getCustomerContractDetails().getCustomerPlUeFee() != null
+						&& customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerPlUeFee() > 0)
 				{
-					sum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * customer.getCustomerContractDetalis().getCustomerPlUeFee();
+					sum += customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() * customer.getCustomerContractDetails().getCustomerPlUeFee();
 				}
-				if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null && customer.getCustomerContractDetalis().getCustomerRuFee() != null
-						&& customer.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0 && customer.getCustomerContractDetalis().getCustomerRuFee() > 0)
+				if(customer.getCustomerContractDetails().getCustomerRuSubscriptions() != null && customer.getCustomerContractDetails().getCustomerRuFee() != null
+						&& customer.getCustomerContractDetails().getCustomerRuSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerRuFee() > 0)
 				{
-					sum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * customer.getCustomerContractDetalis().getCustomerRuFee();
+					sum += customer.getCustomerContractDetails().getCustomerRuSubscriptions() * customer.getCustomerContractDetails().getCustomerRuFee();
 				}
 				sumOfIncomeBySubscriptions.add(sum);
 			}
@@ -159,24 +96,24 @@ public class CustomerService implements CustomerServiceImplementation, TimeInter
 			{
 				costSum = 0;
 				
-				if(customer.getCustomerContractDetalis().getCustomerPlSubstripctions() != null &&
-						customer.getCustomerContractDetalis().getCustomerPlSubstripctions() > 0)
+				if(customer.getCustomerContractDetails().getCustomerPlSubscriptions() != null &&
+						customer.getCustomerContractDetails().getCustomerPlSubscriptions() > 0)
 						
 				{
-					costSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * serverCost;
-					costSum += customer.getCustomerContractDetalis().getCustomerPlSubstripctions() * telematicCardCost;
+					costSum += customer.getCustomerContractDetails().getCustomerPlSubscriptions() * serverCost;
+					costSum += customer.getCustomerContractDetails().getCustomerPlSubscriptions() * telematicCardCost;
 				}
-				if(customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() != null &&
-						customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() > 0)
+				if(customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null &&
+						customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() > 0)
 				{
-					costSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * serverCost;
-					costSum += customer.getCustomerContractDetalis().getCustomerPlUeSubstripctions() * telematicCardCost;
+					costSum += customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() * serverCost;
+					costSum += customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() * telematicCardCost;
 				}
-				if(customer.getCustomerContractDetalis().getCustomerRuSubscriptions() != null &&
-						customer.getCustomerContractDetalis().getCustomerRuSubscriptions() > 0)
+				if(customer.getCustomerContractDetails().getCustomerRuSubscriptions() != null &&
+						customer.getCustomerContractDetails().getCustomerRuSubscriptions() > 0)
 				{
-					costSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * serverCost;
-					costSum += customer.getCustomerContractDetalis().getCustomerRuSubscriptions() * telematicCardCost;
+					costSum += customer.getCustomerContractDetails().getCustomerRuSubscriptions() * serverCost;
+					costSum += customer.getCustomerContractDetails().getCustomerRuSubscriptions() * telematicCardCost;
 				}
 				sumOfCosts.add(costSum);
 			}

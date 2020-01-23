@@ -4,7 +4,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
-public class CustomerAdressDTO {
+public class CustomerAddressDTO {
 	
 	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}", message="")
 	private String customerStreet;

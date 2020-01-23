@@ -1,13 +1,5 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Controller
 public class CustomerController {
@@ -105,8 +105,8 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/addingCustomer")
 		private String addingCustomersForm(
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis,
-				CustomerDTO customerDto, CustomerAdressDTO customerAdressDto, CustomerContactDTO customerContactDto, 
+				Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, CustomerContractDetails customerContractDetails,
+				CustomerDTO customerDto, CustomerAddressDTO customerAddressDto, CustomerContactDTO customerContactDto,
 				CustomerContractDetalisDTO customerContractDetalisDto
 				) {
 			 
@@ -116,10 +116,10 @@ public class CustomerController {
 		@PostMapping(value="/customer/addingCustomer")
 		private String addingCustomers(
 				@Valid CustomerDTO customerDto, BindingResult customerBinding,
-				@Valid CustomerAdressDTO customerAdressDto, BindingResult customerBinding1,
-				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2, 
+				@Valid CustomerAddressDTO customerAddressDto, BindingResult customerBinding1,
+				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
 				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult customerBinding3,
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, CustomerContractDetalis customerContractDetalis
+				Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, CustomerContractDetails customerContractDetails
 				) {
 				
 			if (customerBinding.hasErrors()) {
@@ -127,14 +127,14 @@ public class CustomerController {
 				}
 			
 			customer.setCustomerIsActive(false);
-			customerDatabaseService.creatingCustomer(customer, customerAdress, customerContact, customerContractDetalis);
+			customerDatabaseService.creatingCustomer(customer, customerAddress, customerContact, customerContractDetails);
 
 			return "redirect:/customer/customerMenu";
 			
 		}
 		
-		@GetMapping(value="/customer/showingCustomers/customerDetalis")
-		private String showingCustomerDetalis(@RequestParam("id") String customerSelectionId, Model model
+		@GetMapping(value="/customer/showingCustomers/customerDetails")
+		private String showingCustomerDetails(@RequestParam("id") String customerSelectionId, Model model
 				) {
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
 			
@@ -142,23 +142,23 @@ public class CustomerController {
 			model.addAttribute("selectedCustomerById", customerList);			
 			model.addAttribute("isDisabled", customerService.isActivationCheckboxActive(customerList));
 			
-			return "customerDetalis";
+			return "customerDetails";
 		}
 		
-		@PostMapping(value="/customer/showingCustomers/customerDetalis")
-		private String updatingCustomerDetalis(@RequestParam("id") String customerSelectionId, 
-				@Valid CustomerDTO customerDto, BindingResult customerBinding,
-				@Valid CustomerAdressDTO customerAdressDto, BindingResult customerBinding1,
-				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
-				Customer customer, CustomerAdress customerAdress, CustomerContact customerContact, Model model
+		@PostMapping(value="/customer/showingCustomers/customerDetails")
+		private String updatingCustomerDetails(@RequestParam("id") String customerSelectionId,
+											   @Valid CustomerDTO customerDto, BindingResult customerBinding,
+											   @Valid CustomerAddressDTO customerAddressDto, BindingResult customerBinding1,
+											   @Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
+											   Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, Model model
 				) {
 			
 			if (customerBinding.hasErrors()) 
 			{
-				return "customerDetalis";
+				return "customerDetails";
 			}
 			
-			customerDatabaseService.updatingCustomer(customer, customerAdress, customerContact, customerSelectionId);
+			customerDatabaseService.updatingCustomer(customer, customerAddress, customerContact, customerSelectionId);
 			
 			return "redirect:/customer/showingCustomers";
 		}
@@ -176,28 +176,28 @@ public class CustomerController {
 			return "showingCustomersBillings";
 		}
 		
-		@GetMapping(value="/customer/showingCustomersBillings/customerBillingDetalis")
-		private String showingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId, Model model)
+		@GetMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
+		private String showingCustomerBillingDetails(@RequestParam("id") String customerSelectionId, Model model)
 		{
 			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerById", customerList);	
 			model.addAttribute("selectedCustomerId", customerSelectionId);
 			
-			return "customerBillingDetalis";
+			return "customerBillingDetails";
 		}
 		
-		@PostMapping(value="/customer/showingCustomersBillings/customerBillingDetalis")
-		private String updatingCustomerBillingDetalis(@RequestParam("id") String customerSelectionId,
+		@PostMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
+		private String updatingCustomerBillingDetails(@RequestParam("id") String customerSelectionId,
 				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult bindingResult,
-				CustomerContractDetalis customerContractDetalis
+				CustomerContractDetails customerContractDetails
 				) {
 			if(bindingResult.hasErrors())
 			{
-				return "customerBillingDetalis";
+				return "customerBillingDetails";
 			}
 			
-			customerDatabaseService.updatingCustomerBilling(customerContractDetalis);
+			customerDatabaseService.updatingCustomerBilling(customerContractDetails);
 			
 			return "redirect:/customer/showingCustomersBillings";
 		}
@@ -245,8 +245,8 @@ public class CustomerController {
 			return "customerTechnicalPanel";
 		}
 		
-		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis")
-		private String showingCustomerTechnicalDetalis(@RequestParam("id") String customerSelectionId, Model model
+		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetails")
+		private String showingCustomerTechnicalDetails(@RequestParam("id") String customerSelectionId, Model model
 				) {
 			
 			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
@@ -257,10 +257,10 @@ public class CustomerController {
 			model.addAttribute("selectedCustomerById", selectedCustomer);
 			model.addAttribute("customerSelectionId", customerSelectionId);
 			
-			return "customerTechnicalDetalis";
+			return "customerTechnicalDetails";
 		}
 		
-		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent")
+		@GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetails/{customerSelectionId}/addingTechnicalEvent")
 		private String showingFormTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
 				CustomerTechnicalPanel customerTechnicalPanel, Model model)
 		{
@@ -272,7 +272,7 @@ public class CustomerController {
 			return "addingTechnicalEvent";
 		}
 		
-		@PostMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent")
+		@PostMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetails/{customerSelectionId}/addingTechnicalEvent")
 		private String creatingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
 				CustomerTechnicalPanel customerTechnicalPanel)
 		{
