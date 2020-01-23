@@ -16,7 +16,8 @@ public class ApplicationWebMvcConfig implements WebMvcConfigurer{
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 	        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
 	        registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
-			registry.addResourceHandler("/webjars/**").addResourceLocations("/resources/webjars/");
+			registry.addResourceHandler("/jquery/**").addResourceLocations("/webjars/jquery/");
+			registry.addResourceHandler("/bootstrap/**").addResourceLocations("/webjars/bootstrap/");
 	    }
 
 	@Override
