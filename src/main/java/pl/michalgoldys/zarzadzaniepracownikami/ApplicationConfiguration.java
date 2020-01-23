@@ -50,6 +50,7 @@ public class ApplicationConfiguration  {
 		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
 		templateResolver.setPrefix("/resources/templates/");
 		templateResolver.setSuffix(".html");
+		templateResolver.setCharacterEncoding("UTF-8");
 		templateResolver.setTemplateMode(TemplateMode.HTML);
 		templateResolver.setCacheable(false);
 
@@ -72,6 +73,7 @@ public class ApplicationConfiguration  {
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 		viewResolver.setTemplateEngine(templateEngine(servletContext));
 		viewResolver.setOrder(1);
+		viewResolver.setCharacterEncoding("UTF-8");
 		return viewResolver;
 	}
 
