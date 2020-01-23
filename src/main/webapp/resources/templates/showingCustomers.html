@@ -54,13 +54,13 @@
                 <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=customerNip(query=${query})}">NIP</a>
             </th>
             <th>
-                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerCity(query=${query})}">Miasto</a>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAddress.customerCity(query=${query})}">Miasto</a>
             </th>
             <th>
-                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerStreet(query=${query})}">Ulica</a>
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAddress.customerStreet(query=${query})}">Ulica</a>
             </th>
             <th>
-                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAdress.customerZipCode(query=${query})}">Kod
+                <a data-th-href="@{/customer/showingCustomersInteractive/?page=&sort=CustomerAddress.customerZipCode(query=${query})}">Kod
                     Pocztowy</a></th>
             <th>Os.Kont.: Imie</th>
             <th>Os.Kont.: Nazwisko</th>
@@ -74,13 +74,13 @@
         <tr data-th-each="ct : ${customer}">
             <td data-th-text="${ctStat.count}"></td>
             <td data-th-text="${ct.customerContractId}"></td>
-            <td><a data-th-href="@{/customer/showingCustomers/customerDetalis(id=${ct.customerContractPdfId})}"
+            <td><a data-th-href="@{/customer/showingCustomers/customerDetails(id=${ct.customerContractPdfId})}"
                    data-th-text="${ct.customerContractPdfId}"></a></td>
             <td data-th-text="${ct.customerName}"></td>
             <td data-th-text="${ct.customerNip}"></td>
-            <td data-th-text="${ct.CustomerAdress.customerCity}"></td>
-            <td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
-            <td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
+            <td data-th-text="${ct.CustomerAddress.customerCity}"></td>
+            <td data-th-text="${ct.CustomerAddress.customerStreet}"></td>
+            <td data-th-text="${ct.CustomerAddress.customerZipCode}"></td>
             <td data-th-each="ctc : ${ct.CustomerContact}"
                 data-th-text="${ctc.customerContactName}"></td>
             <td data-th-each="ctc : ${ct.CustomerContact}"
@@ -88,8 +88,8 @@
             <td data-th-each="ctc : ${ct.CustomerContact}"
                 data-th-text="${ctc.customerContactPhoneNumber}"></td>
             <td data-th-each="ctc : ${ct.CustomerContact}"
-                data-th-text="${ctc.customerContactMailAdress}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>
+                data-th-text="${ctc.customerContactMailAddress}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerEinvoiceAgreement}"></td>
             <td data-th-text="${ct.customerIsActive}"></td>
         </tr>
 

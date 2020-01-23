@@ -58,13 +58,13 @@
             <td data-th-text="${iterStat.count}"></td>
             <td data-th-text="${ct.customerContractId}"></td>
             <td>
-                <a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${ct.customerContractPdfId})}"
+                <a data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetails(id=${ct.customerContractPdfId})}"
                    data-th-text="${ct.customerContractPdfId}"></a></td>
             <td data-th-text="${ct.customerName}"></td>
             <td data-th-text="${ct.customerNip}"></td>
-            <td data-th-text="${ct.CustomerAdress.customerCity}"></td>
-            <td data-th-text="${ct.CustomerAdress.customerStreet}"></td>
-            <td data-th-text="${ct.CustomerAdress.customerZipCode}"></td>
+            <td data-th-text="${ct.CustomerAddress.customerCity}"></td>
+            <td data-th-text="${ct.CustomerAddress.customerStreet}"></td>
+            <td data-th-text="${ct.CustomerAddress.customerZipCode}"></td>
             <td data-th-text="${customerLastIssueDate[__${iterStat.index}__]}"></td>
             <td data-th-text="${customerIssueCount[__${iterStat.index}__]}"></td>
             <td data-th-text="${ct.customerIsActive}"></td>

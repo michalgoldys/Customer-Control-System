@@ -16,7 +16,7 @@
 </div>
 
 <form action="#"
-      data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetalis/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"
+      data-th-action="@{/customer/customerTechnicalPanel/customerTechnicalDetails/{customerSelectionId}/addingTechnicalEvent(customerSelectionId=${customerSelectionId})}"
       data-th-method="POST">
     <div class="card text-center m-2 p-2 w-50 mx-auto">
         <table class="table table-striped">
@@ -63,7 +63,7 @@
             <tr>
                 <th></th>
                 <th>
-                    <a class="btn btn-light m-2" data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetalis(id=${customerSelectionId})}"
+                    <a class="btn btn-light m-2" data-th-href="@{/customer/customerTechnicalPanel/customerTechnicalDetails(id=${customerSelectionId})}"
                        role="button">Anuluj</a>
                     <button class="btn btn-success m-2" id="submit" name="submit" type="submit">Zapisz</button>
                 </th>

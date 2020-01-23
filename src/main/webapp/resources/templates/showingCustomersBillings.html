@@ -64,18 +64,18 @@
             <td data-th-text="${iterStat.count}"></td>
             <td data-th-text="${ct.customerContractId}"></td>
             <td>
-                <a data-th-href="@{/customer/showingCustomersBillings/customerBillingDetalis(id=${ct.customerContractPdfId})}"
+                <a data-th-href="@{/customer/showingCustomersBillings/customerBillingDetails(id=${ct.customerContractPdfId})}"
                    data-th-text="${ct.customerContractPdfId}"></a></td>
             <td data-th-text="${ct.customerName}"></td>
             <td data-th-text="${ct.customerNip}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerEinvoiceAgreement}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerEinvoiceAgreement}"></td>
             <td data-th-text="${ct.customerIsActive}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerPlSubstripctions}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerPlUeSubstripctions}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerRuSubscriptions}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerPlFee}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerPlUeFee}"></td>
-            <td data-th-text="${ct.CustomerContractDetalis.customerRuFee}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerPlSubscriptions}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerPlUeSubscriptions}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerRuSubscriptions}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerPlFee}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerPlUeFee}"></td>
+            <td data-th-text="${ct.CustomerContractDetails.customerRuFee}"></td>
             <td data-th-text="${subSumAtr[__${iterStat.index}__]}"></td>
             <td data-th-text="${incomeSumValue[__${iterStat.index}__]}"></td>
             <td data-th-text="${sumOfCosts[__${iterStat.index}__]}"></td>

@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             <label for="customerCity">Miasto</label>
-            <input aria-describedby="customerCity" class="form-control" data-th-field="*{customerAdress.customerCity}"
+            <input aria-describedby="customerCity" class="form-control" data-th-field="*{customerAddress.customerCity}"
                    id="customerCity"
                    type="text">
             <small class="form-text text-muted" id="customerCityHelp">Miasto zarejestrowania działalności</small>
@@ -56,7 +56,7 @@
         <div class="form-group">
             <label for="customerStreet">Ulica</label>
             <input aria-describedby="customerStreet" class="form-control"
-                   data-th-field="*{customerAdress.customerStreet}" id="customerStreet"
+                   data-th-field="*{customerAddress.customerStreet}" id="customerStreet"
                    type="text">
             <small class="form-text text-muted" id="customerStreetHelp">Ulica zarejestrowania działalnosci jeżeli
                 istnieje</small>
@@ -64,7 +64,7 @@
         <div class="form-group">
             <label for="customerZipCode">Kod Pocztowy</label>
             <input aria-describedby="customerZipCode" class="form-control"
-                   data-th-field="*{customerAdress.customerZipCode}" id="customerZipCode"
+                   data-th-field="*{customerAddress.customerZipCode}" id="customerZipCode"
                    placeholder="01-123" type="text">
             <small class="form-text text-muted" id="customerZipCodeHelp">Kod pocztowy zarejestrowania
                 działalnosci</small>
@@ -106,10 +106,10 @@
                 firmie</small>
         </div>
         <div class="form-check">
-            <input class="form-check-input" id="customerContractDetalis.customerEinvoiceAgreement"
-                   th:field="*{customerContractDetalis.customerEinvoiceAgreement}"
+            <input class="form-check-input" id="customerContractDetails.customerEinvoiceAgreement"
+                   th:field="*{customerContractDetails.customerEinvoiceAgreement}"
                    type="checkbox">
-            <label class="form-check-label" for="customerContractDetalis.customerEinvoiceAgreement">
+            <label class="form-check-label" for="customerContractDetails.customerEinvoiceAgreement">
                 Zgoda na fakture elektroniczna
             </label>
         </div>
