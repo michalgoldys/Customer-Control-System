@@ -6,19 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerService implements CustomerServiceImplementation, TimeInterface {
+public class CustomerService implements CustomerServiceInterface {
 
 		boolean isDisabled;
 		int sum;
 		double costSum;
 
 		@Override
-	public String getCurrentDateAsString() {
-		return TimeInterface.super.getCurrentDateAsString();
-	}
-
-		@Override
-		public List<Integer> subscritionSum(List<Customer> customerList)
+		public List<Integer> subscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
 			

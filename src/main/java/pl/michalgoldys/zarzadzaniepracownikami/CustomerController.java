@@ -168,7 +168,7 @@ public class CustomerController {
 				) {
 			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
 			
-			model.addAttribute("subSumAtr", customerService.subscritionSum(customerList));
+			model.addAttribute("subSumAtr", customerService.subscriptionSum(customerList));
 			model.addAttribute("incomeSumValue", customerService.incomeSubscriptionSum(customerList));
 			model.addAttribute("sumOfCosts", customerService.costsSum(customerList));
 			model.addAttribute("customer", customerList);
