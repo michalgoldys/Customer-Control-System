@@ -3,7 +3,7 @@ package pl.michalgoldys.zarzadzaniepracownikami;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-public class CustomerContractDetalisDTO {
+public class CustomerContractDetailsDTO {
 	
 	@Max(1000)
 	@Min(0)

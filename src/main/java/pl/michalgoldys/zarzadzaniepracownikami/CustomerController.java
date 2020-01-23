@@ -107,7 +107,7 @@ public class CustomerController {
 		private String addingCustomersForm(
 				Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, CustomerContractDetails customerContractDetails,
 				CustomerDTO customerDto, CustomerAddressDTO customerAddressDto, CustomerContactDTO customerContactDto,
-				CustomerContractDetalisDTO customerContractDetalisDto
+				CustomerContractDetailsDTO customerContractDetailsDto
 				) {
 			 
 			return "addingCustomer";
@@ -118,7 +118,7 @@ public class CustomerController {
 				@Valid CustomerDTO customerDto, BindingResult customerBinding,
 				@Valid CustomerAddressDTO customerAddressDto, BindingResult customerBinding1,
 				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
-				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult customerBinding3,
+				@Valid CustomerContractDetailsDTO customerContractDetailsDto, BindingResult customerBinding3,
 				Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, CustomerContractDetails customerContractDetails
 				) {
 				
@@ -189,8 +189,8 @@ public class CustomerController {
 		
 		@PostMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
 		private String updatingCustomerBillingDetails(@RequestParam("id") String customerSelectionId,
-				@Valid CustomerContractDetalisDTO customerContractDetalisDto, BindingResult bindingResult,
-				CustomerContractDetails customerContractDetails
+													  @Valid CustomerContractDetailsDTO customerContractDetailsDto, BindingResult bindingResult,
+													  CustomerContractDetails customerContractDetails
 				) {
 			if(bindingResult.hasErrors())
 			{
