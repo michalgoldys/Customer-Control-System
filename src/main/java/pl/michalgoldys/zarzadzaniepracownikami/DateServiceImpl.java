@@ -10,7 +10,7 @@ public class DateServiceImpl implements DateInterface {
     @Override
     public String getCurrentDate() {
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate localDate = LocalDate.now();
 
         return dateTimeFormatter.format(localDate);
