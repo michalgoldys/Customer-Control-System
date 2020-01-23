@@ -28,10 +28,5 @@ public class ApplicationWebAppInitializer implements WebApplicationInitializer {
 		
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
-		
-		FilterRegistration.Dynamic filter = container.addFilter("hiddenHttpMethodFilter", new     HiddenHttpMethodFilter());
-		filter.addMappingForServletNames(null ,false, "dispatcher");
-		
 	}
-
 }
