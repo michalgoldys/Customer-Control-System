@@ -10,7 +10,10 @@ import java.util.List;
 
 @Service
 public class CustomerDatabaseService implements CustomerDatabaseServiceInterface, DatabaseOperationInterface{
-		
+
+		@Autowired
+		DateServiceImpl dateService;
+
 		@Autowired
 		CustomerJpaRepository customerJpaRepository;
 		
@@ -36,12 +39,12 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceInterface
 			
 			if (isActive && activationDate.length() == 0)
 			{
-				customer.setCustomerActivationDate(customerService.getCurrentDateAsString());
+				customer.setCustomerActivationDate(dateService.getCurrentDate());
 			}
 			
 			if (!isActive && activationDate != null && activationDate.length() > 0 && deactivationDate.length() == 0)
 			{
-				customer.setCustomerDeactivationDate(customerService.getCurrentDateAsString());
+				customer.setCustomerDeactivationDate(dateService.getCurrentDate());
 			}
 			
 			updatingCustomer.setCustomerName(customer.getCustomerName());
