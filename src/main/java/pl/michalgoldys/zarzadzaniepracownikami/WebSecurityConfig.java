@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,9 +10,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	private final String userQuerySyntax= "SELECT USERNAME, PASSWORD, ENABLED FROM USER WHERE USERNAME=?";
+	private final String authoritiesQuerySyntax ="SELECT USERNAME, AUTHORITY FROM USER_AUTHORITIES WHERE USERNAME=?";
+
+	@Autowired
+	DataSource dataSource;
 
 	 @Override
 	 protected void configure(final HttpSecurity http) throws Exception {
@@ -34,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            	
 	                .antMatchers("/login*", "/index").permitAll()
 	                
-	                .antMatchers("/css/**", "/images/**", "/jquery/**" , "/bootstrap/**").permitAll()
+	                .antMatchers("/css/**", "/images/**", "/jquery/**" , "/bootstrap/**", "/bootstrap-datepicker/**").permitAll()
 
 	                .anyRequest().denyAll()
 	                
@@ -46,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                .defaultSuccessUrl("/customer/customerMenu", true)
 	        		.failureUrl("/login.html?error=true");
 	 }
-	 
+	 /*
 	 @Override
 	 protected void configure(final AuthenticationManagerBuilder auth)
 	      throws Exception {
@@ -60,7 +69,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	          	.password(passwordEncoder().encode("admin1234"))
 	          	.roles("ADMIN");
 	    }
-	 
+
+	  */
+
+	 @Override
+	 protected void configure(final AuthenticationManagerBuilder authenticationManagerBuilder)
+		 throws Exception {
+	 	authenticationManagerBuilder
+				.jdbcAuthentication()
+				.dataSource(dataSource)
+				.usersByUsernameQuery(userQuerySyntax)
+				.authoritiesByUsernameQuery(authoritiesQuerySyntax)
+				.passwordEncoder(passwordEncoder());
+	 }
 	 @Bean
 	 public PasswordEncoder passwordEncoder() {
 	        return new BCryptPasswordEncoder();
