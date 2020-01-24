@@ -16,6 +16,7 @@ public class ApplicationWebMvcConfig implements WebMvcConfigurer{
 	        registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
 			registry.addResourceHandler("/jquery/**").addResourceLocations("/webjars/jquery/");
 			registry.addResourceHandler("/bootstrap/**").addResourceLocations("/webjars/bootstrap/");
+			registry.addResourceHandler("/bootstrap-datepicker/**").addResourceLocations("/webjars/bootstrap-datepicker/");
 	    }
 
 	@Override
