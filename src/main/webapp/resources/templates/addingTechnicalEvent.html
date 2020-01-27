@@ -5,13 +5,14 @@
     <title>Dodawanie Nowego Zdarzenia</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 
-    <link rel="stylesheet" href="/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
-
     <script src="/jquery/3.4.1/jquery.slim.min.js"></script>
+
     <script src="/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pl.min.js"></script>
 
+    <link rel="stylesheet" href="/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
 
 <body>
 <div class="card m-2 p-2">
@@ -57,9 +58,9 @@
                 <td>
 
                     <div class="input-append date">
-                    <input data-provide="datepicker" data-th-value="*{customerTechnicalPanel.customerTechnicalIssueOccourDate}"
+                    <input class="datepicker" data-th-value="*{customerTechnicalPanel.customerTechnicalIssueOccourDate}"
                            id="customerTechnicalIssueOccourDate"
-                           name="customerTechnicalIssueOccourDate" type="text"/><span class="glyphicon glyphicon-calendar"></span>
+                           name="customerTechnicalIssueOccourDate" type="text"/>
                     <div class="input-group-addon">
 
                     </div>
@@ -97,12 +98,12 @@
 
 <script type="text/javascript">
 $('.datepicker').datepicker({
+    language: "pl",
     format: "dd/mm/yyyy",
     autoclose: true,
-    clear: true,
-    language: "pl",
+    clearBtn: true,
     todayHighlight: true
-});
+    });
 </script>
 
 </body>
