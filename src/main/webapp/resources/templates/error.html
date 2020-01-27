@@ -4,7 +4,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <script src="/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="/bootstrap/4.4.1/css/bootstrap.min.css">
+
     <title>Oooops!</title>
 </head>
 <body>
@@ -20,15 +25,15 @@
 <div class="list-group card text-center m-4 p-4 w-25 mx-auto">
 <table>
     <tr>
-        <td>Date</td>
+        <td>Data</td>
         <td th:text="${timestamp}"/>
     </tr>
     <tr>
-        <td>Path</td>
+        <td>Ścieżka Błędu</td>
         <td th:text="${path}"/>
     </tr>
     <tr>
-        <td>Error</td>
+        <td>Błąd</td>
         <td th:text="${error}"/>
     </tr>
     <tr>
@@ -36,18 +41,8 @@
         <td th:text="${status}"/>
     </tr>
     <tr>
-        <td>Message</td>
+        <td>Treść</td>
         <td th:text="${message}"/>
-    </tr>
-    <tr>
-        <td>Exception</td>
-        <td th:text="${exception}"/>
-    </tr>
-    <tr>
-        <td>Trace</td>
-        <td>
-            <pre th:text="${trace}"></pre>
-        </td>
     </tr>
 </table>
 </div>
@@ -58,7 +53,5 @@
     </div>
 </div>
 
-<script src="/jquery/3.4.1/jquery.slim.min.js"></script>
-<script src="/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
