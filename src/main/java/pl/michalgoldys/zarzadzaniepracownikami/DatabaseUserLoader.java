@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import sun.tools.jar.CommandLine;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+@Slf4j
 @Configuration
 public class DatabaseUserLoader {
 
@@ -23,7 +25,9 @@ public class DatabaseUserLoader {
     CommandLineRunner databaseInitializer() {
         return args ->{
 
+            log.info("Checking if there is default user.");
             if(!Optional.ofNullable(userDAO.findByusername("admin")).isPresent()) {
+                log.info("Creating new default admin user.");
                 User user = new User();
                 UserAuthorities userAuthorities = new UserAuthorities();
 
