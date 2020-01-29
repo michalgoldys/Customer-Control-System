@@ -1,9 +1,12 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
+@ToString
 @Entity(name="CUSTOMER_TECHNICAL_PANEL")
 public class CustomerTechnicalPanel {
 		
