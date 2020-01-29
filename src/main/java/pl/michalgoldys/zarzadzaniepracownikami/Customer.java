@@ -1,10 +1,13 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
 
+@ToString
 @Entity(name="CUSTOMER")
 public class Customer {
 	
