@@ -21,9 +21,6 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceInterface
 		CustomerRepositoryImp customerRepositoryImp;
 
 		@Autowired
-		CustomerService customerService;
-
-		@Autowired
 		CustomerContractDetailsRepository customerContractDetailsRepository;
 		
 		@Override
