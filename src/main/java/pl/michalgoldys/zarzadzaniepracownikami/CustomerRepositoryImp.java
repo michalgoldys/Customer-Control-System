@@ -1,11 +1,8 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.Repository;
 
-public interface CustomerRepositoryImp extends JpaRepository<Customer, Long> {
+public interface CustomerRepositoryImp extends Repository<Customer, Long> {
 	
-	Customer findBycustomerContractPdfId(String customerContractPdfId); 
-	Customer findBycustomerId(Long customerId);
-	Customer getOne(Long customerId);
-
+	Customer findBycustomerContractPdfId(String customerContractPdfId);
 }
