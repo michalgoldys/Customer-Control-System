@@ -1,5 +1,6 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,20 +22,24 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Slf4j
 @Controller
 public class CustomerController {
 
-		@Autowired 
-		CustomerDatabaseService customerDatabaseService;
-		
 		@Autowired
-		CustomerRepository customerRepository;
+		CustomerDatabaseService customerDatabaseService;
+
+		@Autowired
+		CustomerSpecificationExecutorRepository customerSpecificationExecutorRepository;
 		
 		@Autowired
 		CustomerService customerService;
-		
+
 		@Autowired
-		CustomerJpaRepository customerJpaRepository;
+		CustomerDatabaseSaveService customerDatabaseSaveService;
+
+		@Autowired
+		CustomerWrapper customerWrapper;
 
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
@@ -96,7 +101,7 @@ public class CustomerController {
 			}
 			else
 			{
-				List<Customer> customerToShowQuery = customerRepository.findAll(Specification.where(CustomerSpecification.textInAllColumns(query)));
+				List<Customer> customerToShowQuery = customerSpecificationExecutorRepository.findAll(Specification.where(CustomerSpecificationSearchImplementation.textInAllColumns(query)));
 				model.addAttribute("customer", customerToShowQuery);
 			}
 			
@@ -125,12 +130,18 @@ public class CustomerController {
 			if (customerBinding.hasErrors()) {
 					return "addingCustomer";
 				}
-			
+
+			log.info("Controller data: " + customer.toString()+ customerAddress.toString() + customerContact.toString() + customerContractDetails.toString());
+
 			customer.setCustomerIsActive(false);
-			customerDatabaseService.creatingCustomer(customer, customerAddress, customerContact, customerContractDetails);
+			CustomerWrapper object = customerWrapper.customerWrapperService(customer, customerAddress, customerContractDetails, customerContact);
+
+			log.info("Customer Wrapper Object Contains: " + object.toString());
+
+			customerDatabaseSaveService.save(object);
 
 			return "redirect:/customer/customerMenu";
-			
+
 		}
 		
 		@GetMapping(value="/customer/showingCustomers/customerDetails")
