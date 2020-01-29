@@ -40,31 +40,15 @@ public class CustomerWrapper {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public CustomerAddress getCustomerAddress() {
         return customerAddress;
-    }
-
-    public void setCustomerAddress(CustomerAddress customerAddress) {
-        this.customerAddress = customerAddress;
     }
 
     public CustomerContractDetails getCustomerContractDetails() {
         return customerContractDetails;
     }
 
-    public void setCustomerContractDetails(CustomerContractDetails customerContractDetails) {
-        this.customerContractDetails = customerContractDetails;
-    }
-
     public CustomerContact getCustomerContact() {
         return customerContact;
-    }
-
-    public void setCustomerContact(CustomerContact customerContact) {
-        this.customerContact = customerContact;
     }
 }
