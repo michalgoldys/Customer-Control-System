@@ -15,14 +15,14 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceInterface
 		DateServiceImpl dateService;
 
 		@Autowired
-		CustomerJpaRepository customerJpaRepository;
-		
+		CustomerRepository customerRepository;
+
 		@Autowired
 		CustomerRepositoryImp customerRepositoryImp;
-		
+
 		@Autowired
 		CustomerService customerService;
-		
+
 		@Autowired
 		CustomerContractDetailsRepository customerContractDetailsRepository;
 		
@@ -62,7 +62,7 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceInterface
 			updatingCustomer.setCustomerContact(customerContactList);
 			customerContact.setCustomer(updatingCustomer);
 			
-			customerJpaRepository.save(updatingCustomer);
+			customerRepository.save(updatingCustomer);
 		}
 		
 		@Override
@@ -81,7 +81,7 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceInterface
 			customerContractDetails.setCustomer(customer);
 			customer.setCustomerContractDetails(customerContractDetails);
 			
-			customerJpaRepository.save(customer);
+			customerRepository.save(customer);
 		}
 		
 		@Override
@@ -122,25 +122,25 @@ public class CustomerDatabaseService implements CustomerDatabaseServiceInterface
 			selectedCustomer.setCustomerTechnicalPanel(customerTechnicalPanelList);
 			
 			
-			customerJpaRepository.save(selectedCustomer);
+			customerRepository.save(selectedCustomer);
 		}
 		
 		@Override
 		public List<Customer> findAllCustomers()
 		{
-			return(customerJpaRepository.findAll());
+			return(customerRepository.findAll());
 		}
 		
 		@Override
 		public Page<Customer> findAllCustomers(PageRequest pageRequest)
 		{
-			return(customerJpaRepository.findAll(pageRequest));
+			return(customerRepository.findAll(pageRequest));
 		}
 		
 		@Override
 		public List<Customer> listFindByCustomerContractPdfId(String customerSelectionId)
 		{
-			return(customerJpaRepository.findBycustomerContractPdfId(customerSelectionId));
+			return(customerRepository.findBycustomerContractPdfId(customerSelectionId));
 		}
 		
 		@Override
