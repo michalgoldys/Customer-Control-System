@@ -19,15 +19,10 @@ public class CustomerDatabaseSaveService implements DatabaseGenericSave<Customer
 
         log.info("Customer Wrapper Object: " + customerWrapper.toString());
 
-        Customer customer = new Customer();
-        CustomerAddress customerAddress = new CustomerAddress();
-        CustomerContractDetails customerContractDetails = new CustomerContractDetails();
-        CustomerContact customerContact = new CustomerContact();
-
-        customer = customerWrapper.getCustomer();
-        customerAddress = customerWrapper.getCustomerAddress();
-        customerContractDetails = customerWrapper.getCustomerContractDetails();
-        customerContact = customerWrapper.getCustomerContact();
+        Customer customer = customerWrapper.getCustomer();
+        CustomerAddress customerAddress = customerWrapper.getCustomerAddress();
+        CustomerContractDetails customerContractDetails = customerWrapper.getCustomerContractDetails();
+        CustomerContact customerContact = customerWrapper.getCustomerContact();
 
         log.info("Service status: " + customer.toString()+ customerAddress.toString() + customerContact.toString() + customerContractDetails.toString());
 
