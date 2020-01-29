@@ -1,9 +1,11 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
+@ToString
 @Entity(name="CUSTOMER_CONTRACT_DETALIS")
 public class CustomerContractDetails {
 
