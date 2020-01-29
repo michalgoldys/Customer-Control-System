@@ -7,8 +7,7 @@ import org.springframework.data.repository.Repository;
 
 import java.util.List;
 
-@org.springframework.stereotype.Repository
-public interface CustomerJpaRepository extends Repository<Customer, Long> {
+public interface CustomerRepository extends Repository<Customer, Long> {
 
 	Page<Customer> findAll(Pageable pageable);
 	List<Customer> findAll();
