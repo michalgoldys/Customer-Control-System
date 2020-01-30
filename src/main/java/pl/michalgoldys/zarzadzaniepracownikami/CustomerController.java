@@ -39,6 +39,9 @@ public class CustomerController {
 		CustomerDatabaseSaveService customerDatabaseSaveService;
 
 		@Autowired
+		CustomerDatabaseUpdateService customerDatabaseUpdateService;
+
+		@Autowired
 		CustomerWrapper customerWrapper;
 
 		@GetMapping(value= "/customer/customerMenu")
@@ -134,11 +137,11 @@ public class CustomerController {
 			log.info("Controller data: " + customer.toString()+ customerAddress.toString() + customerContact.toString() + customerContractDetails.toString());
 
 			customer.setCustomerIsActive(false);
-			CustomerWrapper object = customerWrapper.customerWrapperService(customer, customerAddress, customerContractDetails, customerContact);
+			CustomerWrapper toSave = customerWrapper.customerWrapperService(customer, customerAddress, customerContractDetails, customerContact);
 
-			log.info("Customer Wrapper Object Contains: " + object.toString());
+			log.info("Customer Wrapper Object Contains: " + toSave.toString());
 
-			customerDatabaseSaveService.save(object);
+			customerDatabaseSaveService.save(toSave);
 
 			return "redirect:/customer/customerMenu";
 
@@ -168,9 +171,10 @@ public class CustomerController {
 			{
 				return "customerDetails";
 			}
-			
-			customerDatabaseService.updatingCustomer(customer, customerAddress, customerContact, customerSelectionId);
-			
+
+			CustomerWrapper toUpdate = new CustomerWrapper(customer, customerAddress, customerContact);
+			customerDatabaseUpdateService.update(toUpdate);
+
 			return "redirect:/customer/showingCustomers";
 		}
 		
