@@ -39,11 +39,11 @@ public class CustomerDatabaseUpdateService implements DatabaseGenericUpdate<Cust
         if (!isActive && activationDate != null && activationDate.length() > 0 && deactivationDate.length() == 0) {
             customer.setCustomerDeactivationDate(dateService.getCurrentDate());
         }
-       
+
         customer.setCustomerAddress(customerAddress);
         customerAddress.setCustomer(customer);
 
-        List<CustomerContact> customerContactList = new ArrayList<CustomerContact>();
+        List<CustomerContact> customerContactList = new ArrayList<>();
         customerContactList.add(customerContact);
 
         customer.setCustomerContact(customerContactList);
