@@ -14,8 +14,20 @@ public class CustomerContractDatabaseUpdateService implements DatabaseGenericUpd
     @Override
     public void update(CustomerContractDetails customerContractDetails) {
 
-        log.info("About to persist object: " + customerContractDetails.toString());
+        CustomerContractDetails customerContractDetailsToUpdate = customerContractDetailsRepository.findBycustomerContractDetailsId(
+                customerContractDetails.getCustomerContractDetailsId());
 
-        customerContractDetailsRepository.save(customerContractDetails);
+        customerContractDetailsToUpdate.setCustomerPlFee(customerContractDetails.getCustomerPlFee());
+        customerContractDetailsToUpdate.setCustomerPlSubscriptions(customerContractDetails.getCustomerPlSubscriptions());
+
+        customerContractDetailsToUpdate.setCustomerPlUeFee(customerContractDetails.getCustomerPlUeFee());
+        customerContractDetailsToUpdate.setCustomerPlUeSubscriptions(customerContractDetails.getCustomerPlUeSubscriptions());
+
+        customerContractDetailsToUpdate.setCustomerRuFee(customerContractDetails.getCustomerRuFee());
+        customerContractDetailsToUpdate.setCustomerRuSubscriptions(customerContractDetails.getCustomerRuSubscriptions());
+
+        customerContractDetailsToUpdate.setCustomerEinvoiceAgreement(customerContractDetails.getCustomerEinvoiceAgreement());
+
+        customerContractDetailsRepository.save(customerContractDetailsToUpdate);
     }
 }
