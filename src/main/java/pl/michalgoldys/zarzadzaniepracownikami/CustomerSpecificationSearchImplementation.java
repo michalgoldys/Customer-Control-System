@@ -7,20 +7,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-public class CustomerSpecification{
+public class CustomerSpecificationSearchImplementation {
 
-	 public static Specification<Customer> textInAllColumns(String text) {
-
-	        if (!text.contains("%")) {
-	            text = "%"+text+"%";
-	        }
-	        final String finalText = text;
+	public static Specification<Customer> textInAllColumns(String text) {
 
 	        return new Specification<Customer>() {
-	            /**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
 
 				@Override
 	            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> cq, CriteriaBuilder builder) {
@@ -33,12 +24,11 @@ public class CustomerSpecification{
 	                    else {
 	                        return false;
 	                }})
-	                		.map(a -> builder.like(root.get(a.getName()), finalText)
+	                		.map(a -> builder.like(root.get(a.getName()), text)
 	                    )
 	                		.toArray(Predicate[]::new)
 	                );
 	            }
 	        };
 	    }
-
 }
