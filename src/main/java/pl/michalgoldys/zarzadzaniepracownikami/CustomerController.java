@@ -42,7 +42,13 @@ public class CustomerController {
 		CustomerDatabaseUpdateService customerDatabaseUpdateService;
 
 		@Autowired
+		CustomerContractDatabaseUpdateService customerContractDatabaseUpdateService;
+
+		@Autowired
 		CustomerWrapper customerWrapper;
+
+		@Autowired
+		CustomerTechnicalPanelDatabaseSaveService customerTechnicalPanelDatabaseSaveService;
 
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
@@ -207,13 +213,16 @@ public class CustomerController {
 													  @Valid CustomerContractDetailsDTO customerContractDetailsDto, BindingResult bindingResult,
 													  CustomerContractDetails customerContractDetails
 				) {
+
 			if(bindingResult.hasErrors())
 			{
 				return "customerBillingDetails";
 			}
-			
-			customerDatabaseService.updatingCustomerBilling(customerContractDetails);
-			
+
+			log.info("Recrived object to persist: " + customerContractDetails);
+
+			customerContractDatabaseUpdateService.update(customerContractDetails);
+
 			return "redirect:/customer/showingCustomersBillings";
 		}
 	
@@ -249,10 +258,6 @@ public class CustomerController {
 				}
 			);
 
-			System.out.println("Rozmiar posortowanej tablcy: " + customerLastIssueDateSorted.size());
-
-			customerLastIssueDateSorted.forEach(customerTechnicalPanelList -> System.out.println("PosortowanaData: " + customerTechnicalPanelList));
-			
 			model.addAttribute("customerLastIssueDate", customerLastIssueDateSorted);
 			model.addAttribute("customerIssueCount", customerIssueCount);
 			model.addAttribute("customer", customerList);
@@ -291,10 +296,11 @@ public class CustomerController {
 		private String creatingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
 				CustomerTechnicalPanel customerTechnicalPanel)
 		{
-			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
 
-			customerDatabaseService.creatingCustomerTechnicalPanelEntity(selectedCustomer, customerTechnicalPanel);
+			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			CustomerWrapper objectToSave = new CustomerWrapper(selectedCustomer,customerTechnicalPanel);
+			customerTechnicalPanelDatabaseSaveService.save(objectToSave);
 			
-			return"customerTechnicalPanel";
+			return"redirect:/customerTechnicalPanel";
 		}
 }
