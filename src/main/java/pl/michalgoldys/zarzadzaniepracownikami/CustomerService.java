@@ -16,7 +16,7 @@ public class CustomerService implements CustomerServiceInterface {
 		public List<Integer> subscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
-			
+
 			customerList.forEach(c -> {
 				sum = 0;
 				if(c.getCustomerContractDetails().getCustomerPlSubscriptions() != null) {
