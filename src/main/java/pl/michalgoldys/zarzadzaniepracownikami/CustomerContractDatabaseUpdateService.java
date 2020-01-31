@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class CustomerContractDatabaseUpdateService implements DatabaseGenericUpdate<CustomerContractDetails> {
 
     @Autowired
-    CustomerContractDetailsRepository customerContractDetailsRepository;
+    private CustomerContractDetailsRepository customerContractDetailsRepository;
 
     @Override
     public void update(CustomerContractDetails customerContractDetails) {

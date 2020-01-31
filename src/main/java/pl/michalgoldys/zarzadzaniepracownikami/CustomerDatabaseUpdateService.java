@@ -12,10 +12,10 @@ import java.util.List;
 public class CustomerDatabaseUpdateService implements DatabaseGenericUpdate<CustomerWrapper> {
 
     @Autowired
-    DateServiceImpl dateService;
+    private DateServiceImpl dateService;
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Override
     public void update(CustomerWrapper customerWrapper) {

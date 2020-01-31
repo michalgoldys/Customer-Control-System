@@ -12,7 +12,7 @@ import java.util.List;
 public class CustomerDatabaseSaveService implements DatabaseGenericSave<CustomerWrapper> {
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Override
     public void save(CustomerWrapper customerWrapper) {
@@ -39,7 +39,6 @@ public class CustomerDatabaseSaveService implements DatabaseGenericSave<Customer
         customer.setCustomerContractDetails(customerContractDetails);
 
         customerRepository.save(customer);
-
 
     }
 }
