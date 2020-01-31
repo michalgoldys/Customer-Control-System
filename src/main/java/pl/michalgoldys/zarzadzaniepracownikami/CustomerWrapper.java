@@ -13,6 +13,7 @@ public class CustomerWrapper {
     private CustomerAddress customerAddress;
     private CustomerContractDetails customerContractDetails;
     private CustomerContact customerContact;
+    private CustomerTechnicalPanel customerTechnicalPanel;
 
     private CustomerWrapper(Customer customer, CustomerAddress customerAddress, CustomerContractDetails customerContractDetails, CustomerContact customerContact) {
         this.customer = customer;
@@ -29,6 +30,20 @@ public class CustomerWrapper {
 
     private CustomerWrapper(){
 
+    }
+
+    public CustomerWrapper(Customer customer, CustomerTechnicalPanel customerTechnicalPanel) {
+        this.customer = customer;
+        this.customerTechnicalPanel = customerTechnicalPanel;
+    }
+
+    public CustomerWrapper customerWrapperService(Customer customer, CustomerTechnicalPanel customerTechnicalPanel){
+
+        log.info("Wrapping Customer data: " + customer.toString()+ customerTechnicalPanel.toString());
+
+        CustomerWrapper customerWrapper = new CustomerWrapper(customer, customerTechnicalPanel);
+
+        return customerWrapper;
     }
 
     public CustomerWrapper customerWrapperService(Customer customer, CustomerAddress customerAddress,
@@ -51,6 +66,10 @@ public class CustomerWrapper {
                 customerContact);
 
         return customerWrapper;
+    }
+
+    public CustomerTechnicalPanel getCustomerTechnicalPanel() {
+        return customerTechnicalPanel;
     }
 
     public Customer getCustomer() {
