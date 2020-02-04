@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerService implements CustomerServiceInterface {
+public class CustomerService {
 
-		boolean isDisabled;
+	int serverCost = 10;
+	double telematicCardCost = 2.50d;
+
 		int sum;
 		double costSum;
 
-		@Override
 		public List<Integer> subscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> customerSubstripctionsSum = new ArrayList<Integer>();
@@ -35,24 +36,18 @@ public class CustomerService implements CustomerServiceInterface {
 
 			return customerSubstripctionsSum;
 		}
-		
-		@Override
-		public Boolean isActivationCheckboxActive(List<Customer> customerList)
-		{
-			isDisabled = false;
-			
-			customerList.forEach(c -> {
-				if(c.getCustomerActivationDate() != null && c.getCustomerActivationDate().length() > 0 
-						&& c.getCustomerDeactivationDate() != null && c.getCustomerDeactivationDate().length() > 0){
-					
-					isDisabled = true;
-				}
-			});
 
-			return isDisabled;
+	public Boolean isActivationCheckboxActive(Customer customer)
+	{
+		if(customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0
+				&& customer.getCustomerDeactivationDate() != null && customer.getCustomerDeactivationDate().length() > 0){
+			return true;
 		}
-		
-		@Override
+		else{
+			return false;
+		}
+	}
+
 		public List<Integer> incomeSubscriptionSum(List<Customer> customerList)
 		{
 			List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
@@ -81,8 +76,7 @@ public class CustomerService implements CustomerServiceInterface {
 			
 			return sumOfIncomeBySubscriptions;
 		}
-		
-		@Override
+
 		public List<Double> costsSum(List<Customer> customerList)
 		{
 			List<Double> sumOfCosts = new ArrayList<Double>();
