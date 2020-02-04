@@ -27,9 +27,6 @@ import java.util.List;
 public class CustomerController {
 
 		@Autowired
-		CustomerDatabaseService customerDatabaseService;
-
-		@Autowired
 		CustomerSpecificationExecutorRepository customerSpecificationExecutorRepository;
 		
 		@Autowired
@@ -50,6 +47,15 @@ public class CustomerController {
 		@Autowired
 		CustomerTechnicalPanelDatabaseSaveService customerTechnicalPanelDatabaseSaveService;
 
+		@Autowired
+		FindByCustomerIdReturnAsTypeServiceImpl findByCustomerIdReturnAsTypeService;
+
+		@Autowired
+		FindCustomersReturnAsListServiceImpl findCustomersReturnAsListService;
+
+		@Autowired
+		FindCustomersReturnAsPageServiceImpl findCustomersReturnAsPageService;
+
 		@GetMapping(value= "/customer/customerMenu")
 		private String customerMenu(
 				) {
@@ -60,7 +66,7 @@ public class CustomerController {
 		private String showingCustomers(Model model
 				) {
 
-			model.addAttribute("customer", customerDatabaseService.findAllCustomers());
+			model.addAttribute("customer", findCustomersReturnAsListService.findAll());
 			
 			return "showingCustomers";
 			
@@ -93,7 +99,7 @@ public class CustomerController {
 			
 			if(query.isEmpty())
 			{
-				Page<Customer> customerToShow = customerDatabaseService.findAllCustomers(PageRequest.of(page, 2, Sort.by(sort)));
+				Page<Customer> customerToShow = findCustomersReturnAsPageService.findAll(PageRequest.of(page, 2, Sort.by(sort)));
 				
 				if(page < customerToShow.getTotalPages()-1)
 				{
@@ -156,11 +162,12 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomers/customerDetails")
 		private String showingCustomerDetails(@RequestParam("id") String customerSelectionId, Model model
 				) {
-			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
+			//change required in view!!
+			Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
-			model.addAttribute("selectedCustomerById", customerList);			
-			model.addAttribute("isDisabled", customerService.isActivationCheckboxActive(customerList));
+			model.addAttribute("selectedCustomerById", customerEntity);
+			model.addAttribute("isDisabled", customerService.isActivationCheckboxActive(customerEntity));
 			
 			return "customerDetails";
 		}
@@ -187,8 +194,8 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomersBillings")
 		private String showingCustomersBillings(Model model
 				) {
-			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
-			
+			ArrayList<Customer> customerList = new ArrayList<>(findCustomersReturnAsListService.findAll());
+
 			model.addAttribute("subSumAtr", customerService.subscriptionSum(customerList));
 			model.addAttribute("incomeSumValue", customerService.incomeSubscriptionSum(customerList));
 			model.addAttribute("sumOfCosts", customerService.costsSum(customerList));
@@ -200,9 +207,10 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
 		private String showingCustomerBillingDetails(@RequestParam("id") String customerSelectionId, Model model)
 		{
-			List<Customer> customerList = customerDatabaseService.listFindByCustomerContractPdfId(customerSelectionId);
+			//change required in view!!
+			Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
-			model.addAttribute("selectedCustomerById", customerList);	
+			model.addAttribute("selectedCustomerById", customerEntity);
 			model.addAttribute("selectedCustomerId", customerSelectionId);
 			
 			return "customerBillingDetails";
@@ -219,7 +227,7 @@ public class CustomerController {
 				return "customerBillingDetails";
 			}
 
-			log.info("Recrived object to persist: " + customerContractDetails);
+			log.info("Received object to persist: " + customerContractDetails);
 
 			customerContractDatabaseUpdateService.update(customerContractDetails);
 
@@ -229,10 +237,10 @@ public class CustomerController {
 		@GetMapping(value="/customer/customerTechnicalPanel")
 		private String showingCustomerTechnicalPanel(Model model
 				) {
-			List<Customer> customerList =  customerDatabaseService.findAllCustomers();
-			List<Integer> customerIssueCount = new ArrayList<Integer>();			
-			List<String> customerLastIssueDateToSort = new ArrayList<String>();
-			List<String> customerLastIssueDateSorted = new ArrayList<String>(); 
+			ArrayList<Customer> customerList = new ArrayList<>(findCustomersReturnAsListService.findAll());
+			List<Integer> customerIssueCount = new ArrayList<>();
+			List<String> customerLastIssueDateToSort = new ArrayList<>();
+			List<String> customerLastIssueDateSorted = new ArrayList<>();
 			
 			Collections.sort(customerList, new CustomerSortByContractPdfId());
 			
@@ -269,11 +277,9 @@ public class CustomerController {
 		private String showingCustomerTechnicalDetails(@RequestParam("id") String customerSelectionId, Model model
 				) {
 			
-			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			Customer selectedCustomer = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
-			boolean isEmpty = selectedCustomer.getCustomerTechnicalPanel().isEmpty();
-			
-			model.addAttribute("isEmpty", isEmpty);
+			model.addAttribute("isEmpty", selectedCustomer.getCustomerTechnicalPanel().isEmpty());
 			model.addAttribute("selectedCustomerById", selectedCustomer);
 			model.addAttribute("customerSelectionId", customerSelectionId);
 			
@@ -284,7 +290,7 @@ public class CustomerController {
 		private String showingFormTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId, 
 				CustomerTechnicalPanel customerTechnicalPanel, Model model)
 		{
-			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			Customer selectedCustomer = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
 			model.addAttribute("customerSelectionId", customerSelectionId);
 			model.addAttribute("selectedCustomerById", selectedCustomer);
@@ -297,7 +303,7 @@ public class CustomerController {
 				CustomerTechnicalPanel customerTechnicalPanel)
 		{
 
-			Customer selectedCustomer = customerDatabaseService.customerFindByCustomerContractPdfId(customerSelectionId);
+			Customer selectedCustomer = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			CustomerWrapper objectToSave = new CustomerWrapper(selectedCustomer,customerTechnicalPanel);
 			customerTechnicalPanelDatabaseSaveService.save(objectToSave);
 			
