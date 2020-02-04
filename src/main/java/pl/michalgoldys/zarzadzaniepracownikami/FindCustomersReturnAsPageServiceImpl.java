@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 public class FindCustomersReturnAsPageServiceImpl implements FindAllReturnAsPageInterface<Customer> {
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Override
     public Page<Customer> findAll(PageRequest pageRequest) {
-        log.info("Getting all customer objects and returning its as Page");
+        log.info("Getting all customer objects from database, returning them as PageRequest");
         return customerRepository.findAll(pageRequest);
     }
 }
