@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
@@ -15,7 +16,8 @@ public class FindCustomersReturnAsListServiceImpl implements FindAllReturnAsColl
 
     @Override
     public Collection<Customer> findAll() {
-        log.info("Getting all customer object from database, return as list.. ");
-        return customerRepository.findAll();
+        log.info("Getting all customer objects from database, returning them as ArrayList");
+        ArrayList<Customer> listToReturn = new ArrayList<>(customerRepository.findAll());
+        return listToReturn;
     }
 }
