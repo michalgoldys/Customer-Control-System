@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class FindByCustomerIdReturnAsTypeServiceImpl implements FindByStringReturnAsTypeInterface<Customer> {
 
     @Autowired
-    private CustomerRepositoryImp customerRepository;
+    private CustomerRepository customerRepository;
 
     @Override
     public Customer findBy(String string) {
