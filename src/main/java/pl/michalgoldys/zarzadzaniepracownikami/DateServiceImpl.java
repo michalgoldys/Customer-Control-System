@@ -1,10 +1,11 @@
 package pl.michalgoldys.zarzadzaniepracownikami;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-@Component
+@Service
 public class DateServiceImpl implements DateInterface {
 
     @Override
