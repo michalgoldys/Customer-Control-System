@@ -27,11 +27,20 @@ import java.util.List;
 public class CustomerController {
 
 		@Autowired
+		TotalCostsServiceImpl totalCostsService;
+
+		@Autowired
+		TotalIncomeServiceImpl totalIncomeService;
+
+		@Autowired
+		IsActiveableValidatorServiceImpl isActiveableValidatorService;
+
+		@Autowired
+		TotalSubscriptionsServiceImpl totalSubscriptionsService;
+
+		@Autowired
 		CustomerSpecificationExecutorRepository customerSpecificationExecutorRepository;
 		
-		@Autowired
-		CustomerService customerService;
-
 		@Autowired
 		CustomerDatabaseSaveService customerDatabaseSaveService;
 
@@ -166,7 +175,7 @@ public class CustomerController {
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
 			model.addAttribute("selectedCustomerById", customerEntity);
-			model.addAttribute("isDisabled", customerService.isActivationCheckboxActive(customerEntity));
+			model.addAttribute("isDisabled", isActiveableValidatorService.isActiveableChecker(customerEntity));
 			
 			return "customerDetails";
 		}
@@ -195,9 +204,9 @@ public class CustomerController {
 				) {
 			ArrayList<Customer> customerList = new ArrayList<>(findCustomersReturnAsListService.findAll());
 
-			model.addAttribute("subSumAtr", customerService.subscriptionSum(customerList));
-			model.addAttribute("incomeSumValue", customerService.incomeSubscriptionSum(customerList));
-			model.addAttribute("sumOfCosts", customerService.costsSum(customerList));
+			model.addAttribute("subSumAtr", totalSubscriptionsService.totalSubscriptionsIncome(customerList));
+			model.addAttribute("incomeSumValue", totalIncomeService.totalIncome(customerList));
+			model.addAttribute("sumOfCosts", totalCostsService.totalCosts(customerList));
 			model.addAttribute("customer", customerList);
 			
 			return "showingCustomersBillings";
