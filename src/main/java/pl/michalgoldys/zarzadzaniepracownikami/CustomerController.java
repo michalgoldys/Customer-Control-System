@@ -162,7 +162,6 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomers/customerDetails")
 		private String showingCustomerDetails(@RequestParam("id") String customerSelectionId, Model model
 				) {
-			//change required in view!!
 			Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
@@ -207,7 +206,6 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
 		private String showingCustomerBillingDetails(@RequestParam("id") String customerSelectionId, Model model)
 		{
-			//change required in view!!
 			Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerById", customerEntity);
