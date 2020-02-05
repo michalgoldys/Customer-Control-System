@@ -21,7 +21,7 @@
     <div class="card text-center m-2 p-2 w-50 mx-auto">
         <table class="table table-striped">
 
-            <thead data-th-each="ct : ${selectedCustomerById}">
+            <thead>
 
             <tr>
                 <th>*Wlasciwosci Obiektu*</th>
@@ -30,15 +30,15 @@
 
             <tr>
                 <th>ID</th>
-                <td data-th-text="*{ct.customerId}"></td>
-                <input data-th-value="*{ct.customerId}" id="customerId"
+                <td data-th-text="*{selectedCustomerById.customerId}"></td>
+                <input data-th-value="*{selectedCustomerById.customerId}" id="customerId"
                        name="customerId"
                        type="hidden"/></td>
             </tr>
 
             <tr>
                 <th>Numer Umowy</th>
-                <td data-th-text="*{ct.customerContractId}">
+                <td data-th-text="*{selectedCustomerById.customerContractId}">
                 </td>
             </tr>
 
@@ -49,7 +49,7 @@
             </tr>
 
             </thead>
-            <tbody data-th-each="ct : ${selectedCustomerById}">
+            <tbody>
 
             <tr>
                 <th>Dane Firmy</th>
@@ -58,17 +58,17 @@
 
             <tr>
                 <th>Nazwa Firmy</th>
-                <td><input data-th-value="*{ct.customerName}" id="customerName" name="customerName" type="text"/>
-                    <input data-th-value="*{ct.customerContractId}" id="customerContractId" name="customerContractId"
+                <td><input data-th-value="*{selectedCustomerById.customerName}" id="customerName" name="customerName" type="text"/>
+                    <input data-th-value="*{selectedCustomerById.customerContractId}" id="customerContractId" name="customerContractId"
                            type="hidden"/>
-                    <input data-th-value="*{ct.customerContractPdfId}" id="customerContractPdfId"
+                    <input data-th-value="*{selectedCustomerById.customerContractPdfId}" id="customerContractPdfId"
                            name="customerContractPdfId"
                            type="hidden"/></td>
             </tr>
 
             <tr>
                 <th>NIP</th>
-                <td><input data-th-value="*{ct.customerNip}" id="customerNip" name="customerNip" type="text"/></td>
+                <td><input data-th-value="*{selectedCustomerById.customerNip}" id="customerNip" name="customerNip" type="text"/></td>
             </tr>
 
             <tr>
@@ -78,22 +78,22 @@
 
             <tr>
                 <th>Miasto</th>
-                <td><input data-th-value="*{ct.CustomerAddress.customerCity}" id="customerCity" name="customerCity"
+                <td><input data-th-value="*{selectedCustomerById.CustomerAddress.customerCity}" id="customerCity" name="customerCity"
                            type="text"/>
-                    <input data-th-value="*{ct.customerAddress.customerAddressId}" id="customerAddressId"
+                    <input data-th-value="*{selectedCustomerById.CustomerAddress.customerAddressId}" id="customerAddressId"
                            name="customerAddressId"
                            type="hidden"/></td>
             </tr>
 
             <tr>
                 <th>Ulica</th>
-                <td><input data-th-value="*{ct.CustomerAddress.customerStreet}" id="customerStreet" name="customerStreet"
+                <td><input data-th-value="*{selectedCustomerById.CustomerAddress.customerStreet}" id="customerStreet" name="customerStreet"
                            type="text"/></td>
             </tr>
 
             <tr>
                 <th>Kod Pocztowy</th>
-                <td><input data-th-value="*{ct.CustomerAddress.customerZipCode}" id="customerZipCode"
+                <td><input data-th-value="*{selectedCustomerById.CustomerAddress.customerZipCode}" id="customerZipCode"
                            name="customerZipCode"
                            type="text"/></td>
             </tr>
@@ -103,7 +103,7 @@
                 <th></th>
             </tr>
 
-            <tr data-th-each="ctc : ${ct.CustomerContact}">
+            <tr data-th-each="ctc : ${selectedCustomerById.CustomerContact}">
                 <th>Os.Kont.: Imie</th>
                 <td><input data-th-value="*{ctc.customerContactName}" id="customerContactName"
                            name="customerContactName"
@@ -112,20 +112,20 @@
                            type="hidden"/></td>
             </tr>
 
-            <tr data-th-each="ctc : ${ct.CustomerContact}">
+            <tr data-th-each="ctc : ${selectedCustomerById.CustomerContact}">
                 <th>Os.Kont.: Nazwisko</th>
                 <td><input data-th-value="*{ctc.customerContactSurname}" id="customerContactSurname"
                            name="customerContactSurname"
                            type="text"/></td>
             </tr>
 
-            <tr data-th-each="ctc : ${ct.CustomerContact}">
+            <tr data-th-each="ctc : ${selectedCustomerById.CustomerContact}">
                 <th>Os.Kont.: Telefon</th>
                 <td><input data-th-value="*{ctc.customerContactPhoneNumber}" id="customerContactPhoneNumber"
                            name="customerContactPhoneNumber" type="text"/></td>
             </tr>
 
-            <tr data-th-each="ctc : ${ct.CustomerContact}">
+            <tr data-th-each="ctc : ${selectedCustomerById.CustomerContact}">
                 <th>Os.Kont.: E-mail</th>
                 <td><input data-th-value="*{ctc.customerContactMailAddress}" id="customerContactMailAddress"
                            name="customerContactMailAddress"
@@ -139,13 +139,13 @@
 
             <tr>
                 <th>Klient Aktywny</th>
-                <td data-th-text="*{ct.customerIsActive}"></td>
+                <td data-th-text="*{selectedCustomerById.customerIsActive}"></td>
             </tr>
 
             <tr>
                 <th>Aktywacja klienta</th>
                 <td>
-                    <input data-th-checked="*{ct.customerIsActive}" data-th-disabled="*{isDisabled}"
+                    <input data-th-checked="*{selectedCustomerById.customerIsActive}" data-th-disabled="*{isDisabled}"
                            id="customerIsActive"
                            name="customerIsActive" type="checkbox"/>
                     <input data-th-value="${customerIsActive}" name="_customerIsActive" type="hidden"/>
@@ -154,14 +154,14 @@
 
             <tr>
                 <th>Data Aktywacji</th>
-                <td><input data-th-value="*{ct.customerActivationDate}" id="customerActivationDate"
+                <td><input data-th-value="*{selectedCustomerById.customerActivationDate}" id="customerActivationDate"
                            name="customerActivationDate"
                            th:readonly='readonly' type="text"/></td>
             </tr>
 
             <tr>
                 <th>Data Deaktywacji</th>
-                <td><input data-th-value="*{ct.customerDeactivationDate}" id="customerDeactivationDate"
+                <td><input data-th-value="*{selectedCustomerById.customerDeactivationDate}" id="customerDeactivationDate"
                            name="customerDeactivationDate"
                            th:readonly='readonly' type="text"/></td>
             </tr>

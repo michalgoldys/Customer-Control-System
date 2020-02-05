@@ -22,7 +22,7 @@
     <div class="card text-center m-2 p-2 w-50 mx-auto">
         <table class="table table-striped">
 
-            <thead data-th-each="ct : ${selectedCustomerById}" style="width: 20%">
+            <thead style="width: 20%">
 
             <tr>
                 <th>*Wlasciwosci Obiektu*</th>
@@ -31,12 +31,12 @@
 
             <tr>
                 <th>ID</th>
-                <td data-th-text="*{ct.customerId}"></td>
+                <td data-th-text="*{selectedCustomerById.customerId}"></td>
             </tr>
 
             <tr>
                 <th>Numer Umowy</th>
-                <td data-th-text="*{ct.customerContractId}"></td>
+                <td data-th-text="*{selectedCustomerById.customerContractId}"></td>
             </tr>
 
             <tr>
@@ -45,7 +45,7 @@
             </tr>
 
             </thead>
-            <tbody data-th-each="ct : ${selectedCustomerById}">
+            <tbody>
 
             <tr>
                 <th>*Dane Firmy*</th>
@@ -54,17 +54,17 @@
 
             <tr>
                 <th>Nazwa Firmy</th>
-                <td data-th-text=*{ct.customerName}></td>
+                <td data-th-text=*{selectedCustomerById.customerName}></td>
             </tr>
 
             <tr>
                 <th>NIP</th>
-                <td data-th-text="*{ct.customerNip}"></td>
+                <td data-th-text="*{selectedCustomerById.customerNip}"></td>
             </tr>
 
             <tr>
                 <th>*Dane Billingowe*</th>
-                <th><input data-th-value="*{ct.CustomerContractDetails.customerContractDetailsId}"
+                <th><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerContractDetailsId}"
                            id="customerContractDetailsId"
                            name="customerContractDetailsId" type="hidden"/></th>
             </tr>
@@ -72,7 +72,7 @@
             <tr>
                 <th>Faktura elektroniczna</th>
                 <td>
-                    <input data-th-checked="*{ct.CustomerContractDetails.customerEinvoiceAgreement}"
+                    <input data-th-checked="*{selectedCustomerById.CustomerContractDetails.customerEinvoiceAgreement}"
                            id="customerEinvoiceAgreement"
                            name="customerEinvoiceAgreement" type="checkbox"/>
                     <input data-th-value="${customerEinvoiceAgreement}" name="_customerEinvoiceAgreement"
@@ -82,7 +82,7 @@
 
             <tr>
                 <th>Abonamenty PL</th>
-                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlSubscriptions}"
+                <td><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerPlSubscriptions}"
                            id="customerPlSubscriptions"
                            name="customerPlSubscriptions" type="text"/>
                 </td>
@@ -90,34 +90,34 @@
 
             <tr>
                 <th>Abonamenty UE</th>
-                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlUeSubscriptions}"
+                <td><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerPlUeSubscriptions}"
                            id="customerPlUeSubscriptions"
                            name="customerPlUeSubscriptions" type="text"/></td>
             </tr>
 
             <tr>
                 <th>Abonamenty RU</th>
-                <td><input data-th-value="*{ct.CustomerContractDetails.customerRuSubscriptions}"
+                <td><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerRuSubscriptions}"
                            id="customerRuSubscriptions"
                            name="customerRuSubscriptions" type="text"/></td>
             </tr>
 
             <tr>
                 <th>Stawka PL</th>
-                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlFee}" id="customerPlFee"
+                <td><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerPlFee}" id="customerPlFee"
                            name="customerPlFee"
                            type="text"/></td>
             </tr>
 
             <tr>
                 <th>Stawka PL+UE</th>
-                <td><input data-th-value="*{ct.CustomerContractDetails.customerPlUeFee}" id="customerPlUeFee"
+                <td><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerPlUeFee}" id="customerPlUeFee"
                            name="customerPlUeFee" type="text"/></td>
             </tr>
 
             <tr>
                 <th>Stawka RU</th>
-                <td><input data-th-value="*{ct.CustomerContractDetails.customerRuFee}" id="customerRuFee"
+                <td><input data-th-value="*{selectedCustomerById.CustomerContractDetails.customerRuFee}" id="customerRuFee"
                            name="customerRuFee"
                            type="text"/></td>
             </tr>
