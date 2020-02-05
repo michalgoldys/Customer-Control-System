@@ -55,22 +55,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	                .defaultSuccessUrl("/customer/customerMenu", true)
 	        		.failureUrl("/login.html?error=true");
 	 }
-	 /*
-	 @Override
-	 protected void configure(final AuthenticationManagerBuilder auth)
-	      throws Exception {
-	        auth
-	          .inMemoryAuthentication()
-	          .withUser("user")
-	            .password(passwordEncoder().encode("user1234"))
-	            .roles("USER")
-	          .and()
-	          .withUser("admin")
-	          	.password(passwordEncoder().encode("admin1234"))
-	          	.roles("ADMIN");
-	    }
-
-	  */
 
 	 @Override
 	 protected void configure(final AuthenticationManagerBuilder authenticationManagerBuilder)
