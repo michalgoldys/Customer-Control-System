@@ -26,17 +26,9 @@ import java.util.List;
 @Controller
 public class CustomerController {
 
-		@Autowired
-		TotalCostsServiceImpl totalCostsService;
-
-		@Autowired
-		TotalIncomeServiceImpl totalIncomeService;
 
 		@Autowired
 		IsActiveableValidatorServiceImpl isActiveableValidatorService;
-
-		@Autowired
-		TotalSubscriptionsServiceImpl totalSubscriptionsService;
 
 		@Autowired
 		CustomerSpecificationExecutorRepository customerSpecificationExecutorRepository;
@@ -46,9 +38,6 @@ public class CustomerController {
 
 		@Autowired
 		CustomerDatabaseUpdateService customerDatabaseUpdateService;
-
-		@Autowired
-		CustomerContractDatabaseUpdateService customerContractDatabaseUpdateService;
 
 		@Autowired
 		CustomerWrapper customerWrapper;
@@ -198,49 +187,7 @@ public class CustomerController {
 
 			return "redirect:/customer/showingCustomers";
 		}
-		
-		@GetMapping(value="/customer/showingCustomersBillings")
-		private String showingCustomersBillings(Model model
-				) {
-			ArrayList<Customer> customerList = new ArrayList<>(findCustomersReturnAsListService.findAll());
 
-			model.addAttribute("subSumAtr", totalSubscriptionsService.totalSubscriptionsIncome(customerList));
-			model.addAttribute("incomeSumValue", totalIncomeService.totalIncome(customerList));
-			model.addAttribute("sumOfCosts", totalCostsService.totalCosts(customerList));
-			model.addAttribute("customer", customerList);
-			
-			return "showingCustomersBillings";
-		}
-		
-		@GetMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
-		private String showingCustomerBillingDetails(@RequestParam("id") String customerSelectionId, Model model)
-		{
-			Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
-			
-			model.addAttribute("selectedCustomerById", customerEntity);
-			model.addAttribute("selectedCustomerId", customerSelectionId);
-			
-			return "customerBillingDetails";
-		}
-		
-		@PostMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
-		private String updatingCustomerBillingDetails(@RequestParam("id") String customerSelectionId,
-													  @Valid CustomerContractDetailsDTO customerContractDetailsDto, BindingResult bindingResult,
-													  CustomerContractDetails customerContractDetails
-				) {
-
-			if(bindingResult.hasErrors())
-			{
-				return "customerBillingDetails";
-			}
-
-			log.info("Received object to persist: " + customerContractDetails);
-
-			customerContractDatabaseUpdateService.update(customerContractDetails);
-
-			return "redirect:/customer/showingCustomersBillings";
-		}
-	
 		@GetMapping(value="/customer/customerTechnicalPanel")
 		private String showingCustomerTechnicalPanel(Model model
 				) {
