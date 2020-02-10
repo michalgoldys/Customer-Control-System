@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 
 @Slf4j
-@Controller(value = "/customer/showingCustomersBillings")
+@Controller
 public class BillingDetailsController {
 
     @Autowired
@@ -35,7 +35,7 @@ public class BillingDetailsController {
     FindCustomersReturnAsListServiceImpl findCustomersReturnAsListService;
 
 
-    @GetMapping(value="/")
+    @GetMapping(value="/customer/showingCustomersBillings")
     private String showingCustomersBillings(Model model
     ) {
         ArrayList<Customer> customerList = new ArrayList<>(findCustomersReturnAsListService.findAll());
@@ -48,7 +48,7 @@ public class BillingDetailsController {
         return "showingCustomersBillings";
     }
 
-    @GetMapping(value="/customerBillingDetails")
+    @GetMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
     private String showingCustomerBillingDetails(@RequestParam("id") String customerSelectionId, Model model)
     {
         Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
@@ -59,7 +59,7 @@ public class BillingDetailsController {
         return "customerBillingDetails";
     }
 
-    @PostMapping(value="/customerBillingDetails")
+    @PostMapping(value="/customer/showingCustomersBillings/customerBillingDetails")
     private String updatingCustomerBillingDetails(@RequestParam("id") String customerSelectionId,
                                                   @Valid CustomerContractDetailsDTO customerContractDetailsDto, BindingResult bindingResult,
                                                   CustomerContractDetails customerContractDetails

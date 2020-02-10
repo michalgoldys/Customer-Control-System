@@ -23,7 +23,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Slf4j
-@Controller
+@Controller(value = "/")
 public class CustomerController {
 
 
