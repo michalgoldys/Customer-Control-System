@@ -65,8 +65,7 @@ public class BillingDetailsController {
                                                   CustomerContractDetails customerContractDetails
     ) {
 
-        if(bindingResult.hasErrors())
-        {
+        if(bindingResult.hasErrors()) {
             return "customerBillingDetails";
         }
 
