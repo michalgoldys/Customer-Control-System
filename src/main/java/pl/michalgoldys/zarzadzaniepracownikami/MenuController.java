@@ -10,11 +10,14 @@ import java.util.Date;
 @Controller
 public class MenuController {
 
-		@GetMapping(value="/index")
-		private String indexPage(Model model, SimpleDateFormat simpleDateFormat) {
-			
-			model.addAttribute("serverTime", simpleDateFormat.format(new Date()));
-			
-			return "index";
-		}
+	@GetMapping(value="/index")
+	private String indexPage(Model model, SimpleDateFormat simpleDateFormat) {
+		model.addAttribute("serverTime", simpleDateFormat.format(new Date()));
+		return "index";
+	}
+
+	@GetMapping(value= "/customer/customerMenu")
+	private String customerMenu() {
+		return "customerMenu";
+	}
 }
