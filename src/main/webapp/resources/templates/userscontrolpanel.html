@@ -38,7 +38,7 @@
             <td data-th-text="${user.enabled}"></td>
             <td>
                 <a class="btn-sm btn-primary m-2" data-th-href="@{/customer/customerMenu}" role="button">Edytuj</a>
-                <a class="btn-sm btn-danger m-2" data-th-href="@{/customer/customerMenu}" role="button">Usuń</a>
+                <a class="btn-sm btn-danger m-2" id="modalButton" role="button">Usuń</a>
             </td>
         </tr>
 
@@ -48,8 +48,38 @@
 
 <div class="card text-center mx-auto m-2 p-2 w-50">
     <a class="btn btn-light m-2" data-th-href="@{/customer/customerMenu}" role="button">Powrót</a>
-    <a class="btn btn-success m-2" id="myModal" role="button">Dodaj nowego użytkownika</a>
+    <a class="btn btn-success m-2" data-th-href="@{/customer/customerMenu}" role="button">Dodaj nowego użytkownika</a>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="removeUserWarning" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="removeUserWarning" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Potwierdzenie Usunięcia Użytkownika</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <a>Czy na pewno chcesz usunąć użytkownika?</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                <a class="btn btn-danger" data-th-href="@{/customer/customerMenu}" role="button">Usuń</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#modalButton").click(function(){
+    $("#removeUserWarning").modal();
+  });
+});
+</script>
+
 
 <div class="card m-3 p-3 mx-auto w-25">
     <div class="badge badge-light mx-auto">
