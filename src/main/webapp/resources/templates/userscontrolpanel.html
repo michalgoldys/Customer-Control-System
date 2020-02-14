@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/bootstrap/4.4.1/css/bootstrap.min.css">
 
 </head>
-<body data-th-each="user: ${userList}">
+<body >
 
 <div class="card m-2 p-2 mx-auto">
     <nav class="navbar navbar-light bg-light m-1 p-1">
@@ -23,7 +23,7 @@
 
 <div class="card text-center mx-auto m-2 p-2 w-50">
     <table class="table table-striped align-middle">
-        <thead>
+        <thead >
         <tr>
             <th>LP</th>
             <th>Nazwa Użytkownika</th>
@@ -31,7 +31,7 @@
             <th>Opcje</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody  data-th-each="user: ${userList}">
         <tr>
             <td data-th-text="${userStat.count}"></td>
             <td data-th-text="${user.username}"></td>
@@ -42,34 +42,35 @@
             </td>
         </tr>
 
-        </tbody>
-    </table>
-</div>
-
-<div class="card text-center mx-auto m-2 p-2 w-50">
-    <a class="btn btn-light m-2" data-th-href="@{/customer/customerMenu}" role="button">Powrót</a>
-    <a class="btn btn-success m-2" data-th-href="@{/customer/userscontrolpanel/newuser}" role="button">Dodaj nowego użytkownika</a>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="removeUserWarning" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="removeUserWarning" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Potwierdzenie Usunięcia Użytkownika</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <a>Czy na pewno chcesz usunąć użytkownika: "<a data-th-text="${user.username}"></a>"?</a>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-                <a class="btn btn-danger" data-th-href="@{/customer/userscontrolpanel/delete/(username=${user.username})}" role="button">Usuń</a>
+        <!-- Modal -->
+        <div class="modal fade" id="removeUserWarning" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="removeUserWarning" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Potwierdzenie Usunięcia Użytkownika</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <a>Czy na pewno chcesz usunąć użytkownika: "<a data-th-text="${user.username}"></a>"?</a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+                        <a class="btn btn-danger" data-th-href="@{/customer/userscontrolpanel/delete/(username=${user.username})}" role="button">Usuń</a>
+                    </div>
+                </div>
             </div>
         </div>
+
+        </tbody>
+    </table>
+
+    <div class="card text-center mx-auto m-2 p-2 w-50">
+        <a class="btn btn-light m-2" data-th-href="@{/customer/customerMenu}" role="button">Powrót</a>
+        <a class="btn btn-success m-2" data-th-href="@{/customer/userscontrolpanel/newuser}" role="button">Dodaj nowego użytkownika</a>
     </div>
+
 </div>
 
 <script type="text/javascript">
