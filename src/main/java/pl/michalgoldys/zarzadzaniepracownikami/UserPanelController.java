@@ -18,6 +18,9 @@ public class UserPanelController {
     @Autowired
     UserDeleteServiceImpl userDeleteService;
 
+    @Autowired
+    UserSaveServiceImpl userSaveService;
+
     @GetMapping(value = "/customer/userscontrolpanel")
     String userControlPanelView(Model model) {
         log.info("Getting users from service..");
@@ -33,12 +36,14 @@ public class UserPanelController {
     }
 
     @GetMapping(value = "/customer/userscontrolpanel/newuser")
-    String addingNewUserForm(){
+    String addingNewUserForm(User user, UserAuthorities userAuthorities){
         return "newuser";
     }
 
     @PostMapping(value = "/customer/userscontrolpanel/newuser")
-    String addingNewUser(){
+    String addingNewUser(User user, UserAuthorities userAuthorities){
+        UserWrapper userWrapper = new UserWrapper(user, userAuthorities);
+        userSaveService.save(userWrapper);
         return "redirect:/customer/userscontrolpanel";
     }
 
