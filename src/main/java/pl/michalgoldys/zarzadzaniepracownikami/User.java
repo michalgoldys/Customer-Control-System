@@ -55,6 +55,10 @@ public class User {
         return Objects.hash(username);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public String getUsername() {
         return username;
     }
