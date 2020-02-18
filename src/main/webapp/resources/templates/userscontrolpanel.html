@@ -38,12 +38,12 @@
             <td data-th-text="${user.enabled}"></td>
             <td>
                 <a class="btn-sm btn-primary m-2" data-th-href="@{/customer/userscontrolpanel/userdetails/(username=${user.username})}" role="button">Edytuj</a>
-                <a class="btn-sm btn-danger m-2" id="modalButton" role="button">Usuń</a>
+                <a class="btn-sm btn-danger m-2" data-toggle="modal" data-th-attr="data-target='#'+${user.username}" role="button">Usuń</a>
             </td>
         </tr>
 
         <!-- Modal -->
-        <div class="modal fade" id="removeUserWarning" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="removeUserWarning" aria-hidden="true">
+        <div class="modal fade" data-th-id="${user.username}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="removeUserWarning" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -72,14 +72,6 @@
     </div>
 
 </div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#modalButton").click(function(){
-    $("#removeUserWarning").modal();
-  });
-});
-</script>
 
 <div class="card m-3 p-3 mx-auto w-25">
     <div class="badge badge-light mx-auto">
