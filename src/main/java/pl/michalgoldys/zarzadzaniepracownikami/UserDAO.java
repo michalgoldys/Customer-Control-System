@@ -10,4 +10,5 @@ public interface UserDAO extends Repository<User, Long> {
     Collection findAll();
     User findByusername(String username);
     void save (User user);
+    void deleteByusername (String username);
 }
