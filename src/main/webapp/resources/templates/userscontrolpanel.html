@@ -38,7 +38,9 @@
             <td data-th-text="${user.enabled}"></td>
             <td>
                 <a class="btn-sm btn-primary m-2" data-th-href="@{/customer/userscontrolpanel/userdetails/(username=${user.username})}" role="button">Edytuj</a>
+                <block data-th-if="${user.username} != 'admin'">
                 <a class="btn-sm btn-danger m-2" data-toggle="modal" data-th-attr="data-target='#'+${user.username}" role="button">Usuń</a>
+                </block>
             </td>
         </tr>
 
