@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/bootstrap/4.4.1/css/bootstrap.min.css">
 
 </head>
-<body >
+<body>
 
 <div class="card m-2 p-2 mx-auto">
     <nav class="navbar navbar-light bg-light m-1 p-1">
@@ -23,7 +23,7 @@
 
 <div class="card text-center mx-auto m-2 p-2 w-50">
     <table class="table table-striped align-middle">
-        <thead >
+        <thead>
         <tr>
             <th>LP</th>
             <th>Nazwa Użytkownika</th>
@@ -37,7 +37,7 @@
             <td data-th-text="${user.username}"></td>
             <td data-th-text="${user.enabled}"></td>
             <td>
-                <a class="btn-sm btn-primary m-2" data-th-href="@{/customer/userscontrolpanel/userdetails/(username=${user.username})}" role="button">Edytuj</a>
+                <a class="btn-sm btn-primary m-2" data-th-href="@{/customer/userscontrolpanel/userdetails/{username}(username=${user.username})}" role="button">Edytuj</a>
                 <block data-th-if="${user.username} != 'admin'">
                 <a class="btn-sm btn-danger m-2" data-toggle="modal" data-th-attr="data-target='#'+${user.username}" role="button">Usuń</a>
                 </block>
