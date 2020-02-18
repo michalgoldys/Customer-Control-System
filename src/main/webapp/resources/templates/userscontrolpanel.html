@@ -57,7 +57,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-                        <a class="btn btn-danger" data-th-href="@{/customer/userscontrolpanel/delete/(username=${user.username})}" role="button">Usuń</a>
+                        <form data-th-action="@{/customer/userscontrolpanel/delete/{username}(username=${user.username})}"
+                              data-th-method="POST" role="form">
+                            <button class="btn btn-danger" id="submit" name="submit" type="submit">Usuń</button>
+                        </form>
                     </div>
                 </div>
             </div>
