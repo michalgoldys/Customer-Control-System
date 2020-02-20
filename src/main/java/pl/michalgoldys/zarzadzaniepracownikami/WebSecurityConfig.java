@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            	.antMatchers("/customer").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/customerMenu").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/showingCustomers").hasAnyRole("USER","ADMIN")
+	            	.antMatchers("/customer/showingCustomers/").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/showingCustomersBillings").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/customerTechnicalPanel").hasAnyRole("USER","ADMIN")
 	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetails").hasAnyRole("USER","ADMIN")
@@ -39,7 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            	.antMatchers("/customer/showingCustomersBillings/customerBillingDetails").hasRole("ADMIN")
 	            	.antMatchers("/customer/showingCustomers/customerDetails").hasRole("ADMIN")
 	            	.antMatchers("/customer/addingCustomer").hasRole("ADMIN")
-	            	.antMatchers("/customer/userscontrolpanel").hasRole("ADMIN")
 	            	.antMatchers("/customer/userscontrolpanel/**").hasRole("ADMIN")
 	            	.antMatchers("/customer/customerTechnicalPanel/customerTechnicalDetails/**").hasRole("ADMIN")
 	            	
