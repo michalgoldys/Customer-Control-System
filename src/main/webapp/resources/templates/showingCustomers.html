@@ -26,7 +26,7 @@
             <th><a data-th-href="@{./?(page=${page+1}, sort=${sort}, query=${query})}">Nastepna Strona</a></th>
         </th:block>
 
-        <form action="#" data-th-action="@{showingCustomersInteractive/?(page=${page}, sort=${sort}, query=${query})}">
+        <form action="#" data-th-action="@{/customer/showingCustomers/?(page=${page}, sort=${sort}, query=${query})}">
             <th>
                 <input data-th-value="${query}" id="query" name="query" type="text"></th>
             <th>

@@ -45,15 +45,52 @@ public class CustomerController {
 		FindCustomersReturnAsPageServiceImpl findCustomersReturnAsPageService;
 		
 		@GetMapping(value="/customer/showingCustomers")
-		private String showingCustomers(Model model
-				) {
+		private String showingCustomers(Model model, @RequestParam(defaultValue="0") Integer page,
+										@RequestParam(required=false) String sort, @RequestParam(required=false) String query) {
+			boolean isNext;
+			boolean isPrevious;
 
-			model.addAttribute("customer", findCustomersReturnAsListService.findAll());
-			
+			if(page == null) {
+				page = 0;
+			}
+
+			if(page > 0) {
+				isPrevious = true;
+			}
+			else {
+				isPrevious = false;
+			}
+
+			model.addAttribute("page", page);
+			model.addAttribute("sort", sort);
+			model.addAttribute("query", query);
+
+			if(query == null){
+				model.addAttribute("customer", findCustomersReturnAsListService.findAll());
+			}
+			else if(query.isEmpty()) {
+				Page<Customer> customerToShow = findCustomersReturnAsPageService.findAll(PageRequest.of(page, 2, Sort.by(sort)));
+
+				if(page < customerToShow.getTotalPages()-1) {
+					isNext = true;
+				}
+				else {
+					isNext = false;
+				}
+
+				model.addAttribute("isPrevious", isPrevious);
+				model.addAttribute("isNext", isNext);
+				model.addAttribute("customer", customerToShow);
+			}
+			else {
+				List<Customer> customerToShowQuery = customerSpecificationExecutorRepository.findAll(Specification.where(CustomerSpecificationSearchImplementation.textInAllColumns(query)));
+				model.addAttribute("customer", customerToShowQuery);
+			}
+
 			return "showingCustomers";
 			
 		}
-		
+		/*
 		@GetMapping(value="/customer/showingCustomersInteractive")
 		private String showingCustomersInteractive(Model model, @RequestParam(defaultValue="0") Integer page, 
 				@RequestParam(required=false) String sort, @RequestParam(required=false) String query)
@@ -114,6 +151,8 @@ public class CustomerController {
 			 
 			return "addingCustomer";
 		}
+
+		 */
 		
 		@PostMapping(value="/customer/addingCustomer")
 		private String addingCustomers(
