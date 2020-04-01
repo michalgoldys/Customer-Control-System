@@ -53,7 +53,7 @@
             <label for="userRole" class="col-sm-2 col-form-label">Poziom uprawnień</label>
             <div class="col-sm-4">
                 <select name="authority">
-                    <option data-th-each="userRole : ${T(pl.michalgoldys.zarzadzaniepracownikami.UserRoles).values()}"
+                    <option data-th-each="userRole : ${T(pl.michalgoldys.customercontrolsystem.UserRoles).values()}"
                             data-th-value="${userRole}"
                             data-th-text="${userRole.name}"
                             id="userRole"
