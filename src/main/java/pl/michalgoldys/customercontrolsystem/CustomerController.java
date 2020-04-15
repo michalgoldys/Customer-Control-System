@@ -90,6 +90,14 @@ public class CustomerController {
 			return "showingCustomers";
 			
 		}
+
+		@GetMapping(value="/customer/addingCustomer")
+		private String addingCustomerView(Customer customer,
+										  CustomerAddress customerAddress,
+										  CustomerContact customerContact,
+										  CustomerContractDetails customerContractDetails){
+			return "addingCustomer";
+		}
 		
 		@PostMapping(value="/customer/addingCustomer")
 		private String addingCustomers(
