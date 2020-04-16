@@ -1,6 +1,5 @@
 package pl.michalgoldys.customercontrolsystem;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -10,7 +9,6 @@ public class CustomerAddressDTO {
 	private String customerStreet;
 	
 	@NotEmpty(message="Pole nie moze byc puste")
-	@Max(32)
 	@Pattern(regexp="([a-zA-Z0-9\\/\\s]){0,32}", message="Wprowadz poprawna nazwe")
 	private String customerCity;
 
