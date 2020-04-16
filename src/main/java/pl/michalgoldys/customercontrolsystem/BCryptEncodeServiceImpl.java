@@ -17,4 +17,10 @@ public class BCryptEncodeServiceImpl implements EncodeInterface {
         log.info("Encoding password..");
         return bCryptPasswordEncoder.encode(password);
     }
+
+    public String encode(String password, Integer strength) {
+        log.info("Encoding password with custom endcode strength..");
+        BCryptPasswordEncoder bCryptPasswordEncoder1 = new BCryptPasswordEncoder(strength);
+        return bCryptPasswordEncoder1.encode(password);
+    }
 }
