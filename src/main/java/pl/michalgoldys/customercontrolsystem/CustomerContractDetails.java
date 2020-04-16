@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 
 @ToString
-@Entity(name="CUSTOMER_CONTRACT_DETALIS")
+@Entity(name="CUSTOMER_CONTRACT_DETAILS")
 public class CustomerContractDetails {
 
 	@Id
@@ -16,10 +16,10 @@ public class CustomerContractDetails {
 	@Column(name="customer_subscriptions")
 	private Integer customerSubscriptions;
 	
-	@Column(name="customer_pl_substripctions")
+	@Column(name="customer_pl_subscriptions")
 	private Integer customerPlSubscriptions;
 	
-	@Column(name="customer_pl_ue_substripctions")
+	@Column(name="customer_pl_ue_subscriptions")
 	private Integer customerPlUeSubscriptions;
 	
 	@Column(name="customer_ru_subscriptions")

@@ -33,8 +33,8 @@ public class CustomerContractDetailsDTO {
 		return customerPlSubscriptions;
 	}
 
-	public void setCustomerPlSubscriptions(Integer customerPlSubstripctions) {
-		this.customerPlSubscriptions = customerPlSubstripctions;
+	public void setCustomerPlSubscriptions(Integer customerPlSubscriptions) {
+		this.customerPlSubscriptions = customerPlSubscriptions;
 	}
 
 	public Integer getCustomerPlUeSubscriptions() {

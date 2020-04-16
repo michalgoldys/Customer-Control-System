@@ -22,7 +22,7 @@ public class CustomerContact {
 	@Column(name="customer_contact_phone_number")
 	private String customerContactPhoneNumber;
 	
-	@Column(name="customer_contact_mail_adress")
+	@Column(name="customer_contact_mail_address")
 	private String customerContactMailAddress;
 	
 	@Autowired

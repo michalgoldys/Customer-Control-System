@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.persistence.*;
 
 @ToString
-@Entity(name="CUSTOMER_ADRESS")
+@Entity(name="CUSTOMER_ADDRESS")
 public class CustomerAddress {
 	
 	@Id
