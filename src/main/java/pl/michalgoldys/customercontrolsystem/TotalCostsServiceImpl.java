@@ -21,31 +21,32 @@ public class TotalCostsServiceImpl implements TotalCostsInterface<Customer> {
 
         List<Double> sumOfCosts = new ArrayList<>();
 
-        for(Customer customer : customerList)
-        {
-
+        for(Customer customer : customerList) {
 
             if(customer.getCustomerContractDetails().getCustomerPlSubscriptions() != null &&
-                    customer.getCustomerContractDetails().getCustomerPlSubscriptions() > 0)
+                    customer.getCustomerContractDetails().getCustomerPlSubscriptions() > 0) {
 
-            {
                 costSum += customer.getCustomerContractDetails().getCustomerPlSubscriptions() * serverCost;
                 costSum += customer.getCustomerContractDetails().getCustomerPlSubscriptions() * telematicCardCost;
             }
+
             if(customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null &&
-                    customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() > 0)
-            {
+                    customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() > 0) {
+
                 costSum += customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() * serverCost;
                 costSum += customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() * telematicCardCost;
             }
+
             if(customer.getCustomerContractDetails().getCustomerRuSubscriptions() != null &&
-                    customer.getCustomerContractDetails().getCustomerRuSubscriptions() > 0)
-            {
+                    customer.getCustomerContractDetails().getCustomerRuSubscriptions() > 0) {
+
                 costSum += customer.getCustomerContractDetails().getCustomerRuSubscriptions() * serverCost;
                 costSum += customer.getCustomerContractDetails().getCustomerRuSubscriptions() * telematicCardCost;
             }
+
             sumOfCosts.add(costSum);
         }
+
         return sumOfCosts;
     }
 }
