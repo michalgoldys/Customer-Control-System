@@ -30,8 +30,8 @@ public class TechnicalPanelController {
     FindByCustomerIdReturnAsTypeServiceImpl findByCustomerIdReturnAsTypeService;
 
     @GetMapping(value="/customer/customerTechnicalPanel")
-    private String showingCustomerTechnicalPanel(Model model
-    ) {
+    private String showingCustomerTechnicalPanel(Model model) {
+
         ArrayList<Customer> customerList = new ArrayList<>(findCustomersReturnAsListService.findAll());
         List<Integer> customerIssueCount = new ArrayList<>();
         List<String> customerLastIssueDateToSort = new ArrayList<>();
@@ -69,8 +69,8 @@ public class TechnicalPanelController {
     }
 
     @GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetails")
-    private String showingCustomerTechnicalDetails(@RequestParam("id") String customerSelectionId, Model model
-    ) {
+    private String showingCustomerTechnicalDetails(@RequestParam("id") String customerSelectionId, Model model) {
+
         Customer selectedCustomer = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 
         model.addAttribute("isEmpty", selectedCustomer.getCustomerTechnicalPanel().isEmpty());
@@ -82,8 +82,8 @@ public class TechnicalPanelController {
 
     @GetMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetails/{customerSelectionId}/addingTechnicalEvent")
     private String showingFormTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId,
-                                                                     CustomerTechnicalPanel customerTechnicalPanel, Model model)
-    {
+                                                                     CustomerTechnicalPanel customerTechnicalPanel, Model model) {
+
         Customer selectedCustomer = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 
         model.addAttribute("customerSelectionId", customerSelectionId);
@@ -94,8 +94,8 @@ public class TechnicalPanelController {
 
     @PostMapping(value="/customer/customerTechnicalPanel/customerTechnicalDetails/{customerSelectionId}/addingTechnicalEvent")
     private String creatingTechnicalEventToCustomerTechnicalPanel(@PathVariable String customerSelectionId,
-                                                                  CustomerTechnicalPanel customerTechnicalPanel)
-    {
+                                                                  CustomerTechnicalPanel customerTechnicalPanel) {
+
         Customer selectedCustomer = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
         CustomerWrapper objectToSave = new CustomerWrapper(selectedCustomer,customerTechnicalPanel);
         customerTechnicalPanelDatabaseSaveService.save(objectToSave);
