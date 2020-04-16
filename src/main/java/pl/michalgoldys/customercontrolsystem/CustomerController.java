@@ -91,7 +91,7 @@ public class CustomerController {
 			}
 
 			customer.setCustomerIsActive(false);
-			CustomerWrapper toSave = customerWrapper.customerWrapperService(customer, customerAddress, customerContractDetails, customerContact);
+			CustomerWrapper toSave = new CustomerWrapper(customer, customerAddress, customerContractDetails, customerContact);
 
 			customerDatabaseSaveService.save(toSave);
 
