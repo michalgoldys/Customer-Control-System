@@ -23,14 +23,15 @@ public class TotalSubscriptionsServiceImpl implements TotalSubscriptionsInterfac
         customerList.forEach(c -> {
             sum = 0;
             if(c.getCustomerContractDetails().getCustomerPlSubscriptions() != null) {
+
                 sum += c.getCustomerContractDetails().getCustomerPlSubscriptions();
             }
-            if(c.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null)
-            {
+            if(c.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null) {
+
                 sum += c.getCustomerContractDetails().getCustomerPlUeSubscriptions();
             }
-            if(c.getCustomerContractDetails().getCustomerRuSubscriptions() != null)
-            {
+            if(c.getCustomerContractDetails().getCustomerRuSubscriptions() != null) {
+
                 sum += c.getCustomerContractDetails().getCustomerRuSubscriptions();
             }
             customerSubscriptionsSum.add(sum);

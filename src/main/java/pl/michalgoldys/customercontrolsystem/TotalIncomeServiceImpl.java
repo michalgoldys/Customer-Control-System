@@ -20,25 +20,28 @@ public class TotalIncomeServiceImpl implements TotalIncomeInterface<Customer> {
 
         List<Integer> sumOfIncomeBySubscriptions = new ArrayList<Integer>();
 
-        for(Customer customer : customerList)
-        {
+        for(Customer customer : customerList) {
+
             sum = 0;
 
             if(customer.getCustomerContractDetails().getCustomerPlSubscriptions() != null && customer.getCustomerContractDetails().getCustomerPlFee() != null
-                    && customer.getCustomerContractDetails().getCustomerPlSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerPlFee() > 0)
-            {
+                    && customer.getCustomerContractDetails().getCustomerPlSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerPlFee() > 0) {
+
                 sum += customer.getCustomerContractDetails().getCustomerPlSubscriptions() * customer.getCustomerContractDetails().getCustomerPlFee();
             }
+
             if(customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() != null && customer.getCustomerContractDetails().getCustomerPlUeFee() != null
-                    && customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerPlUeFee() > 0)
-            {
+                    && customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerPlUeFee() > 0) {
+
                 sum += customer.getCustomerContractDetails().getCustomerPlUeSubscriptions() * customer.getCustomerContractDetails().getCustomerPlUeFee();
             }
+
             if(customer.getCustomerContractDetails().getCustomerRuSubscriptions() != null && customer.getCustomerContractDetails().getCustomerRuFee() != null
-                    && customer.getCustomerContractDetails().getCustomerRuSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerRuFee() > 0)
-            {
+                    && customer.getCustomerContractDetails().getCustomerRuSubscriptions() > 0 && customer.getCustomerContractDetails().getCustomerRuFee() > 0) {
+
                 sum += customer.getCustomerContractDetails().getCustomerRuSubscriptions() * customer.getCustomerContractDetails().getCustomerRuFee();
             }
+
             sumOfIncomeBySubscriptions.add(sum);
         }
 
