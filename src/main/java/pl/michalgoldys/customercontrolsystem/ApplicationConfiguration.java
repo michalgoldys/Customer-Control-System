@@ -40,7 +40,7 @@ public class ApplicationConfiguration  {
 				.create()
 				.username("root")
 				.password("fajka12!@")
-				.url("jdbc:mysql://localhost:3306/zarzadzaniepracownikamidb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
+				.url("jdbc:mysql://localhost:3306/ccsdb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
 				.driverClassName("com.mysql.jdbc.Driver")
 				.build();
 	}
