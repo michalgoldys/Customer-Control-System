@@ -9,12 +9,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BCryptEncodeServiceImpl implements EncodeInterface {
 
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Override
     public String encode(String password) {
         log.info("Encoding password..");
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         return bCryptPasswordEncoder.encode(password);
     }
 
