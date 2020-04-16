@@ -15,7 +15,7 @@ public class CustomerWrapper {
     private CustomerContact customerContact;
     private CustomerTechnicalPanel customerTechnicalPanel;
 
-    private CustomerWrapper(Customer customer, CustomerAddress customerAddress, CustomerContractDetails customerContractDetails, CustomerContact customerContact) {
+    public CustomerWrapper(Customer customer, CustomerAddress customerAddress, CustomerContractDetails customerContractDetails, CustomerContact customerContact) {
         this.customer = customer;
         this.customerAddress = customerAddress;
         this.customerContractDetails = customerContractDetails;
@@ -28,44 +28,12 @@ public class CustomerWrapper {
         this.customerContact = customerContact;
     }
 
-    private CustomerWrapper(){
-
-    }
-
     public CustomerWrapper(Customer customer, CustomerTechnicalPanel customerTechnicalPanel) {
         this.customer = customer;
         this.customerTechnicalPanel = customerTechnicalPanel;
     }
 
-    public CustomerWrapper customerWrapperService(Customer customer, CustomerTechnicalPanel customerTechnicalPanel){
-
-        log.info("Wrapping Customer data: " + customer.toString()+ customerTechnicalPanel.toString());
-
-        CustomerWrapper customerWrapper = new CustomerWrapper(customer, customerTechnicalPanel);
-
-        return customerWrapper;
-    }
-
-    public CustomerWrapper customerWrapperService(Customer customer, CustomerAddress customerAddress,
-                                                  CustomerContractDetails customerContractDetails, CustomerContact customerContact){
-
-        log.info("Wrapping Customer data: " + customer.toString()+ customerAddress.toString() + customerContact.toString() + customerContractDetails.toString());
-
-        CustomerWrapper customerWrapper = new CustomerWrapper(customer, customerAddress,
-                customerContractDetails, customerContact);
-
-        return customerWrapper;
-    }
-
-    public CustomerWrapper customerWrapperService(Customer customer, CustomerAddress customerAddress,
-                                                  CustomerContact customerContact){
-
-        log.info("Wrapping Customer data: " + customer.toString()+ customerAddress.toString() + customerContact.toString());
-
-        CustomerWrapper customerWrapper = new CustomerWrapper(customer, customerAddress,
-                customerContact);
-
-        return customerWrapper;
+    private CustomerWrapper(){
     }
 
     public CustomerTechnicalPanel getCustomerTechnicalPanel() {
