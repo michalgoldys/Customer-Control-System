@@ -10,5 +10,4 @@ import java.util.List;
 public interface CustomerSpecificationExecutorRepository extends Repository<Customer, Long>, JpaSpecificationExecutor<Customer> {
 	
 	List<Customer> findAll(Specification<Customer> query);
-
 }
