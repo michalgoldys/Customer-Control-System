@@ -47,18 +47,8 @@ public class CustomerController {
 		@GetMapping(value="/customer/showingCustomers")
 		private String showingCustomers(Model model, @RequestParam(defaultValue="0") Integer page,
 										@RequestParam(required=false) String sort, @RequestParam(required=false) String query) {
-			boolean isNext;
-			boolean isPrevious;
-
 			if(page == null) {
 				page = 0;
-			}
-
-			if(page > 0) {
-				isPrevious = true;
-			}
-			else {
-				isPrevious = false;
 			}
 
 			model.addAttribute("page", page);
@@ -71,15 +61,8 @@ public class CustomerController {
 			else if(query.isEmpty()) {
 				Page<Customer> customerToShow = findCustomersReturnAsPageService.findAll(PageRequest.of(page, 2, Sort.by(sort)));
 
-				if(page < customerToShow.getTotalPages()-1) {
-					isNext = true;
-				}
-				else {
-					isNext = false;
-				}
-
-				model.addAttribute("isPrevious", isPrevious);
-				model.addAttribute("isNext", isNext);
+				model.addAttribute("isPrevious", (page > 0) ? true : false);
+				model.addAttribute("isNext", (page < customerToShow.getTotalPages()-1) ? true : false);
 				model.addAttribute("customer", customerToShow);
 			}
 			else {
@@ -88,7 +71,6 @@ public class CustomerController {
 			}
 
 			return "showingCustomers";
-			
 		}
 
 		@GetMapping(value="/customer/addingCustomer")
@@ -111,13 +93,8 @@ public class CustomerController {
 			if (customerBinding.hasErrors()) {
 					return "addingCustomer";
 				}
-
-			log.info("Controller data: " + customer.toString()+ customerAddress.toString() + customerContact.toString() + customerContractDetails.toString());
-
 			customer.setCustomerIsActive(false);
 			CustomerWrapper toSave = customerWrapper.customerWrapperService(customer, customerAddress, customerContractDetails, customerContact);
-
-			log.info("Customer Wrapper Object Contains: " + toSave.toString());
 
 			customerDatabaseSaveService.save(toSave);
 
@@ -145,8 +122,7 @@ public class CustomerController {
 											   Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, Model model
 				) {
 			
-			if (customerBinding.hasErrors()) 
-			{
+			if (customerBinding.hasErrors()) {
 				return "customerDetails";
 			}
 
@@ -155,5 +131,4 @@ public class CustomerController {
 
 			return "redirect:/customer/showingCustomers";
 		}
-
 }
