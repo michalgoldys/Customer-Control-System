@@ -22,7 +22,7 @@ public class CustomerTechnicalPanel {
 		@Autowired
 		@ManyToOne
 		@JoinColumn(name = "customerId")
-		Customer customer;
+		private Customer customer;
 		
 		protected CustomerTechnicalPanel() {
 			

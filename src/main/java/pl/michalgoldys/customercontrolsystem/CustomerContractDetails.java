@@ -40,7 +40,7 @@ public class CustomerContractDetails {
 	@Autowired
 	@OneToOne
 	@JoinColumn(name ="customerId")
-	Customer customer;
+	private Customer customer;
 	
 	protected CustomerContractDetails() {
 		

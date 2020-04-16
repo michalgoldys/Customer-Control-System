@@ -28,7 +28,7 @@ public class CustomerContact {
 	@Autowired
 	@ManyToOne
 	@JoinColumn(name = "customerId")
-	Customer customer;
+	private Customer customer;
 	
 	protected CustomerContact() {
 		

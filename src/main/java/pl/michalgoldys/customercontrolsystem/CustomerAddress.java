@@ -25,7 +25,7 @@ public class CustomerAddress {
 	@Autowired
 	@OneToOne
 	@JoinColumn(name = "customerId")
-	Customer customer;
+	private Customer customer;
 	
 	protected CustomerAddress() {
 		
