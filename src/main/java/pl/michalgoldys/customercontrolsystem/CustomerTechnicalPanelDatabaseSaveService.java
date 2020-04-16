@@ -22,8 +22,8 @@ public class CustomerTechnicalPanelDatabaseSaveService implements DatabaseGeneri
 
         CustomerTechnicalPanel newCustomerTechnicalPanel = new CustomerTechnicalPanel();
 
-        newCustomerTechnicalPanel.setCustomerTechnicalIssueDescribtion(customerTechnicalPanel.getCustomerTechnicalIssueDescribtion());
-        newCustomerTechnicalPanel.setCustomerTechnicalIssueOccourDate(customerTechnicalPanel.getCustomerTechnicalIssueOccourDate());
+        newCustomerTechnicalPanel.setCustomerTechnicalIssueDescription(customerTechnicalPanel.getCustomerTechnicalIssueDescription());
+        newCustomerTechnicalPanel.setCustomerTechnicalIssueOccurDate(customerTechnicalPanel.getCustomerTechnicalIssueOccurDate());
 
         newCustomerTechnicalPanel.setCustomer(selectedCustomer);
 

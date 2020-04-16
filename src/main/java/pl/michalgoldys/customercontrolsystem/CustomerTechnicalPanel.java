@@ -13,11 +13,11 @@ public class CustomerTechnicalPanel {
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private Long customerTechnicalPanelId;
 		
-		@Column(name="customer_technical_issue_occour_date")
-		private String customerTechnicalIssueOccourDate;
+		@Column(name="customer_technical_issue_occur_date")
+		private String customerTechnicalIssueOccurDate;
 		
-		@Column(name="customer_technical_issue_describtion")
-		private String customerTechnicalIssueDescribtion;
+		@Column(name="customer_technical_issue_description")
+		private String customerTechnicalIssueDescription;
 		
 		@Autowired
 		@ManyToOne
@@ -36,20 +36,20 @@ public class CustomerTechnicalPanel {
 			this.customerTechnicalPanelId = customerTechnicalPanelId;
 		}
 
-		public String getCustomerTechnicalIssueOccourDate() {
-			return customerTechnicalIssueOccourDate;
+		public String getCustomerTechnicalIssueOccurDate() {
+			return customerTechnicalIssueOccurDate;
 		}
 
-		public void setCustomerTechnicalIssueOccourDate(String customerTechnicalIssueOccourDate) {
-			this.customerTechnicalIssueOccourDate = customerTechnicalIssueOccourDate;
+		public void setCustomerTechnicalIssueOccurDate(String customerTechnicalIssueOccurDate) {
+			this.customerTechnicalIssueOccurDate = customerTechnicalIssueOccurDate;
 		}
 
-		public String getCustomerTechnicalIssueDescribtion() {
-			return customerTechnicalIssueDescribtion;
+		public String getCustomerTechnicalIssueDescription() {
+			return customerTechnicalIssueDescription;
 		}
 
-		public void setCustomerTechnicalIssueDescribtion(String customerTechnicalIssueDescribtion) {
-			this.customerTechnicalIssueDescribtion = customerTechnicalIssueDescribtion;
+		public void setCustomerTechnicalIssueDescription(String customerTechnicalIssueDescription) {
+			this.customerTechnicalIssueDescription = customerTechnicalIssueDescription;
 		}
 
 		public Customer getCustomer() {

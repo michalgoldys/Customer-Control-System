@@ -42,7 +42,7 @@ public class TechnicalPanelController {
         customerList.forEach( c -> customerIssueCount.add(c.getCustomerTechnicalPanel().size()));
         customerList.forEach( c -> {
                     if(c.getCustomerTechnicalPanel().size() > 0) {
-                        c.getCustomerTechnicalPanel().forEach( d -> customerLastIssueDateToSort.add(d.getCustomerTechnicalIssueOccourDate()));
+                        c.getCustomerTechnicalPanel().forEach( d -> customerLastIssueDateToSort.add(d.getCustomerTechnicalIssueOccurDate()));
 
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
