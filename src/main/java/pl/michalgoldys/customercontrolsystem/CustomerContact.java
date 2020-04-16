@@ -33,15 +33,6 @@ public class CustomerContact {
 	protected CustomerContact() {
 		
 	}
-	
-	public CustomerContact(String contactName, String contactSurname,
-			String customerPhoneNumber, String customerMailAdress) {
-		super();
-		this.customerContactName = contactName;
-		this.customerContactSurname = contactSurname;
-		this.customerContactPhoneNumber = customerPhoneNumber;
-		this.customerContactMailAddress = customerMailAdress;
-	}
 
 	public Customer getCustomer() {
 		return customer;

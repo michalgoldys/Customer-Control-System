@@ -55,15 +55,7 @@ public class Customer {
 	protected Customer () {
 		
 	}
-	
-	public Customer(String customerName, String customerNip, Boolean customerIsActive, String customerContractId) {
-		super();
-		this.customerName = customerName;
-		this.customerNip = customerNip;
-		this.customerIsActive = customerIsActive;
-		this.customerContractId = customerContractId;
-	}
-	
+
 	public CustomerContractDetails getCustomerContractDetails() {
 		return customerContractDetails;
 	}

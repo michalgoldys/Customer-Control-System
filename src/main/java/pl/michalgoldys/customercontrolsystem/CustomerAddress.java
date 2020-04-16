@@ -31,14 +31,6 @@ public class CustomerAddress {
 		
 	}
 
-	public CustomerAddress(String customerStreet, String customerCity,
-						   String customerZipCode) {
-		super();
-		this.customerStreet = customerStreet;
-		this.customerCity = customerCity;
-		this.customerZipCode = customerZipCode;
-	}
-	
 	public Customer getCustomer() {
 		return customer;
 	}

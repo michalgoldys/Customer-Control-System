@@ -46,20 +46,6 @@ public class CustomerContractDetails {
 		
 	}
 	
-	public CustomerContractDetails(Integer customerSubscriptions, Integer customerPlSubscriptions,
-								   Integer customerPlUeSubscriptions, Integer customerRuSubscriptions, Integer customerPlFee, Integer customerPlUeFee,
-								   Integer customerRuFee, Boolean customerEinvoiceAgreement) {
-		super();
-		this.customerSubscriptions = customerSubscriptions;
-		this.customerPlSubscriptions = customerPlSubscriptions;
-		this.customerPlUeSubscriptions = customerPlUeSubscriptions;
-		this.customerRuSubscriptions = customerRuSubscriptions;
-		this.customerPlFee = customerPlFee;
-		this.customerPlUeFee = customerPlUeFee;
-		this.customerRuFee = customerRuFee;
-		this.customerEinvoiceAgreement = customerEinvoiceAgreement;
-	}
-	
 	public Customer getCustomer() {
 		return customer;
 	}
