@@ -70,8 +70,8 @@ public class CustomerContact {
 		return customerContactMailAddress;
 	}
 
-	public void setCustomerContactMailAddress(String customerContactMailAdress) {
-		this.customerContactMailAddress = customerContactMailAdress;
+	public void setCustomerContactMailAddress(String customerContactMailAddress) {
+		this.customerContactMailAddress = customerContactMailAddress;
 	}
 
 	public Long getCustomerContactId() {
