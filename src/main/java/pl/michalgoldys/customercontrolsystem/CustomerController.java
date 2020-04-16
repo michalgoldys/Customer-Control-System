@@ -46,12 +46,9 @@ public class CustomerController {
 		
 		@GetMapping(value="/customer/showingCustomers")
 		private String showingCustomers(Model model, @RequestParam(defaultValue="0") Integer page,
-										@RequestParam(required=false) String sort, @RequestParam(required=false) String query) {
-			if(page == null) {
-				page = 0;
-			}
+										@RequestParam(required=false) String sort, @RequestParam(required=false) String query){
 
-			model.addAttribute("page", page);
+			model.addAttribute("page", (page == null) ? page = 0 : page);
 			model.addAttribute("sort", sort);
 			model.addAttribute("query", query);
 
@@ -61,7 +58,7 @@ public class CustomerController {
 			else if(query.isEmpty()) {
 				Page<Customer> customerToShow = findCustomersReturnAsPageService.findAll(PageRequest.of(page, 2, Sort.by(sort)));
 
-				model.addAttribute("isPrevious", (page > 0) ? true : false);
+				model.addAttribute("isPrevious", (page > 0 && page != null) ? true : false);
 				model.addAttribute("isNext", (page < customerToShow.getTotalPages()-1) ? true : false);
 				model.addAttribute("customer", customerToShow);
 			}
@@ -87,24 +84,22 @@ public class CustomerController {
 				@Valid CustomerAddressDTO customerAddressDto, BindingResult customerBinding1,
 				@Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
 				@Valid CustomerContractDetailsDTO customerContractDetailsDto, BindingResult customerBinding3,
-				Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, CustomerContractDetails customerContractDetails
-				) {
+				Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, CustomerContractDetails customerContractDetails){
 				
 			if (customerBinding.hasErrors()) {
 					return "addingCustomer";
-				}
+			}
+
 			customer.setCustomerIsActive(false);
 			CustomerWrapper toSave = customerWrapper.customerWrapperService(customer, customerAddress, customerContractDetails, customerContact);
 
 			customerDatabaseSaveService.save(toSave);
 
 			return "redirect:/customer/customerMenu";
-
 		}
 		
 		@GetMapping(value="/customer/showingCustomers/customerDetails")
-		private String showingCustomerDetails(@RequestParam("id") String customerSelectionId, Model model
-				) {
+		private String showingCustomerDetails(@RequestParam("id") String customerSelectionId, Model model) {
 			Customer customerEntity = findByCustomerIdReturnAsTypeService.findBy(customerSelectionId);
 			
 			model.addAttribute("selectedCustomerId", customerSelectionId);
@@ -119,8 +114,7 @@ public class CustomerController {
 											   @Valid CustomerDTO customerDto, BindingResult customerBinding,
 											   @Valid CustomerAddressDTO customerAddressDto, BindingResult customerBinding1,
 											   @Valid CustomerContactDTO customerContactDto, BindingResult customerBinding2,
-											   Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, Model model
-				) {
+											   Customer customer, CustomerAddress customerAddress, CustomerContact customerContact, Model model) {
 			
 			if (customerBinding.hasErrors()) {
 				return "customerDetails";
