@@ -21,6 +21,15 @@ public class UserPanelController {
     @Autowired
     UserSaveServiceImpl userSaveService;
 
+    @Autowired
+    UserFindByUsernameServiceImpl userFindByUsernameService;
+
+    @Autowired
+    PasswordChangerHelperService passwordChangerHelperService;
+
+    @Autowired
+    UserUpdateServiceImpl userUpdateService;
+
     @GetMapping(value = "/customer/userscontrolpanel")
     String userControlPanelView(Model model) {
         log.info("Getting users from service..");
@@ -48,7 +57,19 @@ public class UserPanelController {
     }
 
     @GetMapping(value = "/customer/userscontrolpanel/userdetails/{username}")
-    String getUserDetails(@PathVariable String username){
+    String getUserDetailsView(@PathVariable String username, PasswordChangerHelper passwordChangerHelper, Model model){
+        model.addAttribute("user", userFindByUsernameService.findBy(username));
+        return "userdetails";
+    }
+
+    @PostMapping(value = "/customer/userscontrolpanel/userdetails/{username}")
+    String setUserDetails(@PathVariable String username,
+                          PasswordChangerHelper passwordChangerHelper, User user, UserAuthorities userAuthorities) {
+
+        if(passwordChangerHelperService.validate(passwordChangerHelper, user)){
+            userUpdateService.update(user);
+            return "redirect:/customer/usercontrolpanel";
+        };
         return "userdetails";
     }
 }
