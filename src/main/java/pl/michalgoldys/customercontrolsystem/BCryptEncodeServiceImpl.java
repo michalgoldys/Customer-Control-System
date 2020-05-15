@@ -21,4 +21,9 @@ public class BCryptEncodeServiceImpl implements EncodeInterface {
         BCryptPasswordEncoder bCryptPasswordEncoder1 = new BCryptPasswordEncoder(strength);
         return bCryptPasswordEncoder1.encode(password);
     }
+
+    public BCryptPasswordEncoder encode() {
+        log.info("Encoding password..");
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
 }
