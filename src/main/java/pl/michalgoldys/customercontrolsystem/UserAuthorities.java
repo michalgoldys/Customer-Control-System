@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
-@Entity(name = "user_authorities")
+@Entity(name = "USER_AUTHORITIES")
 public class UserAuthorities {
 
     @Id
