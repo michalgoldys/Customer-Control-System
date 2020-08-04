@@ -43,7 +43,7 @@ public class DatabaseUserLoader {
                 userAuthorities.setUser(user);
 
                 userDAO.save(user);
-            };
+            }
         };
     }
 }

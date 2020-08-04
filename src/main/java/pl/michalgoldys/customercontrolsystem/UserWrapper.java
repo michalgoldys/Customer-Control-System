@@ -2,8 +2,8 @@ package pl.michalgoldys.customercontrolsystem;
 
 public class UserWrapper {
 
-    private User user;
-    private UserAuthorities userAuthorities;
+    private final User user;
+    private final UserAuthorities userAuthorities;
 
     public UserWrapper(User user, UserAuthorities userAuthorities) {
         this.user = user;

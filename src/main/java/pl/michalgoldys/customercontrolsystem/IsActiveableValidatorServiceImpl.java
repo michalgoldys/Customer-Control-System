@@ -12,12 +12,7 @@ public class IsActiveableValidatorServiceImpl implements IsActiveableValidatorIn
 
         log.info("Checking if its possible to mark customer entity as active, and inactive");
 
-        if(customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0
-                && customer.getCustomerDeactivationDate() != null && customer.getCustomerDeactivationDate().length() > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return customer.getCustomerActivationDate() != null && customer.getCustomerActivationDate().length() > 0
+                && customer.getCustomerDeactivationDate() != null && customer.getCustomerDeactivationDate().length() > 0;
     }
 }

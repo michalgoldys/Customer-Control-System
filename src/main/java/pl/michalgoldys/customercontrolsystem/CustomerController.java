@@ -58,8 +58,8 @@ public class CustomerController {
 			else if(query.isEmpty()) {
 				Page<Customer> customerToShow = findCustomersReturnAsPageService.findAll(PageRequest.of(page, 2, Sort.by(sort)));
 
-				model.addAttribute("isPrevious", (page > 0 && page != null) ? true : false);
-				model.addAttribute("isNext", (page < customerToShow.getTotalPages()-1) ? true : false);
+				model.addAttribute("isPrevious", page > 0 && page != null);
+				model.addAttribute("isNext", page < customerToShow.getTotalPages() - 1);
 				model.addAttribute("customer", customerToShow);
 			}
 			else {

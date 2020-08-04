@@ -69,7 +69,7 @@ public class UserPanelController {
         if(passwordChangerHelperService.validate(passwordChangerHelper, user)){
             userUpdateService.update(user);
             return "redirect:/customer/usercontrolpanel";
-        };
+        }
         return "userdetails";
     }
 }

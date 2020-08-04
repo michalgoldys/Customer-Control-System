@@ -18,12 +18,8 @@ public class CustomerSpecificationSearchImplementation {
 	                return builder.or(root.getModel().getDeclaredSingularAttributes()
 	                		.stream()
 	                		.filter(a-> {
-	                    if (a.getJavaType().getSimpleName().equalsIgnoreCase("string")) {
-	                        return true;
-	                    }
-	                    else {
-	                        return false;
-	                }})
+								return a.getJavaType().getSimpleName().equalsIgnoreCase("string");
+							})
 	                		.map(a -> builder.like(root.get(a.getName()), text)
 	                    )
 	                		.toArray(Predicate[]::new)

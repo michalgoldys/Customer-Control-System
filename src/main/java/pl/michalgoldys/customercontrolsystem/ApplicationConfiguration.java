@@ -88,7 +88,7 @@ public class ApplicationConfiguration  {
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();;
+		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
 		lcemfb.setDataSource(dataSource());
 		lcemfb.setPackagesToScan("pl.michalgoldys");
 		lcemfb.setJpaVendorAdapter(settingHibernateJpaVendorAdapter());
