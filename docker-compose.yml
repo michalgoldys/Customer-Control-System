@@ -1,0 +1,19 @@
+version: '3'
+services:
+        application:
+            build: ./
+            container_name: "ccs"
+            ports:
+            -   "20365:20365"
+            depends_on:
+            -   database
+        database:
+            container_name: 'mysql_database'
+            image: mysql
+            environment:
+              MYSQL_ROOT_PASSWORD: qaz123wsxRFV
+              MYSQL_DATABASE: ccsdb
+            ports:
+            - "3306:3306"
+            restart: always
+
