@@ -39,8 +39,8 @@ public class ApplicationConfiguration  {
 		return DataSourceBuilder
 				.create()
 				.username("root")
-				.password("fajka12!@")
-				.url("jdbc:mysql://localhost:3306/ccsdb?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC")
+				.password("qaz123wsxRFV")
+				.url("jdbc:mysql://mysql_database:3306/ccsdb?useSSL=false")
 				.driverClassName("com.mysql.jdbc.Driver")
 				.build();
 	}
