@@ -40,7 +40,7 @@ public class ApplicationConfiguration  {
 				.create()
 				.username("root")
 				.password("qaz123wsxRFV")
-				.url("jdbc:mysql://mysql_database:3306/ccsdb?useSSL=false")
+				.url("jdbc:mysql://mysql_database:3306/ccsdb")
 				.driverClassName("com.mysql.jdbc.Driver")
 				.build();
 	}
